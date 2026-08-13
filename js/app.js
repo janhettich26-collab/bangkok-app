@@ -326,6 +326,99 @@
 
   document.getElementById("dress-list").innerHTML = INFO.dresscode.map(d => "<li>" + d + "</li>").join("");
 
+  // ————— Heute-Karte: Countdown, Reisetag, Flugtag mit Abfahrtszeiten —————
+  const DIR_MUC = "https://www.google.com/maps/dir/?api=1&destination=Flughafen%20M%C3%BCnchen%20Terminal%202&travelmode=driving";
+  const DIR_BKK = "https://www.google.com/maps/dir/?api=1&destination=Suvarnabhumi%20Airport&travelmode=driving";
+  const FS = f => "https://www.google.com/search?q=" + f + "+Flugstatus";
+
+  function timeline(rows) {
+    return '<div class="t-rows">' + rows.map(r =>
+      '<div class="t-row"><span class="t-time">' + r[0] + "</span><p>" + r[1] + "</p></div>").join("") + "</div>";
+  }
+
+  function renderToday() {
+    const el = document.getElementById("today-card");
+    const t = todayISO();
+    if (t === "2026-08-27") {
+      el.innerHTML = '<div class="card today"><div class="today-title">🛫 Heute geht\'s los — LH772 um 22:20</div>' +
+        timeline([
+          ["16:30", "Daheim losfahren — Donnerstag-Feierabendverkehr um München einplanen (~2–2,5 Std.)."],
+          ["~19:00", "Parkos-Parkplatz: einparken, Shuttle zum Terminal 2 (Beleg in OneDrive)."],
+          ["20:00", "Bag-Drop Lufthansa, Terminal 2. Koffer bis 23 kg, GOT BAG + kleine Tasche mit."],
+          ["~21:40", "Boarding. Powerbank & Pass im Handgepäck? TDAC-Screenshot bereit?"],
+          ["22:20", "Abflug — 13:45 Ortszeit landest du in Bangkok."]
+        ]) +
+        '<div class="s-actions"><a class="btn" href="' + DIR_MUC + '" target="_blank" rel="noopener">🚗 Live-Route zum Flughafen</a>' +
+        '<a class="btn ghost" href="' + FS("LH772") + '" target="_blank" rel="noopener">✈️ Flugstatus</a></div></div>';
+      return;
+    }
+    if (t === "2026-09-06") {
+      el.innerHTML = '<div class="card today"><div class="today-title">🛫 Heute Rückflug — LH773 um 22:55</div>' +
+        timeline([
+          ["12:00", "Check-out, Gepäck an der Rezeption lagern. Tag locker gestalten."],
+          ["18:45", "Abfahrt am Hotel — Transfer ist inklusive (Abholzeit gestern bestätigt?). Plan B: Bolt ~600 ฿, 45–60 Min."],
+          ["19:55", "Am Suvarnabhumi (3 Std. vorher). Bag-Drop Lufthansa."],
+          ["~22:15", "Boarding. Restliche Baht ausgegeben?"],
+          ["22:55", "Abflug — 05:15 landest du in München. Montag keine Einsätze!"]
+        ]) +
+        '<div class="s-actions"><a class="btn" href="' + DIR_BKK + '" target="_blank" rel="noopener">🚗 Live-Route zum Flughafen</a>' +
+        '<a class="btn ghost" href="' + FS("LH773") + '" target="_blank" rel="noopener">✈️ Flugstatus</a></div></div>';
+      return;
+    }
+    if (t < "2026-08-27") {
+      const days = Math.round((new Date("2026-08-27T12:00:00") - new Date(t + "T12:00:00")) / 864e5);
+      el.innerHTML = '<div class="card today"><div class="today-title">🛫 Noch ' + days + " Tag" + (days === 1 ? "" : "e") + " bis Bangkok</div>" +
+        '<p class="today-sub">Do 27.08., 22:20 ab München — Checkliste im Blick behalten.</p>' +
+        '<div class="s-actions"><button class="btn" id="open-checks">✅ Zur Checkliste</button></div></div>';
+      const btn = document.getElementById("open-checks");
+      if (btn) btn.addEventListener("click", () => {
+        showTab("info");
+        const sec = document.querySelector("#panel-info details");
+        if (sec) sec.open = true;
+      });
+      return;
+    }
+    const day = PLAN.find(d => d.date === t);
+    if (day) {
+      const n = PLAN.indexOf(day);
+      el.innerHTML = '<div class="card today"><div class="today-title">' + day.icon + " Heute: " + day.title + "</div>" +
+        '<p class="today-sub">Tag ' + n + " deiner Reise · " + day.wd + " " + t.slice(8, 10) + "." + t.slice(5, 7) + ".</p>" +
+        '<div class="s-actions"><button class="btn" id="open-plan">📅 Tagesplan öffnen</button></div></div>';
+      const btn = document.getElementById("open-plan");
+      if (btn) btn.addEventListener("click", () => showTab("plan"));
+      return;
+    }
+    el.innerHTML = "";
+  }
+  renderToday();
+
+  // ————— Wetter Bangkok (open-meteo, ohne Key) —————
+  const WX_KEY = "bkk_wx";
+  function wxIcon(c) {
+    if (c <= 1) return "☀️"; if (c <= 3) return "⛅"; if (c <= 48) return "🌫️";
+    if (c <= 67) return "🌦️"; if (c <= 82) return "🌧️"; return "⛈️";
+  }
+  function renderWeather(w) {
+    const el = document.getElementById("weather");
+    if (!w) { el.style.display = "none"; return; }
+    el.innerHTML = '<span class="wx-main">' + wxIcon(w.code) + " " + w.t + " °C in Bangkok</span>" +
+      '<span class="wx-rain">Regen heute ' + w.p0 + " % · morgen " + w.p1 + " %</span>";
+  }
+  async function fetchWeather() {
+    try {
+      const r = await fetch("https://api.open-meteo.com/v1/forecast?latitude=13.84&longitude=100.52&current=temperature_2m,weather_code&daily=precipitation_probability_max&forecast_days=2&timezone=Asia%2FBangkok");
+      const j = await r.json();
+      const w = { t: Math.round(j.current.temperature_2m), code: j.current.weather_code,
+        p0: j.daily.precipitation_probability_max[0], p1: j.daily.precipitation_probability_max[1], ts: Date.now() };
+      localStorage.setItem(WX_KEY, JSON.stringify(w));
+      renderWeather(w);
+    } catch (e) {
+      const c = localStorage.getItem(WX_KEY);
+      renderWeather(c ? JSON.parse(c) : null);
+    }
+  }
+  fetchWeather();
+
   // ————— Sprache (Deutsch → Englisch, antippen = groß anzeigen) —————
   document.getElementById("phrase-list").innerHTML = PHRASES.map((g, gi) =>
     '<details class="card pgroup"><summary><span class="s-emoji">' + g.icon + '</span><span class="s-name">' + g.cat +

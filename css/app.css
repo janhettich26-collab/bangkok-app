@@ -42,6 +42,23 @@ header .dates { margin-left: auto; color: var(--muted); font-size: 12px; }
 }
 .panel > h2 .th { color: var(--gold); text-transform: none; letter-spacing: .5px; margin-right: 6px; font-size: 14px; }
 
+/* Heute-Karte + Wetter */
+.today { padding: 14px; margin-top: 8px; border-top: 2px solid var(--gold); }
+.today-title { font-size: 17px; font-weight: 800; }
+.today-sub { color: var(--muted); font-size: 13px; margin-top: 2px; }
+.today .s-actions { margin-top: 12px; }
+.t-rows { margin-top: 10px; }
+.t-row { display: flex; gap: 12px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.t-row:last-child { border-bottom: none; }
+.t-time { color: var(--gold); font-size: 13px; font-weight: 700; min-width: 56px; font-variant-numeric: tabular-nums; }
+.t-row p { font-size: 13.5px; flex: 1; }
+.weather {
+  display: flex; justify-content: space-between; align-items: center; gap: 10px;
+  padding: 11px 14px; margin-top: 10px; font-size: 13.5px;
+}
+.wx-main { font-weight: 700; }
+.wx-rain { color: var(--muted); font-size: 12.5px; text-align: right; }
+
 /* Kurs-Hero */
 .rate-hero {
   background: radial-gradient(120% 140% at 50% 0%, #232b3d 0%, var(--surface) 55%);
