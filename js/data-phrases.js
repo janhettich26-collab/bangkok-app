@@ -1,0 +1,106 @@
+// Bangkok 2026 — Sprach-Reiter: Deutsch → Englisch, nach Situationen, zum Antippen
+const PHRASES = [
+  { cat:"Taxi & Bolt", icon:"🚗", items:[
+    { de:"Bring mich bitte hierhin (Adresse zeigen).", en:"Please take me here." },
+    { de:"Zum Hotel Oakwood Suites Tiwanon, bitte.", en:"To Oakwood Suites Tiwanon hotel, please." },
+    { de:"Wie viel kostet das?", en:"How much is it?" },
+    { de:"Bitte machen Sie das Taxameter an.", en:"Please turn on the meter." },
+    { de:"Halten Sie hier, bitte.", en:"Please stop here." },
+    { de:"Können Sie warten? Ich brauche 10 Minuten.", en:"Can you wait? I need 10 minutes." },
+    { de:"Können Sie hier auf mich warten und mich zurückfahren? Festpreis?", en:"Can you wait here and drive me back? Fixed price?" },
+    { de:"Wie lange dauert die Fahrt?", en:"How long will it take?" },
+    { de:"Ich habe schon in der App bezahlt.", en:"I already paid in the app." },
+    { de:"Fahren Sie bitte langsamer.", en:"Please drive slower." },
+    { de:"Zum Flughafen Suvarnabhumi, bitte.", en:"To Suvarnabhumi Airport, please." }
+  ]},
+  { cat:"Hotel", icon:"🏨", items:[
+    { de:"Ich habe eine Reservierung auf den Namen Hettich.", en:"I have a reservation under the name Hettich." },
+    { de:"Ist früher Check-in möglich?", en:"Is early check-in possible?" },
+    { de:"Können Sie mein Gepäck aufbewahren?", en:"Can you store my luggage, please?" },
+    { de:"Könnten Sie mein Zimmer sauber machen?", en:"Could you clean my room, please?" },
+    { de:"Die Klimaanlage funktioniert nicht.", en:"The air conditioning is not working." },
+    { de:"Wo ist der Pool / die Sauna / das Fitnessstudio?", en:"Where is the pool / the sauna / the gym?" },
+    { de:"Bis wann gibt es Frühstück?", en:"Until what time is breakfast served?" },
+    { de:"Können Sie mir ein Taxi rufen?", en:"Can you call a taxi for me?" },
+    { de:"Ich checke morgen aus.", en:"I am checking out tomorrow." },
+    { de:"Haben Sie einen Steckdosen-Adapter für mich?", en:"Do you have a power adapter I could borrow?" }
+  ]},
+  { cat:"Essen & Bestellen", icon:"🍜", items:[
+    { de:"Die Karte, bitte.", en:"The menu, please." },
+    { de:"Was empfehlen Sie?", en:"What do you recommend?" },
+    { de:"Nicht scharf, bitte!", en:"Not spicy, please!" },
+    { de:"Nur ein kleines bisschen scharf.", en:"Just a little bit spicy." },
+    { de:"Ohne Koriander, bitte.", en:"No coriander, please." },
+    { de:"Ein Wasser ohne Eis, bitte.", en:"Water without ice, please." },
+    { de:"Ich trinke keinen Alkohol. Was haben Sie ohne Alkohol?", en:"I don't drink alcohol. What non-alcoholic drinks do you have?" },
+    { de:"Einen frischen Saft / einen Mocktail, bitte.", en:"A fresh juice / a mocktail, please." },
+    { de:"Sehr lecker!", en:"Very delicious!" },
+    { de:"Die Rechnung, bitte.", en:"The bill, please." },
+    { de:"Kann ich mit Karte zahlen?", en:"Can I pay by card?" },
+    { de:"Zum Mitnehmen, bitte.", en:"Takeaway, please." },
+    { de:"Was ist das? (zeigen)", en:"What is this?" }
+  ]},
+  { cat:"Einkaufen & Feilschen", icon:"🛍️", items:[
+    { de:"Wie viel kostet das?", en:"How much is this?" },
+    { de:"Das ist zu teuer.", en:"That's too expensive." },
+    { de:"Geht da noch was am Preis?", en:"Can you give me a better price?" },
+    { de:"Ich gebe Ihnen … Baht.", en:"I'll give you … baht." },
+    { de:"Ich schaue nur, danke.", en:"I'm just looking, thank you." },
+    { de:"Haben Sie das in meiner Größe?", en:"Do you have this in my size?" },
+    { de:"Ich nehme es.", en:"I'll take it." },
+    { de:"Nein danke, kein Interesse.", en:"No thank you, I'm not interested." },
+    { de:"In Baht abrechnen, bitte — nicht in Euro.", en:"Charge me in baht, please — not in euro." }
+  ]},
+  { cat:"Notfall & Gesundheit", icon:"🚨", items:[
+    { de:"Hilfe!", en:"Help!" },
+    { de:"Rufen Sie die Polizei!", en:"Call the police!" },
+    { de:"Rufen Sie einen Krankenwagen!", en:"Call an ambulance!" },
+    { de:"Ich brauche einen Arzt.", en:"I need a doctor." },
+    { de:"Bringen Sie mich bitte ins Krankenhaus.", en:"Please take me to the hospital." },
+    { de:"Mir wurde etwas gestohlen.", en:"Something was stolen from me." },
+    { de:"Ich habe meinen Reisepass verloren.", en:"I lost my passport." },
+    { de:"Wo ist eine Apotheke?", en:"Where is a pharmacy?" },
+    { de:"Mir ist schlecht / schwindelig.", en:"I feel sick / dizzy." },
+    { de:"Ich bin allergisch gegen …", en:"I am allergic to …" },
+    { de:"Lassen Sie mich in Ruhe!", en:"Leave me alone!" }
+  ]},
+  { cat:"Smalltalk & Basics", icon:"🙋", items:[
+    { de:"Hallo!", en:"Hello!" },
+    { de:"Auf Wiedersehen!", en:"Goodbye!" },
+    { de:"Danke vielmals.", en:"Thank you very much." },
+    { de:"Gern geschehen.", en:"You're welcome." },
+    { de:"Entschuldigung!", en:"Excuse me!" },
+    { de:"Sprechen Sie Englisch?", en:"Do you speak English?" },
+    { de:"Ich spreche nur wenig Englisch.", en:"I only speak a little English." },
+    { de:"Bitte sprechen Sie langsam.", en:"Please speak slowly." },
+    { de:"Können Sie das aufschreiben?", en:"Can you write that down, please?" },
+    { de:"Ich komme aus Deutschland.", en:"I'm from Germany." },
+    { de:"Wo ist die Toilette?", en:"Where is the toilet?" },
+    { de:"Kein Problem.", en:"No problem." },
+    { de:"Ich verstehe nicht.", en:"I don't understand." },
+    { de:"Können Sie mir helfen?", en:"Can you help me?" },
+    { de:"Darf ich ein Foto machen?", en:"Can I take a photo?" }
+  ]},
+  { cat:"Flughafen & Einreise", icon:"✈️", items:[
+    { de:"Hier sind mein Pass und meine TDAC.", en:"Here is my passport and my TDAC." },
+    { de:"Ich bleibe 10 Tage.", en:"I'm staying for 10 days." },
+    { de:"Ich wohne im Oakwood Suites Tiwanon in Nonthaburi.", en:"I'm staying at Oakwood Suites Tiwanon in Nonthaburi." },
+    { de:"Ich bin im Urlaub hier.", en:"I'm here on holiday." },
+    { de:"Wo ist die Gepäckausgabe?", en:"Where is baggage claim?" },
+    { de:"Wo ist der Ausgang?", en:"Where is the exit?" },
+    { de:"Wo ist der offizielle Taxistand?", en:"Where is the official taxi stand?" },
+    { de:"Mein Rückflug ist am 6. September.", en:"My return flight is on September 6th." },
+    { de:"Mein Koffer ist nicht angekommen.", en:"My suitcase did not arrive." }
+  ]},
+  { cat:"Zahlen & Geld", icon:"🔢", items:[
+    { de:"Wo ist ein Geldautomat?", en:"Where is an ATM?" },
+    { de:"In Baht belasten, ohne Umrechnung.", en:"Charge in baht, please — no currency conversion." },
+    { de:"Haben Sie Wechselgeld?", en:"Do you have change?" },
+    { de:"Stimmt so.", en:"Keep the change." },
+    { de:"20 Baht", en:"twenty baht" },
+    { de:"50 Baht", en:"fifty baht" },
+    { de:"100 Baht", en:"one hundred baht" },
+    { de:"500 Baht", en:"five hundred baht" },
+    { de:"1.000 Baht", en:"one thousand baht" }
+  ]}
+];

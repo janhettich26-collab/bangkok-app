@@ -227,6 +227,34 @@ details.day summary::-webkit-details-marker { display: none; }
 .dress ul { margin: 4px 14px 12px 30px; font-size: 14px; }
 .dress li { margin-bottom: 6px; }
 
+/* Sprache */
+.hint { color: var(--muted); font-size: 13px; margin: 0 4px 10px; }
+.pgroup summary {
+  display: flex; align-items: center; gap: 10px; padding: 13px 14px; cursor: pointer; list-style: none;
+}
+.pgroup summary::-webkit-details-marker { display: none; }
+.p-count {
+  background: var(--surface2); color: var(--muted); font-size: 12px; font-weight: 700;
+  border-radius: 99px; padding: 2px 9px;
+}
+.p-items { padding: 0 10px 10px; display: grid; gap: 6px; }
+.phrase {
+  background: var(--surface2); border: 1px solid var(--line); border-radius: 12px;
+  padding: 10px 12px; text-align: left; color: var(--text); width: 100%;
+  display: flex; flex-direction: column; gap: 2px; cursor: pointer;
+}
+.phrase:active { border-color: var(--gold-deep); }
+.p-de { color: var(--muted); font-size: 12.5px; }
+.p-en { font-size: 16px; font-weight: 700; }
+#flashcard {
+  position: fixed; inset: 0; z-index: 3000; background: rgba(5, 7, 11, .96);
+  display: flex; align-items: center; justify-content: center; padding: 24px;
+}
+.fc-inner { text-align: center; max-width: 560px; }
+.fc-de { color: var(--muted); font-size: 16px; margin-bottom: 18px; }
+.fc-en { color: var(--gold); font-size: 40px; font-weight: 800; line-height: 1.25; letter-spacing: -.5px; }
+.fc-hint { color: var(--muted); font-size: 12px; margin-top: 30px; }
+
 /* Tabbar */
 .tabbar {
   position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;

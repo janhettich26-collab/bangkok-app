@@ -1,8 +1,8 @@
 // Bangkok 2026 — Service Worker: App offline, Kurs & Karten-Kacheln übers Netz
-const CACHE = "bkk-v4";
+const CACHE = "bkk-v5";
 const SHELL = [
   "./", "index.html", "manifest.json",
-  "css/app.css", "js/app.js", "js/data-spots.js", "js/data-plan.js", "js/data-info.js",
+  "css/app.css", "js/app.js", "js/data-spots.js", "js/data-plan.js", "js/data-info.js", "js/data-phrases.js",
   "vendor/leaflet/leaflet.css", "vendor/leaflet/leaflet.js",
   "icons/icon.svg", "icons/icon-180.png", "icons/icon-192.png", "icons/icon-512.png"
 ];

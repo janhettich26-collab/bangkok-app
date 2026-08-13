@@ -320,6 +320,25 @@
 
   document.getElementById("dress-list").innerHTML = INFO.dresscode.map(d => "<li>" + d + "</li>").join("");
 
+  // ————— Sprache (Deutsch → Englisch, antippen = groß anzeigen) —————
+  document.getElementById("phrase-list").innerHTML = PHRASES.map((g, gi) =>
+    '<details class="card pgroup"><summary><span class="s-emoji">' + g.icon + '</span><span class="s-name">' + g.cat +
+    '</span><span class="p-count">' + g.items.length + "</span></summary>" +
+    '<div class="p-items">' + g.items.map((p, pi) =>
+      '<button class="phrase" data-g="' + gi + '" data-p="' + pi + '">' +
+      '<span class="p-de">' + p.de + '</span><span class="p-en">' + p.en + "</span></button>").join("") +
+    "</div></details>").join("");
+  document.querySelectorAll(".phrase").forEach(b => b.addEventListener("click", () => {
+    const p = PHRASES[+b.dataset.g].items[+b.dataset.p];
+    const old = document.getElementById("flashcard"); if (old) old.remove();
+    const div = document.createElement("div");
+    div.id = "flashcard";
+    div.innerHTML = '<div class="fc-inner"><div class="fc-de">' + p.de + '</div><div class="fc-en">' + p.en +
+      '</div><div class="fc-hint">Zum Schließen tippen</div></div>';
+    div.addEventListener("click", () => div.remove());
+    document.body.appendChild(div);
+  }));
+
   // ————— Start —————
   fetchRate();
   if ("serviceWorker" in navigator && location.protocol === "https:") {
