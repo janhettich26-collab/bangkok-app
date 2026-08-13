@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0B0E14">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Bangkok">
+  <title>Bangkok 2026</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<header>
+  <span class="thai">กรุงเทพฯ</span>
+  <h1>Bangkok 2026</h1>
+  <span class="dates">27.08.–07.09.</span>
+</header>
+
+<!-- ฿ KURS -->
+<section class="panel active" id="panel-kurs">
+  <div class="rate-hero">
+    <div class="eyebrow">Live-Wechselkurs</div>
+    <div id="rate-big">…</div>
+    <div id="rate-sub">Kurs wird geladen …</div>
+  </div>
+  <div class="converter">
+    <div class="field"><input id="in-eur" inputmode="decimal" placeholder="Euro" value="10"><span class="cur">€</span></div>
+    <span class="swap">⇄</span>
+    <div class="field"><input id="in-thb" inputmode="decimal" placeholder="Baht"><span class="cur">฿</span></div>
+  </div>
+  <h2><span class="th">฿</span>Spickzettel</h2>
+  <div class="card cheat" id="cheat-thb"></div>
+  <h2><span class="th">฿</span>Preisgefühl</h2>
+  <div class="card cheat" id="price-feel"></div>
+</section>
+
+<!-- SPOTS -->
+<section class="panel" id="panel-spots">
+  <div class="chips" id="spot-chips"></div>
+  <div id="spots-list"></div>
+</section>
+
+<!-- PLAN -->
+<section class="panel" id="panel-plan">
+  <h2><span class="th">แผน</span>Dein 10-Tage-Plan</h2>
+  <div id="plan-list"></div>
+</section>
+
+<!-- KARTE -->
+<section class="panel" id="panel-karte">
+  <div id="map"></div>
+  <div class="map-legend">
+    <span style="--c:#E8B04B">★ Hotel</span>
+    <span style="--c:#6BCB77">Vor der Tür</span>
+    <span style="--c:#A78BFA">Stadt</span>
+    <span style="--c:#E8B04B">Luxus</span>
+    <span style="--c:#4FD8EB">Party</span>
+    <span style="--c:#FF9950">Tattoo</span>
+    <span style="--c:#57A8FF">Strand</span>
+  </div>
+</section>
+
+<!-- INFO -->
+<section class="panel" id="panel-info">
+  <h2><span class="th">🚨</span>Notfall</h2>
+  <div class="card cheat" id="notfall-list"></div>
+
+  <h2><span class="th">✅</span>Vor dem Abflug</h2>
+  <div class="card" id="check-list"></div>
+
+  <h2><span class="th">🛡️</span>Die 10 Regeln gegen Abzocke</h2>
+  <div class="card" id="abzocke-list"></div>
+
+  <h2><span class="th">🚇</span>Unterwegs</h2>
+  <div class="card cheat" id="unterwegs-list"></div>
+
+  <h2><span class="th">💰</span>Geld</h2>
+  <div class="card cheat" id="geld-list"></div>
+
+  <h2><span class="th">🏨</span>Hotel-Adresse zum Zeigen</h2>
+  <div class="card hotel-card">
+    <div class="thai-de">Dem Fahrer einfach das hier zeigen:</div>
+    <div class="thai-th" id="hotel-thai"></div>
+    <div class="s-actions" style="margin-top:10px">
+      <a class="btn" id="hotel-gmaps" href="#" target="_blank" rel="noopener">📍 Hotel in Google Maps</a>
+    </div>
+  </div>
+
+  <h2><span class="th">ไทย</span>Thai zum Zeigen & Sagen</h2>
+  <div class="card" id="thai-list"></div>
+
+  <h2><span class="th">👕</span>Regeln & Dresscode</h2>
+  <div class="card dress"><ul id="dress-list"></ul></div>
+</section>
+
+<nav class="tabbar">
+  <button class="active" data-tab="kurs"><span class="ico">฿</span>Kurs</button>
+  <button data-tab="spots"><span class="ico">🗺️</span>Spots</button>
+  <button data-tab="plan"><span class="ico">📅</span>Plan</button>
+  <button data-tab="karte"><span class="ico">📍</span>Karte</button>
+  <button data-tab="info"><span class="ico">🛡️</span>Info</button>
+</nav>
+
+<script src="vendor/leaflet/leaflet.js"></script>
+<script src="js/data-spots.js"></script>
+<script src="js/data-plan.js"></script>
+<script src="js/data-info.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
