@@ -59,7 +59,7 @@ const INFO = {
     { id:"schuhe", txt:"Geschlossene Schuhe (Rooftops/Clubs verlangen sie) + Sandalen", due:"packen" },
     { id:"sonne", txt:"Sonnencreme 50+ und Mückenspray mit DEET (vor Ort teurer)", due:"packen" },
     { id:"apotheke", txt:"Reiseapotheke: Elektrolyte, Durchfall-Mittel, Schmerztabletten, Pflaster", due:"packen" },
-    { id:"rucksack", txt:"GOT BAG eingerollt als Handgepäck (8 kg), große Tasche HALB LEER (Mitbringsel!)", due:"packen" },
+    { id:"rucksack", txt:"GOT BAG eingerollt als Handgepäck (8 kg, 55×40×23) + persönlicher Gegenstand (40×30×15) extra erlaubt · Koffer 23 kg — HALB LEER packen (Mitbringsel!)", due:"packen" },
     { id:"bargeld", txt:"100–200 € Bargeld als Notreserve — vor Ort erst am Automaten abheben (in THB, ohne Umrechnung)", due:"packen" }
   ],
 
