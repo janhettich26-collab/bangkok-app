@@ -327,7 +327,7 @@
   document.getElementById("dress-list").innerHTML = INFO.dresscode.map(d => "<li>" + d + "</li>").join("");
 
   // ————— Heute-Karte: Countdown, Reisetag, Flugtag mit Abfahrtszeiten —————
-  const DIR_MUC = "https://www.google.com/maps/dir/?api=1&destination=Flughafen%20M%C3%BCnchen%20Terminal%202&travelmode=driving";
+  const DIR_MUC = "https://www.google.com/maps/dir/?api=1&destination=Parkprofi%20Parkhaus%2C%20Josef-Beil-Ring%202%2C%2085435%20Erding&travelmode=driving";
   const DIR_BKK = "https://www.google.com/maps/dir/?api=1&destination=Suvarnabhumi%20Airport&travelmode=driving";
   const FS = f => "https://www.google.com/search?q=" + f + "+Flugstatus";
 
@@ -343,12 +343,13 @@
       el.innerHTML = '<div class="card today"><div class="today-title">🛫 Heute geht\'s los — LH772 um 22:20</div>' +
         timeline([
           ["16:30", "Daheim losfahren — Donnerstag-Feierabendverkehr um München einplanen (~2–2,5 Std.)."],
-          ["~19:00", "Parkos-Parkplatz: einparken, Shuttle zum Terminal 2 (Beleg in OneDrive)."],
+          ["~18:45", "Auto abgeben: Parkprofi Parkhaus, Josef-Beil-Ring 2, 85435 Erding (überdacht, schon bezahlt — Beleg in OneDrive)."],
+          ["~19:15", "Shuttle zum Terminal 2, fährt ~10 Min."],
           ["20:00", "Bag-Drop Lufthansa, Terminal 2. Koffer bis 23 kg, GOT BAG + kleine Tasche mit."],
           ["~21:40", "Boarding. Powerbank & Pass im Handgepäck? TDAC-Screenshot bereit?"],
           ["22:20", "Abflug — 13:45 Ortszeit landest du in Bangkok."]
         ]) +
-        '<div class="s-actions"><a class="btn" href="' + DIR_MUC + '" target="_blank" rel="noopener">🚗 Live-Route zum Flughafen</a>' +
+        '<div class="s-actions"><a class="btn" href="' + DIR_MUC + '" target="_blank" rel="noopener">🚗 Live-Route zum Parkhaus</a>' +
         '<a class="btn ghost" href="' + FS("LH772") + '" target="_blank" rel="noopener">✈️ Flugstatus</a></div></div>';
       return;
     }
