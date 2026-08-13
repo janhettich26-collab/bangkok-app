@@ -114,9 +114,10 @@
     if (s.mrt) meta.push("🚇 " + s.mrt);
     if (s.hours) meta.push("🕐 " + s.hours);
     if (s.price) meta.push("💰 " + s.price);
+    const sub = [s.bolt, (s.fare && s.fare !== "—") ? s.fare : null].filter(Boolean).join(" · ");
     return '<details class="card spot" style="--c:' + c.color + '">' +
-      '<summary><span class="s-emoji">' + s.emoji + '</span><span class="s-name">' + s.name +
-      '</span><span class="s-cat">' + c.label + "</span></summary>" +
+      '<summary><span class="s-emoji">' + s.emoji + '</span><div class="s-mid"><span class="s-name">' + s.name +
+      '</span><span class="s-sub">' + sub + '</span></div><span class="chev">›</span></summary>' +
       '<div class="s-body"><p>' + s.desc + "</p>" +
       '<div class="s-meta">' + meta.map(m => "<div>" + m + "</div>").join("") + "</div>" +
       (s.tips && s.tips.length ? '<ul class="s-tips">' + s.tips.map(t => "<li>" + t + "</li>").join("") + "</ul>" : "") +
@@ -128,8 +129,13 @@
   }
 
   function renderSpots() {
-    const list = SPOTS.filter(s => activeCat === "alle" || s.cat === activeCat);
-    spotsWrap.innerHTML = list.map(spotCard).join("");
+    const cats = activeCat === "alle" ? Object.keys(CATS) : [activeCat];
+    spotsWrap.innerHTML = cats.map(k => {
+      const list = SPOTS.filter(s => s.cat === k);
+      if (!list.length) return "";
+      return '<h3 class="cat-head" style="--c:' + CATS[k].color + '">' + CATS[k].label +
+        " <i>" + list.length + "</i></h3>" + list.map(spotCard).join("");
+    }).join("");
   }
   renderSpots();
 
