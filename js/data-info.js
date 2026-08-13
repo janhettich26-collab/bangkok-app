@@ -39,14 +39,28 @@ const INFO = {
   ],
 
   checks: [
-    { id:"tdac", txt:"TDAC ausfüllen — ab 24.08. (72-h-Fenster), NUR tdac.immigration.go.th, QR als Screenshot", due:"24.–26.08." },
-    { id:"transfer", txt:"Transfer-Abholzeit checken: „Meine Buchung verwalten“ (We Love Holidays) — 24 h vor Abflug", due:"26.08." },
-    { id:"esim", txt:"eSIM (dtac Happy Tourist via Airalo) daheim im WLAN installieren, deaktiviert lassen", due:"vor Abflug" },
-    { id:"tattootermin", txt:"Tattoo-Studio anschreiben (Instagram/WhatsApp): Termin 4./5.09. sichern", due:"jetzt" },
+    // — Buchen & Organisieren —
+    { id:"tdac", txt:"TDAC ausfüllen — <a href='https://tdac.immigration.go.th' target='_blank' rel='noopener'>tdac.immigration.go.th</a> (NUR diese Seite!), QR als Screenshot sichern", due:"24.–26.08." },
+    { id:"transfer", txt:"Transfer-Abholzeit checken: <a href='https://www.loveholidays.de/' target='_blank' rel='noopener'>loveholidays → Meine Buchung</a>", due:"26.08." },
+    { id:"checkin", txt:"Lufthansa <a href='https://www.lufthansa.com/de/de/online-check-in' target='_blank' rel='noopener'>Online-Check-in</a> (öffnet 23 h vorher)", due:"26.08. abends" },
+    { id:"elefant", txt:"Elefanten-Park buchen: Halbtag OHNE Transfer, Do 03.09. 9 Uhr (Spots → Ausflüge)", due:"jetzt" },
+    { id:"cruise", txt:"Dinner-Cruise buchen: 18-Uhr-Slot, Do 03.09. (Spots → Ausflüge)", due:"jetzt" },
     { id:"rajadamnern", txt:"Muay-Thai-Ticket für So 30.08. auf rajadamnern.com buchen", due:"vor Abflug" },
-    { id:"gaggan", txt:"Optional: Gaggan-Reservierung versuchen (Wochen Vorlauf, Di+Mi zu)", due:"jetzt" },
+    { id:"shooting", txt:"Foto-Shooting Sa 05.09. Golden Hour anfragen (TripAdvisor: The Photo Experience)", due:"diese Woche" },
+    { id:"esim", txt:"eSIM (dtac Happy Tourist via Airalo) daheim im WLAN installieren, deaktiviert lassen", due:"vor Abflug" },
+    { id:"bank", txt:"Bank-Apps: Karten für Thailand freigeschaltet, Limits hoch genug", due:"vor Abflug" },
     { id:"pass", txt:"Pass + TDAC + Versicherungspolice als Fotos aufs Handy, Kopien in den Koffer", due:"vor Abflug" },
-    { id:"bank", txt:"Bank-Apps checken: Karten für Thailand/Ausland freigeschaltet, Limits hoch genug", due:"vor Abflug" }
+    { id:"docs", txt:"OneDrive-Ordner „Bangkok 2026“ am Handy öffnen → „Offline verfügbar“ antippen (Buchung + Parkplatz)", due:"vor Abflug" },
+    // — Packen —
+    { id:"powerbank", txt:"Powerbank ins HANDGEPÄCK (im Koffer verboten!)", due:"packen" },
+    { id:"lader", txt:"Ladegeräte + Kabel (Adapter unnötig — deutsche Stecker passen in Thailand)", due:"packen" },
+    { id:"regen", txt:"Poncho/Regenhülle + Zip-Beutel fürs Handy — Monsun lacht über „wasserabweisend“", due:"packen" },
+    { id:"tempel", txt:"Leichte lange Hose + Shirt mit Ärmeln (Tempel: Schultern + Knie bedeckt)", due:"packen" },
+    { id:"schuhe", txt:"Geschlossene Schuhe (Rooftops/Clubs verlangen sie) + Sandalen", due:"packen" },
+    { id:"sonne", txt:"Sonnencreme 50+ und Mückenspray mit DEET (vor Ort teurer)", due:"packen" },
+    { id:"apotheke", txt:"Reiseapotheke: Elektrolyte, Durchfall-Mittel, Schmerztabletten, Pflaster", due:"packen" },
+    { id:"rucksack", txt:"GOT BAG eingerollt als Handgepäck (8 kg), große Tasche HALB LEER (Mitbringsel!)", due:"packen" },
+    { id:"bargeld", txt:"100–200 € Bargeld als Notreserve — vor Ort erst am Automaten abheben (in THB, ohne Umrechnung)", due:"packen" }
   ],
 
   thai: [
