@@ -178,6 +178,109 @@
     });
   }
 
+  // ————— Radar (Entfernungsübersicht wie die Original-Karte) —————
+  const segBtns = document.querySelectorAll(".seg button");
+  segBtns.forEach(b => b.addEventListener("click", () => {
+    segBtns.forEach(x => x.classList.toggle("active", x === b));
+    const radar = b.dataset.view === "radar";
+    document.getElementById("map").style.display = radar ? "none" : "";
+    document.getElementById("radar-wrap").hidden = !radar;
+    if (radar && !radarInited) { radarInited = true; buildRadar(); }
+  }));
+  let radarInited = false;
+
+  function distKm(a, b) { // Haversine
+    const R = 6371, r = Math.PI / 180;
+    const dLat = (b.lat - a.lat) * r, dLng = (b.lng - a.lng) * r;
+    const h = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * r) * Math.cos(b.lat * r) * Math.sin(dLng / 2) ** 2;
+    return 2 * R * Math.asin(Math.sqrt(h));
+  }
+  function bearing(a, b) {
+    const r = Math.PI / 180;
+    const y = Math.sin((b.lng - a.lng) * r) * Math.cos(b.lat * r);
+    const x = Math.cos(a.lat * r) * Math.sin(b.lat * r) - Math.sin(a.lat * r) * Math.cos(b.lat * r) * Math.cos((b.lng - a.lng) * r);
+    return Math.atan2(y, x);
+  }
+  function boltMins(s) {
+    if (!s) return 999;
+    const h = s.match(/(\d+(?:[,.]\d+)?)\s*Std/);
+    if (h) return parseFloat(h[1].replace(",", ".")) * 60;
+    const m = s.match(/(\d+)\s*Min/);
+    if (m) return +m[1];
+    const km = s.match(/(\d+)\s*km/); // grobe Näherung: 1 km ≈ 1 Min Überland
+    return km ? +km[1] : 999;
+  }
+
+  function buildRadar() {
+    const svg = document.getElementById("radar");
+    const C = 350, maxR = 322, minD = 0.4, maxD = 750;
+    const rOf = d => 26 + (maxR - 26) * Math.log(Math.max(d, minD) / minD) / Math.log(maxD / minD);
+    const NS = "http://www.w3.org/2000/svg";
+    const el = (tag, at) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); return e; };
+
+    // Ringe
+    [1, 5, 25, 100, 500].forEach(km => {
+      svg.appendChild(el("circle", { cx: C, cy: C, r: rOf(km), class: "ring" }));
+      const t = el("text", { x: C + 4, y: C - rOf(km) - 5, class: "ring-label" });
+      t.textContent = km + " km";
+      svg.appendChild(t);
+    });
+    const n = el("text", { x: C, y: 16, class: "ring-label north" }); n.textContent = "N"; svg.appendChild(n);
+
+    // Punkte: Position + Rang nach Fahrzeit
+    const pts = SPOTS.map((s, i) => {
+      const d = distKm(HOTEL, s), th = bearing(HOTEL, s), r = rOf(d);
+      return { s, i, mins: boltMins(s.bolt), ax: C + r * Math.sin(th), ay: C - r * Math.cos(th) };
+    }).sort((a, b) => a.mins - b.mins);
+    pts.forEach((p, k) => { p.rank = k + 1; p.x = p.ax; p.y = p.ay; });
+
+    // Überlappende auseinanderschieben
+    for (let it = 0; it < 80; it++) {
+      for (let a = 0; a < pts.length; a++) for (let b = a + 1; b < pts.length; b++) {
+        const dx = pts[b].x - pts[a].x, dy = pts[b].y - pts[a].y;
+        const d = Math.hypot(dx, dy) || 0.01, min = 30;
+        if (d < min) {
+          const push = (min - d) / 2, ux = dx / d, uy = dy / d;
+          pts[a].x -= ux * push; pts[a].y -= uy * push;
+          pts[b].x += ux * push; pts[b].y += uy * push;
+        }
+      }
+    }
+
+    pts.forEach(p => {
+      const c = CATS[p.s.cat].color;
+      if (Math.hypot(p.x - p.ax, p.y - p.ay) > 9) { // Linie zur echten Position
+        svg.appendChild(el("line", { x1: p.ax, y1: p.ay, x2: p.x, y2: p.y, class: "anchor-line" }));
+        svg.appendChild(el("circle", { cx: p.ax, cy: p.ay, r: 2.5, fill: "#4a5468" }));
+      }
+      const g = el("g", { class: "rpoint", "data-idx": p.i });
+      g.appendChild(el("circle", { cx: p.x, cy: p.y, r: 22, fill: "transparent" })); // Tippfläche
+      g.appendChild(el("circle", { cx: p.x, cy: p.y, r: 14, class: "dot", stroke: c }));
+      const t = el("text", { x: p.x, y: p.y + 4.5, class: "dot-n", fill: c });
+      t.textContent = p.rank;
+      g.appendChild(t);
+      g.addEventListener("click", () => showSheet(p.s, p.rank));
+      svg.appendChild(g);
+    });
+
+    // Hotel-Stern
+    const star = el("text", { x: C, y: C + 8, class: "hotel-star" });
+    star.textContent = "★"; svg.appendChild(star);
+  }
+
+  // Detail-Sheet (Punkt angetippt)
+  function showSheet(s, rank) {
+    const old = document.getElementById("sheet"); if (old) old.remove();
+    const div = document.createElement("div");
+    div.id = "sheet";
+    div.innerHTML = '<div class="sheet-inner">' +
+      '<button class="sheet-close">✕</button>' +
+      '<div class="sheet-head"><span class="s-emoji">' + s.emoji + '</span><b>' + rank + '. ' + s.name + '</b></div>' +
+      spotCard(s).replace("<details", "<details open") + "</div>";
+    div.addEventListener("click", e => { if (e.target === div || e.target.className === "sheet-close") div.remove(); });
+    document.body.appendChild(div);
+  }
+
   // ————— Info —————
   document.getElementById("notfall-list").innerHTML = INFO.notfall.map(n =>
     '<div class="cheat-row"><span>' + n.label + "</span>" +

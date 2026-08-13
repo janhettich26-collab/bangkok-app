@@ -55,7 +55,22 @@
 
 <!-- KARTE -->
 <section class="panel" id="panel-karte">
+  <div class="seg">
+    <button class="active" data-view="map">Echte Karte</button>
+    <button data-view="radar">Radar ab Hotel</button>
+  </div>
   <div id="map"></div>
+  <div id="radar-wrap" hidden>
+    <details class="card explain">
+      <summary>Was ist das hier?</summary>
+      <div class="s-body">
+        <p>Keine Landkarte, sondern eine <b>Entfernungsübersicht</b>: Dein Hotel ist der ★ in der Mitte. Jeder Punkt liegt in der Richtung, in der das Ziel wirklich liegt — oben ist Norden.</p>
+        <p>Die Ringe stehen für <b>1 · 5 · 25 · 100 · 500 km</b>, die Abstände sind gestaucht (sonst passen Tempel um die Ecke und Koh Phangan nicht auf einen Schirm).</p>
+        <p>Die <b>Zahl im Punkt</b> = Platz nach Fahrzeit: Nr. 1 erreichst du am schnellsten. Punkt antippen → Details, Buchung, Warnung.</p>
+      </div>
+    </details>
+    <svg id="radar" viewBox="0 0 700 700"></svg>
+  </div>
   <div class="map-legend">
     <span style="--c:#E8B04B">★ Hotel</span>
     <span style="--c:#6BCB77">Vor der Tür</span>
