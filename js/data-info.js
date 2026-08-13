@@ -34,7 +34,8 @@ const INFO = {
   geld: [
     { icon:"🏧", title:"Abheben", txt:"Jeder ATM nimmt 220 ฿ Gebühr — also wenige GROSSE Abhebungen (max. meist 20.000–30.000 ฿). Immer „ohne Umrechnung“ / „in THB“ wählen." },
     { icon:"💳", title:"Karte", txt:"In Malls & Hotels ok, Streetfood & Märkte = Bargeld. Am Terminal in BAHT zahlen (DCC ablehnen)." },
-    { icon:"💵", title:"Einreise-Nachweis", txt:"20.000 ฿ (~550 €) Bargeld pro Person können bei der Einreise verlangt werden — selten geprüft, aber dabei haben." },
+    { icon:"💵", title:"Einreise-Nachweis", txt:"20.000 ฿ (~550 €) Mittel pro Person können bei der Einreise verlangt werden (2026 wieder aktiver erinnert, selten geprüft). Deine ~1.000 € Bargeld decken das doppelt — einfach vorzeigbar dabei haben, kein Herkunftsnachweis nötig." },
+    { icon:"🛂", title:"Bargeld-Grenzen", txt:"Anmeldepflicht beim Zoll erst ab 10.000 € (EU-Ausreise) bzw. ~20.000 $ (Thailand-Einreise) — mit ~1.000 € brauchst du also gar nichts anmelden." },
     { icon:"🙏", title:"Trinkgeld", txt:"Kein Muss. Restaurant: aufrunden/~10 %. Massage: 50–100 ฿. Bolt: nichts nötig. Tattoo: ~10 % bei guter Arbeit." }
   ],
 
@@ -60,7 +61,7 @@ const INFO = {
     { id:"sonne", txt:"Sonnencreme 50+ und Mückenspray mit DEET (vor Ort teurer)", due:"packen" },
     { id:"apotheke", txt:"Reiseapotheke: Elektrolyte, Durchfall-Mittel, Schmerztabletten, Pflaster", due:"packen" },
     { id:"rucksack", txt:"GOT BAG eingerollt als Handgepäck (8 kg, 55×40×23) + persönlicher Gegenstand (40×30×15) extra erlaubt · Koffer 23 kg — HALB LEER packen (Mitbringsel!)", due:"packen" },
-    { id:"bargeld", txt:"100–200 € Bargeld als Notreserve — vor Ort erst am Automaten abheben (in THB, ohne Umrechnung)", due:"packen" }
+    { id:"bargeld", txt:"~1.000 € Bargeld — kein Nachweis nötig (Zoll-Grenze 10.000 €). Verteilen: Portemonnaie + Handgepäck + GOT-BAG-Rückenfach. Tauschen in der Stadt (SuperRich), nicht alles am Flughafen", due:"packen" }
   ],
 
   thai: [
