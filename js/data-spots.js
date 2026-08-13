@@ -193,17 +193,8 @@ const SPOTS = [
     bolt:"45 Min", fare:"280–360 ฿", hours:"Ab 21 Uhr, Mo zu",
     desc:"Asiatisch-opulent, theatralisch, House & Techno — der Laden, den du fotografierst. Erwachsener als RCA.",
     tips:["Hemd mit Kragen = sichere Wahl"], warn:null, book:[], gmaps:gm("Sing Sing Theater Bangkok") },
-  { cat:"party", name:"Full Moon Party — 28.08. (Ankunftstag!)", emoji:"🌕", lat:9.6740, lng:100.0670,
-    bolt:"Flug BKK→Samui + Speedboot", fare:"350–500 € extra", hours:"28.08., 21–5 Uhr, Haad Rin, Koh Phangan",
-    desc:"Fällt exakt auf deinen Ankunftstag. Machbar (Landung 13:45 → Flug ~17 Uhr → Boot → 21 Uhr am Strand), aber nach 10,5 Std. Nachtflug sportlich. Eine LH-Verspätung kippt die ganze Kette.",
-    tips:["Wenn, dann: 4–5 Tage Insel dranhängen statt Hit-and-Run","Nächste Full Moon: 26.09. — da bist du weg"],
-    warn:"Kein Bolt/Grab auf Phangan. Sammeltaxi-Preise VOR dem Einsteigen klären. Reguläre Fähren enden 17–18 Uhr — nachts nur Speedboot 1.000–1.400 ฿.", book:["Inlandsflug: Bangkok Airways BKK→USM","Speedboot-Paket ab Samui (stündlich 11:30–23 Uhr)"], gmaps:gm("Haad Rin Beach Koh Phangan") },
-  { cat:"party", name:"Halfmoon Beach Party — 05.09.", emoji:"🌗", lat:9.7057, lng:100.0089,
-    bolt:"Flug + Fähre (Anreise 3./4.09.)", fare:"450–600 € extra", hours:"05.09., 14–24 Uhr, Harmony Beach Club, Koh Phangan",
-    desc:"Die realistische Insel-Option: 5.09. Beach Party 14–24 Uhr. Die Forest-Party am 6.9. geht NICHT — da sitzt du im Flieger.",
-    tips:["Rückreise 6.9.: FRÜHESTE Fähre + Mittagsflug, mind. 4 Std. Puffer zum 22:55-Abflug","September = Regenzeit, Fähren fallen bei Seegang aus"],
-    warn:"Same-Day-Rückreise am Langstreckentag ist riskant — nur mit großem Puffer.", book:["Flug BKK→Samui, Fähre nach Thong Sala","Songthaew nach Ban Tai, 150–200 ฿"], gmaps:gm("Harmony Beach Club Koh Phangan") },
-
+  
+  
   // ————— TATTOO —————
   { cat:"tattoo", name:"ink.inc Tattoo (Sukhumvit 11)", emoji:"🖋️", lat:13.7420, lng:100.5560,
     bolt:"35 Min", fare:"230–300 ฿", hours:"Tägl. 11–22 Uhr",
@@ -225,11 +216,8 @@ const SPOTS = [
     bolt:"Fahrer 2,5 Std. · Bus+Fähre 4 Std.", fare:"Fahrer 2.500–3.500 ฿/Tag · Fähre 30 ฿", hours:"Früh los! Letzte Fähre zurück ~17–18 Uhr",
     desc:"Die einzige Postkarte in Tagestrip-Reichweite: weißer Sand, klares Wasser. Samae = bester Kompromiss (4,5 ★, 7.000+ Bewertungen). Ta Yai = ruhig, Tawaen = voll (Anleger), Nual = Affen in den Felsen.",
     tips:["Privater Ganztagsfahrer über Klook/Hotel — schriftlich: Ziele + Endpreis","Roller auf der Insel 200–400 ฿ — VORHER Fotos vom Zustand machen","Sammeltaxi Pier→Samae 30–40 ฿","Liege 100 ฿, Dusche 50 ฿"],
-    warn:"NIEMALS den Reisepass als Pfand für den Roller. Regenzeit: Quallen möglich — auf Warnschilder & Essigstationen achten.", book:["Bali Hai Pier Pattaya → Fähre 30 ฿ (45 Min) oder Speedboot ab 150 ฿"], gmaps:gm("Samae Beach Koh Larn") },
-  { cat:"strand", name:"Jomtien Beach (Pattaya)", emoji:"🌴", lat:12.8896, lng:100.8730,
-    bolt:"Fahrer 2–2,5 Std.", fare:"2.000–2.500 ฿/Strecke",
-    desc:"Ohne Fährgefummel, ruhiger als Pattaya Beach — aber Wasser trüb. Ein Tag zum Sitzen, Essen, Sonnenuntergang, kein Badeparadies.",
-    tips:["Nur als Plan B, wenn Koh Larn nicht klappt"], warn:null, book:[], gmaps:gm("Jomtien Beach Pattaya") },
+    warn:"Ehrliche Rechnung: ~5 Std. Fahrt für ~4 Std. Strand — nur machen, wenn dir das den Tag wert ist (steht deshalb NICHT im Plan). NIEMALS den Reisepass als Pfand für den Roller. Regenzeit: Quallen möglich — auf Warnschilder & Essigstationen achten.", book:["Bali Hai Pier Pattaya → Fähre 30 ฿ (45 Min) oder Speedboot ab 150 ฿"], gmaps:gm("Samae Beach Koh Larn") },
+  
   { cat:"strand", name:"Suvarnabhumi Airport (BKK)", emoji:"✈️", lat:13.6900, lng:100.7501,
     bolt:"45–60 Min", fare:"~600 ฿ + Maut", hours:"Rückflug 6.9.: 22:55 Uhr — 3 Std. vorher da sein",
     desc:"Dein Flughafen. Ankunft 28.8. um 13:45: TDAC-QR + Pass bereithalten, 20–40 Min Immigration, Gepäck, raus.",
