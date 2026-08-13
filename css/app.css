@@ -302,6 +302,17 @@ details.day summary::-webkit-details-marker { display: none; }
 .fc-en { color: var(--gold); font-size: 40px; font-weight: 800; line-height: 1.25; letter-spacing: -.5px; }
 .fc-hint { color: var(--muted); font-size: 12px; margin-top: 30px; }
 
+/* Entsperren */
+.unlock { padding: 4px 0 10px; }
+.unlock-row { display: flex; gap: 8px; }
+.unlock-row input {
+  flex: 1; background: var(--surface2); color: var(--text);
+  border: 1px solid var(--line); border-radius: 11px; padding: 11px 12px; font-size: 15px; outline: none;
+}
+.unlock-row input:focus { border-color: var(--gold-deep); }
+.unlock-row .btn { flex: 0 0 auto; border: none; font-size: 14px; }
+#md-err { color: #F08080; }
+
 /* Tabbar */
 .tabbar {
   position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;

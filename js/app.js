@@ -450,15 +450,35 @@
       history.replaceState(null, "", location.pathname);
     } catch (e) { /* ungültiger Link */ }
   }
+  const b64bytes = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+  async function decryptMyData(pw) {
+    const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(pw), "PBKDF2", false, ["deriveKey"]);
+    const key = await crypto.subtle.deriveKey(
+      { name: "PBKDF2", salt: b64bytes(MYDATA_ENC.salt), iterations: 300000, hash: "SHA-256" },
+      base, { name: "AES-GCM", length: 256 }, false, ["decrypt"]);
+    const pt = await crypto.subtle.decrypt({ name: "AES-GCM", iv: b64bytes(MYDATA_ENC.iv) }, key, b64bytes(MYDATA_ENC.ct));
+    return JSON.parse(new TextDecoder().decode(pt));
+  }
   function renderMyData() {
     const el = document.getElementById("mydata-list");
     const raw = localStorage.getItem(MD_KEY);
-    if (!raw) {
-      el.innerHTML = '<p class="hint" style="padding:10px 0">Aus Datenschutz-Gründen stehen diese Daten nicht im Code der App. Öffne einmal deinen persönlichen Einrichtungs-Link (hat dir Claude im Chat geschickt) — danach bleiben sie dauerhaft auf diesem Handy gespeichert, auch offline.</p>';
+    if (raw) {
+      const rows = JSON.parse(raw);
+      el.innerHTML = rows.map(r => '<div class="cheat-row"><span>' + r[0] + "</span><b>" + r[1] + "</b></div>").join("");
       return;
     }
-    const rows = JSON.parse(raw);
-    el.innerHTML = rows.map(r => '<div class="cheat-row"><span>' + r[0] + "</span><b>" + r[1] + "</b></div>").join("");
+    el.innerHTML = '<div class="unlock"><p class="hint" style="padding:8px 0 4px">Verschlüsselt (AES-256). Einmal Passwort eingeben — danach bleiben die Daten auf diesem Handy entsperrt.</p>' +
+      '<div class="unlock-row"><input type="password" id="md-pw" placeholder="Passwort" autocomplete="off">' +
+      '<button class="btn" id="md-go">Entsperren</button></div><p class="hint" id="md-err"></p></div>';
+    document.getElementById("md-go").addEventListener("click", async () => {
+      try {
+        const rows = await decryptMyData(document.getElementById("md-pw").value.trim());
+        localStorage.setItem(MD_KEY, JSON.stringify(rows));
+        renderMyData();
+      } catch (e) {
+        document.getElementById("md-err").textContent = "Falsches Passwort — nochmal versuchen.";
+      }
+    });
   }
   renderMyData();
 
