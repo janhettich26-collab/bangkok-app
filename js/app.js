@@ -439,6 +439,29 @@
     document.body.appendChild(div);
   }));
 
+  // ————— Meine Reisedaten (nur auf DIESEM Gerät gespeichert, nie im App-Code) —————
+  const MD_KEY = "bkk_mydata";
+  if (location.hash.startsWith("#setup=")) {
+    try {
+      let b64 = location.hash.slice(7).replace(/-/g, "+").replace(/_/g, "/");
+      b64 += "=".repeat((4 - b64.length % 4) % 4);
+      const data = JSON.parse(decodeURIComponent(escape(atob(b64))));
+      localStorage.setItem(MD_KEY, JSON.stringify(data));
+      history.replaceState(null, "", location.pathname);
+    } catch (e) { /* ungültiger Link */ }
+  }
+  function renderMyData() {
+    const el = document.getElementById("mydata-list");
+    const raw = localStorage.getItem(MD_KEY);
+    if (!raw) {
+      el.innerHTML = '<p class="hint" style="padding:10px 0">Aus Datenschutz-Gründen stehen diese Daten nicht im Code der App. Öffne einmal deinen persönlichen Einrichtungs-Link (hat dir Claude im Chat geschickt) — danach bleiben sie dauerhaft auf diesem Handy gespeichert, auch offline.</p>';
+      return;
+    }
+    const rows = JSON.parse(raw);
+    el.innerHTML = rows.map(r => '<div class="cheat-row"><span>' + r[0] + "</span><b>" + r[1] + "</b></div>").join("");
+  }
+  renderMyData();
+
   // ————— Start —————
   fetchRate();
   if ("serviceWorker" in navigator && location.protocol === "https:") {
