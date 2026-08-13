@@ -81,11 +81,11 @@
   }
 
   const PRICE_FEEL = [
-    ["🍜 Streetfood-Gericht", "50–80 ฿"], ["🍺 Bier 7-Eleven / Bar", "50 ฿ / 100–250 ฿"],
-    ["🚇 MRT-Fahrt", "20–45 ฿"], ["🚗 Bolt in die Stadt", "230–350 ฿"],
-    ["🚗 Bolt nachts zurück", "400–600 ฿"], ["💆 2 Std. Thai-Massage", "~650 ฿"],
-    ["🏟️ Muay-Thai-Ticket", "ab 1.000 ฿"], ["✈️ Taxi Flughafen", "~600 ฿"],
-    ["🥤 Wasser 7-Eleven", "10–15 ฿"], ["🍢 Chinatown satt essen", "~400 ฿"]
+    ["🍜 Streetfood-Gericht", "45–70 ฿ (touristisch 80–150)"], ["🍺 Bier 7-Eleven / Bar", "45–70 ฿ / 100–250 ฿"],
+    ["🚇 MRT-Fahrt", "17–44 ฿"], ["🚗 Bolt in die Stadt (~12 km)", "180–320 ฿"],
+    ["🚗 Bolt nachts zurück", "300–500 ฿"], ["💆 2 Std. Thai-Massage", "650–1.000 ฿"],
+    ["🏟️ Muay-Thai-Ticket", "ab ~700–1.000 ฿"], ["✈️ Taxi Flughafen", "350–600 ฿ inkl. Maut"],
+    ["🥤 Wasser 7-Eleven", "10–15 ฿"], ["🍢 Chinatown satt essen", "250–500 ฿"]
   ];
   document.getElementById("price-feel").innerHTML = PRICE_FEEL
     .map(p => '<div class="cheat-row"><span>' + p[0] + "</span><b>" + p[1] + "</b></div>").join("");

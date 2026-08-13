@@ -25,7 +25,7 @@ const INFO = {
   ],
 
   unterwegs: [
-    { icon:"🚇", title:"MRT ab Hotel", txt:"Station Yaek Tiwanon direkt gegenüber (Purple Line). In die Stadt: Umstieg Tao Poon → Blue Line. Chatuchak ~35 Min, Altstadt ~50 Min, Sukhumvit 45–60 Min. Fahrten 20–45 ฿. Läuft bis ~24 Uhr — nachts NICHT." },
+    { icon:"🚇", title:"MRT ab Hotel", txt:"Station Yaek Tiwanon direkt gegenüber (Purple Line). In die Stadt: Umstieg Tao Poon → Blue Line. Chatuchak ~35 Min, Altstadt ~50 Min, Sukhumvit 45–60 Min. Fahrten 17–44 ฿ (Preise 07/2026 gesenkt). Läuft bis ~24 Uhr — nachts NICHT." },
     { icon:"🚗", title:"Bolt (+ Grab als Backup)", txt:"Stadtfahrten 200–350 ฿, nachts 400–600 ฿ (Zuschlag). Grab installieren: teurer, aber mehr Autos — bei Regen & Rushhour storniert Bolt gern. Rushhour 16–19 Uhr = Fahrzeit fast doppelt." },
     { icon:"⛴️", title:"Expressboot", txt:"Ab Nonthaburi Pier für ~20 ฿ den Fluss runter in die Altstadt. Schönste Strecke der Stadt, kein Stau." },
     { icon:"🌧️", title:"Regenzeit", txt:"Schauer meist nachmittags, nach 1 Std. durch. Poncho/Regenhülle in den Rucksack, Handy in den Zip-Beutel. Draußen-Programm → vormittags." }

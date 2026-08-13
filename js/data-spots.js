@@ -84,7 +84,7 @@ const SPOTS = [
     tips:["Die Stände mit den längsten Thai-Schlangen sind die richtigen","Wat Traimit: 5,5-Tonnen-Buddha aus massivem Gold","Zweitbeste Foto-Kulisse der Stadt (Neon bei Nacht)"],
     warn:"Gedränge = Taschendiebe, Handy nach vorn. Preis vor dem Bestellen fragen, wenn kein Schild. Edelstein-„Einladungen“: weitergehen.", book:[], gmaps:gm("Yaowarat Road Chinatown Bangkok") },
   { cat:"stadt", name:"Rajadamnern Muay Thai Stadion", emoji:"🏟️", lat:13.7590, lng:100.5063,
-    bolt:"32 Min", rush:"60 Min", fare:"200–260 ฿", hours:"Kampfabende — Mi & So schon ab 17 Uhr", price:"Oberrang ab 1.000 ฿, teils Freibier inkl.",
+    bolt:"32 Min", rush:"60 Min", fare:"200–260 ฿", hours:"Kampfabende — Mi & So schon ab 17 Uhr", price:"Tickets ab ~700 ฿, Oberrang ~1.000 ฿ (teils Freibier inkl.)",
     desc:"Ältestes Muay-Thai-Stadion des Landes, 4,8 ★ bei 9.000+ Bewertungen. Stimmung elektrisch.",
     tips:["Kombi-Abend: 16:30 Golden Mount → 18:00 Kämpfe → 21:00 Chinatown","Tickets vorab online = kein Schlangestehen"],
     warn:"Tickets NUR über die offizielle Seite rajadamnern.com — nicht von Schleppern davor.", book:["rajadamnern.com öffnen","Kampfabend wählen, Oberrang reicht völlig","QR-Ticket aufs Handy"], gmaps:gm("Rajadamnern Stadium Bangkok"), site:"https://rajadamnern.com" },
