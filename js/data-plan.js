@@ -62,13 +62,14 @@ const PLAN = [
     ],
     note:"⚠️ NIE den Pass als Roller-Pfand. Quallen-Warnschilder beachten (Regenzeit). Alternativ-Tag bei Sturm: Ayutthaya." },
 
-  { date:"2026-09-03", wd:"Do", title:"Ayutthaya oder grüne Lunge", icon:"🏛️",
+  { date:"2026-09-03", wd:"Do", title:"Ausflugstag — deine Wahl", icon:"🏛️",
     blocks:[
-      { t:"Option A", txt:"Ayutthaya: Zug ab Bang Sue, Ruinen mit Roller/Tuk-Tuk (Pauschale vorher festmachen), Buddha-Kopf im Baum. Beeindruckender als der Grand Palace, kaum Touristen." },
-      { t:"Option B", txt:"Gemütlich: Klong-Tour im Longtail früh morgens (1.500–2.500 ฿) + nachmittags Bang Krachao mit dem Rad." },
-      { t:"abends", txt:"Jodd Fairs Ratchada — bester Nachtmarkt der Stadt, bis 1 Uhr." }
+      { t:"Option A", txt:"Ayutthaya selbst per Zug: 9:05 ab Krung Thep Aphiwat (nur ~50 ฿, seit 1.8. neu!), Roller vor Ort, Buddha-Kopf im Baum. Komplett ~600 ฿ statt 30+ € Tour." },
+      { t:"Option B", txt:"Bangkok Elephant Park: Halbtag OHNE Transfer (9–12 Uhr) buchen, mit Bolt selbst hin (~1,5–2 Std.). Füttern, Schlammbad, baden — kein Reiten." },
+      { t:"Option C", txt:"Früh raus: Damnoen Saduak schwimmender Markt + 11:10-Zugdurchfahrt Maeklong (Tagesfahrer 2.500–3.500 ฿)." },
+      { t:"abends", txt:"Jodd Fairs Ratchada — bester Nachtmarkt der Stadt, bis 1 Uhr. Oder: 5-Sterne-Dinner-Cruise ab Asiatique (ab ~26 €, 20–22 Uhr)." }
     ],
-    note:"Wenn Insel-Variante (Halfmoon 5.9.): heute oder morgen Flug nach Samui + Fähre." },
+    note:"Alle Details + Buchung: Tab Spots → Kategorie „Ausflüge“. Wenn Insel-Variante (Halfmoon 5.9.): heute oder morgen Flug nach Samui + Fähre." },
 
   { date:"2026-09-04", wd:"Fr", title:"Letzter Pool-Tag + Tattoo", icon:"🖋️",
     blocks:[
