@@ -33,8 +33,9 @@ const PLAN = [
 
   { date:"2026-08-30", wd:"So", title:"Spa-Sonntag & Altstadt-Abend", icon:"🧖",
     blocks:[
-      { t:"8:40", txt:"Bolt zum Oriental Spa (Thonburi-Seite, ~45 Min, 250–330 ฿) — Sonntagvormittag ist wenig Verkehr." },
-      { t:"9:30", txt:"Ankommen: Du darfst bis 60 Min vor dem Termin rein — Sauna, Dampfbad & Jacuzzi im Wellness Centre sind inklusive. Ausnutzen!" },
+      { t:"8:30", txt:"Bolt zum Mandarin Oriental Hotel (Stadtseite, ~40–45 Min, 250–330 ฿) — Sonntagvormittag ist wenig Verkehr. Dem Fahrer: „Mandarin Oriental Hotel, Oriental Avenue“." },
+      { t:"9:15", txt:"Am Hotel-Pier: das KOSTENLOSE Hotelboot bringt dich über den Chao Phraya direkt zum Spa — einfach „Oriental Spa, appointment 10:30“ sagen. Die schönste Anfahrt, die es gibt." },
+      { t:"9:25", txt:"Im Spa: Du darfst bis 60 Min vor dem Termin rein — Sauna, Dampfbad & Jacuzzi im Wellness Centre sind inklusive. Ausnutzen!" },
       { t:"10:30", txt:"Deine Moringa Massage, 2 Std. (gebucht — Details in Meine Reisedaten). Danach nicht hetzen." },
       { t:"13:00", txt:"Mittag: ICONSIAM ist nur 750 m zu Fuß — Sook-Siam-Foodcourt im EG." },
       { t:"15:00", txt:"Kurz zurück ins Hotel ODER direkt gemütlich rüber zur Altstadt (15:45 Bolt)." },
