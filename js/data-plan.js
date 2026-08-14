@@ -31,10 +31,13 @@ const PLAN = [
     ],
     note:"Erster „Bars angucken“-Abend, aber vor der Haustür — kurze Wege, solange der Jetlag noch zieht." },
 
-  { date:"2026-08-30", wd:"So", title:"Der große Altstadt-Abend", icon:"🌅",
+  { date:"2026-08-30", wd:"So", title:"Spa-Sonntag & Altstadt-Abend", icon:"🧖",
     blocks:[
-      { t:"10:00", txt:"Gemütlich: Ko Kret (20 Min + Boot) — Sonntag ist Markt-Tag auf der Flussinsel. Fahrrad 40 ฿, Streetfood, Töpferei." },
-      { t:"14:00", txt:"Zurück, Pause + Pool. Um 15:45 mit Bolt los in die Altstadt (32 Min)." },
+      { t:"8:40", txt:"Bolt zum Oriental Spa (Thonburi-Seite, ~45 Min, 250–330 ฿) — Sonntagvormittag ist wenig Verkehr." },
+      { t:"9:30", txt:"Ankommen: Du darfst bis 60 Min vor dem Termin rein — Sauna, Dampfbad & Jacuzzi im Wellness Centre sind inklusive. Ausnutzen!" },
+      { t:"10:30", txt:"Deine Moringa Massage, 2 Std. (gebucht — Details in Meine Reisedaten). Danach nicht hetzen." },
+      { t:"13:00", txt:"Mittag: ICONSIAM ist nur 750 m zu Fuß — Sook-Siam-Foodcourt im EG." },
+      { t:"15:00", txt:"Kurz zurück ins Hotel ODER direkt gemütlich rüber zur Altstadt (15:45 Bolt)." },
       { t:"16:30", txt:"Golden Mount: 340 Stufen, Abendlicht über der Altstadt, Eintritt ~100 ฿." },
       { t:"18:00", txt:"Rajadamnern Muay Thai — sonntags beginnen die Kämpfe früher (ab 17/18 Uhr). Ticket vorab auf rajadamnern.com (ab ~700 ฿)." },
       { t:"21:00", txt:"Bolt 10 Min nach Chinatown: Neon-Schlucht + Garküchen, mit 400 ฿ quer durchgegessen. Sonntags ist alles offen." }

@@ -137,9 +137,9 @@ const SPOTS = [
 
   // ————— LUXUS & ABEND —————
   { cat:"luxus", name:"Oriental Spa (Mandarin Oriental)", emoji:"🧖", lat:13.7237, lng:100.5147,
-    bolt:"40 Min", fare:"250–330 ฿", price:"ab ~5.000 ฿ (90 Min werden 3 Std. Ritual)",
-    desc:"Anfahrt mit dem privaten Hotelboot über den Fluss — schon das ist Teil der Sache. In München zahlst du das Dreifache für die Hälfte.",
-    tips:["Vorab online reservieren","Kombinierbar mit Sky Bar (5 Min entfernt)"],
+    bolt:"40–45 Min", fare:"250–330 ฿", price:"Moringa 2 Std. = 6.900 ฿ + 17 % (~211 €)", hours:"DEIN TERMIN: So 30.08., 10:30 Uhr ✓",
+    desc:"GEBUCHT! Bis 60 Min vorher ankommen: Sauna, Dampfbad & Jacuzzi im Wellness Centre sind inklusive. Bestätigungs-Nr. in Meine Reisedaten.",
+    tips:["Mit Bolt direkt vors Spa (Thonburi-Seite) — oder gratis Hotelboot ab Mandarin-Pier","Danach: ICONSIAM nur 750 m zu Fuß","Storno nur bis 24 h vorher — sonst 100 % fällig","Payment-Link kommt 2 Tage vorher per Mail (28.08.)"],
     warn:null, book:["mandarinoriental.com/bangkok → Spa → Termin buchen"], gmaps:gm("The Oriental Spa Mandarin Oriental Bangkok") },
   { cat:"luxus", name:"Gaggan Anand (Restaurant)", emoji:"🍽️", lat:13.7397, lng:100.5450,
     bolt:"38 Min", fare:"250–320 ฿", hours:"Di + Mi ZU — Wochen vorher buchen!", price:"Tasting-Menü, gehobene Preisklasse",
