@@ -45,7 +45,12 @@
 
 <!-- SPOTS -->
 <section class="panel" id="panel-spots">
+  <div class="searchbar">
+    <input id="spot-search" type="search" inputmode="search" placeholder="Spot suchen (Name, Ort, Stichwort) …" autocomplete="off">
+    <button id="spot-search-clear" type="button" aria-label="Suche leeren" hidden>✕</button>
+  </div>
   <div class="chips" id="spot-chips"></div>
+  <p class="hint" id="spot-hint">Kategorie antippen zum Aufklappen — oder oben suchen.</p>
   <div id="spots-list"></div>
 </section>
 

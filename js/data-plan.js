@@ -98,11 +98,13 @@ const PLAN = [
   { date:"2026-09-05", wd:"Sa", title:"Foto-Shooting & Rooftop-Finale", icon:"📸",
     blocks:[
       { t:"vorm.", txt:"Locker: Pool, Massage oder Chatuchak (läuft samstags) für Mitbringsel." },
+      { t:"15:00", txt:"MRT nach Chinatown (Station „Wat Mangkon“, Ausgang 3): Wat Mangkon Kamalawat — der Laternen-Tempel aus dem Video. Eintritt frei, bis 18 Uhr offen, 1 Std. reicht. Lange Hose an, Schuhe aus vor den Hallen." },
+      { t:"16:45", txt:"Von dort 15 Min rüber zum Wat Arun (Bolt ~120 ฿ oder MRT + Fähre) — Treffpunkt fürs Shooting." },
       { t:"17:30", txt:"Golden-Hour-Foto-Shooting (2 Std., ~150 €, 30 Bilder, vorab über TripAdvisor/Localgrapher gebucht): Wat Arun zum Sonnenuntergang → Chinatown-Neon." },
       { t:"19:45", txt:"Direkt in Chinatown bleiben: Abschieds-Essen in der Neon-Schlucht." },
       { t:"21:30", txt:"Sky Bar im Lebua (10 Min Bolt): einmal den Hangover-2-Rooftop sehen — alkoholfreie Cocktails gibt's, lange Hose + geschlossene Schuhe Pflicht. Ein Drink, das Foto, fertig." }
     ],
-    note:"Bars-Abend Nr. 3 — der mit der besten Aussicht. Wer noch kann: Octave in Thonglor ist das entspanntere Rooftop." },
+    note:"Chinatown an einem Stück: Laternen-Tempel bei Tag, Neon-Schlucht bei Nacht. Bars-Abend Nr. 3 — der mit der besten Aussicht. Wer noch kann: Octave in Thonglor ist das entspanntere Rooftop." },
 
   { date:"2026-09-06", wd:"So", title:"Check-out & Rückflug", icon:"🛫",
     blocks:[

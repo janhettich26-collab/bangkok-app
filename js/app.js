@@ -128,15 +128,42 @@
       "</div></div></details>";
   }
 
-  function renderSpots() {
-    const cats = activeCat === "alle" ? Object.keys(CATS) : [activeCat];
-    spotsWrap.innerHTML = cats.map(k => {
-      const list = SPOTS.filter(s => s.cat === k);
-      if (!list.length) return "";
-      return '<h3 class="cat-head" style="--c:' + CATS[k].color + '">' + CATS[k].label +
-        " <i>" + list.length + "</i></h3>" + list.map(spotCard).join("");
-    }).join("");
+  const searchEl = document.getElementById("spot-search");
+  const clearEl = document.getElementById("spot-search-clear");
+  const hintEl = document.getElementById("spot-hint");
+  let query = "";
+
+  function matches(s, q) {
+    if (!q) return true;
+    const hay = [s.name, s.desc, s.mrt, s.hours, s.price, CATS[s.cat].label]
+      .concat(s.tips || []).filter(Boolean).join(" ").toLowerCase();
+    return q.split(/\s+/).filter(Boolean).every(w => hay.includes(w));
   }
+
+  function renderSpots() {
+    const q = query.trim().toLowerCase();
+    const cats = activeCat === "alle" ? Object.keys(CATS) : [activeCat];
+    let hits = 0;
+    const html = cats.map(k => {
+      const list = SPOTS.filter(s => s.cat === k && matches(s, q));
+      if (!list.length) return "";
+      hits += list.length;
+      // Offen, sobald gesucht oder eine einzelne Kategorie gewaehlt wurde — sonst zugeklappt.
+      const open = q || activeCat !== "alle" ? " open" : "";
+      return '<details class="catgrp"' + open + ' style="--c:' + CATS[k].color + '">' +
+        '<summary><span class="cg-dot"></span><span class="cg-label">' + CATS[k].label +
+        '</span><span class="cg-count">' + list.length + '</span><span class="chev">›</span></summary>' +
+        '<div class="cg-body">' + list.map(spotCard).join("") + "</div></details>";
+    }).join("");
+    spotsWrap.innerHTML = html || '<p class="hint empty">Nichts gefunden. Anderes Stichwort probieren oder Suche leeren.</p>';
+    hintEl.textContent = q
+      ? hits + (hits === 1 ? " Treffer" : " Treffer") + " für „" + query.trim() + "“"
+      : "Kategorie antippen zum Aufklappen — oder oben suchen.";
+    clearEl.hidden = !query;
+  }
+
+  searchEl.addEventListener("input", () => { query = searchEl.value; renderSpots(); });
+  clearEl.addEventListener("click", () => { searchEl.value = ""; query = ""; renderSpots(); searchEl.focus(); });
   renderSpots();
 
   // ————— Plan —————

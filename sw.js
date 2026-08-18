@@ -1,5 +1,5 @@
 // Bangkok 2026 — Service Worker: App offline, Kurs & Karten-Kacheln übers Netz
-const CACHE = "bkk-v17";
+const CACHE = "bkk-v18";
 const SHELL = [
   "./", "index.html", "manifest.json",
   "css/app.css", "js/app.js", "js/data-spots.js", "js/data-plan.js", "js/data-info.js", "js/data-phrases.js", "js/data-privat.js",
@@ -23,14 +23,21 @@ self.addEventListener("fetch", e => {
   if (e.request.method !== "GET") return;
   // Kurs-APIs & Karten-Kacheln: nur Netz (Kurs wird in localStorage gecacht)
   if (url.origin !== location.origin) return;
-  // App-Shell: Cache zuerst, Netz als Nachschub
+  // App-Shell: Netz zuerst (max. 3 s), damit Aenderungen sofort ankommen —
+  // ohne Netz oder bei Zeitueberschreitung sofort aus dem Cache.
   e.respondWith(
-    caches.match(e.request, { ignoreSearch: true }).then(hit =>
-      hit || fetch(e.request).then(res => {
+    new Promise(resolve => {
+      let done = false;
+      const fromCache = () => caches.match(e.request, { ignoreSearch: true })
+        .then(hit => hit || fetch(e.request));
+      const timer = setTimeout(() => { if (!done) { done = true; resolve(fromCache()); } }, 3000);
+      fetch(e.request).then(res => {
         const copy = res.clone();
         caches.open(CACHE).then(c => c.put(e.request, copy));
-        return res;
-      })
-    )
+        if (!done) { done = true; clearTimeout(timer); resolve(res); }
+      }).catch(() => {
+        if (!done) { done = true; clearTimeout(timer); resolve(fromCache()); }
+      });
+    })
   );
 });
