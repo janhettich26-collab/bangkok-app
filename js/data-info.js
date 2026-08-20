@@ -41,7 +41,7 @@ const INFO = {
 
   checks: [
     // — Buchen & Organisieren —
-    { id:"tdac", txt:"TDAC ausfüllen — <a href='https://tdac.immigration.go.th' target='_blank' rel='noopener'>tdac.immigration.go.th</a> (NUR diese Seite!), QR als Screenshot sichern", due:"24.–26.08." },
+    { id:"tdac", txt:"TDAC ausfüllen — <a href='https://tdac.immigration.go.th' target='_blank' rel='noopener'>tdac.immigration.go.th</a> (NUR diese Seite!), QR als Screenshot sichern", due:"25.–26.08." },
     { id:"transfer", txt:"Transfer-Abholzeit checken: <a href='https://www.loveholidays.de/' target='_blank' rel='noopener'>loveholidays → Meine Buchung</a>", due:"26.08." },
     { id:"checkin", txt:"Lufthansa <a href='https://www.lufthansa.com/de/de/online-check-in' target='_blank' rel='noopener'>Online-Check-in</a> (öffnet 23 h vorher)", due:"26.08. abends" },
     { id:"elefant", txt:"Elefanten-Park buchen: Halbtag OHNE Transfer, Do 03.09. 9 Uhr (Spots → Ausflüge)", due:"jetzt" },
@@ -54,16 +54,6 @@ const INFO = {
     { id:"bank", txt:"Bank-Apps: Karten für Thailand freigeschaltet, Limits hoch genug", due:"vor Abflug" },
     { id:"pass", txt:"Pass + TDAC + Versicherungspolice als Fotos aufs Handy, Kopien in den Koffer", due:"vor Abflug" },
     { id:"docs", txt:"OneDrive-Ordner „Bangkok 2026“ am Handy öffnen → „Offline verfügbar“ antippen (Buchung + Parkplatz)", due:"vor Abflug" },
-    // — Packen —
-    { id:"powerbank", txt:"Powerbank ins HANDGEPÄCK (im Koffer verboten!)", due:"packen" },
-    { id:"lader", txt:"Ladegeräte + Kabel (Adapter unnötig — deutsche Stecker passen in Thailand)", due:"packen" },
-    { id:"regen", txt:"Poncho/Regenhülle + Zip-Beutel fürs Handy — Monsun lacht über „wasserabweisend“", due:"packen" },
-    { id:"tempel", txt:"Leichte lange Hose + Shirt mit Ärmeln (Tempel: Schultern + Knie bedeckt)", due:"packen" },
-    { id:"schuhe", txt:"Geschlossene Schuhe (Rooftops/Clubs verlangen sie) + Sandalen", due:"packen" },
-    { id:"sonne", txt:"Sonnencreme 50+ und Mückenspray mit DEET (vor Ort teurer)", due:"packen" },
-    { id:"apotheke", txt:"Reiseapotheke: Elektrolyte, Durchfall-Mittel, Schmerztabletten, Pflaster", due:"packen" },
-    { id:"rucksack", txt:"GOT BAG eingerollt als Handgepäck (8 kg, 55×40×23) + persönlicher Gegenstand (40×30×15) extra erlaubt · Koffer 23 kg — HALB LEER packen (Mitbringsel!)", due:"packen" },
-    { id:"bargeld", txt:"~1.000 € Bargeld — kein Nachweis nötig (Zoll-Grenze 10.000 €). Verteilen: Portemonnaie + Handgepäck + GOT-BAG-Rückenfach. Tauschen in der Stadt (SuperRich), nicht alles am Flughafen", due:"packen" }
   ],
 
   thai: [

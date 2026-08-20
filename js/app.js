@@ -345,6 +345,59 @@
   }
   renderChecks();
 
+
+  /* ————— Packliste: antippen = abhaken, wird im Handy gespeichert ————— */
+  const PACK_KEY = "bkk_pack";
+  const packState = () => JSON.parse(localStorage.getItem(PACK_KEY) || "{}");
+  const PACK_TOTAL = PACK.reduce((n, g) => n + g.items.length, 0);
+
+  function renderPack() {
+    const done = packState();
+    const list = document.getElementById("pack-list");
+    if (!list) return;
+    let allDone = 0;
+
+    list.innerHTML = PACK.map(g => {
+      const n = g.items.filter(i => done[g.id + "." + i.id]).length;
+      allDone += n;
+      const full = n === g.items.length;
+      const pct = Math.round(n / g.items.length * 100);
+      return '<details class="card sec pack-g' + (g.danger ? " danger" : "") + (full ? " full" : "") + '"' +
+        (full ? "" : " open") + '>' +
+        '<summary><span class="sec-ico">' + g.icon + '</span>' +
+        '<div class="sec-t"><b>' + g.title + '</b><i>' + n + " von " + g.items.length + (full ? " — fertig ✓" : "") + '</i>' +
+        '<div class="bar"><i style="width:' + pct + '%"></i></div></div>' +
+        '<span class="chev">›</span></summary>' +
+        '<div class="sec-body">' +
+        (g.note ? '<p class="pack-note">' + g.note + '</p>' : "") +
+        g.items.map(i => {
+          const key = g.id + "." + i.id;
+          return '<label class="check' + (done[key] ? " done" : "") + '">' +
+            '<input type="checkbox" data-key="' + key + '"' + (done[key] ? " checked" : "") + '>' +
+            '<span>' + i.t + (i.w ? ' <i class="due">' + i.w + '</i>' : "") + '</span></label>';
+        }).join("") +
+        '</div></details>';
+    }).join("");
+
+    document.getElementById("pack-done").textContent = allDone;
+    document.getElementById("pack-total").textContent = "/" + PACK_TOTAL;
+    document.getElementById("pack-bar").style.width = Math.round(allDone / PACK_TOTAL * 100) + "%";
+
+    list.querySelectorAll("input[data-key]").forEach(inp => inp.addEventListener("change", () => {
+      const d = packState();
+      d[inp.dataset.key] = inp.checked;
+      localStorage.setItem(PACK_KEY, JSON.stringify(d));
+      const open = [...list.querySelectorAll("details")].map(x => x.open);
+      renderPack();
+      [...list.querySelectorAll("details")].forEach((x, i) => { if (open[i] !== undefined) x.open = open[i]; });
+    }));
+  }
+  const packReset = document.getElementById("pack-reset");
+  if (packReset) packReset.addEventListener("click", () => {
+    if (confirm("Alle Haken entfernen?")) { localStorage.removeItem(PACK_KEY); renderPack(); }
+  });
+  renderPack();
+
   document.getElementById("thai-list").innerHTML = INFO.thai.map(p =>
     '<div class="thai-row"><div class="thai-de">' + p.de + '</div><div class="thai-th">' + p.th +
     '</div><div class="thai-ls">' + p.lautschrift + "</div></div>").join("");

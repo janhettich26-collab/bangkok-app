@@ -66,7 +66,7 @@
       <a class="btn ghost" href="https://www.lufthansa.com/de/de/online-check-in" target="_blank" rel="noopener">✈️ LH Check-in</a>
       <a class="btn ghost" href="https://www.loveholidays.de/" target="_blank" rel="noopener">🧳 Meine Buchung</a>
     </div>
-    <p class="docs-warn">⚠️ TDAC NUR über diesen Button (tdac.immigration.go.th) — alles andere sind Abzock-Seiten. Ausfüllbar ab 24.08. (72-h-Fenster). LH-Check-in öffnet 26.08. abends.</p>
+    <p class="docs-warn">⚠️ TDAC NUR über diesen Button (tdac.immigration.go.th) — alles andere sind Abzock-Seiten. Ausfüllbar ab Di 25.08. (72-h-Fenster vor Ankunft Fr 28.08. 13:45 Ortszeit — der 24.08. ist zu früh). LH-Check-in öffnet 26.08. abends.</p>
     </div>
   </details>
   <h2><span class="th">แผน</span>Dein 10-Tage-Plan</h2>
@@ -103,6 +103,22 @@
   </div>
 </section>
 
+<!-- PACKEN -->
+<section class="panel" id="panel-packen">
+  <div class="pack-top">
+    <div class="pack-head">
+      <div>
+        <div class="eyebrow">Packliste</div>
+        <div class="pack-count"><b id="pack-done">0</b><span id="pack-total">/69</span></div>
+      </div>
+      <button class="btn ghost small" id="pack-reset" type="button">Zurücksetzen</button>
+    </div>
+    <div class="bar big"><i id="pack-bar"></i></div>
+    <p class="pack-sub">9 Hotelnächte · Koffer 23 kg + GOT BAG 8 kg · Waschmaschine ist in der Suite</p>
+  </div>
+  <div id="pack-list"></div>
+</section>
+
 <!-- SPRACHE -->
 <section class="panel" id="panel-sprache">
   <h2><span class="th">💬</span>Sätze zum Antippen</h2>
@@ -113,7 +129,7 @@
 <!-- INFO -->
 <section class="panel" id="panel-info">
   <details class="card sec" open>
-    <summary><span class="sec-ico">✅</span><div class="sec-t"><b>Vor dem Abflug</b><i>20 Punkte zum Abhaken — Buchen & Packen</i></div><span class="chev">›</span></summary>
+    <summary><span class="sec-ico">✅</span><div class="sec-t"><b>Vor dem Abflug</b><i>13 Punkte zum Abhaken — Buchen & Organisieren</i></div><span class="chev">›</span></summary>
     <div class="sec-body" id="check-list"></div>
   </details>
   <details class="card sec">
@@ -161,6 +177,7 @@
   <button data-tab="spots"><span class="ico">🗺️</span>Spots</button>
   <button data-tab="plan"><span class="ico">📅</span>Plan</button>
   <button data-tab="karte"><span class="ico">📍</span>Karte</button>
+  <button data-tab="packen"><span class="ico">🧳</span>Packen</button>
   <button data-tab="sprache"><span class="ico">💬</span>Sprache</button>
   <button data-tab="info"><span class="ico">🛡️</span>Info</button>
 </nav>
@@ -170,6 +187,7 @@
 <script src="js/data-plan.js"></script>
 <script src="js/data-info.js"></script>
 <script src="js/data-phrases.js"></script>
+<script src="js/data-pack.js"></script>
 <script src="js/data-privat.js"></script>
 <script src="js/app.js"></script>
 </body>
