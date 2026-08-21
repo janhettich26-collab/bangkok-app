@@ -576,3 +576,10 @@ button, input, a { -webkit-tap-highlight-color: rgba(232,176,75,.15); }
 .me-msg b { color: inherit; }
 .me-jump { display: block; margin-top: 9px; padding: 8px 12px; font-size: 12.5px; font-weight: 700;
   background: transparent; color: #9CC9FF; border: 1px solid rgba(87,168,255,.5); border-radius: 10px; font-family: inherit; }
+
+/* ————— Checkliste: zieht die offenen Buchungen automatisch aus den Terminen ————— */
+.ck-kopf { padding: 4px 2px 12px; font-size: 13px; color: var(--muted); }
+.ck-kopf b { color: var(--gold); font-size: 17px; font-weight: 800; }
+.check.ck-termin { border-left: 2px solid var(--gold-deep); padding-left: 9px; }
+.check.ck-termin.done { border-left-color: rgba(107,203,119,.5); }
+.ck-hin { display: block; font-size: 11px; color: var(--muted); opacity: .8; margin-top: 2px; }

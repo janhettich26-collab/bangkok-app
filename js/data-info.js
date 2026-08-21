@@ -40,21 +40,15 @@ const INFO = {
 
   checks: [
     // — Buchen & Organisieren —
-    { id:"tdac", txt:"TDAC ausfüllen — <a href='https://tdac.immigration.go.th' target='_blank' rel='noopener'>tdac.immigration.go.th</a> (NUR diese Seite!), QR als Screenshot sichern", due:"25.–26.08." },
     { id:"transfer", txt:"Transfer-Abholzeit checken: <a href='https://www.loveholidays.de/' target='_blank' rel='noopener'>loveholidays → Meine Buchung</a>", due:"26.08." },
     { id:"checkin", txt:"Lufthansa <a href='https://www.lufthansa.com/de/de/online-check-in' target='_blank' rel='noopener'>Online-Check-in</a> (öffnet 23 h vorher)", due:"26.08. abends" },
-    { id:"elefant", txt:"Elefanten-Park buchen: Halbtag Vormittag OHNE Transfer, <b>Di 01.09., 9 Uhr</b> — Preis beim Park (2.200 ฿) mit GetYourGuide vergleichen (Reiter Termine)", due:"jetzt" },
-    { id:"cruise", txt:"Dinner-Cruise buchen: 18-Uhr-Slot, <b>Do 03.09.</b> (Reiter Termine)", due:"jetzt" },
-    { id:"shooting", txt:"Foto-Shooting <b>Sa 05.09.</b> Golden Hour anfragen (TripAdvisor: The Photo Experience)", due:"diese Woche" },
-    { id:"healthland", txt:"Health Land Asoke anrufen für <b>Di 01.09., 13:30</b> — +66 2 261 1110 (online braucht Konto + Kartenzahlung vorab)", due:"diese Woche" },
     { id:"spaform", txt:"Oriental Spa: Wellness-Intake-Form online ausfüllen (Link in der Bestätigungs-Mail vom 14.08.)", due:"vor Abflug" },
     { id:"spapay", txt:"Oriental Spa: Payment-Link bezahlen — kommt am 28.08. per Mail (sichert den Termin!)", due:"28.08." },
     { id:"esim", txt:"eSIM (dtac Happy Tourist via Airalo) daheim im WLAN installieren, deaktiviert lassen", due:"vor Abflug" },
     { id:"translate", txt:"Google Übersetzer aufs Handy: <b>Thai und Englisch als Offline-Paket laden</b> — dann übersetzt auch die Kamera Schilder und Speisekarten ohne Internet", due:"vor Abflug" },
-    { id:"mahanakhon", txt:"Mahanakhon SkyWalk: Sonnenuntergangs-Slot für <b>Mi 02.09.</b> online buchen (1.080–1.200 ฿) — erst den Wetterbericht anschauen", due:"vor Ort, 1–2 Tage vorher" },
     { id:"bank", txt:"Bank-Apps: Karten für Thailand freigeschaltet, Limits hoch genug", due:"vor Abflug" },
     { id:"pass", txt:"Pass + TDAC + Versicherungspolice als Fotos aufs Handy, Kopien in den Koffer", due:"vor Abflug" },
-    { id:"docs", txt:"OneDrive-Ordner „Bangkok 2026“ am Handy öffnen → „Offline verfügbar“ antippen (Buchung + Parkplatz)", due:"vor Abflug" },
+    { id:"docs", txt:"OneDrive-Ordner „Bangkok 2026“ am Handy öffnen → „Offline verfügbar“ antippen (Buchung + Parkplatz)", due:"vor Abflug" }
   ],
 
   thai: [

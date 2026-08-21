@@ -38,7 +38,7 @@ const BOOKINGS = [
     info:["Überdacht · Shuttle ~10 Min zum Terminal 2","Gebucht 27.08. ~19:00 bis 07.09. ~07:00"],
     ref:"Reservierungs-Nr.: Info → Meine Reisedaten" },
 
-  { id:"tdac", grp:"Reise", status:"offen", emoji:"🛂", date:"2026-08-25", time:"ab diesem Tag",
+  { id:"tdac", tun:"ausfüllen", kurz:"TDAC-Einreisekarte", grp:"Reise", status:"offen", emoji:"🛂", date:"2026-08-25", time:"ab diesem Tag",
     title:"TDAC — Einreisekarte ausfüllen", where:"online, dauert 10 Minuten",
     price:"kostenlos",
     info:["Erst ab Di 25.08. möglich (72-Std.-Fenster vor Ankunft Fr 28.08. 13:45 Ortszeit) — der 24.08. ist zu früh, das System nimmt es nicht an","QR-Code danach als Screenshot sichern, du brauchst ihn bei der Immigration"],
@@ -54,7 +54,7 @@ const BOOKINGS = [
     links:[{t:"📍 Mandarin Oriental",u:"https://www.google.com/maps/search/?api=1&query=Mandarin%20Oriental%20Bangkok"}],
     ref:"Bestätigungs-Nr.: Info → Meine Reisedaten" },
 
-  { id:"elefanten", grp:"Termine", status:"offen", emoji:"🐘", date:"2026-09-01", time:"9:00–12:00",
+  { id:"elefanten", kurz:"Elefanten-Park", grp:"Termine", status:"offen", emoji:"🐘", date:"2026-09-01", time:"9:00–12:00",
     title:"Bangkok Elephant Park — Halbtag Vormittag", where:"47 Suwinthawong Rd, Krathum Rai, Nong Chok, Bangkok 10530",
     price:"direkt beim Park 2.200 ฿ (~58 €) · GetYourGuide 43–55 €",
     info:["<b>ZUM ENGLISCH — das ist kein Problem hier:</b> Buch über <b>GetYourGuide auf Deutsch</b> (Button unten), nicht direkt beim Park. Dann ist die ganze Buchung, die Bestätigung und der Kundendienst auf Deutsch, und du kannst bis 24 Std. vorher kostenlos stornieren. Beim Park selbst läuft alles auf Englisch.","<b>Vor Ort brauchst du fast keine Sprache:</b> Das Programm ist zum Mitmachen, nicht zum Zuhören — füttern, laufen, Schlamm, baden. Der Guide macht alles vor, du machst nach, wie alle anderen auch. Für den Rest liegen im Reiter <b>Sprache → 🐘 Elefanten-Park</b> elf Sätze mit Aussprache bereit, einer davon: „My English is not good. Can you show me, please?“ — das sagst du einmal und der Guide zeigt dir alles.","Ethisch: kein Reiten, keine Shows. 4,8 ★ bei über 1.000 Bewertungen","Park täglich 9–17 Uhr offen · Option OHNE Transfer buchen, du fährst selbst mit Bolt","Ablauf: 9:00 Welcome Drink · 9:15 Elefantenkunde · 9:30 Kräuterinhalator basteln · 9:45 füttern · 10:05 Waldspaziergang, Schlamm-Spa, baden · 11:15 duschen & umziehen · 11:30 Thai-Lunchbox","Outfit, Hut und Handtuch stellt der Park — du brauchst nur Badehose und trockene Wechselsachen für die Heimfahrt","Anfahrt: ~50 km vom Hotel, 1–1,5 Std. mit Bolt (600–900 ฿). Dienstag ist Berufsverkehr → 7:00 losfahren","Preis: direkt beim Park 2.200 ฿ (~58 €), über GetYourGuide 43–55 € — die deutsche Buchung ist also nicht mal teurer","Google Übersetzer vorher aufs Handy: Thai und Englisch als Offline-Paket laden. Die Kamera-Funktion übersetzt Schilder und Speisekarten live","Park-Telefon: +66 90 920 5885"],
@@ -62,21 +62,21 @@ const BOOKINGS = [
     phone:"+66909205885",
     links:[{t:"🇩🇪 GetYourGuide (deutsch) — so buchen",u:"https://www.getyourguide.de/bangkok-l169/bangkok-halbtag-elefantenpark-ohne-transfer-t741040/"},{t:"🐘 Park-Seite (englisch)",u:"https://www.bangkokelephant.com/programs/half-day-morning-program-no-transfer/"},{t:"📍 In Google Maps",u:"https://www.google.com/maps/search/?api=1&query=Bangkok%20Elephant%20Park%2C%2047%20Suwinthawong%20Rd%2C%20Krathum%20Rai%2C%20Nong%20Chok%2C%20Bangkok%2010530"}] },
 
-  { id:"healthland", grp:"Termine", status:"offen", emoji:"💆", date:"2026-09-01", time:"13:30",
+  { id:"healthland", tun:"anrufen", kurz:"Health Land Asoke", grp:"Termine", status:"offen", emoji:"💆", date:"2026-09-01", time:"13:30",
     title:"Health Land Asoke — Massage nach den Elefanten", where:"Sukhumvit Soi 21 (Asoke), neben Terminal 21",
     price:"Thai 2 Std. 700 ฿ · Aroma-Öl 1.200–1.850 ฿ · Ayurveda Abhyanga 1.700 ฿",
     info:["Anrufen statt online buchen — die Online-Buchung will Konto und Kartenzahlung vorab. Tel. +66 2 261 1110, täglich 9–23 Uhr","Asoke liegt auf dem Rückweg vom Elefanten-Park — nicht erst zum Hotel fahren, das spart dir 1,5 Std. Fahrt","Nach Sonne, Schlamm und Elefantenlaufen ist die Öl-Massage angenehmer als die harte Thai-Massage. Bei Öl duschst du vorher dort","Danach: Terminal 21 ist direkt nebenan (Pier-21-Foodcourt, 5. Stock, Gerichte ab 50 ฿), Soi 11 ein paar Schritte weiter","Heimweg: MRT Sukhumvit → Tao Poon → Yaek Tiwanon, rund 42 ฿"],
     phone:"+6622611110",
     links:[{t:"📍 In Google Maps",u:"https://www.google.com/maps/search/?api=1&query=Health%20Land%20Spa%20Asoke%20Bangkok"}] },
 
-  { id:"cruise", grp:"Termine", status:"offen", emoji:"🛳️", date:"2026-09-03", time:"18:00–20:00",
+  { id:"cruise", kurz:"Dinner-Cruise", grp:"Termine", status:"offen", emoji:"🛳️", date:"2026-09-03", time:"18:00–20:00",
     title:"Chao-Phraya Dinner-Cruise (5 Sterne)", where:"Ablegen an Asiatique The Riverfront",
     price:"ab ~26 € · mit Dinner-Buffet 34–52 €",
     info:["Den 18-Uhr-Slot nehmen: Sonnenuntergang UND Nachtlichter in einer Fahrt","Vorbei an Wat Arun, Grand Palace und ICONSIAM vom Wasser aus","17:15 Bolt ab Hotel (40 Min, 260–340 ฿), Check-in am Asiatique Pier","Ohne Alkohol völlig unproblematisch — Dinner-Buffet und Säfte sind dabei","Danach noch eine Runde Asiatique-Nachtmarkt"],
     warn:"Nur online mit festem Datum und Slot buchen. Die Ticketverkäufer am Pier-Vorplatz sind teurer oder verkaufen Falsches.",
     links:[{t:"🎟️ GetYourGuide",u:"https://www.getyourguide.com/de-de/bangkok-l169/bangkok-die-neueste-luxuriose-5-sterne-kreuzfahrt-auf-dem-chao-phraya-in-bangkok-t960991/"},{t:"📍 Asiatique",u:"https://www.google.com/maps/search/?api=1&query=Asiatique%20The%20Riverfront%20Bangkok"}] },
 
-  { id:"shooting", grp:"Termine", status:"offen", emoji:"📸", date:"2026-09-05", time:"17:30–19:30",
+  { id:"shooting", tun:"anfragen", kurz:"Foto-Shooting", grp:"Termine", status:"offen", emoji:"📸", date:"2026-09-05", time:"17:30–19:30",
     title:"Golden-Hour Foto-Shooting", where:"Treffpunkt Wat Arun, danach Chinatown",
     price:"rund 150 € für 2 Std., ca. 30 bearbeitete Bilder",
     info:["Route: Wat Arun zum Sonnenuntergang → Chinatown mit Neonlicht","Vorab über TripAdvisor oder Localgrapher buchen — Datum und Treffpunkt schriftlich festhalten","Bilder kommen binnen 14 Tagen per Online-Galerie","Davor passt: 15:00 Wat Mangkon Kamalawat (Laternen-Tempel, Eintritt frei, bis 18 Uhr)","Outfit mitdenken — das sind die Bilder, die du behältst"],
@@ -90,7 +90,7 @@ const BOOKINGS = [
     warn:"Der große Markt mit 15.000 Ständen ist Chatuchak — der läuft NUR Sa + So (9–18 Uhr). Freitagabends ist dort nur Großhandel mit wenigen Ständen. Chatuchak steht deshalb am Sa 29.08. · Und: „Jodd Fairs Rama 9\" gibt es seit Januar 2025 nicht mehr, im Navi immer „Jodd Fairs Ratchada\" eingeben.",
     links:[{t:"📍 In Google Maps",u:"https://www.google.com/maps/search/?api=1&query=Jodd%20Fairs%20Ratchada%2C%20129%20Ratchadaphisek%20Rd%2C%20Din%20Daeng%2C%20Bangkok"}] },
 
-  { id:"mahanakhon", grp:"Termine", status:"offen", emoji:"🏙️", date:"2026-09-02", time:"17:15–19:00",
+  { id:"mahanakhon", kurz:"Mahanakhon SkyWalk", grp:"Termine", status:"offen", emoji:"🏙️", date:"2026-09-02", time:"17:15–19:00",
     title:"Mahanakhon SkyWalk — Glasboden zum Sonnenuntergang", where:"114 Naradhiwas Rajanagarindra Rd, Silom · BTS Chong Nonsi, Ausgang 3",
     price:"Sonnenuntergangs-Slot 1.080–1.200 ฿ · tagsüber 880–1.000 ฿",
     info:["Der höchste Aussichtspunkt der Stadt: Innendeck 74. Stock, offenes Dach 78. Stock, Glasboden auf 310 m","Sonnenuntergangs-Slot buchen und 45–60 Min vorher da sein — dann siehst du die Stadt bei Tag, den Sonnenuntergang (um 18:29) und das Lichtermeer in einem Besuch","Online vorab buchen: günstiger als an der Kasse, und die Sonnenuntergangs-Slots sind schnell weg","Kein Dresscode, Rucksack erlaubt — anders als in der Sky Bar","Der Turm steht direkt über der BTS-Station, überdachter Zugang","SkyWalk 10–19 Uhr, letzter Einlass 18:30"],
