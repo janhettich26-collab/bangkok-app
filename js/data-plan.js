@@ -69,9 +69,9 @@ const PLAN = [
     blocks:[
       { t:"7:00", txt:"Los zum Elefanten-Park. Nimm zwei Stunden Puffer für den 9-Uhr-Check-in — Dienstag früh steht halb Bangkok auf der Straße.", z:"elefanten", r:"🚗 Bolt nach Nong Chok · 1–1,5 Std. · 600–900 ฿ · Dienstag Berufsverkehr" },
       { t:"9:00–12:00", txt:"Halbtag-Vormittag OHNE Transfer (vorab gebucht): Welcome Drink, Elefantenkunde, Kräuterinhalator basteln, füttern, Waldspaziergang, Schlamm-Spa, baden — kein Reiten. 11:15 Duschen & Umziehen, 11:30 Thai-Lunchbox. Outfit, Hut und Handtuch stellt der Park; du brauchst nur Badehose + trockene Wechselsachen." },
-      { t:"12:15", txt:"NICHT heim, sondern direkt nach Sukhumvit — Asoke liegt auf dem Rückweg, das spart dir 1,5 Std. Doppelfahrt. Ab Nong Chok ist der Rückweg dünn: Fahrer warten lassen oder die Rezeption ein Taxi rufen lassen (+66 90 920 5885).", z:"healthasoke", r:"🚗 Bolt vom Park nach Asoke · 40–50 Min · 400–600 ฿ · liegt auf dem Rückweg" },
+      { t:"12:15", txt:"NICHT heim, sondern direkt nach Sukhumvit — Asoke liegt auf dem Rückweg, das spart dir 1,5 Std. Doppelfahrt. Ab Nong Chok ist der Rückweg dünn: Fahrer warten lassen oder die Rezeption ein Taxi rufen lassen (+66 90 920 5885).", z:"healthasoke", nb:1, r:"🚗 Bolt vom Park nach Asoke · 40–50 Min · 400–600 ฿ · liegt auf dem Rückweg" },
       { t:"13:30–15:30", txt:"Health Land Asoke (vorher anrufen: +66 2 261 1110, tägl. 9–23 Uhr): Thai 2 Std. 700 ฿ ODER — nach Sonne, Schlamm und Elefantenlaufen die bessere Wahl — Aroma-Öl 1.200–1.850 ฿ bzw. Ayurveda Abhyanga 1.700 ฿. Bei Öl-Massage duschst du dort vorab." },
-      { t:"16:00", txt:"Terminal 21 ist direkt nebenan: Pier-21-Foodcourt im 5. Stock, Gerichte ab 50 ฿ — der Preis-Leistungs-König.", z:"terminal21", r:"🚶 direkt neben Health Land" },
+      { t:"16:00", txt:"Terminal 21 ist direkt nebenan: Pier-21-Foodcourt im 5. Stock, Gerichte ab 50 ฿ — der Preis-Leistungs-König.", z:"terminal21", nb:1, r:"🚶 direkt neben Health Land" },
       { t:"18:00", txt:"Soi 11 angucken: die kompakteste Barstraße. Havana Social — Speakeasy mit Telefonzellen-Eingang, Mocktails stehen auf der Karte. Reinschauen, staunen, ohne Alk kein Problem." },
       { t:"heim", txt:"MRT Sukhumvit → Tao Poon → Yaek Tiwanon (50–71 ฿) oder Bolt ~300 ฿." }
     ],
@@ -108,8 +108,8 @@ const PLAN = [
       { t:"7:50 oder 8:45", txt:"Zug nach Ayutthaya (71 km, rund 1 Std.): Rapid 111 um 7:50 oder Express 75 um 8:45 sind die bewährten Verbindungen, 3. Klasse rund 70 ฿, klimatisierte 2. Klasse 65–345 ฿. Fahrplan am Schalter bestätigen lassen — Zeiten verschieben sich in Thailand gern." },
       { t:"9:30", txt:"Roller (~250 ฿) oder Tuk-Tuk-Pauschale (4 Std. 800–1.000 ฿, VORHER festmachen). Ruinen-Runde: Wat Mahathat (Buddha-Kopf im Baum), Wat Phra Si Sanphet, Wat Chaiwatthanaram. Sammelticket 220 ฿ für sechs Tempel — lohnt ab drei." },
       { t:"16:04 oder 16:41", txt:"Rückzug: Rapid 112 um 16:04 oder Rapid 136 um 16:41 → rund 1 Std. bis Bang Sue. Rückfahrkarte gleich morgens mitkaufen." },
-      { t:"19:30", txt:"GO-KART bei EasyKart: Asiens größte Indoor-Kartbahn. Fast Kart mit 200 cm³ und 55 km/h, 1.499 ฿ für zwei Rennen à 8 Minuten. Kein Führerschein nötig, freitags bis 23 Uhr offen. Vorher kurz anrufen (+66 2 641 4252) — die Bahn wird manchmal für Gruppen reserviert.", z:"easykart", r:"🚇 Blue Line ab Bang Sue bis Phra Ram 9 · 20 Min" },
-      { t:"21:00", txt:"5 Minuten weiter der Train Night Market Ratchada: der Regenbogen-Zeltmarkt, seit März 2026 wieder offen — Vintage, Container-Bars, Livebands, bis 1 Uhr. Abendessen zwischen den Zelten.", z:"trainmarket", r:"🚶 5 Min zu Fuß von der Kartbahn" }
+      { t:"19:30", txt:"GO-KART bei EasyKart: Asiens größte Indoor-Kartbahn. Fast Kart mit 200 cm³ und 55 km/h, 1.499 ฿ für zwei Rennen à 8 Minuten. Kein Führerschein nötig, freitags bis 23 Uhr offen. Vorher kurz anrufen (+66 2 641 4252) — die Bahn wird manchmal für Gruppen reserviert.", z:"easykart", nb:1, r:"🚇 Blue Line ab Bang Sue bis Phra Ram 9 · 20 Min" },
+      { t:"21:00", txt:"5 Minuten weiter der Train Night Market Ratchada: der Regenbogen-Zeltmarkt, seit März 2026 wieder offen — Vintage, Container-Bars, Livebands, bis 1 Uhr. Abendessen zwischen den Zelten.", z:"trainmarket", nb:1, r:"🚶 5 Min zu Fuß von der Kartbahn" }
     ],
     note:"Komplett ~600 ฿ statt 30+ € Tour — und du bist an keine Gruppe gekettet. Abends dann Vollgas: Kartbahn und Nachtmarkt liegen an derselben MRT-Station, du kommst aus Ayutthaya direkt dort an." },
 

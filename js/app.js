@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  const APP_VERSION = "v54";   // muss zur Version in sw.js passen
+  const APP_VERSION = "v55";   // muss zur Version in sw.js passen
 
   let WX = null;   // Live-Wetter: { now:{...}, hours:[...], days:{ "2026-08-30": {...} } } — oben, weil renderPlan es liest
 
@@ -187,7 +187,7 @@
 
   // Fahrziel: Karte öffnen, Bolt öffnen, thailändische Adresse zum Vorzeigen und Kopieren.
   // Der Klick darf den Punkt NICHT abhaken — deshalb stoppen die Knöpfe das Weiterreichen.
-  function zielLeiste(k, route) {
+  function zielLeiste(k, route, ohneBahn) {
     const z = ZIELE[k];
     const maps = "https://www.google.com/maps/dir/?api=1&destination=" + z.lat + "," + z.lng;
     // Bolt hat kein offiziell dokumentiertes Link-Format; dieses greift in der Praxis.
@@ -199,6 +199,12 @@
       '<summary class="f-auf"><span class="f-chev">›</span> Anfahrt &amp; Adresse</summary>' +
       '<div class="f-body">' +
         (route ? '<div class="f-route">' + route + "</div>" : "") +
+        (z.bahn && !ohneBahn ? '<div class="f-bahn"><div class="fb-kopf">Mit der Bahn ab Hotel</div>' +
+            '<div class="fb-schritt"><span class="fb-nr">1</span><div><b>Einsteigen</b>' + z.bahn.ein + "</div></div>" +
+            '<div class="fb-schritt"><span class="fb-nr">2</span><div><b>Umsteigen</b>' + z.bahn.um + "</div></div>" +
+            '<div class="fb-schritt"><span class="fb-nr">3</span><div><b>Aussteigen</b>' + z.bahn.aus + "</div></div>" +
+            '<div class="fb-schritt"><span class="fb-nr">→</span><div><b>Dann</b>' + z.bahn.rest + "</div></div>" +
+          "</div>" : "") +
         '<div class="f-ziel"><span class="f-pin">📍</span><span class="f-name">' + z.n + "</span></div>" +
         '<div class="f-th">' + z.th + "</div>" +
         '<div class="f-btns">' +
@@ -232,7 +238,7 @@
           const key = d.date + "#" + i;
           return '<div class="d-block' + (st[key] ? " done" : "") + '" data-pb="' + key + '">' +
             (b.t ? '<span class="d-time">' + b.t + "</span>" : "") + "<p>" + b.txt + "</p>" +
-            (b.z && ZIELE[b.z] ? zielLeiste(b.z, b.r) : "") +
+            (b.z && ZIELE[b.z] ? zielLeiste(b.z, b.r, b.nb) : "") +
             '<button class="d-tick" type="button" data-tick="' + key + '" aria-label="erledigt">✓</button></div>';
         }).join("") +
         (d.note ? '<div class="d-note">' + d.note + "</div>" : "") +
