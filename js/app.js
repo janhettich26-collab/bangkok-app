@@ -191,17 +191,16 @@
       const isToday = d.date === today;
       const done = d.blocks.filter((b, i) => st[d.date + "#" + i]).length;
       const wx = WX && WX.days ? WX.days[d.date] : null;
-      const wu = wx ? regenUrteil(wx.p, wx.mm) : null;
       return '<details class="card day' + (isToday ? " today" : "") + (done === d.blocks.length ? " all-done" : "") + '"' + (isToday ? " open" : "") + ">" +
         '<summary><span class="d-date"><b>' + d.wd + "</b> " + dt[2] + "." + dt[1] + ".</span>" +
         '<span class="d-title">' + d.icon + " " + d.title + "</span>" +
-        (wx ? '<span class="d-wx ' + wu.k + '">' + wxIcon(wx.code, 1) + " " + wx.max + "°" + (wx.mm ? " " + wx.mm + "mm" : "") + "</span>" : "") +
+        (wx ? '<span class="d-wx ' + wx.st.k + '">' + wxIcon(wx.code, 1) + " " + wx.max + "° " + tropfen(wx.st.n) + "</span>" : "") +
         (done ? '<span class="d-prog">' + done + "/" + d.blocks.length + "</span>" : "") +
         (isToday ? '<span class="d-badge">Heute</span>' : "") + "</summary>" +
         '<div class="d-body">' +
-        (wx ? '<div class="d-wxbar ' + wu.k + '">' + wxIcon(wx.code, 1) + " " + wxText(wx.code) + " · " + wx.min + "–" + wx.max + " °C · " +
-              (wx.mm ? wx.mm + " mm Regen" : "kein nennenswerter Regen") + " (" + wx.p + " % Wahrscheinlichkeit) · UV " + wx.uv +
-              " · Sonnenuntergang " + wx.unter + "<br><i>" + wu.t + "</i></div>"
+        (wx ? '<div class="d-wxbar ' + wx.st.k + '">' + wxIcon(wx.code, 1) + " <b>" + tropfen(wx.st.n) + " " + wx.st.kurz + "</b> · " +
+              fensterText(wx.fenster) + " · " + wx.min + "–" + wx.max + " °C · UV " + wx.uv + " · Sonnenuntergang " + wx.unter +
+              "<br><i>" + wx.st.lang + "</i></div>"
             : '<div class="d-wxbar"><i>Für diesen Tag reicht die Vorhersage noch nicht — sie geht 16 Tage voraus und wächst jeden Tag mit.</i></div>') +
         d.blocks.map((b, i) => {
           const key = d.date + "#" + i;
@@ -400,6 +399,10 @@
 
     buildMapChips();
 
+    // Regenradar gleich mit anschalten: Es liegt UNTER den Spot-Nadeln, also siehst du
+    // in einem Bild, wo du hin willst und ob es dort gerade runterkommt.
+    rvToggle();
+
     // Groesse nach dem Einblenden nachmessen — sonst bleibt die Karte grau
     const fix = () => map.invalidateSize({ animate: false });
     setTimeout(fix, 60); setTimeout(fix, 400);
@@ -448,7 +451,7 @@
     if (!mapObj || !rvFrames[i]) return;
     const f = rvFrames[i];
     const neu = L.tileLayer(rvHost + f.path + "/256/{z}/{x}/{y}/4/1_1.png", {
-      opacity: 0, zIndex: 400, tileSize: 256, updateWhenIdle: false
+      opacity: 0, zIndex: 250, tileSize: 256, updateWhenIdle: false
     }).addTo(mapObj);
     // Läuft noch eine Überblendung? Dann sofort abbrechen und die alte Ebene wegräumen,
     // sonst stapeln sich beim schnellen Ziehen am Zeitschieber die Kachelebenen.
@@ -525,19 +528,101 @@
   const rvPl = document.getElementById("rv-play");
   if (rvPl) rvPl.addEventListener("click", rvPlay);
 
+  // ————— "Wo bin ich" —————
+  // Vorher brach das an vier Stellen: stummer Abbruch ohne Karte, alle Fehler sahen gleich aus,
+  // 8 s Zeitlimit war für den ersten GPS-Fix zu kurz, und die Karte sprang bedingungslos zur
+  // echten Position — solange Jan in Deutschland ist, also 8.700 km weg von allen Spots.
+  let meKreis = null;
+  const BKK = { lat: 13.8621, lng: 100.5144 };
+
+  function meldung(txt, art) {
+    const el = document.getElementById("me-msg");
+    if (!el) return;
+    el.hidden = false;
+    el.className = "me-msg " + (art || "");
+    el.innerHTML = txt;
+  }
+  function kmVon(a, b) {
+    const R = 6371, r = Math.PI / 180;
+    const dLat = (b.lat - a.lat) * r, dLng = (b.lng - a.lng) * r;
+    const h = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * r) * Math.cos(b.lat * r) * Math.sin(dLng / 2) ** 2;
+    return 2 * R * Math.asin(Math.sqrt(h));
+  }
+  const genauText = m => m > 999 ? (m / 1000).toFixed(1) + " km" : m + " m";
+
+  function zeigeMich(pos) {
+    const lat = pos.coords.latitude, lng = pos.coords.longitude;
+    const genau = Math.round(pos.coords.accuracy);
+    if (meMarker) mapObj.removeLayer(meMarker);
+    if (meKreis) mapObj.removeLayer(meKreis);
+
+    meMarker = L.marker([lat, lng], {
+      icon: L.divIcon({ className: "", html: '<div class="pin me">🧍</div>', iconSize: [28, 28], iconAnchor: [14, 14] }),
+      zIndexOffset: 1200
+    }).addTo(mapObj);
+    // Der Kreis zeigt ehrlich, wie genau die Ortung ist — bei WLAN-Ortung sind das schnell 2 km
+    meKreis = L.circle([lat, lng], { radius: genau, color: "#57A8FF", weight: 1, fillOpacity: .10 }).addTo(mapObj);
+
+    const km = kmVon({ lat, lng }, BKK);
+    document.getElementById("map-me").textContent = "📍 Wo bin ich";
+
+    if (km > 300) {
+      // Nicht in Thailand: NICHT hinspringen, sonst ist die ganze Bangkok-Karte weg
+      meldung("Du bist gerade <b>" + Math.round(km).toLocaleString("de-DE") + " km</b> von Bangkok entfernt — " +
+        "die Ortung stimmt also, du bist ja noch daheim. Die Karte bleibt deshalb auf Bangkok stehen. " +
+        "<button class='me-jump' type='button'>Trotzdem zu mir springen</button>", "fern");
+      const jump = document.querySelector(".me-jump");
+      if (jump) jump.addEventListener("click", () => mapObj.setView([lat, lng], 13));
+    } else {
+      mapObj.setView([lat, lng], genau > 2000 ? 12 : 15);
+      meMarker.bindPopup("Hier bist du<br>Genauigkeit ±" + genauText(genau)).openPopup();
+      meldung("Gefunden — Genauigkeit ±" + genauText(genau) +
+        (genau > 500 ? ". Das ist WLAN-Ortung. Für Meter-Genauigkeit muss GPS greifen — draußen nochmal antippen." : "."), "ok");
+    }
+  }
+
+  function meFehler(err) {
+    document.getElementById("map-me").textContent = "📍 Wo bin ich";
+    if (err && err.code === 1) {
+      meldung("<b>Die Ortung ist für diese App gesperrt.</b><br>" +
+        "Am iPhone: Einstellungen → Datenschutz &amp; Sicherheit → Ortungsdienste → Safari-Websites → " +
+        "„Beim Verwenden der App“. Wenn du die App vom Home-Bildschirm gestartet hast, musst du dort extra erlauben — " +
+        "die Freigabe aus Safari gilt dafür nicht.", "fehler");
+    } else if (err && err.code === 3) {
+      meldung("<b>Zeitüberschreitung.</b> Der erste GPS-Fix dauert drinnen manchmal eine halbe Minute. " +
+        "Geh ans Fenster oder vor die Tür und tipp nochmal.", "warn");
+    } else {
+      meldung("<b>Kein Standortsignal.</b> Drinnen und zwischen Hochhäusern passiert das. Draußen nochmal versuchen.", "warn");
+    }
+  }
+
   const btnMe = document.getElementById("map-me");
   if (btnMe) btnMe.addEventListener("click", () => {
-    if (!navigator.geolocation || !mapObj) return;
+    if (!navigator.geolocation) {
+      meldung("Dieser Browser kann keine Ortung. Öffne die App in Safari oder Chrome.", "fehler");
+      return;
+    }
+    if (!mapObj) {   // hier brach die Funktion vorher stumm ab
+      meldung("Die Karte lädt noch — gleich nochmal antippen.", "warn");
+      return;
+    }
     btnMe.textContent = "📍 suche …";
-    navigator.geolocation.getCurrentPosition(pos => {
-      const ll = [pos.coords.latitude, pos.coords.longitude];
-      if (meMarker) mapObj.removeLayer(meMarker);
-      meMarker = L.marker(ll, { icon: L.divIcon({ className: "", html: '<div class="pin me">🧍</div>', iconSize: [28, 28], iconAnchor: [14, 14] }), zIndexOffset: 1200 })
-        .addTo(mapObj).bindPopup("Hier bist du").openPopup();
-      mapObj.setView(ll, 15);
-      btnMe.textContent = "📍 Wo bin ich";
-    }, () => { btnMe.textContent = "📍 Standort aus"; setTimeout(() => btnMe.textContent = "📍 Wo bin ich", 2500); },
-      { enableHighAccuracy: true, timeout: 8000 });
+    meldung("Suche deinen Standort … beim ersten Mal kann das bis zu 30 Sekunden dauern.", "");
+    // Zweistufig: erst schnell und grob (ein gecachter Wert reicht), dann präzise nachlegen.
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        zeigeMich(pos);
+        if (pos.coords.accuracy > 200) {
+          navigator.geolocation.getCurrentPosition(zeigeMich, () => {},
+            { enableHighAccuracy: true, timeout: 25000, maximumAge: 0 });
+        }
+      },
+      () => {   // grober Versuch fehlgeschlagen → einmal richtig probieren
+        navigator.geolocation.getCurrentPosition(zeigeMich, meFehler,
+          { enableHighAccuracy: true, timeout: 25000, maximumAge: 0 });
+      },
+      { enableHighAccuracy: false, timeout: 6000, maximumAge: 120000 }
+    );
   });
 
   const btnAll = document.getElementById("map-all");
@@ -811,8 +896,10 @@
   }
   renderToday();
 
-  // ————— Live-Wetter Bangkok (open-meteo, ohne Schlüssel, kostenlos) —————
-  const WX_KEY = "bkk_wx";
+  // ————— Live-Wetter Bangkok (open-meteo, ohne Schlüssel) —————
+  // Millimeter sagen niemandem etwas. Deshalb rechnen wir daraus um:
+  // WANN regnet es (Zeitfenster aus den Stundenwerten) und WIE STARK fühlt es sich an.
+  const WX_KEY = "bkk_wx2";
 
   const WX_TEXT = {
     0:"klar", 1:"überwiegend klar", 2:"teils bewölkt", 3:"bedeckt",
@@ -826,13 +913,27 @@
     if (c <= 67) return "🌦️"; if (c <= 82) return "🌧️"; return "⛈️";
   }
   const wxText = c => WX_TEXT[c] || "wechselhaft";
-  // In der Regenzeit steht die Regenwahrscheinlichkeit fast täglich bei 80–95 % — die allein sagt nichts.
-  // Aussagekräftig ist die Regenmenge: 1–3 mm sind ein kurzer Schauer, ab 10 mm wird der Tag wirklich nass.
-  function regenUrteil(p, mm) {
-    if (mm >= 10) return { k: "nass",   t: "Richtig nass — Indoor-Tag einplanen (Mall, Spa, Tempelhallen)" };
-    if (mm >= 3)  return { k: "mittel", t: "Schauer ziehen durch, meist nachmittags und nach 1–2 Std. vorbei — Poncho reicht" };
-    if (p >= 60)  return { k: "mittel", t: "Hohe Wahrscheinlichkeit, aber kaum Menge: höchstens ein kurzer Guss" };
-    return           { k: "trocken",t: "Trocken — raus damit" };
+
+  // Die Stufe richtet sich nach der stärksten Stunde (mm/h) — das ist das, was man spürt.
+  const STUFEN = [
+    { ab: 0,   n: 0, k: "trocken", kurz: "trocken",        lang: "Trocken — höchstens mal ein paar Tropfen, nichts zu befürchten" },
+    { ab: 0.2, n: 1, k: "feucht",  kurz: "nur feucht",     lang: "Nieseln — die Haare werden feucht, mehr nicht. Kein Schirm nötig" },
+    { ab: 0.5, n: 2, k: "leicht",  kurz: "leichter Regen", lang: "Leichter Regen — Poncho drüber und weiterlaufen, die Straße wird nass" },
+    { ab: 2,   n: 3, k: "mittel",  kurz: "richtiger Regen",lang: "Richtiger Regen — nach 10 Minuten bist du durch. Unterstellen lohnt sich" },
+    { ab: 6,   n: 4, k: "stark",   kurz: "Platzregen",     lang: "Platzregen — in zwei Minuten klatschnass, Straßen laufen voll. Reingehen" },
+    { ab: 15,  n: 5, k: "extrem",  kurz: "Wolkenbruch",    lang: "Wolkenbruch — Bolt statt laufen, das hört meist nach 20–40 Min auf" }
+  ];
+  function stufeVon(mmh) {
+    let st = STUFEN[0];
+    STUFEN.forEach(x => { if (mmh >= x.ab) st = x; });
+    return st;
+  }
+  const tropfen = n => n === 0 ? "—" : "💧".repeat(n);
+
+  // Zusammenhängende Regenstunden zu Zeitfenstern bündeln ("14–20 Uhr")
+  function fensterText(f) {
+    if (!f.length) return "kein Regen erwartet";
+    return f.map(x => x.von + "–" + (x.bis + 1) + " Uhr").join(" und ");
   }
 
   function renderWeather() {
@@ -840,8 +941,7 @@
     if (!WX) { el.innerHTML = '<div class="wx-load">Wetter wird geladen …</div>'; return; }
     const n = WX.now;
     const heute = WX.days[todayISO()];
-    const naechste = WX.hours.filter(h => h.ts > Date.now()).slice(0, 8);
-    const u = heute ? regenUrteil(heute.p, heute.mm) : null;
+    const naechste = WX.hours.filter(h => h.ts > Date.now() - 3600000).slice(0, 12);
 
     el.innerHTML =
       '<div class="wx-now">' +
@@ -850,19 +950,39 @@
           '<div class="wx-temp">' + n.t + "<span>°C</span></div>" +
           '<div class="wx-desc">' + wxText(n.code) + " · gefühlt " + n.gefuehlt + " °C</div>" +
         "</div>" +
-        '<div class="wx-side">' +
-          '<span>💧 ' + n.feuchte + " %</span>" +
-          '<span>💨 ' + n.wind + " km/h</span>" +
-          (heute ? '<span>🌅 ' + heute.unter + "</span>" : "") +
-        "</div>" +
+        '<div class="wx-side"><span>💧 ' + n.feuchte + " %</span><span>💨 " + n.wind + " km/h</span>" +
+          (heute ? "<span>🌅 " + heute.unter + "</span>" : "") + "</div>" +
       "</div>" +
-      (heute ? '<div class="wx-bar ' + u.k + '">Heute ' + heute.min + "–" + heute.max + " °C · " + (heute.mm ? heute.mm + " mm Regen" : "kein nennenswerter Regen") + " (" + heute.p + " % Wahrscheinlichkeit) — " + u.t + "</div>" : "") +
-      (naechste.length ? '<div class="wx-hours">' + naechste.map(h =>
-        '<div class="wx-h' + (h.p >= 60 ? " wet" : "") + '"><span class="wx-hh">' + h.hh + "</span>" +
-        '<span class="wx-hi">' + wxIcon(h.code, h.day) + "</span>" +
-        '<span class="wx-ht">' + h.t + "°</span>" +
-        '<span class="wx-hp">' + h.p + "%</span></div>").join("") + "</div>" : "") +
-      '<div class="wx-src">Live von open-meteo · Bangkok · tippen zum Aktualisieren</div>';
+      (heute ? '<div class="wx-bar ' + heute.st.k + '"><b>' + tropfen(heute.st.n) + " " + heute.st.kurz + "</b> · " +
+               fensterText(heute.fenster) + "<br>" + heute.st.lang + "</div>" : "") +
+      (naechste.length ? '<div class="wx-hours">' + naechste.map(h => {
+          const st = stufeVon(h.mm);
+          return '<div class="wx-h ' + st.k + '"><span class="wx-hh">' + h.hh + "</span>" +
+            '<span class="wx-hi">' + wxIcon(h.code, h.day) + "</span>" +
+            '<span class="wx-ht">' + h.t + "°</span>" +
+            '<span class="wx-hp">' + (h.mm >= 0.1 ? tropfen(st.n) : "trocken") + "</span></div>";
+        }).join("") + "</div>" : "") +
+      '<div class="wx-src">Live von open-meteo · antippen zum Aktualisieren</div>';
+    renderWxDays();
+  }
+
+  // Alle Reisetage untereinander — vollständig, nichts abgeschnitten
+  function renderWxDays() {
+    const box = document.getElementById("wx-days");
+    if (!box || !WX) return;
+    const heute = todayISO();
+    box.innerHTML = PLAN.map(d => {
+      const w = WX.days[d.date];
+      const dt = d.date.split("-");
+      if (!w) return '<div class="wxd leer"><span class="wxd-d">' + d.wd + " " + dt[2] + "." + dt[1] + ".</span>" +
+        '<span class="wxd-x">Vorhersage reicht noch nicht so weit</span></div>';
+      return '<div class="wxd ' + w.st.k + (d.date === heute ? " ist-heute" : "") + '">' +
+        '<span class="wxd-d">' + d.wd + " " + dt[2] + "." + dt[1] + ".</span>" +
+        '<span class="wxd-i">' + wxIcon(w.code, 1) + "</span>" +
+        '<span class="wxd-t">' + w.min + "–" + w.max + "°</span>" +
+        '<span class="wxd-r"><b>' + tropfen(w.st.n) + " " + w.st.kurz + "</b><i>" + fensterText(w.fenster) + "</i></span>" +
+        "</div>";
+    }).join("");
   }
 
   async function fetchWeather(force) {
@@ -870,26 +990,42 @@
     if (cache && !force) {
       try {
         const c = JSON.parse(cache);
-        if (Date.now() - c.ts < 30 * 60 * 1000) { WX = c; renderWeather(); renderPlan(); return; }
-        WX = c; renderWeather(); renderPlan();   // Altbestand sofort zeigen, dann aktualisieren
+        WX = c; renderWeather(); renderPlan();
+        if (Date.now() - c.ts < 30 * 60 * 1000) return;
       } catch (e) { /* kaputter Cache */ }
     }
     try {
       const url = "https://api.open-meteo.com/v1/forecast?latitude=13.8621&longitude=100.5144" +
         "&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m,is_day" +
-        "&hourly=temperature_2m,precipitation_probability,weather_code,is_day" +
-        "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,sunset,uv_index_max" +
+        "&hourly=temperature_2m,precipitation,precipitation_probability,weather_code,is_day" +
+        "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_hours,sunset,uv_index_max" +
         "&forecast_days=16&timezone=Asia%2FBangkok";
       const j = await (await fetch(url)).json();
       const c = j.current;
+
+      // Stundenwerte nach Tag sortieren, daraus Regenfenster und Spitzenintensität
+      const proTag = {};
+      j.hourly.time.forEach((t, i) => {
+        const tag = t.slice(0, 10);
+        (proTag[tag] = proTag[tag] || []).push({ h: +t.slice(11, 13), mm: j.hourly.precipitation[i] || 0 });
+      });
       const days = {};
       j.daily.time.forEach((d, i) => {
+        const std = proTag[d] || [];
+        const nass = std.filter(x => x.mm >= 0.2);
+        const fenster = [];
+        nass.forEach(x => {
+          const l = fenster[fenster.length - 1];
+          if (l && x.h === l.bis + 1) l.bis = x.h; else fenster.push({ von: x.h, bis: x.h });
+        });
+        const spitze = std.reduce((m, x) => Math.max(m, x.mm), 0);
         days[d] = {
           code: j.daily.weather_code[i],
           max: Math.round(j.daily.temperature_2m_max[i]),
           min: Math.round(j.daily.temperature_2m_min[i]),
-          p: j.daily.precipitation_probability_max[i],
-          mm: Math.round(j.daily.precipitation_sum[i]),
+          mm: j.daily.precipitation_sum[i],
+          std: j.daily.precipitation_hours[i],
+          spitze, st: stufeVon(spitze), fenster,
           uv: Math.round(j.daily.uv_index_max[i]),
           unter: (j.daily.sunset[i] || "").slice(11, 16)
         };
@@ -898,7 +1034,7 @@
         ts: new Date(t + ":00+07:00").getTime(),
         hh: t.slice(11, 13) + " Uhr",
         t: Math.round(j.hourly.temperature_2m[i]),
-        p: j.hourly.precipitation_probability[i],
+        mm: j.hourly.precipitation[i] || 0,
         code: j.hourly.weather_code[i],
         day: j.hourly.is_day[i]
       }));

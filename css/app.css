@@ -496,9 +496,6 @@ button, input, a { -webkit-tap-highlight-color: rgba(232,176,75,.15); }
 .wx-desc { font-size: 13px; color: var(--muted); margin-top: 3px; }
 .wx-side { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted); text-align: right; }
 .wx-bar { padding: 9px 16px; font-size: 12.5px; line-height: 1.4; border-top: 1px solid var(--line); }
-.wx-bar.trocken { background: rgba(107,203,119,.10); color: #9BD9A5; }
-.wx-bar.mittel  { background: rgba(232,176,75,.10);  color: #E8C88B; }
-.wx-bar.nass    { background: rgba(87,168,255,.12);  color: #9CC9FF; }
 .wx-hours { display: flex; gap: 2px; overflow-x: auto; padding: 10px 10px 12px; border-top: 1px solid var(--line); -webkit-overflow-scrolling: touch; }
 .wx-h { flex: 0 0 auto; width: 58px; display: flex; flex-direction: column; align-items: center; gap: 3px;
   padding: 7px 2px; border-radius: 10px; }
@@ -530,3 +527,52 @@ button, input, a { -webkit-tap-highlight-color: rgba(232,176,75,.15); }
 .rv-scale { flex: 1; height: 8px; border-radius: 99px;
   background: linear-gradient(90deg, #9CD3F0 0%, #4FA8D8 18%, #4CC46A 38%, #E4D64B 58%, #E8913F 74%, #DC4B3E 88%, #9B4BC8 100%); }
 .rv-hint { font-size: 11.5px; color: var(--muted); line-height: 1.5; margin-top: 9px; }
+
+/* ————— Regen-Stufen: Farbe = wie stark es sich anfühlt ————— */
+.wx-bar.trocken, .d-wxbar.trocken { background: rgba(107,203,119,.10); color: #9BD9A5; }
+.wx-bar.feucht,  .d-wxbar.feucht  { background: rgba(156,201,255,.09); color: #B8D4F0; }
+.wx-bar.leicht,  .d-wxbar.leicht  { background: rgba(87,168,255,.12);  color: #9CC9FF; }
+.wx-bar.mittel,  .d-wxbar.mittel  { background: rgba(232,176,75,.12);  color: #E8C88B; }
+.wx-bar.stark,   .d-wxbar.stark   { background: rgba(232,105,63,.14);  color: #F0A57F; }
+.wx-bar.extrem,  .d-wxbar.extrem  { background: rgba(220,75,62,.16);   color: #F09090; }
+.wx-bar b, .d-wxbar b { font-weight: 800; }
+
+/* Stundenleiste — scrollt sauber bis zum letzten Eintrag */
+.wx-hours { scroll-padding: 0 10px; }
+.wx-hours::after { content: ""; flex: 0 0 4px; }
+.wx-h.feucht { background: rgba(156,201,255,.10); }
+.wx-h.leicht { background: rgba(87,168,255,.14); }
+.wx-h.mittel { background: rgba(232,176,75,.16); }
+.wx-h.stark  { background: rgba(232,105,63,.18); }
+.wx-h.extrem { background: rgba(220,75,62,.20); }
+.wx-hp { font-size: 10.5px; color: var(--muted); }
+
+/* Reisetage-Liste auf der Startseite — vollständig, nichts abgeschnitten */
+.card.wx-days { padding: 4px 0; }
+.wxd { display: flex; align-items: center; gap: 9px; padding: 10px 13px; border-bottom: 1px solid var(--line); }
+.wxd:last-child { border-bottom: none; }
+.wxd.ist-heute { background: rgba(232,176,75,.07); }
+.wxd-d { flex: 0 0 62px; font-size: 12.5px; font-weight: 700; color: var(--gold); }
+.wxd-i { flex: 0 0 auto; font-size: 19px; line-height: 1; }
+.wxd-t { flex: 0 0 60px; font-size: 12.5px; color: var(--muted); }
+.wxd-r { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+.wxd-r b { font-size: 12.5px; font-weight: 700; }
+.wxd-r i { font-size: 11.5px; color: var(--muted); font-style: normal; }
+.wxd.trocken .wxd-r b { color: #9BD9A5; }
+.wxd.feucht  .wxd-r b { color: #B8D4F0; }
+.wxd.leicht  .wxd-r b { color: #9CC9FF; }
+.wxd.mittel  .wxd-r b { color: #E8C88B; }
+.wxd.stark   .wxd-r b { color: #F0A57F; }
+.wxd.extrem  .wxd-r b { color: #F09090; }
+.wxd.leer .wxd-x { font-size: 11.5px; color: var(--muted); font-style: italic; }
+
+/* ————— Standort-Meldungen ————— */
+.me-msg { padding: 11px 13px; border-radius: 12px; font-size: 12.5px; line-height: 1.5;
+  margin-bottom: 10px; background: var(--surface); border: 1px solid var(--line); color: var(--muted); }
+.me-msg.ok     { border-color: rgba(107,203,119,.4); color: #9BD9A5; background: rgba(107,203,119,.08); }
+.me-msg.fern   { border-color: rgba(87,168,255,.45); color: #9CC9FF; background: rgba(87,168,255,.09); }
+.me-msg.warn   { border-color: var(--warn-line); color: #E8C88B; background: var(--warn-bg); }
+.me-msg.fehler { border-color: rgba(220,75,62,.5); color: #F09090; background: rgba(220,75,62,.10); }
+.me-msg b { color: inherit; }
+.me-jump { display: block; margin-top: 9px; padding: 8px 12px; font-size: 12.5px; font-weight: 700;
+  background: transparent; color: #9CC9FF; border: 1px solid rgba(87,168,255,.5); border-radius: 10px; font-family: inherit; }
