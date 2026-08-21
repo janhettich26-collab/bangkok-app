@@ -55,15 +55,17 @@ const PLAN = [
     ],
     note:"„Der Palast ist heute zu“-Sprüche vor dem Tor sind IMMER die Tuk-Tuk-Masche. Er ist offen, einfach durchgehen." },
 
-  { date:"2026-09-01", wd:"Di", title:"Muay Thai & Sukhumvit bei Nacht", icon:"🥊",
+  { date:"2026-09-01", wd:"Di", title:"Elefanten, Massage & Sukhumvit", icon:"🐘",
     blocks:[
-      { t:"vorm.", txt:"Ausschlafen, Pool, Wäsche in die Maschine." },
-      { t:"14:30", txt:"Jitmuangnon Gym (1 km): die Nachmittagseinheit ist die beste — Einzeltraining mit Trainer 500–800 ฿/Std., echtes Profi-Camp." },
-      { t:"17:00", txt:"Duschen, Pause." },
-      { t:"19:30", txt:"Terminal 21 (35 Min): Pier-21-Foodcourt im 5. Stock — Gerichte ab 50 ฿, der Preis-Leistungs-König." },
-      { t:"21:00", txt:"Soi 11 angucken: die kompakteste Barstraße. Havana Social — Speakeasy mit Telefonzellen-Eingang, Mocktails stehen auf der Karte. Reinschauen, staunen, ohne Alk kein Problem." }
+      { t:"7:00", txt:"Bolt zum Bangkok Elephant Park, 47 Suwinthawong Rd, Nong Chok (Ostrand Bangkok, ~50 km, 600–900 ฿). Dienstag ist Berufsverkehr — 2 Std. Puffer für 9 Uhr Check-in." },
+      { t:"9:00–12:00", txt:"Halbtag-Vormittag OHNE Transfer (vorab gebucht): Welcome Drink, Elefantenkunde, Kräuterinhalator basteln, füttern, Waldspaziergang, Schlamm-Spa, baden — kein Reiten. 11:15 Duschen & Umziehen, 11:30 Thai-Lunchbox. Outfit, Hut und Handtuch stellt der Park; du brauchst nur Badehose + trockene Wechselsachen." },
+      { t:"12:15", txt:"Bolt NICHT heim, sondern direkt nach Sukhumvit (~40–50 Min, 400–600 ฿) — Asoke liegt auf dem Rückweg, das spart dir 1,5 Std. Doppelfahrt. Rückweg ist dort dünn: Fahrer warten lassen oder Park-Rezeption rufen lassen (+66 90 920 5885)." },
+      { t:"13:30–15:30", txt:"Health Land Asoke (vorher anrufen: +66 2 261 1110, tägl. 9–23 Uhr): Thai 2 Std. 700 ฿ ODER — nach Sonne, Schlamm und Elefantenlaufen die bessere Wahl — Aroma-Öl 1.200–1.850 ฿ bzw. Ayurveda Abhyanga 1.700 ฿. Bei Öl-Massage duschst du dort vorab." },
+      { t:"16:00", txt:"Terminal 21 ist direkt nebenan: Pier-21-Foodcourt im 5. Stock, Gerichte ab 50 ฿ — der Preis-Leistungs-König." },
+      { t:"18:00", txt:"Soi 11 angucken: die kompakteste Barstraße. Havana Social — Speakeasy mit Telefonzellen-Eingang, Mocktails stehen auf der Karte. Reinschauen, staunen, ohne Alk kein Problem." },
+      { t:"heim", txt:"MRT Sukhumvit → Tao Poon → Yaek Tiwanon (~42 ฿) oder Bolt ~300 ฿." }
     ],
-    note:"Bars-Abend Nr. 2. Regel für die Ecke: Nie mitgehen, wenn dich jemand „mitnimmt“ — kleiner Soi = mehr Verkäufer." },
+    note:"Ein Weg, drei Dinge — Elefanten, Massage und Sukhumvit-Abend ohne einen einzigen Doppelweg. Bars-Abend Nr. 2. Regel für die Ecke: Nie mitgehen, wenn dich jemand „mitnimmt“." },
 
   { date:"2026-09-02", wd:"Mi", title:"Kanäle & grüne Lunge", icon:"🛶",
     blocks:[
@@ -74,16 +76,16 @@ const PLAN = [
     ],
     note:"Kompletter Tag ohne lange Anfahrten — alles unter 45 Min. Bars-Abend Nr. 2,5: Musik statt Promille." },
 
-  { date:"2026-09-03", wd:"Do", title:"Elefanten & Sunset-Cruise", icon:"🐘",
+  { date:"2026-09-03", wd:"Do", title:"Muay Thai & Sunset-Cruise", icon:"🥊",
     blocks:[
-      { t:"6:45", txt:"Bolt Richtung Bangkok Elephant Park, Chachoengsao (~1,5–2 Std., 900–1.300 ฿). Fahrer fragen, ob er wartet (Festpreis) — Rückweg ist dort dünn." },
-      { t:"9:00–12:00", txt:"Halbtagsprogramm OHNE Transfer (vorab gebucht): füttern, Schlamm-Spa, baden — kein Reiten. Thai-Buffet inklusive. Wechselklamotten + Handtuch!" },
-      { t:"14:30", txt:"Zurück am Hotel, Pool & Pause." },
-      { t:"17:15", txt:"Bolt nach Asiatique The Riverfront (40 Min)." },
+      { t:"vorm.", txt:"Ausschlafen, Pool, Wäsche in die Maschine." },
+      { t:"13:30", txt:"Jitmuangnon Gym (1 km zu Fuß/Bolt): Einzeltraining mit Trainer 500–800 ฿/Std., echtes Profi-Camp. Früher als sonst, damit der Abend Luft hat." },
+      { t:"15:30", txt:"Zurück, duschen, Pause." },
+      { t:"17:15", txt:"Bolt nach Asiatique The Riverfront (40 Min, 260–340 ฿)." },
       { t:"18:00–20:00", txt:"5-Sterne-Cruise, 18-Uhr-Slot = Sonnenuntergang UND Nachtlichter: Wat Arun, Grand Palace, ICONSIAM vom Wasser. Ohne Alk easy — Dinner-Buffet & Saft." },
       { t:"20:15", txt:"Noch eine Runde Asiatique-Nachtmarkt, dann Bolt heim." }
     ],
-    note:"Beides vorab mit Datum buchen (App → Spots → Ausflüge): Elefanten-Park „ohne Transfer 9 Uhr“, Cruise 18-Uhr-Slot." },
+    note:"Cruise vorab mit Datum buchen (App → Spots → Ausflüge, 18-Uhr-Slot). Das Gym ist 1 km weg — deshalb passt Training und Cruise am selben Tag." },
 
   { date:"2026-09-04", wd:"Fr", title:"Ayutthaya auf eigene Faust", icon:"🏛️",
     blocks:[
