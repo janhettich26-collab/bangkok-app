@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  const APP_VERSION = "v42";   // muss zur Version in sw.js passen
+  const APP_VERSION = "v43";   // muss zur Version in sw.js passen
 
   let WX = null;   // Live-Wetter: { now:{...}, hours:[...], days:{ "2026-08-30": {...} } } — oben, weil renderPlan es liest
 
@@ -325,6 +325,14 @@
             '<ul class="bk-info">' + b.info.map(x => "<li>" + x + "</li>").join("") + '</ul>' +
             (b.warn ? '<div class="bk-warn">⚠️ ' + b.warn + '</div>' : "") +
             (b.ref ? '<div class="bk-ref">🔒 ' + b.ref + '</div>' : "") +
+            (b.nachricht ? '<div class="msg-box">' +
+              '<div class="msg-kopf">Fertige Nachricht — antippen, prüfen, absenden</div>' +
+              '<div class="msg-en" id="msg-' + b.id + '">' + b.nachricht.en.replace(/\n/g, "<br>") + "</div>" +
+              '<details class="msg-de"><summary>Was da auf Deutsch steht</summary><p>' + b.nachricht.de.replace(/\n/g, "<br>") + "</p></details>" +
+              '<div class="msg-btns">' +
+                (b.nachricht.wa ? '<a class="btn wa" href="https://wa.me/' + b.nachricht.wa + "?text=" + encodeURIComponent(b.nachricht.en) + '" target="_blank" rel="noopener">💬 In WhatsApp öffnen</a>' : "") +
+                '<button class="btn ghost small msg-copy" type="button" data-copy="' + b.id + '">📋 Text kopieren</button>' +
+              "</div></div>" : "") +
             (b.klook ? '<a class="btn klook" href="' + b.klook + '" target="_blank" rel="noopener">🎟️ Auf Klook buchen — deutsche Seite</a>' : "") +
             '<div class="docs-grid bk-actions">' +
               (b.phone ? '<a class="btn" href="tel:' + b.phone + '">📞 Anrufen</a>' : "") +
@@ -336,6 +344,22 @@
           '</div></details>';
       }).join("");
     }
+
+    wrap.querySelectorAll(".msg-copy").forEach(btn => btn.addEventListener("click", async e => {
+      e.preventDefault();
+      const b = BOOKINGS.find(x => x.id === btn.dataset.copy);
+      try {
+        await navigator.clipboard.writeText(b.nachricht.en);
+        btn.textContent = "✅ kopiert";
+      } catch (err) {
+        // Ältere iOS-Safari-Fassungen können das nicht — dann Text markieren lassen
+        const el = document.getElementById("msg-" + b.id);
+        const r = document.createRange(); r.selectNodeContents(el);
+        const sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+        btn.textContent = "markiert — jetzt kopieren";
+      }
+      setTimeout(() => btn.textContent = "📋 Text kopieren", 2500);
+    }));
 
     wrap.querySelectorAll("input[data-bk]").forEach(cb => {
       cb.addEventListener("change", () => {

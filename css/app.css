@@ -616,3 +616,17 @@ button, input, a { -webkit-tap-highlight-color: rgba(232,176,75,.15); }
   background: #FF5722; color: #fff; border: none; font-weight: 800; padding: 12px; }
 .ck-fuss { margin-top: 12px; padding: 10px 12px; background: var(--surface2); border: 1px solid var(--line);
   border-radius: 10px; font-size: 12px; line-height: 1.5; color: var(--muted); }
+
+/* ————— Fertige Nachrichten zum Absenden ————— */
+.msg-box { margin-top: 13px; padding: 12px; background: var(--surface2); border: 1px solid var(--line); border-radius: 12px; }
+.msg-kopf { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: var(--gold); margin-bottom: 9px; }
+.msg-en { font-size: 13px; line-height: 1.55; background: rgba(0,0,0,.25); padding: 11px; border-radius: 9px; -webkit-user-select: text; user-select: text; }
+.msg-de { margin-top: 9px; }
+.msg-de summary { font-size: 11.5px; color: var(--muted); cursor: pointer; list-style: none; }
+.msg-de summary::-webkit-details-marker { display: none; }
+.msg-de summary::before { content: "› "; color: var(--gold); }
+.msg-de[open] summary::before { content: "⌄ "; }
+.msg-de p { font-size: 12.5px; line-height: 1.55; color: var(--muted); margin-top: 8px; }
+.msg-btns { display: flex; gap: 8px; margin-top: 11px; }
+.msg-btns .btn { flex: 1; text-align: center; }
+.btn.wa { background: #25D366; color: #06301a; border: none; font-weight: 800; }
