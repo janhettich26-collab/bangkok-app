@@ -54,13 +54,6 @@ const BOOKINGS = [
     links:[{t:"📍 Mandarin Oriental",u:"https://www.google.com/maps/search/?api=1&query=Mandarin%20Oriental%20Bangkok"}],
     ref:"Bestätigungs-Nr.: Info → Meine Reisedaten" },
 
-  { id:"rajadamnern", grp:"Termine", status:"offen", emoji:"🥊", date:"2026-08-30", time:"18:00",
-    title:"Rajadamnern Stadion — Muay-Thai-Kämpfe", where:"Ratchadamnoen Nok Rd, Altstadt · 10 Min Bolt vom Golden Mount",
-    price:"Ticket ab ~700 ฿",
-    info:["Nur zuschauen, kein Training — das ist das älteste und traditionsreichste Stadion des Landes","Sonntags beginnen die Kämpfe früher als sonst (ab 17/18 Uhr)","Ticket vorab auf rajadamnern.com kaufen","Passt in den Altstadt-Abend: 16:30 Golden Mount → 18:00 Kämpfe → 21:00 Chinatown"],
-    warn:"Wenn du Muay Thai komplett streichen willst, sag Bescheid — dann fliegt dieser Punkt raus und der Sonntagabend geht direkt vom Golden Mount nach Chinatown.",
-    links:[{t:"🎟️ rajadamnern.com",u:"https://rajadamnern.com"},{t:"📍 In Google Maps",u:"https://www.google.com/maps/search/?api=1&query=Rajadamnern%20Stadium%20Bangkok"}] },
-
   { id:"elefanten", grp:"Termine", status:"offen", emoji:"🐘", date:"2026-09-01", time:"9:00–12:00",
     title:"Bangkok Elephant Park — Halbtag Vormittag", where:"47 Suwinthawong Rd, Krathum Rai, Nong Chok, Bangkok 10530",
     price:"direkt beim Park 2.200 ฿ (~58 €) · GetYourGuide 43–55 €",

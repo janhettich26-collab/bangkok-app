@@ -30,7 +30,6 @@ const PACK = [
       { id:"kurz",    t:"3× kurze Hose" },
       { id:"unter",   t:"8× Unterwäsche, 6× Socken" },
       { id:"bade",    t:"Badehose + kleines Handtuch", w:"Hotelpool, Sauna" },
-      { id:"sport",   t:"Sportshirt + Shorts", w:"Muay-Thai-Gym Jitmuangnon" },
       { id:"sneaker", t:"Sneaker (viel Laufen) + Flip-Flops" },
       { id:"regen",   t:"Dünne Regenjacke oder Poncho", w:"Regenzeit — fast täglich ein Schauer" },
       { id:"cap",     t:"Cap/Hut + Sonnenbrille" },

@@ -40,8 +40,7 @@ const PLAN = [
       { t:"13:00", txt:"Mittag: ICONSIAM ist nur 750 m zu Fuß — Sook-Siam-Foodcourt im EG." },
       { t:"15:00", txt:"Kurz zurück ins Hotel ODER direkt gemütlich rüber zur Altstadt (15:45 Bolt)." },
       { t:"16:30", txt:"Golden Mount: 340 Stufen, Abendlicht über der Altstadt, Eintritt ~100 ฿." },
-      { t:"18:00", txt:"Rajadamnern Muay Thai — sonntags beginnen die Kämpfe früher (ab 17/18 Uhr). Ticket vorab auf rajadamnern.com (ab ~700 ฿)." },
-      { t:"21:00", txt:"Bolt 10 Min nach Chinatown: Neon-Schlucht + Garküchen, mit 400 ฿ quer durchgegessen. Sonntags ist alles offen." }
+      { t:"18:30", txt:"Bolt 10 Min nach Chinatown — heute in Ruhe: Neon-Schlucht und Garküchen, mit 400 ฿ quer durchgegessen. Sonntags ist alles offen, und du hast den ganzen Abend statt nur zwei Stunden." }
     ],
     note:"Eine Anfahrt, drei Highlights — die beste Route der ganzen Reise. Rückweg Bolt ~250 ฿." },
 

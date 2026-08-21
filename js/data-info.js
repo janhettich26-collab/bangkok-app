@@ -46,7 +46,6 @@ const INFO = {
     { id:"checkin", txt:"Lufthansa <a href='https://www.lufthansa.com/de/de/online-check-in' target='_blank' rel='noopener'>Online-Check-in</a> (öffnet 23 h vorher)", due:"26.08. abends" },
     { id:"elefant", txt:"Elefanten-Park buchen: Halbtag OHNE Transfer, Do 03.09. 9 Uhr (Spots → Ausflüge)", due:"jetzt" },
     { id:"cruise", txt:"Dinner-Cruise buchen: 18-Uhr-Slot, Do 03.09. (Spots → Ausflüge)", due:"jetzt" },
-    { id:"rajadamnern", txt:"Muay-Thai-Ticket für So 30.08. auf rajadamnern.com buchen", due:"vor Abflug" },
     { id:"shooting", txt:"Foto-Shooting Sa 05.09. Golden Hour anfragen (TripAdvisor: The Photo Experience)", due:"diese Woche" },
     { id:"spaform", txt:"Oriental Spa: Wellness-Intake-Form online ausfüllen (Link in der Bestätigungs-Mail vom 14.08.)", due:"vor Abflug" },
     { id:"spapay", txt:"Oriental Spa: Payment-Link bezahlen — kommt am 28.08. per Mail (sichert den Termin!)", due:"28.08." },
