@@ -190,6 +190,107 @@
   }
   renderPlan();
 
+  // ————— Termine & Buchungen —————
+  const BK_KEY = "bkk_bookings";
+  const bkState = () => JSON.parse(localStorage.getItem(BK_KEY) || "{}");
+  let bkFilter = "todo";
+
+  const BK_STATUS = {
+    fix:    { label: "gebucht",      cls: "ok"   },
+    offen:  { label: "noch buchen",  cls: "todo" },
+    vorort: { label: "vor Ort",      cls: "neutral" }
+  };
+
+  function bkDone(b, st) {
+    return b.status === "fix" ? true : !!st[b.id];
+  }
+
+  function renderBookings() {
+    const st = bkState();
+    const openItems = BOOKINGS.filter(b => b.status === "offen");
+    const done = openItems.filter(b => st[b.id]).length;
+    document.getElementById("bk-done").textContent = done;
+    document.getElementById("bk-total").textContent = "/" + openItems.length;
+    document.getElementById("bk-bar").style.width =
+      (openItems.length ? Math.round(done / openItems.length * 100) : 100) + "%";
+
+    const counts = {
+      todo:   openItems.filter(b => !st[b.id]).length,
+      alle:   BOOKINGS.length,
+      fix:    BOOKINGS.filter(b => b.status === "fix").length,
+      vorort: BOOKINGS.filter(b => b.status === "vorort").length
+    };
+    const FILTERS = [
+      { k: "todo",   t: "Noch zu tun" },
+      { k: "alle",   t: "Alles" },
+      { k: "fix",    t: "Steht fix" },
+      { k: "vorort", t: "Vor Ort" }
+    ];
+    document.getElementById("bk-chips").innerHTML = FILTERS.map(f =>
+      '<button class="chip' + (bkFilter === f.k ? " active" : "") + '" data-bkf="' + f.k + '">' +
+      f.t + ' <i>' + counts[f.k] + '</i></button>').join("");
+
+    // Sortierschluessel: Datum + Uhrzeit numerisch (sonst stuende "13:30" vor "9:00")
+    const bkKey = b => {
+      const m = b.time.match(/(\d{1,2}):(\d{2})/);
+      return b.date + (m ? String(m[1]).padStart(2, "0") + m[2] : "9999");
+    };
+    let list = BOOKINGS.slice().sort((a, b) => bkKey(a).localeCompare(bkKey(b)));
+    if (bkFilter === "todo")   list = list.filter(b => b.status === "offen" && !st[b.id]);
+    if (bkFilter === "fix")    list = list.filter(b => b.status === "fix");
+    if (bkFilter === "vorort") list = list.filter(b => b.status === "vorort");
+
+    const wrap = document.getElementById("bk-list");
+    if (!list.length) {
+      wrap.innerHTML = '<div class="card bk-empty">✅ Nichts offen — alles gebucht.</div>';
+    } else {
+      wrap.innerHTML = list.map(b => {
+        const d = b.date.split("-");
+        const stt = BK_STATUS[b.status];
+        const checked = bkDone(b, st);
+        return '<details class="card bk' + (checked ? " is-done" : "") + '">' +
+          '<summary>' +
+            '<span class="bk-ico">' + b.emoji + '</span>' +
+            '<div class="bk-head">' +
+              '<span class="bk-when">' + d[2] + "." + d[1] + ". · " + b.time + '</span>' +
+              '<b class="bk-title">' + b.title + '</b>' +
+              '<span class="bk-where">' + b.where + '</span>' +
+            '</div>' +
+            '<span class="pill ' + stt.cls + '">' + stt.label + '</span>' +
+          '</summary>' +
+          '<div class="bk-body">' +
+            '<div class="bk-price">💶 ' + b.price + '</div>' +
+            '<ul class="bk-info">' + b.info.map(x => "<li>" + x + "</li>").join("") + '</ul>' +
+            (b.warn ? '<div class="bk-warn">⚠️ ' + b.warn + '</div>' : "") +
+            (b.ref ? '<div class="bk-ref">🔒 ' + b.ref + '</div>' : "") +
+            '<div class="docs-grid bk-actions">' +
+              (b.phone ? '<a class="btn" href="tel:' + b.phone + '">📞 Anrufen</a>' : "") +
+              (b.links || []).map(l => '<a class="btn ghost" href="' + l.u + '" target="_blank" rel="noopener">' + l.t + '</a>').join("") +
+            '</div>' +
+            (b.status === "offen"
+              ? '<label class="bk-check"><input type="checkbox" data-bk="' + b.id + '"' + (checked ? " checked" : "") + '> Erledigt — ist gebucht</label>'
+              : "") +
+          '</div></details>';
+      }).join("");
+    }
+
+    wrap.querySelectorAll("input[data-bk]").forEach(cb => {
+      cb.addEventListener("change", () => {
+        const d = bkState();
+        if (cb.checked) d[cb.dataset.bk] = 1; else delete d[cb.dataset.bk];
+        localStorage.setItem(BK_KEY, JSON.stringify(d));
+        renderBookings();
+      });
+    });
+    document.querySelectorAll("[data-bkf]").forEach(btn => {
+      btn.addEventListener("click", () => { bkFilter = btn.dataset.bkf; renderBookings(); });
+    });
+  }
+  document.getElementById("bk-reset").addEventListener("click", () => {
+    if (confirm("Alle Haken bei den Buchungen entfernen?")) { localStorage.removeItem(BK_KEY); renderBookings(); }
+  });
+  renderBookings();
+
   // ————— Karte —————
   function initMap() {
     const map = L.map("map", { zoomControl: false }).setView([HOTEL.lat, HOTEL.lng], 11);

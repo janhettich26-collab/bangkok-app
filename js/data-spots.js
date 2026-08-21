@@ -21,11 +21,6 @@ function gm(q){ return "https://www.google.com/maps/search/?api=1&query=" + enco
 
 const SPOTS = [
   // ————— VOR DER TÜR —————
-  { cat:"tuer", name:"Jitmuangnon Muay Thai Gym", emoji:"🥊", lat:13.8340, lng:100.5120,
-    bolt:"5 Min", fare:"60–80 ฿", hours:"Tägl. 6–19 Uhr", price:"Einzeltraining 500–800 ฿/Std.",
-    desc:"Echtes Profi-Camp, 1 km vom Hotel — hier trainieren Rodtang & Panpayak. Ausländer dürfen mitmachen: Laufen, Seil, Pratzenrunden, Sandsack, Clinch.",
-    tips:["Nachmittagseinheit ist die beste","Für dich beruflich wie privat der beste Programmpunkt der Liste"],
-    warn:null, book:["Einfach hinlaufen oder vorher anrufen","Bar zahlen"], gmaps:gm("Jitmuangnon Muay Thai Gym Nonthaburi") },
   { cat:"tuer", name:"CampYard Bar", emoji:"🎸", lat:13.8320, lng:100.5200,
     bolt:"5 Min", fare:"60 ฿", hours:"Tägl. 17–24 Uhr",
     desc:"Retro-Bar mit Thai-Livemusik, 1 km vom Hotel. Stylisch, gute Stimmung — die seltene Bar in Nonthaburi.",

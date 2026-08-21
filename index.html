@@ -103,6 +103,24 @@
   </div>
 </section>
 
+<!-- TERMINE -->
+<section class="panel" id="panel-termine">
+  <div class="pack-top">
+    <div class="pack-head">
+      <div>
+        <div class="eyebrow">Was noch zu buchen ist</div>
+        <div class="pack-count"><b id="bk-done">0</b><span id="bk-total">/0</span></div>
+      </div>
+      <button class="btn ghost small" id="bk-reset" type="button">Zurücksetzen</button>
+    </div>
+    <div class="bar big"><i id="bk-bar"></i></div>
+    <p class="pack-sub">Fix gebucht · noch zu buchen · vor Ort zahlen — alles mit Preis, Anfahrt und Telefonnummer</p>
+  </div>
+  <div class="chips" id="bk-chips"></div>
+  <div id="bk-list"></div>
+  <p class="docs-warn" style="margin:14px 2px">🔒 Buchungsnummern und Referenzen stehen absichtlich nicht hier, sondern verschlüsselt unter <b>Info → Meine Reisedaten</b>. Diese App liegt in einem öffentlichen Repo.</p>
+</section>
+
 <!-- PACKEN -->
 <section class="panel" id="panel-packen">
   <div class="pack-top">
@@ -177,6 +195,7 @@
   <button data-tab="spots"><span class="ico">🗺️</span>Spots</button>
   <button data-tab="plan"><span class="ico">📅</span>Plan</button>
   <button data-tab="karte"><span class="ico">📍</span>Karte</button>
+  <button data-tab="termine"><span class="ico">🎟️</span>Termine</button>
   <button data-tab="packen"><span class="ico">🧳</span>Packen</button>
   <button data-tab="sprache"><span class="ico">💬</span>Sprache</button>
   <button data-tab="info"><span class="ico">🛡️</span>Info</button>
@@ -185,6 +204,7 @@
 <script src="vendor/leaflet/leaflet.js"></script>
 <script src="js/data-spots.js"></script>
 <script src="js/data-plan.js"></script>
+<script src="js/data-buchungen.js"></script>
 <script src="js/data-info.js"></script>
 <script src="js/data-phrases.js"></script>
 <script src="js/data-pack.js"></script>

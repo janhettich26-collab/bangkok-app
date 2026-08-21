@@ -76,16 +76,16 @@ const PLAN = [
     ],
     note:"Kompletter Tag ohne lange Anfahrten — alles unter 45 Min. Bars-Abend Nr. 2,5: Musik statt Promille." },
 
-  { date:"2026-09-03", wd:"Do", title:"Muay Thai & Sunset-Cruise", icon:"🥊",
+  { date:"2026-09-03", wd:"Do", title:"Ruhetag & Sunset-Cruise", icon:"🛳️",
     blocks:[
-      { t:"vorm.", txt:"Ausschlafen, Pool, Wäsche in die Maschine." },
-      { t:"13:30", txt:"Jitmuangnon Gym (1 km zu Fuß/Bolt): Einzeltraining mit Trainer 500–800 ฿/Std., echtes Profi-Camp. Früher als sonst, damit der Abend Luft hat." },
-      { t:"15:30", txt:"Zurück, duschen, Pause." },
+      { t:"vorm.", txt:"Ausschlafen, Pool, Sauna, Wäsche in die Maschine. Nach drei vollen Tagen ist ein halber Leerlauf-Tag kein Luxus, sondern Absicht." },
+      { t:"mittags", txt:"Hähnchen-Reis gegenüber oder Big C nebenan — kurze Wege, nichts planen." },
+      { t:"nachm.", txt:"Optional: Owl Market oder CampYard um die Ecke, wenn dir langweilig wird. Sonst Rooftop." },
       { t:"17:15", txt:"Bolt nach Asiatique The Riverfront (40 Min, 260–340 ฿)." },
       { t:"18:00–20:00", txt:"5-Sterne-Cruise, 18-Uhr-Slot = Sonnenuntergang UND Nachtlichter: Wat Arun, Grand Palace, ICONSIAM vom Wasser. Ohne Alk easy — Dinner-Buffet & Saft." },
       { t:"20:15", txt:"Noch eine Runde Asiatique-Nachtmarkt, dann Bolt heim." }
     ],
-    note:"Cruise vorab mit Datum buchen (App → Spots → Ausflüge, 18-Uhr-Slot). Das Gym ist 1 km weg — deshalb passt Training und Cruise am selben Tag." },
+    note:"Cruise vorab mit Datum buchen (Reiter Termine, 18-Uhr-Slot)." },
 
   { date:"2026-09-04", wd:"Fr", title:"Ayutthaya auf eigene Faust", icon:"🏛️",
     blocks:[
