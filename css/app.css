@@ -469,3 +469,14 @@ button, input, a { -webkit-tap-highlight-color: rgba(232,176,75,.15); }
 }
 .day.all-done > summary .d-title { opacity: .5; }
 .d-reset { margin-top: 12px; }
+
+/* ————— Karte: Filter, Werkzeuge, Performance ————— */
+#map-chips { margin: 10px 0 2px; }
+#map-chips .chip i { font-style: normal; opacity: .6; font-size: 11px; margin-left: 3px; }
+.map-tools { display: flex; gap: 8px; margin: 8px 0 10px; }
+.map-tools .btn { flex: 1; text-align: center; }
+#map { contain: layout paint; }
+.pin.me { background: #57A8FF; border-color: #fff; font-size: 15px; }
+.leaflet-container { background: #10141d; }
+.leaflet-popup-content { font-size: 13px; line-height: 1.5; }
+.leaflet-popup-content b { font-size: 14px; }

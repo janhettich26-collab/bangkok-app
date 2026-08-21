@@ -86,19 +86,19 @@ const BOOKINGS = [
   { id:"nachtmarkt", grp:"Vor Ort", status:"vorort", emoji:"🌃", date:"2026-08-28", time:"19:30",
     title:"Jodd Fairs Ratchada — Ankunftsabend", where:"129 Ratchadaphisek Rd, Din Daeng · MRT Thailand Cultural Centre, Ausgang 4",
     price:"Eintritt frei · Abendessen 200–400 ฿",
-    info:["Täglich 17–1 Uhr offen, rund 800 Stände, Schwerpunkt Essen — läuft also auch am Ankunftstag","Anfahrt: MRT ab Yaek Tiwanon → Tao Poon → Thailand Cultural Centre, ~45 Min, ~42 ฿. Mit Bolt 30 Min, 200–260 ฿","Vor 19 Uhr da sein: freie Tische, kurze Schlange am Leng Saap (Schweine-Rückgrat-Turm, ab 180 ฿)","Gleich nebenan der Train Night Market Ratchada (Vintage, Container-Bars, seit März 2026 wieder auf) — 5 Min zu Fuß","Bargeld oder QR mitnehmen, Kartenzahlung ist die Ausnahme"],
+    info:["Täglich 17–1 Uhr offen, rund 800 Stände, Schwerpunkt Essen — läuft also auch am Ankunftstag","Anfahrt: MRT ab Yaek Tiwanon → Tao Poon → Thailand Cultural Centre, ~45 Min, 50–71 ฿ (Purple + Blue). Mit Bolt 30 Min, 200–260 ฿","Vor 19 Uhr da sein: freie Tische, kurze Schlange am Leng Saap (Schweine-Rückgrat-Turm, ab 180 ฿)","Gleich nebenan der Train Night Market Ratchada (Vintage, Container-Bars, seit März 2026 wieder auf) — 5 Min zu Fuß","Bargeld oder QR mitnehmen, Kartenzahlung ist die Ausnahme"],
     warn:"Der große Markt mit 15.000 Ständen ist Chatuchak — der läuft NUR Sa + So (9–18 Uhr). Freitagabends ist dort nur Großhandel mit wenigen Ständen. Chatuchak steht deshalb am Sa 29.08. · Und: „Jodd Fairs Rama 9\" gibt es seit Januar 2025 nicht mehr, im Navi immer „Jodd Fairs Ratchada\" eingeben.",
     links:[{t:"📍 In Google Maps",u:"https://www.google.com/maps/search/?api=1&query=Jodd%20Fairs%20Ratchada%2C%20129%20Ratchadaphisek%20Rd%2C%20Din%20Daeng%2C%20Bangkok"}] },
 
   { id:"chatuchak", grp:"Vor Ort", status:"vorort", emoji:"🧺", date:"2026-08-29", time:"9:30–13:00",
-    title:"Chatuchak Weekend Market", where:"MRT Chatuchak Park · ab Yaek Tiwanon ~35 Min, ~40 ฿",
+    title:"Chatuchak Weekend Market", where:"MRT Chatuchak Park · ab Yaek Tiwanon ~35 Min, 40–60 ฿",
     price:"Eintritt frei",
     info:["Der volle Markt läuft NUR Sa + So von 9 bis 18 Uhr — alle 27 Sektionen, 15.000 Stände","Freitagabend ist dort nur Großhandel (18–24 Uhr, wenige Stände) und Mi/Do nur die Pflanzen-Sektion","Feilschen: Startpreis minus 30–40 %","Rucksack nach vorne tragen"] },
 
   { id:"palast", grp:"Vor Ort", status:"vorort", emoji:"👑", date:"2026-08-31", time:"10:00",
     title:"Grand Palace + Wat Pho + Wat Arun", where:"Altstadt · Anreise per Expressboot ab Nonthaburi Pier",
-    price:"Grand Palace 500 ฿ · Wat Pho 300 ฿ · Fähre Wat Arun 5 ฿",
-    info:["8:15 Bolt zum Nonthaburi Pier (10 Min), dann Expressboot flussabwärts (~20 ฿, ~1 Std.) — die schönste Anreise der Stadt","Dresscode: Schultern und Knie bedeckt, sonst kommst du nicht rein","Wat Pho: liegender Buddha + Thai-Massage in der Original-Tempelmassageschule"],
+    price:"Grand Palace 500 ฿ · Wat Pho 300 ฿ · Wat Arun 200 ฿ + 5 ฿ Fähre = 1.005 ฿",
+    info:["8:15 Bolt zum Nonthaburi Pier (10 Min), dann Expressboot flussabwärts (~1 Std.): orange 18 ฿, gelb 23 ฿, rot 32 ฿ — an Bord zahlen. Die schönste Anreise der Stadt. Nach 19 Uhr fahren die Expressboote nicht mehr","Dresscode am Palast ist der strengste des Landes: lange Hose, Oberteil MIT Ärmeln, geschlossene Schuhe oder Sandalen mit Fersenriemen. Shorts, ärmellos, zerrissene Jeans, Flip-Flops = abgewiesen. Sarong-Verleih am Eingang gegen ~200 ฿ Pfand","Kassenschluss Palast 15:30, Gelände bis 16:30 — vormittags hin. Das 500-฿-Ticket gilt 7 Tage und deckt Wat Phra Kaew und das Queen-Sirikit-Textilmuseum mit ab","Wat Pho (8–18:30): liegender Buddha, Wasserflasche im Ticket, dazu Thai-Massage in der Original-Tempelmassageschule — 30 Min ab 340 ฿, 1 Std. ~520 ฿"],
     warn:"„Der Palast ist heute geschlossen\" vor dem Tor ist IMMER die Tuk-Tuk-Masche. Er ist offen — einfach durchgehen." },
 
   { id:"klong", grp:"Vor Ort", status:"vorort", emoji:"🛶", date:"2026-09-02", time:"7:00",
@@ -109,6 +109,6 @@ const BOOKINGS = [
 
   { id:"ayutthaya", grp:"Vor Ort", status:"vorort", emoji:"🏛️", date:"2026-09-04", time:"9:05",
     title:"Ayutthaya per Zug", where:"ab Krung Thep Aphiwat (Bang Sue), MRT-Anschluss",
-    price:"Zug ~50 ฿ je Strecke · Sammelticket Ruinen 220 ฿ · Roller ~250 ฿",
-    info:["Zug 9003 um 9:05 → 10:20 Ankunft Ayutthaya. Ticket NUR am Schalter, kein Online-Verkauf","Vor Ort Roller (~250 ฿) oder Tuk-Tuk-Pauschale (4 Std. 800–1.000 ฿ — VORHER festmachen)","Runde: Wat Mahathat (Buddha-Kopf im Baum), Wat Phra Si Sanphet, Wat Chaiwatthanaram","Rückzug am Nachmittag — Zeit morgens am Schalter erfragen","Komplett rund 600 ฿ statt 30+ € für eine Tour — und du hängst an keiner Gruppe"] }
+    price:"Zug 3. Klasse ~70 ฿ je Strecke · Sammelticket Ruinen 220 ฿ · Roller ~250 ฿",
+    info:["Hin: Rapid 111 um 7:50 oder Express 75 um 8:45, rund 1 Std. Zurück: Rapid 112 um 16:04 oder Rapid 136 um 16:41. Ticket am Schalter, Rückfahrt gleich mitkaufen — und die Zeiten dort bestätigen lassen","Vor Ort Roller (~250 ฿) oder Tuk-Tuk-Pauschale (4 Std. 800–1.000 ฿ — VORHER festmachen)","Runde: Wat Mahathat (Buddha-Kopf im Baum), Wat Phra Si Sanphet, Wat Chaiwatthanaram","Rückzug am Nachmittag — Zeit morgens am Schalter erfragen","Komplett rund 600 ฿ statt 30+ € für eine Tour — und du hängst an keiner Gruppe"] }
 ];

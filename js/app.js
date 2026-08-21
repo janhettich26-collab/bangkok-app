@@ -7,10 +7,16 @@
   const panels = document.querySelectorAll(".panel");
   let mapInited = false;
 
+  let mapObj = null;
   function showTab(id) {
     panels.forEach(p => p.classList.toggle("active", p.id === "panel-" + id));
     tabs.forEach(b => b.classList.toggle("active", b.dataset.tab === id));
-    if (id === "karte" && !mapInited) { mapInited = true; initMap(); }
+    if (id === "karte") {
+      // Leaflet misst die Groesse falsch, solange das Panel noch display:none war.
+      // Deshalb erst nach dem Layout initialisieren und danach jedes Mal neu vermessen.
+      if (!mapInited) { mapInited = true; requestAnimationFrame(() => requestAnimationFrame(initMap)); }
+      else if (mapObj) { requestAnimationFrame(() => mapObj.invalidateSize()); }
+    }
     window.scrollTo(0, 0);
   }
   tabs.forEach(b => b.addEventListener("click", () => showTab(b.dataset.tab)));
@@ -82,7 +88,7 @@
 
   const PRICE_FEEL = [
     ["🍜 Streetfood-Gericht", "45–70 ฿ (touristisch 80–150)"], ["🍺 Bier 7-Eleven / Bar", "45–70 ฿ / 100–250 ฿"],
-    ["🚇 MRT-Fahrt", "17–44 ฿"], ["🚗 Bolt in die Stadt (~12 km)", "180–320 ฿"],
+    ["🚇 MRT-Fahrt", "17–45 ฿ · mit Umstieg bis 71 ฿"], ["🚗 Bolt in die Stadt (~12 km)", "180–320 ฿"],
     ["🚗 Bolt nachts zurück", "300–500 ฿"], ["💆 2 Std. Thai-Massage", "650–1.000 ฿"],
     ["💆 Thai-Massage 2 Std.", "600–800 ฿"], ["✈️ Taxi Flughafen", "350–600 ฿ inkl. Maut"],
     ["🥤 Wasser 7-Eleven", "10–15 ฿"], ["🍢 Chinatown satt essen", "250–500 ฿"]
@@ -338,25 +344,107 @@
   renderBookings();
 
   // ————— Karte —————
+  let markerLayers = {};      // Kategorie -> LayerGroup
+  let mapFilter = null;       // null = alle
+  let meMarker = null;
+
+  function popupHtml(s) {
+    const zeile = [];
+    if (s.bolt) zeile.push("🚗 " + s.bolt + (s.fare && s.fare !== "—" ? " · " + s.fare : ""));
+    if (s.mrt) zeile.push("🚇 " + s.mrt);
+    if (s.hours) zeile.push("🕒 " + s.hours);
+    if (s.price) zeile.push("💶 " + s.price);
+    return "<b>" + s.emoji + " " + s.name + "</b>" +
+      (zeile.length ? "<br>" + zeile.join("<br>") : "") +
+      "<br><a href='" + s.gmaps + "' target='_blank' rel='noopener'>Fotos & Navigation</a>";
+  }
+
   function initMap() {
-    const map = L.map("map", { zoomControl: false }).setView([HOTEL.lat, HOTEL.lng], 11);
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 19, attribution: "© OpenStreetMap"
+    const map = L.map("map", {
+      zoomControl: false,
+      preferCanvas: true,
+      tap: false,              // verhindert den Doppel-Tap-Bug in iOS-Safari
+      zoomSnap: 0.5
+    }).setView([HOTEL.lat, HOTEL.lng], 11);
+    mapObj = map;
+
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      updateWhenIdle: true,    // waehrend des Wischens keine neuen Kacheln anfordern
+      updateWhenZooming: false,
+      keepBuffer: 1,
+      crossOrigin: true,
+      attribution: "© OpenStreetMap"
     }).addTo(map);
     L.control.zoom({ position: "bottomright" }).addTo(map);
 
     const hotelIcon = L.divIcon({ className: "", html: '<div class="pin hotel">★</div>', iconSize: [30, 30], iconAnchor: [15, 15] });
-    L.marker([HOTEL.lat, HOTEL.lng], { icon: hotelIcon }).addTo(map)
+    L.marker([HOTEL.lat, HOTEL.lng], { icon: hotelIcon, zIndexOffset: 1000 }).addTo(map)
       .bindPopup("<b>★ " + HOTEL.name + "</b><br>Dein Hotel · MRT Yaek Tiwanon gegenüber<br><a href='" + HOTEL.gmaps + "' target='_blank' rel='noopener'>In Google Maps öffnen</a>");
 
+    Object.keys(CATS).forEach(k => { markerLayers[k] = L.layerGroup().addTo(map); });
     SPOTS.forEach(s => {
       const c = CATS[s.cat].color;
       const icon = L.divIcon({ className: "", html: '<div class="pin" style="--c:' + c + '">' + s.emoji + "</div>", iconSize: [26, 26], iconAnchor: [13, 13] });
-      L.marker([s.lat, s.lng], { icon }).addTo(map)
-        .bindPopup("<b>" + s.emoji + " " + s.name + "</b><br>" + (s.bolt ? "🚗 " + s.bolt + (s.fare && s.fare !== "—" ? " · " + s.fare : "") + "<br>" : "") +
-          "<a href='" + s.gmaps + "' target='_blank' rel='noopener'>Fotos & Navigation</a>");
+      L.marker([s.lat, s.lng], { icon }).bindPopup(popupHtml(s)).addTo(markerLayers[s.cat]);
     });
+
+    buildMapChips();
+
+    // Groesse nach dem Einblenden nachmessen — sonst bleibt die Karte grau
+    const fix = () => map.invalidateSize({ animate: false });
+    setTimeout(fix, 60); setTimeout(fix, 400);
+    window.addEventListener("resize", fix);
+    window.addEventListener("orientationchange", () => setTimeout(fix, 250));
   }
+
+  function buildMapChips() {
+    const wrap = document.getElementById("map-chips");
+    if (!wrap) return;
+    const counts = {};
+    SPOTS.forEach(s => { counts[s.cat] = (counts[s.cat] || 0) + 1; });
+    wrap.innerHTML = '<button class="chip' + (mapFilter === null ? " active" : "") + '" data-mcat="" style="--c:var(--gold)">Alle <i>' + SPOTS.length + "</i></button>" +
+      Object.keys(CATS).map(k => '<button class="chip' + (mapFilter === k ? " active" : "") + '" data-mcat="' + k + '" style="--c:' + CATS[k].color + '">' +
+        CATS[k].label + " <i>" + (counts[k] || 0) + "</i></button>").join("");
+    wrap.querySelectorAll("[data-mcat]").forEach(b => b.addEventListener("click", () => {
+      mapFilter = b.dataset.mcat || null;
+      Object.keys(markerLayers).forEach(k => {
+        const on = mapFilter === null || mapFilter === k;
+        if (on) mapObj.addLayer(markerLayers[k]); else mapObj.removeLayer(markerLayers[k]);
+      });
+      buildMapChips();
+      if (mapFilter) {
+        const pts = SPOTS.filter(s => s.cat === mapFilter).map(s => [s.lat, s.lng]).concat([[HOTEL.lat, HOTEL.lng]]);
+        mapObj.fitBounds(L.latLngBounds(pts).pad(0.15), { animate: false });
+      } else {
+        mapObj.setView([HOTEL.lat, HOTEL.lng], 11, { animate: false });
+      }
+    }));
+  }
+
+  const btnMe = document.getElementById("map-me");
+  if (btnMe) btnMe.addEventListener("click", () => {
+    if (!navigator.geolocation || !mapObj) return;
+    btnMe.textContent = "📍 suche …";
+    navigator.geolocation.getCurrentPosition(pos => {
+      const ll = [pos.coords.latitude, pos.coords.longitude];
+      if (meMarker) mapObj.removeLayer(meMarker);
+      meMarker = L.marker(ll, { icon: L.divIcon({ className: "", html: '<div class="pin me">🧍</div>', iconSize: [28, 28], iconAnchor: [14, 14] }), zIndexOffset: 1200 })
+        .addTo(mapObj).bindPopup("Hier bist du").openPopup();
+      mapObj.setView(ll, 15);
+      btnMe.textContent = "📍 Wo bin ich";
+    }, () => { btnMe.textContent = "📍 Standort aus"; setTimeout(() => btnMe.textContent = "📍 Wo bin ich", 2500); },
+      { enableHighAccuracy: true, timeout: 8000 });
+  });
+
+  const btnAll = document.getElementById("map-all");
+  if (btnAll) btnAll.addEventListener("click", () => {
+    if (!mapObj) return;
+    mapFilter = null;
+    Object.keys(markerLayers).forEach(k => mapObj.addLayer(markerLayers[k]));
+    buildMapChips();
+    mapObj.setView([HOTEL.lat, HOTEL.lng], 11, { animate: false });
+  });
 
   // ————— Radar (Entfernungsübersicht wie die Original-Karte) —————
   const segBtns = document.querySelectorAll(".seg button");

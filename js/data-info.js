@@ -20,8 +20,7 @@ const INFO = {
     "Tickets & eSIM nur über offizielle Seiten — keine Telegram/eBay/Instagram-Codes.",
     "Roller mieten: VORHER Fotos von jedem Kratzer, sonst kommt die „Schadensforderung“.",
     "Taxi/Sammeltaxi ohne Taxameter: Preis VOR dem Einsteigen festmachen.",
-    "Edelstein-, Anzug- und „Government Shop“-Einladungen: weitergehen. Immer.",
-    "Tattoo: Nadel muss vor deinen Augen aus versiegelter Packung kommen — sonst gehen."
+    "Edelstein-, Anzug- und „Government Shop“-Einladungen: weitergehen. Immer."
   ],
 
   unterwegs: [
@@ -36,7 +35,7 @@ const INFO = {
     { icon:"💳", title:"Karte", txt:"In Malls & Hotels ok, Streetfood & Märkte = Bargeld. Am Terminal in BAHT zahlen (DCC ablehnen)." },
     { icon:"💵", title:"Einreise-Nachweis", txt:"20.000 ฿ (~550 €) Mittel pro Person können bei der Einreise verlangt werden (2026 wieder aktiver erinnert, selten geprüft). Deine ~1.000 € Bargeld decken das doppelt — einfach vorzeigbar dabei haben, kein Herkunftsnachweis nötig." },
     { icon:"🛂", title:"Bargeld-Grenzen", txt:"Anmeldepflicht beim Zoll erst ab 10.000 € (EU-Ausreise) bzw. ~20.000 $ (Thailand-Einreise) — mit ~1.000 € brauchst du also gar nichts anmelden." },
-    { icon:"🙏", title:"Trinkgeld", txt:"Kein Muss. Restaurant: aufrunden/~10 %. Massage: 50–100 ฿. Bolt: nichts nötig. Tattoo: ~10 % bei guter Arbeit." }
+    { icon:"🙏", title:"Trinkgeld", txt:"Kein Muss. Restaurant: aufrunden/~10 %. Massage: 50–100 ฿ (im Oriental Spa 700–800 ฿). Bolt: nichts nötig. Garküche/Foodcourt: gar nichts." }
   ],
 
   checks: [
@@ -44,9 +43,10 @@ const INFO = {
     { id:"tdac", txt:"TDAC ausfüllen — <a href='https://tdac.immigration.go.th' target='_blank' rel='noopener'>tdac.immigration.go.th</a> (NUR diese Seite!), QR als Screenshot sichern", due:"25.–26.08." },
     { id:"transfer", txt:"Transfer-Abholzeit checken: <a href='https://www.loveholidays.de/' target='_blank' rel='noopener'>loveholidays → Meine Buchung</a>", due:"26.08." },
     { id:"checkin", txt:"Lufthansa <a href='https://www.lufthansa.com/de/de/online-check-in' target='_blank' rel='noopener'>Online-Check-in</a> (öffnet 23 h vorher)", due:"26.08. abends" },
-    { id:"elefant", txt:"Elefanten-Park buchen: Halbtag OHNE Transfer, Do 03.09. 9 Uhr (Spots → Ausflüge)", due:"jetzt" },
-    { id:"cruise", txt:"Dinner-Cruise buchen: 18-Uhr-Slot, Do 03.09. (Spots → Ausflüge)", due:"jetzt" },
-    { id:"shooting", txt:"Foto-Shooting Sa 05.09. Golden Hour anfragen (TripAdvisor: The Photo Experience)", due:"diese Woche" },
+    { id:"elefant", txt:"Elefanten-Park buchen: Halbtag Vormittag OHNE Transfer, <b>Di 01.09., 9 Uhr</b> — Preis beim Park (2.200 ฿) mit GetYourGuide vergleichen (Reiter Termine)", due:"jetzt" },
+    { id:"cruise", txt:"Dinner-Cruise buchen: 18-Uhr-Slot, <b>Do 03.09.</b> (Reiter Termine)", due:"jetzt" },
+    { id:"shooting", txt:"Foto-Shooting <b>Sa 05.09.</b> Golden Hour anfragen (TripAdvisor: The Photo Experience)", due:"diese Woche" },
+    { id:"healthland", txt:"Health Land Asoke anrufen für <b>Di 01.09., 13:30</b> — +66 2 261 1110 (online braucht Konto + Kartenzahlung vorab)", due:"diese Woche" },
     { id:"spaform", txt:"Oriental Spa: Wellness-Intake-Form online ausfüllen (Link in der Bestätigungs-Mail vom 14.08.)", due:"vor Abflug" },
     { id:"spapay", txt:"Oriental Spa: Payment-Link bezahlen — kommt am 28.08. per Mail (sichert den Termin!)", due:"28.08." },
     { id:"esim", txt:"eSIM (dtac Happy Tourist via Airalo) daheim im WLAN installieren, deaktiviert lassen", due:"vor Abflug" },
