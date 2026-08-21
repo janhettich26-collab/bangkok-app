@@ -17,6 +17,8 @@
 </head>
 <body>
 
+<div class="update-bar" id="update-bar" hidden></div>
+
 <header>
   <span class="thai">กรุงเทพฯ</span>
   <h1>Bangkok 2026</h1>
@@ -211,6 +213,13 @@
   <details class="card sec">
     <summary><span class="sec-ico">👕</span><div class="sec-t"><b>Regeln & Dresscode</b><i>Tempel, Clubs, No-Gos</i></div><span class="chev">›</span></summary>
     <div class="sec-body dress"><ul id="dress-list"></ul></div>
+  </details>
+  <details class="card sec">
+    <summary><span class="sec-ico">⚙️</span><div class="sec-t"><b>App-Version</b><i>Stand prüfen und neu laden</i></div><span class="chev">›</span></summary>
+    <div class="sec-body">
+      <p class="hint" style="padding:6px 0 10px">Diese App läuft in der Version <b id="app-version">…</b>. Wenn etwas nicht so aussieht wie beschrieben, hängt das Handy meist auf einer alten Fassung — dann hier neu laden. Deine Haken, die Packliste und die entsperrten Reisedaten bleiben dabei erhalten.</p>
+      <button class="btn" id="app-reload" type="button">🔄 App neu laden</button>
+    </div>
   </details>
 </section>
 

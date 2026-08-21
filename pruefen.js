@@ -73,6 +73,12 @@ if (/rainviewer/i.test(appjs) || /rvHost/.test(appjs)) {
     fehler.push("Radar-Ebene ohne maxNativeZoom: 7 — ab Zoom 8 kommen graue Kacheln 'Zoom Level Not Supported'");
 }
 
+// 8) Version in sw.js und app.js muss uebereinstimmen, sonst meldet die App faelschlich ein Update
+const swv = (fs.readFileSync(__dirname + "/sw.js", "utf8").match(/bkk-(v\d+)/) || [])[1];
+const apv = (fs.readFileSync(__dirname + "/js/app.js", "utf8").match(/APP_VERSION = "(v\d+)"/) || [])[1];
+if (!swv || !apv) fehler.push("Version nicht gefunden (sw.js oder app.js)");
+else if (swv !== apv) fehler.push(`Versionen weichen ab: sw.js hat ${swv}, app.js hat ${apv}`);
+
 console.log(`Plan ${PLAN.length} Tage · ${PLAN.reduce((n,d)=>n+d.blocks.length,0)} Punkte | Termine ${BOOKINGS.length} (${BOOKINGS.filter(b=>b.status==="offen").length} offen) | Spots ${SPOTS.length} | Checkliste ${INFO.checks.length} fest + ${BOOKINGS.filter(b=>b.status==="offen").length} aus Terminen`);
 hinweise.forEach(h => console.log("  Hinweis: " + h));
 if (fehler.length) { console.log("\n❌ " + fehler.length + " Abweichung(en):"); fehler.forEach(f => console.log("   - " + f)); process.exit(1); }

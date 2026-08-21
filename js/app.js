@@ -2,6 +2,8 @@
 (function () {
   "use strict";
 
+  const APP_VERSION = "v35";   // muss zur Version in sw.js passen
+
   let WX = null;   // Live-Wetter: { now:{...}, hours:[...], days:{ "2026-08-30": {...} } } — oben, weil renderPlan es liest
 
   // ————— Tabs —————
@@ -1089,6 +1091,43 @@
   }
   document.getElementById("weather").addEventListener("click", () => fetchWeather(true));
   fetchWeather();
+
+  // ————— Version anzeigen und Updates erkennen —————
+  // Ohne das merkt man nicht, dass das Handy auf einer alten Fassung festhängt.
+  const vEl = document.getElementById("app-version");
+  if (vEl) vEl.textContent = APP_VERSION;
+
+  async function pruefeUpdate() {
+    try {
+      const r = await fetch("sw.js?_=" + Date.now(), { cache: "no-store" });
+      const txt = await r.text();
+      const m = txt.match(/bkk-(v\d+)/);
+      if (m && m[1] !== APP_VERSION) {
+        const b = document.getElementById("update-bar");
+        b.hidden = false;
+        b.innerHTML = "Neue Version <b>" + m[1] + "</b> verfügbar — du hast " + APP_VERSION +
+          '. <button type="button" id="update-go">Jetzt laden</button>';
+        document.getElementById("update-go").addEventListener("click", neuLaden);
+      }
+    } catch (e) { /* offline: dann eben nicht */ }
+  }
+
+  async function neuLaden() {
+    try {
+      if ("caches" in window) {
+        const keys = await caches.keys();
+        await Promise.all(keys.map(k => caches.delete(k)));
+      }
+      if (navigator.serviceWorker) {
+        const regs = await navigator.serviceWorker.getRegistrations();
+        await Promise.all(regs.map(r => r.unregister()));
+      }
+    } catch (e) { /* egal, Hauptsache neu laden */ }
+    location.reload(true);
+  }
+  const btnReload = document.getElementById("app-reload");
+  if (btnReload) btnReload.addEventListener("click", neuLaden);
+  pruefeUpdate();
 
   // ————— Sprache (Deutsch → Englisch, antippen = groß anzeigen) —————
   document.getElementById("phrase-list").innerHTML = PHRASES.map((g, gi) =>
