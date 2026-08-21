@@ -89,19 +89,17 @@ const PLAN = [
     ],
     note:"Action-Tag statt Kanaltour: die Klong-Fahrt und Bang Krachao sind rausgeflogen. Falls du noch mehr willst — Wakeboard am Taco Lake in Bang Na (400 ฿ für den ganzen Tag) liegt an derselben BTS-Linie und öffnet mittwochs um 12 Uhr. ACHTUNG Mahanakhon: bei Sturm sperren sie das Außendeck, Geld gibt es nicht zurück — erst den Himmel anschauen, dann kaufen." },
 
-  { date:"2026-09-03", wd:"Do", title:"Mit Haien tauchen & Sunset-Cruise", icon:"🦈",
+  { date:"2026-09-03", wd:"Do", title:"Shoppen & Sunset-Cruise", icon:"🛒",
     blocks:[
-      { t:"vorm.", txt:"Ausschlafen, aber nicht zu spät — heute wird es besonders. Frühstück im Hotel, leicht essen." },
-      { t:"9:45", txt:"Los nach Siam: MRT Purple bis Tao Poon → Blue bis Si Lom → BTS Sala Daeng → Siam (~60 Min). Oder Bolt in 45–60 Min für 250–330 ฿." },
-      { t:"10:45", txt:"SEA LIFE im Untergeschoss vom Siam Paragon. 15 Minuten vor der Zeit einchecken — wer später kommt, verliert den Platz ohne Erstattung." },
-      { t:"11:00–13:00", txt:"SHARK DIVE: mit Riffhaien und Rochen im großen Becken, ein Profi die ganze Zeit an deiner Seite. Kein Tauchschein nötig, 6.900 ฿. Vorher über LINE @sharkdive oder WhatsApp +66 81 274 4637 buchen — und dabei sagen, dass dein Englisch nicht gut ist, dann organisieren sie eine Übersetzung für die Einweisung." },
-      { t:"13:15", txt:"Mittagessen im selben Haus: Food Court im Untergeschoss vom Paragon. Nach dem Tauchen ordentlich trinken." },
-      { t:"14:15–16:30", txt:"Shopping-Meile direkt vor der Tür: Siam Paragon, Siam Center, Siam Discovery und CentralWorld hängen per Skywalk zusammen. Pass mitnehmen — ab 2.000 ฿ pro Laden gibt es 7 % Steuer zurück." },
-      { t:"16:45", txt:"Zur Cruise: BTS ab Siam bis Saphan Taksin, dann Shuttle-Boot ab Sathorn Pier zum Asiatique (~40 Min)." },
-      { t:"18:00–20:00", txt:"5-Sterne-Cruise, 18-Uhr-Slot = Sonnenuntergang UND Nachtlichter: Wat Arun, Grand Palace, ICONSIAM vom Wasser. Dinner-Buffet dabei." },
+      { t:"vorm.", txt:"Ausschlafen, Pool, Sauna. Hier war der Hai-Tauchgang geplant — den gibt es nicht mehr (siehe Notiz unten). Der Vormittag ist also frei für einen Ersatz." },
+      { t:"12:15", txt:"Los in die Shopping-Meile: MRT Purple bis Tao Poon → Blue bis Si Lom → BTS Sala Daeng → 2 Stationen bis Siam (~60 Min; MRT 50–71 ฿ plus BTS 17–65 ฿, die Systeme rechnen getrennt ab). Mit Bolt 45–60 Min für 250–330 ฿." },
+      { t:"13:30–16:30", txt:"Siam Paragon, Siam Center, Siam Discovery und CentralWorld liegen alle nebeneinander und sind per Skywalk verbunden — du läufst trocken und klimatisiert durch. CentralWorld allein hat 600 Läden zu normalen Preisen (Zara, Uniqlo, Adidas, Muji), Siam Paragon ist die Luxusschiene. Wer feilschen will: MBK gegenüber, acht Etagen." },
+      { t:"—", txt:"Steuer zurückholen: Ab 2.000 ฿ pro Laden und Tag bekommst du 7 % VAT-Refund. Pass mitnehmen, an der Kasse das Formular verlangen, am Flughafen abstempeln lassen." },
+      { t:"16:45", txt:"Weiter zur Cruise: BTS ab Siam (Silom Line) bis Saphan Taksin, dann Shuttle-Boot ab Sathorn Pier zum Asiatique — zusammen ~40 Min und entspannter als durch den Feierabendverkehr." },
+      { t:"18:00–20:00", txt:"5-Sterne-Cruise, 18-Uhr-Slot = Sonnenuntergang UND Nachtlichter: Wat Arun, Grand Palace, ICONSIAM vom Wasser. Ohne Alk easy — Dinner-Buffet & Saft." },
       { t:"20:15", txt:"Noch eine Runde Asiatique-Nachtmarkt, dann Bolt heim." }
     ],
-    note:"WICHTIG: Nach dem Tauchen 12 Stunden nicht fliegen — deshalb liegt der Tauchgang heute und nicht am Wochenende, dein Rückflug ist erst Sonntagnacht. Du musst einigermaßen schwimmen können und unterschreibst vorher einen Gesundheitsfragebogen. Eigene Kamera darf nicht mit ins Wasser, die Bilder macht das Personal." },
+    note:"HAI-TAUCHGANG FÄLLT AUS: Der Tauchlehrer von Planet Scuba hat am 21.08.2026 per WhatsApp geschrieben, dass die neue SEA-LIFE-Leitung zum 30.12.2025 ALLE Tauchaktivitäten im großen Becken dauerhaft eingestellt hat — es gibt dort gar keine Wasseraktivitäten mehr. Die Webseite von SEA LIFE wirbt noch damit, das stimmt aber nicht mehr. Als Ersatz gäbe es das Haitauchen im Underwater World Pattaya (~3.000 ฿, halber Tag plus 1,5 Std. Anfahrt je Richtung)." },
 
   { date:"2026-09-04", wd:"Fr", title:"Ayutthaya auf eigene Faust", icon:"🏛️",
     blocks:[
