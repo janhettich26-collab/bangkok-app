@@ -37,6 +37,41 @@ const INFO = {
   ],
 
 
+  bahn: {
+    kern: "Deine Station heißt <b>Yaek Tiwanon</b> und liegt direkt gegenüber vom Hotel. Sie gehört zur <b>Purple Line</b>. Fast alles in der Stadt erreichst du mit <b>einem einzigen Umstieg in Tao Poon</b> auf die Blue Line.",
+    zahlen: [
+      { icon:"📱", title:"Am einfachsten: Apple Pay", txt:"Seit 2026 nehmen die MRT-Schranken kontaktlose Karten UND Apple Pay direkt an. Kein Automat, kein Ticket: iPhone beim Reingehen an den <b>oberen</b> Leser halten, beim Rausgehen nochmal. Der Preis wird automatisch berechnet. <b>Vorher zu Hause eine Karte in Apple Pay hinterlegen und die Karte für Thailand freischalten.</b>" },
+      { icon:"🎫", title:"Falls das nicht klappt: Token kaufen", txt:"Am Automat vor den Schranken: Bildschirm antippen → oben rechts <b>English</b> → auf der Karte dein Ziel <b>lange drücken</b>, bis der Kreis grün wird → Preis erscheint → Geld einwerfen → unten fällt eine schwarze Plastikmünze heraus. Die hältst du beim Reingehen an den <b>unteren</b> Leser und wirfst sie beim Rausgehen in den Schlitz." },
+      { icon:"💵", title:"Der Automat ist wählerisch", txt:"Er nimmt nur Münzen zu 1, 5 und 10 ฿ und Scheine zu 20, 50 und 100 ฿ — und die müssen glatt sein. Größere Scheine gehen nicht. Wechselgeld kommt immer in Münzen. Wenn es hakt: am Schalter daneben kaufst du den Token beim Personal." }
+    ],
+    ablauf: [
+      "Am Eingang durch die <b>Sicherheitskontrolle</b> — Tasche auf den Scanner, das ist an jeder Station Pflicht und dauert eine halbe Minute.",
+      "Bezahlen: iPhone an den oberen Leser, oder Token am Automat kaufen.",
+      "Durch die Schranke — sie schließt schnell, also zügig durchgehen.",
+      "Auf dem Bahnsteig steht als Richtung immer die <b>Endstation</b>, nicht dein Ziel. Von Yaek Tiwanon Richtung Stadt heißt das: Zug nach <b>Tao Poon</b>.",
+      "In der Bahn zeigen Bildschirme die nächste Station, Ansagen kommen auf Thai und Englisch.",
+      "Beim Aussteigen nochmal iPhone dranhalten bzw. den Token in den Schlitz werfen. Erst dort wird abgerechnet."
+    ],
+    falle: [
+      { icon:"⚠️", title:"MRT und BTS sind zwei Firmen", txt:"Die MRT (Purple, Blue) und der BTS-Skytrain (Sukhumvit, Silom) haben <b>getrennte Tickets</b>. Wo du umsteigst — Si Lom↔Sala Daeng oder Sukhumvit↔Asok — musst du <b>rausgehen, neu bezahlen und wieder rein</b>. Du zahlst also zweimal. Für den BTS brauchst du ein eigenes Ticket am Automat, Apple Pay klappt dort nicht überall." },
+      { icon:"🔄", title:"Tao Poon ist die Ausnahme", txt:"Der Umstieg von der Purple auf die Blue Line in Tao Poon läuft <b>innerhalb der Schranken</b> — du gehst einfach zum anderen Bahnsteig, ohne neu zu zahlen. Eine Fahrt mit Umstieg kostet 50–71 ฿ statt 17–45 ฿ auf einer Linie." },
+      { icon:"🕕", title:"Betriebszeiten", txt:"MRT etwa 6 bis 24 Uhr, BTS ab 5:15 Uhr. Nach Mitternacht fährt nichts mehr — dann nur noch Bolt. Rushhour 7–9 und 16:30–19:30 Uhr, da ist es voll." },
+      { icon:"🚫", title:"In der Bahn", txt:"Essen und Trinken sind verboten, auch Wasser. Die ersten Sitze an den Türen sind für Mönche und ältere Menschen. Es ist eiskalt klimatisiert." }
+    ],
+    strecken: [
+      { ziel:"Chatuchak (Markt)",        weg:"Yaek Tiwanon → <b>Tao Poon</b> → Chatuchak Park",              zeit:"35 Min", preis:"40–60 ฿" },
+      { ziel:"Chinatown / Yaowarat",     weg:"Yaek Tiwanon → <b>Tao Poon</b> → Wat Mangkon, Ausg. 1",        zeit:"50 Min", preis:"50–71 ฿" },
+      { ziel:"Wat Paknam (Riesenbuddha)",weg:"Yaek Tiwanon → <b>Tao Poon</b> → Bang Phai, Ausg. 1",          zeit:"45 Min", preis:"50–71 ฿" },
+      { ziel:"Jodd Fairs / Train Market",weg:"Yaek Tiwanon → <b>Tao Poon</b> → Thailand Cultural Centre, Ausg. 4", zeit:"45 Min", preis:"50–71 ฿" },
+      { ziel:"Go-Kart RCA",              weg:"Yaek Tiwanon → <b>Tao Poon</b> → Phra Ram 9",                  zeit:"45 Min", preis:"50–71 ฿" },
+      { ziel:"Ayutthaya-Zug (Bang Sue)", weg:"Yaek Tiwanon → <b>Tao Poon</b> → Bang Sue, Bahnhof liegt darüber", zeit:"25 Min", preis:"30–50 ฿" },
+      { ziel:"Siam / Shopping-Meile",    weg:"… → Si Lom, <b>rausgehen</b>, BTS Sala Daeng → Siam",           zeit:"60 Min", preis:"MRT + BTS getrennt" },
+      { ziel:"Terminal 21 / Asoke",      weg:"… → Sukhumvit (MRT) — Terminal 21 liegt direkt darüber",        zeit:"45 Min", preis:"50–71 ฿" },
+      { ziel:"Mahanakhon (Aussicht)",    weg:"… → Si Lom, <b>rausgehen</b>, BTS Sala Daeng → Chong Nonsi",    zeit:"55 Min", preis:"MRT + BTS getrennt" },
+      { ziel:"Central WestGate (Mall)",  weg:"Yaek Tiwanon → Talad Bang Yai, <b>ohne Umstieg</b>",            zeit:"25 Min", preis:"~40 ฿" }
+    ]
+  },
+
   checks: [
     // — Buchen & Organisieren —
     { id:"transfer", txt:"Transfer-Abholzeit checken: <a href='https://www.loveholidays.de/' target='_blank' rel='noopener'>loveholidays → Meine Buchung</a>", due:"26.08." },
@@ -46,6 +81,7 @@ const INFO = {
     { id:"esim", txt:"eSIM (dtac Happy Tourist via Airalo) daheim im WLAN installieren, deaktiviert lassen", due:"vor Abflug" },
     { id:"translate", txt:"Google Übersetzer aufs Handy: <b>Thai und Englisch als Offline-Paket laden</b> — dann übersetzt auch die Kamera Schilder und Speisekarten ohne Internet", due:"vor Abflug" },
     { id:"bank", txt:"Bank-Apps: Karten für Thailand freigeschaltet, Limits hoch genug", due:"vor Abflug" },
+    { id:"applepay", txt:"<b>Apple Pay einrichten</b> — damit kommst du in Bangkok ohne Ticketkauf durch die MRT-Schranken. Karte hinterlegen und für Thailand freischalten (Info → Bahn fahren)", due:"vor Abflug" },
     { id:"pass", txt:"Pass + TDAC + Versicherungspolice als Fotos aufs Handy, Kopien in den Koffer", due:"vor Abflug" },
     { id:"docs", txt:"OneDrive-Ordner „Bangkok 2026“ am Handy öffnen → „Offline verfügbar“ antippen (Buchung + Parkplatz)", due:"vor Abflug" }
   ],

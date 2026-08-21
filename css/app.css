@@ -888,3 +888,23 @@ button, input, a { -webkit-tap-highlight-color: rgba(232,176,75,.15); }
 .zb { flex: 1; text-align: center; padding: 7px 3px; border-radius: 8px; font-size: 11.5px;
   font-weight: 700; font-family: inherit; text-decoration: none;
   border: 1px solid rgba(87,168,255,.35); background: rgba(87,168,255,.10); color: #9CC9FF; }
+
+/* ————— Bahn-Anleitung ————— */
+.bahn-kern { padding: 12px 13px; background: rgba(232,176,75,.10); border: 1px solid var(--gold-deep);
+  border-radius: 11px; font-size: 13.5px; line-height: 1.6; margin-bottom: 4px; }
+.bahn-h { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--gold); margin: 18px 0 9px; }
+.bahn-p { display: flex; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.bahn-p:last-of-type { border-bottom: none; }
+.bahn-i { flex: 0 0 auto; font-size: 17px; line-height: 1.3; }
+.bahn-p b { font-size: 13.5px; }
+.bahn-p p { font-size: 12.5px; line-height: 1.55; color: var(--muted); margin-top: 3px; }
+.bahn-ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 7px; }
+.bahn-ol li { font-size: 12.5px; line-height: 1.55; }
+.bahn-ol li::marker { color: var(--gold); font-weight: 800; }
+.bahn-tab { border: 1px solid var(--line); border-radius: 11px; overflow: hidden; }
+.bahn-z { padding: 10px 12px; border-bottom: 1px solid var(--line); }
+.bahn-z:last-child { border-bottom: none; }
+.bz-ziel { font-size: 13px; font-weight: 700; }
+.bz-weg { font-size: 12.5px; color: #9CC9FF; margin-top: 3px; line-height: 1.5; }
+.bz-fakt { font-size: 11.5px; color: var(--muted); margin-top: 2px; }

@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  const APP_VERSION = "v53";   // muss zur Version in sw.js passen
+  const APP_VERSION = "v54";   // muss zur Version in sw.js passen
 
   let WX = null;   // Live-Wetter: { now:{...}, hours:[...], days:{ "2026-08-30": {...} } } — oben, weil renderPlan es liest
 
@@ -1099,6 +1099,26 @@
   const btnReload = document.getElementById("app-reload");
   if (btnReload) btnReload.addEventListener("click", neuLaden);
   pruefeUpdate();
+
+  // ————— Bahn fahren: Anleitung + alle Strecken —————
+  (function () {
+    const el = document.getElementById("bahn-hilfe");
+    if (!el || !INFO.bahn) return;
+    const B = INFO.bahn;
+    el.innerHTML =
+      '<div class="bahn-kern">' + B.kern + "</div>" +
+      '<h3 class="bahn-h">Bezahlen</h3>' +
+      B.zahlen.map(x => '<div class="bahn-p"><span class="bahn-i">' + x.icon + '</span><div><b>' + x.title + "</b><p>" + x.txt + "</p></div></div>").join("") +
+      '<h3 class="bahn-h">So läuft eine Fahrt ab</h3>' +
+      '<ol class="bahn-ol">' + B.ablauf.map(x => "<li>" + x + "</li>").join("") + "</ol>" +
+      '<h3 class="bahn-h">Worauf du achten musst</h3>' +
+      B.falle.map(x => '<div class="bahn-p"><span class="bahn-i">' + x.icon + '</span><div><b>' + x.title + "</b><p>" + x.txt + "</p></div></div>").join("") +
+      '<h3 class="bahn-h">Deine Strecken</h3>' +
+      '<div class="bahn-tab">' + B.strecken.map(x =>
+        '<div class="bahn-z"><div class="bz-ziel">' + x.ziel + "</div>" +
+        '<div class="bz-weg">' + x.weg + "</div>" +
+        '<div class="bz-fakt">' + x.zeit + " · " + x.preis + "</div></div>").join("") + "</div>";
+  })();
 
   // ————— Sprache (Deutsch → Englisch, antippen = groß anzeigen) —————
   document.getElementById("phrase-list").innerHTML = PHRASES.map((g, gi) =>
