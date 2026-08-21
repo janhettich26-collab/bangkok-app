@@ -35,7 +35,7 @@ BOOKINGS.filter(b => b.grp !== "Reise").forEach(b => {
   const tag = PLAN.find(d => d.date === b.date);
   if (!tag) { fehler.push(`Termin ${b.id} (${b.date}) hat keinen Plan-Tag`); return; }
   const stich = b.title.replace(/[—–-].*$/, "").trim().split(/\s+/).filter(w => w.length > 4)[0];
-  if (stich && !JSON.stringify(tag).includes(stich))
+  if (stich && !JSON.stringify(tag).toLowerCase().includes(stich.toLowerCase()))
     fehler.push(`Termin "${b.title}" (${b.date}) kommt im Plan-Tag "${tag.title}" nicht vor`);
 });
 

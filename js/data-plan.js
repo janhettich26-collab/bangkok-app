@@ -84,17 +84,19 @@ const PLAN = [
     ],
     note:"Der Glasboden ist der Grund, warum du dir die Sky Bar am Samstag sparen kannst: dort zahlst du 700–950 ฿ für EIN Getränk, hier bekommst du für wenig mehr das ganze Erlebnis — ohne Dresscode und mit Rucksack. ACHTUNG Regenzeit: Bei Sturm sperren sie das Außendeck, Geld gibt es nicht zurück (nur Umbuchung). Also erst abends den Himmel anschauen, dann kaufen." },
 
-  { date:"2026-09-03", wd:"Do", title:"Shoppen & Sunset-Cruise", icon:"🛒",
+  { date:"2026-09-03", wd:"Do", title:"Mit Haien tauchen & Sunset-Cruise", icon:"🦈",
     blocks:[
-      { t:"vorm.", txt:"Ausschlafen, Pool, Sauna, Wäsche in die Maschine. Nach drei vollen Tagen ist der halbe Leerlauf-Vormittag Absicht." },
-      { t:"12:15", txt:"Los in die Shopping-Meile: MRT Purple bis Tao Poon → Blue bis Si Lom → BTS Sala Daeng → 2 Stationen bis Siam (~60 Min; MRT 50–71 ฿ plus BTS 17–65 ฿, die Systeme rechnen getrennt ab). Mit Bolt 45–60 Min für 250–330 ฿ — bei Regen die bequemere Wahl." },
-      { t:"13:30–16:30", txt:"Siam Paragon, Siam Center, Siam Discovery und CentralWorld liegen alle nebeneinander und sind per Skywalk verbunden — du läufst trocken und klimatisiert durch. CentralWorld allein hat 600 Läden zu normalen Preisen (Zara, Uniqlo, Adidas, Muji), Siam Paragon ist die Luxusschiene. Wer feilschen will: MBK gegenüber, acht Etagen." },
-      { t:"—", txt:"Steuer zurückholen: Ab 2.000 ฿ pro Laden und Tag bekommst du 7 % VAT-Refund. Pass mitnehmen, an der Kasse das Formular verlangen, am Flughafen abstempeln lassen. Bei größeren Einkäufen lohnt das echt." },
-      { t:"16:45", txt:"Weiter zur Cruise: BTS ab Siam (Silom Line) bis Saphan Taksin, dann Shuttle-Boot ab Sathorn Pier zum Asiatique — zusammen ~40 Min und deutlich entspannter als durch den Feierabendverkehr zu fahren." },
-      { t:"18:00–20:00", txt:"5-Sterne-Cruise, 18-Uhr-Slot = Sonnenuntergang UND Nachtlichter: Wat Arun, Grand Palace, ICONSIAM vom Wasser. Ohne Alk easy — Dinner-Buffet & Saft." },
+      { t:"vorm.", txt:"Ausschlafen, aber nicht zu spät — heute wird es besonders. Frühstück im Hotel, leicht essen." },
+      { t:"9:45", txt:"Los nach Siam: MRT Purple bis Tao Poon → Blue bis Si Lom → BTS Sala Daeng → Siam (~60 Min). Oder Bolt in 45–60 Min für 250–330 ฿." },
+      { t:"10:45", txt:"SEA LIFE im Untergeschoss vom Siam Paragon. 15 Minuten vor der Zeit einchecken — wer später kommt, verliert den Platz ohne Erstattung." },
+      { t:"11:00–13:00", txt:"SHARK DIVE: mit Riffhaien und Rochen im großen Becken, ein Profi die ganze Zeit an deiner Seite. Kein Tauchschein nötig, 6.900 ฿. Vorher über LINE @sharkdive oder WhatsApp +66 81 274 4637 buchen — und dabei sagen, dass dein Englisch nicht gut ist, dann organisieren sie eine Übersetzung für die Einweisung." },
+      { t:"13:15", txt:"Mittagessen im selben Haus: Food Court im Untergeschoss vom Paragon. Nach dem Tauchen ordentlich trinken." },
+      { t:"14:15–16:30", txt:"Shopping-Meile direkt vor der Tür: Siam Paragon, Siam Center, Siam Discovery und CentralWorld hängen per Skywalk zusammen. Pass mitnehmen — ab 2.000 ฿ pro Laden gibt es 7 % Steuer zurück." },
+      { t:"16:45", txt:"Zur Cruise: BTS ab Siam bis Saphan Taksin, dann Shuttle-Boot ab Sathorn Pier zum Asiatique (~40 Min)." },
+      { t:"18:00–20:00", txt:"5-Sterne-Cruise, 18-Uhr-Slot = Sonnenuntergang UND Nachtlichter: Wat Arun, Grand Palace, ICONSIAM vom Wasser. Dinner-Buffet dabei." },
       { t:"20:15", txt:"Noch eine Runde Asiatique-Nachtmarkt, dann Bolt heim." }
     ],
-    note:"Einkäufe erst am Nachmittag, damit du sie nicht den ganzen Tag schleppst — und die Malls sind bis 22 Uhr offen, du bist also nie unter Zeitdruck. Cruise vorab mit Datum buchen (Reiter Termine, 18-Uhr-Slot). Wenn dir das zu viel ist: Central WestGate liegt elf Stationen ohne Umsteigen von deinem Hotel, das geht auch an einem Regenvormittag." },
+    note:"WICHTIG: Nach dem Tauchen 12 Stunden nicht fliegen — deshalb liegt der Tauchgang heute und nicht am Wochenende, dein Rückflug ist erst Sonntagnacht. Du musst einigermaßen schwimmen können und unterschreibst vorher einen Gesundheitsfragebogen. Eigene Kamera darf nicht mit ins Wasser, die Bilder macht das Personal." },
 
   { date:"2026-09-04", wd:"Fr", title:"Ayutthaya auf eigene Faust", icon:"🏛️",
     blocks:[
@@ -102,9 +104,10 @@ const PLAN = [
       { t:"7:50 oder 8:45", txt:"Zug nach Ayutthaya (71 km, rund 1 Std.): Rapid 111 um 7:50 oder Express 75 um 8:45 sind die bewährten Verbindungen, 3. Klasse rund 70 ฿, klimatisierte 2. Klasse 65–345 ฿. Fahrplan am Schalter bestätigen lassen — Zeiten verschieben sich in Thailand gern." },
       { t:"9:30", txt:"Roller (~250 ฿) oder Tuk-Tuk-Pauschale (4 Std. 800–1.000 ฿, VORHER festmachen). Ruinen-Runde: Wat Mahathat (Buddha-Kopf im Baum), Wat Phra Si Sanphet, Wat Chaiwatthanaram. Sammelticket 220 ฿ für sechs Tempel — lohnt ab drei." },
       { t:"16:04 oder 16:41", txt:"Rückzug: Rapid 112 um 16:04 oder Rapid 136 um 16:41 → rund 1 Std. bis Bang Sue. Rückfahrkarte gleich morgens mitkaufen." },
-      { t:"19:30", txt:"Train Night Market Ratchada (Blue Line ab Bang Sue, ~20 Min): der Regenbogen-Zeltmarkt, seit März 2026 wieder offen — Vintage, Container-Bars, Livebands. Anderes Erlebnis als der Ankunftsabend, gleiche Station. Bis 1 Uhr offen." }
+      { t:"19:30", txt:"GO-KART bei EasyKart im RCA Plaza (MRT Phra Ram 9, ~20 Min ab Bang Sue): Asiens größte Indoor-Kartbahn. Fast Kart mit 200 cm³ und 55 km/h, 1.499 ฿ für zwei Rennen à 8 Minuten. Kein Führerschein nötig, freitags bis 23 Uhr offen. Vorher kurz anrufen (+66 2 641 4252), die Bahn wird manchmal für Gruppen reserviert." },
+      { t:"21:00", txt:"5 Minuten weiter der Train Night Market Ratchada: der Regenbogen-Zeltmarkt, seit März 2026 wieder offen — Vintage, Container-Bars, Livebands, bis 1 Uhr. Abendessen zwischen den Zelten." }
     ],
-    note:"Komplett ~600 ฿ statt 30+ € Tour — und du bist an keine Gruppe gekettet." },
+    note:"Komplett ~600 ฿ statt 30+ € Tour — und du bist an keine Gruppe gekettet. Abends dann Vollgas: Kartbahn und Nachtmarkt liegen an derselben MRT-Station, du kommst aus Ayutthaya direkt dort an." },
 
   { date:"2026-09-05", wd:"Sa", title:"Ancient City & Abschiedsabend", icon:"🛕",
     blocks:[

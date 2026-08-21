@@ -61,6 +61,22 @@ const BOOKINGS = [
     warn:"Regenzeit: Bei Sturm sperren sie Außendeck und Glasboden. Es gibt kein Geld zurück, nur eine Umbuchung — also erst am Tag selbst den Himmel anschauen, dann kaufen.",
     links:[{t:"🎟️ Offizielle Seite",u:"https://kingpowermahanakhon.co.th/experience/mahanakhon-skywalk"},{t:"📍 In Google Maps",u:"https://www.google.com/maps/search/?api=1&query=King%20Power%20Mahanakhon%20SkyWalk%20Bangkok"}] },
 
+  { id:"sharkdive", kurz:"Shark Dive", tun:"buchen (LINE/WhatsApp)", grp:"Termine", status:"offen", emoji:"🦈", date:"2026-09-03", time:"11:00",
+    title:"Shark Dive — mit Haien tauchen", where:"SEA LIFE, Untergeschoss Siam Paragon, 991 Rama I Rd · BTS Siam",
+    price:"6.900 ฿ (~180 €) — gleicher Preis mit und ohne Tauchschein",
+    info:["Mit Riffhaien und Rochen im großen Becken, ein Profi ist die ganze Zeit an deiner Seite. Kein Tauchschein nötig, 13 bis 55 Jahre","<b>VORHER buchen</b> über LINE <b>@sharkdive</b> oder WhatsApp <b>+66 81 274 4637</b> — spontan hingehen klappt meist nicht","<b>Beim Buchen sagen, dass dein Englisch nicht gut ist.</b> Steht so in ihren Bedingungen: dann organisiert das Team eine Übersetzung für die Einweisung","Du musst einigermaßen schwimmen können und vorab einen Gesundheitsfragebogen unterschreiben","15 Minuten vor der Zeit da sein — wer später kommt, verliert den Platz ohne Erstattung","Eigene Kamera darf nicht mit ins Wasser, die Bilder macht das Personal","Danach bist du direkt im Siam Paragon — Mittagessen und Shopping liegen im selben Haus"],
+    warn:"NACH DEM TAUCHEN 12 STUNDEN NICHT FLIEGEN. Dein Rückflug ist Sonntag 22:55, deshalb liegt der Tauchgang auf Donnerstag — mit über drei Tagen Abstand. Am Abend davor keinen Alkohol.",
+    phone:"+66812744637",
+    links:[{t:"🦈 Offizielle Seite",u:"https://www.visitsealife.com/bangkok/en/explore/experiences/shark-dive/"},{t:"📍 In Google Maps",u:"https://www.google.com/maps/search/?api=1&query=SEA%20LIFE%20Bangkok%20Ocean%20World%20Siam%20Paragon"}] },
+
+  { id:"gokart", kurz:"Go-Kart EasyKart", grp:"Vor Ort", status:"vorort", emoji:"🏎️", date:"2026-09-04", time:"19:30",
+    title:"EasyKart — Asiens größte Indoor-Kartbahn", where:"RCA Plaza, 2. Stock, Rama 9 Rd · MRT Phra Ram 9",
+    price:"Fast Kart 1.499 ฿ für 2 Rennen · Regular 699 ฿ · 3 Rennen + T-Shirt 1.999 ฿",
+    info:["Der Fast Kart hat 200 cm³ und läuft 55 km/h. Ein Rennen dauert 8 Minuten, das sind 10 bis 15 Runden","Kein Führerschein nötig, es gibt vorher eine Einweisung. Ab 15 Jahren und 150 cm","Freitags bis 23 Uhr offen, Rennen starten alle 10 Minuten — einfach hingehen und zahlen","Drinnen und klimatisiert, also regensicher","Liegt 5 Minuten vom Train Night Market Ratchada — passt an denselben Abend"],
+    warn:"Der Betreiber empfiehlt, für Bangkok vorher kurz anzurufen (+66 2 641 4252): die Bahn ist manchmal für Gruppen reserviert.",
+    phone:"+6626414252",
+    links:[{t:"🏎️ easykart.net",u:"https://easykart.net/bangkok/"},{t:"📍 In Google Maps",u:"https://www.google.com/maps/search/?api=1&query=EasyKart%20Bangkok%20RCA%20Plaza%20Rama%209"}] },
+
   { id:"ancientcity", kurz:"Ancient City", grp:"Vor Ort", status:"vorort", emoji:"🛕", date:"2026-09-05", time:"9:30–14:00",
     title:"Ancient City — Freilichtmuseum mit dem Fahrrad", where:"296/1 Moo 7 Sukhumvit Rd, Bang Pu Mai, Samut Prakan",
     price:"700 ฿ am Tor · online über Klook oft ~350 ฿ · Fahrrad ~100 ฿",
