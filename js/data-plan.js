@@ -24,28 +24,32 @@ const PLAN = [
     ],
     note:"Der ganz große Markt mit 15.000 Ständen ist Chatuchak — der läuft aber NUR Sa + So. Freitagabend ist dort bloß Großhandel mit einem Bruchteil der Stände. Chatuchak hast du deshalb morgen früh, heute den besten Nachtmarkt. Wenn dich der Flug umhaut: Owl Market vor der Tür (10 Min) tut es auch — oder Pool und schlafen." },
 
-  { date:"2026-08-29", wd:"Sa", title:"Chatuchak & Nachbarschaft", icon:"🧺",
+  { date:"2026-08-29", wd:"Sa", title:"Chatuchak & Chinatown", icon:"🧺",
     blocks:[
-      { t:"8:45", txt:"MRT ab Yaek Tiwanon → Tao Poon → Chatuchak (~35 Min, ~40 ฿)." },
-      { t:"9:30–13:00", txt:"Chatuchak Weekend Market (läuft nur Sa+So!): 15.000 Stände. Feilschen: Startpreis −30–40 %. Rucksack nach vorn." },
-      { t:"nachm.", txt:"Zurück ins Hotel: Pool & Sauna, während draußen der Nachmittagsschauer durchzieht." },
-      { t:"19:00", txt:"CampYard (5 Min): Retro-Bar mit Thai-Livemusik — auch ohne Alk stark, Thai-Eistee/Cola und Musik." },
-      { t:"21:00", txt:"Optional weiter zur Highyena Home Bar (15 Min): der Laden der Einheimischen. Nur Bargeld/QR!" }
+      { t:"8:45", txt:"MRT ab Yaek Tiwanon → Tao Poon → Chatuchak (~35 Min, ~40 ฿). Heute läuft der Markt komplett — alle 27 Sektionen, 15.000 Stände." },
+      { t:"9:30–13:00", txt:"Chatuchak Weekend Market. Feilschen: Startpreis −30–40 %. Rucksack nach vorn. Vor 11 Uhr ist es erträglich, danach wird es brutal voll und heiß." },
+      { t:"14:00", txt:"Zurück ins Hotel: Pool, Sauna, Beine hochlegen, während draußen der Nachmittagsschauer durchzieht. Einkäufe abladen." },
+      { t:"17:00", txt:"Los nach Chinatown: MRT ab Yaek Tiwanon durchgehend bis Wat Mangkon (Blue Line), Ausgang 1 — ~50 Min, ~45 ฿. Mit dem Auto wäre es zur Essenszeit deutlich langsamer." },
+      { t:"17:45", txt:"Yaowarat Road: Um 17 Uhr sperrt die Straße für Autos, innerhalb einer Stunde bauen hunderte Garküchen auf. Jetzt bist du da, bevor es voll wird." },
+      { t:"18:00–21:30", txt:"Durchessen: Guay Jub Ouan Pochana (Rollnudel-Suppe 50–70 ฿), Lim Lao Ngow (Fischbällchen, Michelin Bib), der berühmte Yaowarat-Toast (25–35 ฿), T&K Seafood für Riesengarnelen (200–400 ฿), Nachtisch bei Ba Hao Tian Mi in der Soi Nana. Rechne mit 300–600 ฿ für den ganzen Abend." },
+      { t:"~22:00", txt:"MRT zurück ab Wat Mangkon (fährt bis Mitternacht)." }
     ],
-    note:"Erster „Bars angucken“-Abend, aber vor der Haustür — kurze Wege, solange der Jetlag noch zieht." },
+    note:"Samstag ist der volle Chinatown-Abend — dafür auch der vollste: zwischen 19 und 21 Uhr stehst du an beliebten Ständen 30 Min an. Deshalb um 17:45 dort sein. NUR BARGELD, viele Stände nehmen keine Karte. Montag wäre der falsche Tag gewesen — da ruhen viele Garküchen." },
 
-  { date:"2026-08-30", wd:"So", title:"Spa-Sonntag & Altstadt-Abend", icon:"🧖",
+  { date:"2026-08-30", wd:"So", title:"Spa, Riesenmall & Golden Mount", icon:"🧖",
     blocks:[
       { t:"8:30", txt:"Bolt zum Mandarin Oriental Hotel (Stadtseite, ~40–45 Min, 250–330 ฿) — Sonntagvormittag ist wenig Verkehr. Dem Fahrer: „Mandarin Oriental Hotel, Oriental Avenue“." },
       { t:"9:15", txt:"Am Hotel-Pier: das KOSTENLOSE Hotelboot bringt dich über den Chao Phraya direkt zum Spa — einfach „Oriental Spa, appointment 10:30“ sagen. Die schönste Anfahrt, die es gibt." },
       { t:"9:25", txt:"Im Spa: Du darfst bis 60 Min vor dem Termin rein — Sauna, Dampfbad & Jacuzzi im Wellness Centre sind inklusive. Ausnutzen!" },
-      { t:"10:30", txt:"Deine Moringa Massage, 2 Std. (gebucht — Details in Meine Reisedaten). Danach nicht hetzen." },
-      { t:"13:00", txt:"Mittag: ICONSIAM ist nur 750 m zu Fuß — Sook-Siam-Foodcourt im EG." },
-      { t:"15:00", txt:"Kurz zurück ins Hotel ODER direkt gemütlich rüber zur Altstadt (15:45 Bolt)." },
-      { t:"16:30", txt:"Golden Mount: 340 Stufen, Abendlicht über der Altstadt, Eintritt ~100 ฿." },
-      { t:"18:30", txt:"Bolt 10 Min nach Chinatown — heute in Ruhe: Neon-Schlucht und Garküchen, mit 400 ฿ quer durchgegessen. Sonntags ist alles offen, und du hast den ganzen Abend statt nur zwei Stunden." }
+      { t:"10:30–12:30", txt:"Deine Moringa Massage, 2 Std. (gebucht — Details in Meine Reisedaten). Danach nicht hetzen." },
+      { t:"13:00", txt:"ICONSIAM ist nur 750 m zu Fuß — die Riesenmall am Fluss, täglich 10–22 Uhr. Erst essen: Sook Siam im Erdgeschoss, ein nachgebauter schwimmender Markt mit Ständen aus allen 77 Provinzen." },
+      { t:"14:00–16:30", txt:"Shoppen: 1. Stock ICONLUXE (die Luxusmeile am Fluss), 2. Stock der erste Apple Store Thailands, 4.–5. Stock Essen, Takashimaya für alles dazwischen. Kein Feilschen hier — das sind Festpreise, dafür Klimaanlage und Steuerrückerstattung für Touristen an der Kasse fragen." },
+      { t:"16:30", txt:"Kaffee mit Aussicht: der größte Starbucks Reserve Thailands im 7. Stock, zweistöckig — oder die Tasana-Nakorn-Terrasse im 6. mit Blick den Fluss runter." },
+      { t:"17:15", txt:"Bolt zum Golden Mount (~25 Min): 340 Stufen hoch, Eintritt ~100 ฿. Um 18:00 oben stehen — Abendlicht über der Altstadt, Sonnenuntergang gegen 18:40." },
+      { t:"19:15", txt:"Abendessen in der Altstadt: Thipsamai Pad Thai in der Mahachai Road ist 10 Min entfernt, der berühmteste Pad Thai der Stadt (80–150 ฿, im Eierteig gewickelt). Öffnungszeit vorher kurz in Maps prüfen — und die Schlange ist nach 21 Uhr am kürzesten." },
+      { t:"~21:00", txt:"Bolt zurück, ~250 ฿." }
     ],
-    note:"Eine Anfahrt, drei Highlights — die beste Route der ganzen Reise. Rückweg Bolt ~250 ฿." },
+    note:"Eine Anfahrt, vier Sachen: Spa, Mall, Tempel, Essen — alle am selben Flussufer entlang. Chinatown hast du schon gestern gehabt, deshalb heute die Altstadt." },
 
   { date:"2026-08-31", wd:"Mo", title:"Paläste per Expressboot", icon:"👑",
     blocks:[
