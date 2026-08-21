@@ -583,3 +583,10 @@ button, input, a { -webkit-tap-highlight-color: rgba(232,176,75,.15); }
 .check.ck-termin { border-left: 2px solid var(--gold-deep); padding-left: 9px; }
 .check.ck-termin.done { border-left-color: rgba(107,203,119,.5); }
 .ck-hin { display: block; font-size: 11px; color: var(--muted); opacity: .8; margin-top: 2px; }
+.rv-erkl { margin-top: 8px; }
+.rv-erkl summary { font-size: 11.5px; color: var(--muted); cursor: pointer; list-style: none; }
+.rv-erkl summary::-webkit-details-marker { display: none; }
+.rv-erkl summary::before { content: "› "; color: var(--gold); }
+.rv-erkl[open] summary::before { content: "⌄ "; }
+.rv-erkl p { font-size: 11.5px; color: var(--muted); line-height: 1.5; margin-top: 7px; }
+.rv-box { padding: 10px 12px; }

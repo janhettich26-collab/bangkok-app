@@ -64,6 +64,15 @@ const alles = JSON.stringify({ SPOTS, PLAN, BOOKINGS, INFO, PACK, PHRASES });
  ["alter Zug 9003", /9003/], ["Jodd Fairs Rama 9 als Ziel", /gm\("Jodd Fairs Rama 9/i]]
   .forEach(([was, re]) => { if (re.test(alles)) fehler.push(`Gestrichenes wieder da: ${was}`); });
 
+// 7) Radar-Ebene muss maxNativeZoom haben — sonst liefert RainViewer ab Zoom 8
+//    fuer jede Kachel dasselbe Bild "Zoom Level Not Supported"
+const appjs = fs.readFileSync(__dirname + "/js/app.js", "utf8");
+if (/rainviewer/i.test(appjs) || /rvHost/.test(appjs)) {
+  const stelle = appjs.slice(appjs.indexOf("rvHost + f.path"), appjs.indexOf("rvHost + f.path") + 400);
+  if (!/maxNativeZoom:\s*7\b/.test(stelle))
+    fehler.push("Radar-Ebene ohne maxNativeZoom: 7 — ab Zoom 8 kommen graue Kacheln 'Zoom Level Not Supported'");
+}
+
 console.log(`Plan ${PLAN.length} Tage · ${PLAN.reduce((n,d)=>n+d.blocks.length,0)} Punkte | Termine ${BOOKINGS.length} (${BOOKINGS.filter(b=>b.status==="offen").length} offen) | Spots ${SPOTS.length} | Checkliste ${INFO.checks.length} fest + ${BOOKINGS.filter(b=>b.status==="offen").length} aus Terminen`);
 hinweise.forEach(h => console.log("  Hinweis: " + h));
 if (fehler.length) { console.log("\n❌ " + fehler.length + " Abweichung(en):"); fehler.forEach(f => console.log("   - " + f)); process.exit(1); }

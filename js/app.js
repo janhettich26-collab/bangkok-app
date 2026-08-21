@@ -451,8 +451,12 @@
   function rvShow(i) {
     if (!mapObj || !rvFrames[i]) return;
     const f = rvFrames[i];
+    // RainViewer liefert echte Radarbilder NUR bis Zoom 7 — darüber kommt für jede Kachel
+    // dasselbe Bild "Zoom Level Not Supported". Mit maxNativeZoom holt Leaflet die Zoom-7-Kachel
+    // und rechnet sie hoch: gröber, aber echte Daten statt grauer Fehlerflächen.
     const neu = L.tileLayer(rvHost + f.path + "/256/{z}/{x}/{y}/4/1_1.png", {
-      opacity: 0, zIndex: 250, tileSize: 256, updateWhenIdle: false
+      opacity: 0, zIndex: 250, tileSize: 256, updateWhenIdle: false,
+      maxNativeZoom: 7, maxZoom: 19
     }).addTo(mapObj);
     // Läuft noch eine Überblendung? Dann sofort abbrechen und die alte Ebene wegräumen,
     // sonst stapeln sich beim schnellen Ziehen am Zeitschieber die Kachelebenen.
