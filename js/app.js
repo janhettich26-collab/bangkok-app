@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  const APP_VERSION = "v52";   // muss zur Version in sw.js passen
+  const APP_VERSION = "v53";   // muss zur Version in sw.js passen
 
   let WX = null;   // Live-Wetter: { now:{...}, hours:[...], days:{ "2026-08-30": {...} } } — oben, weil renderPlan es liest
 
@@ -455,13 +455,16 @@
     }).setView([HOTEL.lat, HOTEL.lng], 11);
     mapObj = map;
 
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 19,
+    // CARTO Voyager statt OSM-Standard: liefert 512-px-Kacheln fuer scharfe Darstellung
+    // auf dem iPhone ({r} wird zu "@2x") und zeigt deutlich weniger Kleinkram.
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+      subdomains: "abcd",
+      maxZoom: 20,
       updateWhenIdle: true,    // waehrend des Wischens keine neuen Kacheln anfordern
       updateWhenZooming: false,
       keepBuffer: 1,
       crossOrigin: true,
-      attribution: "© OpenStreetMap"
+      attribution: "© OpenStreetMap, © CARTO"
     }).addTo(map);
     L.control.zoom({ position: "bottomright" }).addTo(map);
 
@@ -472,7 +475,7 @@
     Object.keys(CATS).forEach(k => { markerLayers[k] = L.layerGroup().addTo(map); });
     SPOTS.forEach(s => {
       const c = CATS[s.cat].color;
-      const icon = L.divIcon({ className: "", html: '<div class="pin" style="--c:' + c + '">' + s.emoji + "</div>", iconSize: [26, 26], iconAnchor: [13, 13] });
+      const icon = L.divIcon({ className: "", html: '<div class="pin" style="--c:' + c + '">' + s.emoji + "</div>", iconSize: [30, 30], iconAnchor: [15, 15] });
       L.marker([s.lat, s.lng], { icon }).bindPopup(popupHtml(s)).addTo(markerLayers[s.cat]);
     });
 

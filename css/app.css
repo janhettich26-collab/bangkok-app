@@ -188,11 +188,12 @@ details.day summary::-webkit-details-marker { display: none; }
 /* Karte */
 #map { height: calc(100vh - 220px); min-height: 380px; border-radius: var(--radius); border: 1px solid var(--line); }
 .pin {
-  width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  background: var(--surface); border: 2px solid var(--c, var(--gold)); font-size: 13px;
-  box-shadow: 0 2px 8px rgba(0,0,0,.5);
+  width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  background: #fff; border: 2.5px solid var(--c, var(--gold)); font-size: 15px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.9);
 }
-.pin.hotel { width: 30px; height: 30px; background: var(--gold); color: #14100a; font-weight: 800; font-size: 16px; border-color: #fff; }
+.pin.hotel { width: 34px; height: 34px; background: var(--gold); color: #14100a; font-weight: 800; font-size: 18px; border-color: #fff; }
+.pin.me { background: #57A8FF; border-color: #fff; font-size: 16px; }
 .leaflet-popup-content-wrapper { background: var(--surface2); color: var(--text); border-radius: 12px; }
 .leaflet-popup-tip { background: var(--surface2); }
 .leaflet-popup-content a { color: var(--gold); }
@@ -471,7 +472,7 @@ button, input, a { -webkit-tap-highlight-color: rgba(232,176,75,.15); }
 .map-tools .btn { flex: 1; text-align: center; }
 #map { contain: layout paint; }
 .pin.me { background: #57A8FF; border-color: #fff; font-size: 15px; }
-.leaflet-container { background: #10141d; }
+.leaflet-container { background: #E8E4DC; }
 .leaflet-popup-content { font-size: 13px; line-height: 1.5; }
 .leaflet-popup-content b { font-size: 14px; }
 
