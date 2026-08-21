@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  const APP_VERSION = "v39";   // muss zur Version in sw.js passen
+  const APP_VERSION = "v40";   // muss zur Version in sw.js passen
 
   let WX = null;   // Live-Wetter: { now:{...}, hours:[...], days:{ "2026-08-30": {...} } } — oben, weil renderPlan es liest
 
@@ -325,6 +325,7 @@
             '<ul class="bk-info">' + b.info.map(x => "<li>" + x + "</li>").join("") + '</ul>' +
             (b.warn ? '<div class="bk-warn">⚠️ ' + b.warn + '</div>' : "") +
             (b.ref ? '<div class="bk-ref">🔒 ' + b.ref + '</div>' : "") +
+            (b.klook ? '<a class="btn klook" href="' + b.klook + '" target="_blank" rel="noopener">🎟️ Auf Klook buchen — deutsche Seite</a>' : "") +
             '<div class="docs-grid bk-actions">' +
               (b.phone ? '<a class="btn" href="tel:' + b.phone + '">📞 Anrufen</a>' : "") +
               (b.links || []).map(l => '<a class="btn ghost" href="' + l.u + '" target="_blank" rel="noopener">' + l.t + '</a>').join("") +
