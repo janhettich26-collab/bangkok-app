@@ -54,14 +54,6 @@ const BOOKINGS = [
     warn:"Der große Markt mit 15.000 Ständen ist Chatuchak — der läuft NUR Sa + So (9–18 Uhr). Freitagabends ist dort nur Großhandel mit wenigen Ständen. Chatuchak steht deshalb am Sa 29.08. · Und: „Jodd Fairs Rama 9\" gibt es seit Januar 2025 nicht mehr, im Navi immer „Jodd Fairs Ratchada\" eingeben.",
     links:[{t:"📍 In Google Maps",u:"https://www.google.com/maps/search/?api=1&query=Jodd%20Fairs%20Ratchada%2C%20129%20Ratchadaphisek%20Rd%2C%20Din%20Daeng%2C%20Bangkok"}] },
 
-  { id:"flowhouse", kurz:"Flow House Surfwelle", tun:"anrufen", nachricht:{ en:"Hello! I would like to book the FlowRider for Wednesday, 2 September 2026, from 12:00 to 14:00 (two hours). One person, complete beginner. My name is Jan Hettich, from Germany.\n\nMy English is not very good, please write in simple words. Could you confirm the price and whether I will share the session with other people?\n\nThank you!", de:"Hallo! Ich möchte den FlowRider für Mittwoch, 2. September 2026, von 12:00 bis 14:00 buchen (zwei Stunden). Eine Person, absoluter Anfänger. Mein Name ist Jan Hettich aus Deutschland.\n\nMein Englisch ist nicht gut, bitte einfach schreiben. Können Sie mir den Preis bestätigen und ob ich die Zeit mit anderen teile?\n\nDanke!" }, grp:"Termine", status:"offen", emoji:"🏄", date:"2026-09-02", time:"12:00–14:00",
-    title:"Flow House — auf der stehenden Welle surfen", where:"A-Square, 120/1 Sukhumvit Soi 26 · BTS Phrom Phong oder MRT Queen Sirikit",
-    price:"750 ฿/Std. vor Ort (~20 €) · über Klook/Traveloka ~1.090 ฿",
-    info:["Künstliche Dauerwelle mitten in Sukhumvit. Du fängst auf dem Bodyboard an und stehst meistens nach einer Stunde","Brett, Weste und Einweisung sind im Preis. Aufs Gelände zu kommen kostet nichts","<b>Vorher anrufen: +66 2 108 5210</b> und Uhrzeit nennen — sonst teilst du dir die Stunde mit bis zu zehn Leuten und bist kaum dran","Zwei Stunden lohnen sich: die erste geht fürs Bodyboard drauf, in der zweiten stehst du","30 Min vor der Zeit da sein zum Anmelden. Badehose an, Wechselsachen mit — es gibt warme Duschen, Handtuch 50 ฿","Danach mit der BTS in 15 Min zum Mahanakhon für den Sonnenuntergang"],
-    warn:"Unter der Woche vormittags ist am wenigsten los — abends teilst du dir das Brett mit deutlich mehr Leuten.",
-    phone:"+6621085210",
-    links:[{t:"🎟️ Auf Klook",u:"https://www.klook.com/de/activity/28557-surfing-experience-bangkok/"},{t:"📍 In Google Maps",u:"https://www.google.com/maps/search/?api=1&query=Flow%20House%20Bangkok%20A-Square%20Sukhumvit%2026"}] },
-
   { id:"mahanakhon", klook:"https://www.klook.com/de/activity/16870-king-power-mahanakhon-skywalk-ticket-bangkok/", kurz:"Mahanakhon SkyWalk", grp:"Termine", status:"offen", emoji:"🏙️", date:"2026-09-02", time:"17:15–19:00",
     title:"Mahanakhon SkyWalk — Glasboden zum Sonnenuntergang", where:"114 Naradhiwas Rajanagarindra Rd, Silom · BTS Chong Nonsi, Ausgang 3",
     price:"Klook ab ~10 € · am Tor 1.080–1.200 ฿ zum Sonnenuntergang, 880–1.000 ฿ tagsüber",
@@ -98,6 +90,20 @@ const BOOKINGS = [
     info:["Autofreie Insel der Mon-Minderheit, 2 km lang — zu Fuß in zwei Stunden einmal herum","SONNTAG ist genau der richtige Tag: dann zieht sich der Markt über einen Kilometer die Ostseite entlang. Werktags wäre fast alles zu","Töpferdörfer mit offenen Brennöfen, Mon-Streetfood, Tempel, kein einziges Auto","Dem Bolt-Fahrer einfach „Ko Kret“ oder „Wat Sanam Nuea“ sagen — das kennt jeder. Am Tempel durchlaufen bis zum Pier, Fähre 3 ฿, eine Minute über den Fluss","Fähre fährt 5–21 Uhr im Minutentakt","Vormittags hin, bevor die Sonne knallt — und du bist lange vor dem Transfer zurück"],
     links:[{t:"📍 Fähranleger in Google Maps",u:"https://www.google.com/maps/search/?api=1&query=Wat%20Sanam%20Nuea%20Ko%20Kret%20Ferry%20Pier"}] },
 
+  { id:"watpaknam", kurz:"Wat Paknam", grp:"Vor Ort", status:"vorort", emoji:"🛕", date:"2026-09-02", time:"9:45–11:45",
+    title:"Wat Paknam — Riesenbuddha und Glas-Stupa", where:"300 Ratchamongkhon Prasat Alley, Phasi Charoen · MRT Bang Phai, Ausgang 1",
+    price:"Eintritt frei — auch der Stupa",
+    info:["Der 69 m hohe goldene Buddha ist der höchste Bangkoks, 2021 fertig, komplett aus Bronze. Man sieht ihn schon von weitem über die Dächer ragen","Im 80-Meter-Stupa daneben steigst du bis zur smaragdgrünen Glas-Pagode im 5. Stock — darüber eine Decke, die wie eine Galaxie bemalt ist","Anfahrt einfach: Purple Line bis Tao Poon, dort auf die Blue Line, durchgehend bis Bang Phai. Nur ein Umstieg. Dann 10–15 Min zu Fuß oder 10 ฿ Motorradtaxi","Vormittags zwischen 9 und 11 an einem Wochentag ist am Aufzug nichts los","Täglich 8–18 Uhr, der Stupa schließt schon 17:30","Dresscode wie in jedem Tempel: Schultern und Knie bedeckt, Schuhe aus"],
+    warn:"Aktiver Tempel — bei Zeremonien kann mal ein Bereich zu sein. Und deutlich weniger Touristen als am Grand Palace, dafür genauso beeindruckend.",
+    links:[{t:"📍 In Google Maps",u:"https://www.google.com/maps/search/?api=1&query=Wat%20Paknam%20Phasi%20Charoen%20Bangkok"}] },
+
+  { id:"blumenmarkt", kurz:"Blumenmarkt", grp:"Vor Ort", status:"vorort", emoji:"💐", date:"2026-08-30", time:"20:45",
+    title:"Pak Khlong Talat — Blumenmarkt bei Nacht", where:"Chak Phet Rd, Phra Nakhon · MRT Sanam Chai, Ausgang 1",
+    price:"Eintritt frei",
+    info:["Thailands größter Blumen-Großmarkt, rund um die Uhr in Betrieb","Berge von Orchideen, Rosen, Jasmin und Ringelblumen — dazwischen Frauen, die in Sekunden Girlanden für die Tempel flechten","Abends zwischen 18 und 21 Uhr ist es lebendig und gut zu fotografieren. Wer die volle Wucht will, kommt nachts zwischen 2 und 5, wenn die Lastwagen aus den Provinzen kommen","Liegt 10 Min zu Fuß von Chinatown an der Memorial Bridge — passt direkt hinter das Abendessen in der Altstadt","30 bis 60 Minuten reichen"],
+    warn:"Der Boden ist von den Lieferungen oft nass und rutschig. Vor Nahaufnahmen von Menschen kurz fragen.",
+    links:[{t:"📍 In Google Maps",u:"https://www.google.com/maps/search/?api=1&query=Pak%20Khlong%20Talat%20Flower%20Market%20Bangkok"}] },
+
   { id:"chatuchak", grp:"Vor Ort", status:"vorort", emoji:"🧺", date:"2026-08-29", time:"9:30–13:00",
     title:"Chatuchak Weekend Market", where:"MRT Chatuchak Park · ab Yaek Tiwanon ~35 Min, 40–60 ฿",
     price:"Eintritt frei",
@@ -108,12 +114,6 @@ const BOOKINGS = [
     price:"Grand Palace 500 ฿ · Wat Pho 300 ฿ · Wat Arun 200 ฿ + 5 ฿ Fähre = 1.005 ฿",
     info:["8:15 Bolt zum Nonthaburi Pier (10 Min), dann Expressboot flussabwärts (~1 Std.): orange 18 ฿, gelb 23 ฿, rot 32 ฿ — an Bord zahlen. Die schönste Anreise der Stadt. Nach 19 Uhr fahren die Expressboote nicht mehr","Dresscode am Palast ist der strengste des Landes: lange Hose, Oberteil MIT Ärmeln, geschlossene Schuhe oder Sandalen mit Fersenriemen. Shorts, ärmellos, zerrissene Jeans, Flip-Flops = abgewiesen. Sarong-Verleih am Eingang gegen ~200 ฿ Pfand","Kassenschluss Palast 15:30, Gelände bis 16:30 — vormittags hin. Das 500-฿-Ticket gilt 7 Tage und deckt Wat Phra Kaew und das Queen-Sirikit-Textilmuseum mit ab","Wat Pho (8–18:30): liegender Buddha, Wasserflasche im Ticket, dazu Thai-Massage in der Original-Tempelmassageschule — 30 Min ab 340 ฿, 1 Std. ~520 ฿"],
     warn:"„Der Palast ist heute geschlossen\" vor dem Tor ist IMMER die Tuk-Tuk-Masche. Er ist offen — einfach durchgehen." },
-
-  { id:"klong", grp:"Vor Ort", status:"vorort", emoji:"🛶", date:"2026-09-02", time:"7:00",
-    title:"Klong-Tour im Longtail + Bang Krachao", where:"Start Wat Arun oder Sathorn Pier",
-    price:"Boot solo 1.000–1.500 ฿ · Fähre 10 ฿ · Fahrrad ~100 ฿",
-    info:["Um 7 Uhr gehört dir die Stadt allein","Danach Bang Krachao: Dschungel-Holzstege mitten in der Stadt, 2–3 Std. Runde, vor der Mittagshitze fertig"],
-    warn:"Preis UND Dauer vor dem Einsteigen fix vereinbaren — sonst wird aus 1 Std. plötzlich eine teure Zusatzrunde." },
 
   { id:"ayutthaya", grp:"Vor Ort", status:"vorort", emoji:"🏛️", date:"2026-09-04", time:"9:05",
     title:"Ayutthaya per Zug", where:"ab Krung Thep Aphiwat (Bang Sue), MRT-Anschluss",

@@ -47,7 +47,8 @@ const PLAN = [
       { t:"16:30", txt:"Kaffee mit Aussicht: der größte Starbucks Reserve Thailands im 7. Stock, zweistöckig — oder die Tasana-Nakorn-Terrasse im 6. mit Blick den Fluss runter." },
       { t:"17:15", txt:"Bolt zum Golden Mount (~25 Min): 340 Stufen hoch, Eintritt ~100 ฿. Um 17:45 oben stehen — Abendlicht über der Altstadt, die Sonne geht um 18:31 unter." },
       { t:"19:15", txt:"Abendessen in der Altstadt: Thipsamai Pad Thai in der Mahachai Road ist 10 Min entfernt, der berühmteste Pad Thai der Stadt (80–150 ฿, im Eierteig gewickelt). Öffnungszeit vorher kurz in Maps prüfen — und die Schlange ist nach 21 Uhr am kürzesten." },
-      { t:"~21:00", txt:"Bolt zurück, ~250 ฿." }
+      { t:"20:45", txt:"Zehn Minuten weiter der Pak Khlong Talat, Thailands größter Blumenmarkt — rund um die Uhr offen, Eintritt frei. Berge von Orchideen, Jasmin und Ringelblumen, dazwischen Frauen, die in Sekunden Girlanden für die Tempel flechten. Eine halbe Stunde reicht, und es ist der schönste Abschluss, den der Abend haben kann." },
+      { t:"~21:45", txt:"Bolt zurück, ~250 ฿." }
     ],
     note:"Eine Anfahrt, vier Sachen: Spa, Mall, Tempel, Essen — alle am selben Flussufer entlang. Chinatown hast du schon gestern gehabt, deshalb heute die Altstadt." },
 
@@ -76,18 +77,18 @@ const PLAN = [
     ],
     note:"Ein Weg, drei Dinge — Elefanten, Massage und Sukhumvit-Abend ohne einen einzigen Doppelweg. Bars-Abend Nr. 2. Regel für die Ecke: Nie mitgehen, wenn dich jemand „mitnimmt“." },
 
-  { date:"2026-09-02", wd:"Mi", title:"Surfen & Glasboden", icon:"🏄",
+  { date:"2026-09-02", wd:"Mi", title:"Riesenbuddha & Glasboden", icon:"🛕",
     blocks:[
-      { t:"vorm.", txt:"Ausschlafen und Pool — gestern waren Elefanten, Massage und Sukhumvit, das darf sich setzen. Wäsche in die Maschine." },
-      { t:"11:00", txt:"Los nach Sukhumvit: MRT bis Queen Sirikit (Ausgang 1, dann 15 Min zu Fuß) oder BTS Phrom Phong Ausgang 6. Mit Bolt 35–45 Min für 250–320 ฿." },
-      { t:"12:00–14:00", txt:"FLOW HOUSE, künstliche Dauerwelle im A-Square: Du fängst auf dem Bodyboard an und stehst nach der ersten Stunde meistens. 750 ฿ pro Stunde, Brett, Weste und Einweisung sind drin. VORHER ANRUFEN (+66 2 108 5210) und die Uhrzeit nennen — sonst teilst du dir die Stunde mit bis zu zehn Leuten." },
-      { t:"14:15", txt:"Duschen und umziehen ist vor Ort möglich (warme Duschen, Handtuch 50 ฿). Danach Mittagessen im EmQuartier oder Terminal 21, beides ein paar Minuten weg." },
-      { t:"16:00", txt:"Kaffee und Beine hochlegen — du hast zwei Stunden gegen eine Wasserwand gekämpft, das merkst du." },
-      { t:"17:15", txt:"BTS Phrom Phong → Siam → Silom-Linie bis Chong Nonsi (~20 Min). Der Mahanakhon-Turm steht direkt über der Station." },
+      { t:"9:00", txt:"Los: MRT ab Yaek Tiwanon bis Tao Poon, dort auf die Blue Line und durchgehend bis Bang Phai. Nur ein Umstieg, rund 45 Min." },
+      { t:"9:45–11:45", txt:"WAT PAKNAM: Der 69 Meter hohe goldene Buddha ist der höchste Bangkoks — 2021 fertig, komplett aus Bronze, du siehst ihn schon von weitem über die Dächer ragen. Im 80-Meter-Stupa daneben fährst du hoch bis zur smaragdgrünen Glas-Pagode im 5. Stock, darüber eine Decke, die wie eine Galaxie bemalt ist. Eintritt frei, auch der Stupa. Vormittags unter der Woche ist am Aufzug nichts los." },
+      { t:"12:00", txt:"Vom Fußgängersteg an der MRT-Station hast du den besten Blick auf den Buddha — das Foto machst du auf dem Rückweg." },
+      { t:"12:30", txt:"Mittagessen in der Gegend oder zurück ins Hotel. Der Tempel liegt in Thonburi, einem Viertel ohne Touristen — die Garküchen dort sind ehrlich und billig." },
+      { t:"14:00", txt:"Zurück ins Hotel: Pool, Sauna, Nachmittagsschauer aussitzen." },
+      { t:"17:15", txt:"Zum Mahanakhon: MRT bis Si Lom, umsteigen auf die BTS Sala Daeng, eine Station bis Chong Nonsi. Der Turm steht direkt über dem Ausgang." },
       { t:"17:45–19:30", txt:"MAHANAKHON SKYWALK: Innendeck im 74. Stock, offenes Dach im 78. und der Glasboden auf 310 m. Sonnenuntergang um 18:29 — du siehst die Stadt bei Tag, im Sonnenuntergang und im Lichtermeer. Sonnenuntergangs-Ticket vorher online kaufen (Klook ab ~10 €)." },
       { t:"20:00", txt:"Abendessen in Silom, oder mit der BTS 20 Min zum Saxophone Pub am Victory Monument: Livejazz seit den Achtzigern, Tresenplatz, Thai-Eistee." }
     ],
-    note:"Action-Tag statt Kanaltour: die Klong-Fahrt und Bang Krachao sind rausgeflogen. Falls du noch mehr willst — Wakeboard am Taco Lake in Bang Na (400 ฿ für den ganzen Tag) liegt an derselben BTS-Linie und öffnet mittwochs um 12 Uhr. ACHTUNG Mahanakhon: bei Sturm sperren sie das Außendeck, Geld gibt es nicht zurück — erst den Himmel anschauen, dann kaufen." },
+    note:"Zwei Höhepunkte an einem Tag, beide mit der Bahn erreichbar: morgens der höchste Buddha der Stadt für null Baht, abends der höchste Aussichtspunkt mit Glasboden. Der Tempel ist weit weniger überlaufen als Grand Palace oder Wat Arun. ACHTUNG Mahanakhon: bei Sturm sperren sie das Außendeck, Geld gibt es nicht zurück — erst den Himmel anschauen, dann kaufen." },
 
   { date:"2026-09-03", wd:"Do", title:"Shoppen & Sunset-Cruise", icon:"🛒",
     blocks:[
