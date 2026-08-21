@@ -39,7 +39,7 @@
     <div class="field"><input id="in-thb" inputmode="decimal" placeholder="Baht"><span class="cur">฿</span></div>
   </div>
   <div class="card weather" id="weather"></div>
-  <h2><span class="th">☔</span>Regen an deinen Reisetagen</h2>
+  <h2><span class="th">☔</span>Deine Reisetage — antippen für Details</h2>
   <div class="card wx-days" id="wx-days"></div>
   <h2><span class="th">฿</span>Spickzettel</h2>
   <div class="card cheat" id="cheat-thb"></div>
@@ -79,10 +79,6 @@
 
 <!-- KARTE -->
 <section class="panel" id="panel-karte">
-  <div class="seg">
-    <button class="active" data-view="map">Echte Karte</button>
-    <button data-view="radar">Radar ab Hotel</button>
-  </div>
   <div class="chips" id="map-chips"></div>
   <div class="map-tools">
     <button class="btn ghost small" id="map-rain" type="button">🌧️ Regenradar</button>
@@ -107,23 +103,11 @@
     </details>
   </div>
   <div id="map"></div>
-  <div id="radar-wrap" hidden>
-    <details class="card explain">
-      <summary>Was ist das hier?</summary>
-      <div class="s-body">
-        <p>Keine Landkarte, sondern eine <b>Entfernungsübersicht</b>: Dein Hotel ist der ★ in der Mitte. Jeder Punkt liegt in der Richtung, in der das Ziel wirklich liegt — oben ist Norden.</p>
-        <p>Die Ringe stehen für <b>1 · 5 · 25 · 100 · 500 km</b>, die Abstände sind gestaucht (sonst passen Tempel um die Ecke und Koh Phangan nicht auf einen Schirm).</p>
-        <p>Die <b>Zahl im Punkt</b> = Platz nach Fahrzeit: Nr. 1 erreichst du am schnellsten. Punkt antippen → Details, Buchung, Warnung.</p>
-      </div>
-    </details>
-    <svg id="radar" viewBox="0 0 700 700"></svg>
-  </div>
   <div class="map-legend">
     <span style="--c:#E8B04B">★ Hotel</span>
     <span style="--c:#6BCB77">Vor der Tür</span>
     <span style="--c:#A78BFA">Stadt</span>
     <span style="--c:#E8B04B">Luxus</span>
-    <span style="--c:#4FD8EB">Party</span>
     <span style="--c:#57A8FF">An- &amp; Abreise</span>
     <span style="--c:#F26D9E">Ausflüge</span>
   </div>
@@ -205,10 +189,6 @@
         <a class="btn" id="hotel-gmaps" href="#" target="_blank" rel="noopener">📍 Hotel in Google Maps</a>
       </div>
     </div>
-  </details>
-  <details class="card sec">
-    <summary><span class="sec-ico">🇹🇭</span><div class="sec-t"><b>Thai zum Zeigen & Sagen</b><i>10 Sätze mit Lautschrift</i></div><span class="chev">›</span></summary>
-    <div class="sec-body" id="thai-list"></div>
   </details>
   <details class="card sec">
     <summary><span class="sec-ico">👕</span><div class="sec-t"><b>Regeln & Dresscode</b><i>Tempel, Clubs, No-Gos</i></div><span class="chev">›</span></summary>

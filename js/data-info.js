@@ -51,18 +51,6 @@ const INFO = {
     { id:"docs", txt:"OneDrive-Ordner „Bangkok 2026“ am Handy öffnen → „Offline verfügbar“ antippen (Buchung + Parkplatz)", due:"vor Abflug" }
   ],
 
-  thai: [
-    { de:"Hallo / Auf Wiedersehen", th:"สวัสดีครับ", lautschrift:"ßa-wat-dii khrap" },
-    { de:"Danke", th:"ขอบคุณครับ", lautschrift:"khop-khun khrap" },
-    { de:"Wie viel kostet das?", th:"เท่าไหร่ครับ", lautschrift:"tao-rai khrap" },
-    { de:"Zu teuer!", th:"แพงไป", lautschrift:"phääng bpai" },
-    { de:"Nicht scharf, bitte", th:"ไม่เผ็ดครับ", lautschrift:"mai phet khrap" },
-    { de:"Sehr lecker!", th:"อร่อยมาก", lautschrift:"a-roi maak" },
-    { de:"Wo ist die Toilette?", th:"ห้องน้ำอยู่ที่ไหนครับ", lautschrift:"hong-naam juu thii-nai khrap" },
-    { de:"Kein Problem / macht nichts", th:"ไม่เป็นไร", lautschrift:"mai bpen rai" },
-    { de:"Die Rechnung, bitte", th:"เช็คบิลครับ", lautschrift:"tschek-bin khrap" },
-    { de:"Hilfe!", th:"ช่วยด้วย", lautschrift:"tschuai duai" }
-  ],
 
   dresscode: [
     "Tempel: Schultern + Knie bedeckt (leichte lange Hose einpacken), Schuhe aus vor Gebäuden.",

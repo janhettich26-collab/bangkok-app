@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  const APP_VERSION = "v35";   // muss zur Version in sw.js passen
+  const APP_VERSION = "v36";   // muss zur Version in sw.js passen
 
   let WX = null;   // Live-Wetter: { now:{...}, hours:[...], days:{ "2026-08-30": {...} } } — oben, weil renderPlan es liest
 
@@ -641,109 +641,6 @@
     mapObj.setView([HOTEL.lat, HOTEL.lng], 11, { animate: false });
   });
 
-  // ————— Radar (Entfernungsübersicht wie die Original-Karte) —————
-  const segBtns = document.querySelectorAll(".seg button");
-  segBtns.forEach(b => b.addEventListener("click", () => {
-    segBtns.forEach(x => x.classList.toggle("active", x === b));
-    const radar = b.dataset.view === "radar";
-    document.getElementById("map").style.display = radar ? "none" : "";
-    document.getElementById("radar-wrap").hidden = !radar;
-    if (radar && !radarInited) { radarInited = true; buildRadar(); }
-  }));
-  let radarInited = false;
-
-  function distKm(a, b) { // Haversine
-    const R = 6371, r = Math.PI / 180;
-    const dLat = (b.lat - a.lat) * r, dLng = (b.lng - a.lng) * r;
-    const h = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * r) * Math.cos(b.lat * r) * Math.sin(dLng / 2) ** 2;
-    return 2 * R * Math.asin(Math.sqrt(h));
-  }
-  function bearing(a, b) {
-    const r = Math.PI / 180;
-    const y = Math.sin((b.lng - a.lng) * r) * Math.cos(b.lat * r);
-    const x = Math.cos(a.lat * r) * Math.sin(b.lat * r) - Math.sin(a.lat * r) * Math.cos(b.lat * r) * Math.cos((b.lng - a.lng) * r);
-    return Math.atan2(y, x);
-  }
-  function boltMins(s) {
-    if (!s) return 999;
-    const h = s.match(/(\d+(?:[,.]\d+)?)\s*Std/);
-    if (h) return parseFloat(h[1].replace(",", ".")) * 60;
-    const m = s.match(/(\d+)\s*Min/);
-    if (m) return +m[1];
-    const km = s.match(/(\d+)\s*km/); // grobe Näherung: 1 km ≈ 1 Min Überland
-    return km ? +km[1] : 999;
-  }
-
-  function buildRadar() {
-    const svg = document.getElementById("radar");
-    const C = 350, maxR = 322, minD = 0.4, maxD = 750;
-    const rOf = d => 26 + (maxR - 26) * Math.log(Math.max(d, minD) / minD) / Math.log(maxD / minD);
-    const NS = "http://www.w3.org/2000/svg";
-    const el = (tag, at) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); return e; };
-
-    // Ringe
-    [1, 5, 25, 100, 500].forEach(km => {
-      svg.appendChild(el("circle", { cx: C, cy: C, r: rOf(km), class: "ring" }));
-      const t = el("text", { x: C + 4, y: C - rOf(km) - 5, class: "ring-label" });
-      t.textContent = km + " km";
-      svg.appendChild(t);
-    });
-    const n = el("text", { x: C, y: 16, class: "ring-label north" }); n.textContent = "N"; svg.appendChild(n);
-
-    // Punkte: Position + Rang nach Fahrzeit
-    const pts = SPOTS.map((s, i) => {
-      const d = distKm(HOTEL, s), th = bearing(HOTEL, s), r = rOf(d);
-      return { s, i, mins: boltMins(s.bolt), ax: C + r * Math.sin(th), ay: C - r * Math.cos(th) };
-    }).sort((a, b) => a.mins - b.mins);
-    pts.forEach((p, k) => { p.rank = k + 1; p.x = p.ax; p.y = p.ay; });
-
-    // Überlappende auseinanderschieben
-    for (let it = 0; it < 80; it++) {
-      for (let a = 0; a < pts.length; a++) for (let b = a + 1; b < pts.length; b++) {
-        const dx = pts[b].x - pts[a].x, dy = pts[b].y - pts[a].y;
-        const d = Math.hypot(dx, dy) || 0.01, min = 30;
-        if (d < min) {
-          const push = (min - d) / 2, ux = dx / d, uy = dy / d;
-          pts[a].x -= ux * push; pts[a].y -= uy * push;
-          pts[b].x += ux * push; pts[b].y += uy * push;
-        }
-      }
-    }
-
-    pts.forEach(p => {
-      const c = CATS[p.s.cat].color;
-      if (Math.hypot(p.x - p.ax, p.y - p.ay) > 9) { // Linie zur echten Position
-        svg.appendChild(el("line", { x1: p.ax, y1: p.ay, x2: p.x, y2: p.y, class: "anchor-line" }));
-        svg.appendChild(el("circle", { cx: p.ax, cy: p.ay, r: 2.5, fill: "#4a5468" }));
-      }
-      const g = el("g", { class: "rpoint", "data-idx": p.i });
-      g.appendChild(el("circle", { cx: p.x, cy: p.y, r: 22, fill: "transparent" })); // Tippfläche
-      g.appendChild(el("circle", { cx: p.x, cy: p.y, r: 14, class: "dot", stroke: c }));
-      const t = el("text", { x: p.x, y: p.y + 4.5, class: "dot-n", fill: c });
-      t.textContent = p.rank;
-      g.appendChild(t);
-      g.addEventListener("click", () => showSheet(p.s, p.rank));
-      svg.appendChild(g);
-    });
-
-    // Hotel-Stern
-    const star = el("text", { x: C, y: C + 8, class: "hotel-star" });
-    star.textContent = "★"; svg.appendChild(star);
-  }
-
-  // Detail-Sheet (Punkt angetippt)
-  function showSheet(s, rank) {
-    const old = document.getElementById("sheet"); if (old) old.remove();
-    const div = document.createElement("div");
-    div.id = "sheet";
-    div.innerHTML = '<div class="sheet-inner">' +
-      '<button class="sheet-close">✕</button>' +
-      '<div class="sheet-head"><span class="s-emoji">' + s.emoji + '</span><b>' + rank + '. ' + s.name + '</b></div>' +
-      spotCard(s).replace("<details", "<details open") + "</div>";
-    div.addEventListener("click", e => { if (e.target === div || e.target.className === "sheet-close") div.remove(); });
-    document.body.appendChild(div);
-  }
-
   // ————— Info —————
   document.getElementById("notfall-list").innerHTML = INFO.notfall.map(n =>
     '<div class="cheat-row"><span>' + n.label + "</span>" +
@@ -859,9 +756,6 @@
   });
   renderPack();
 
-  document.getElementById("thai-list").innerHTML = INFO.thai.map(p =>
-    '<div class="thai-row"><div class="thai-de">' + p.de + '</div><div class="thai-th">' + p.th +
-    '</div><div class="thai-ls">' + p.lautschrift + "</div></div>").join("");
   document.getElementById("hotel-thai").textContent = HOTEL.thai;
   document.getElementById("hotel-gmaps").href = HOTEL.gmaps;
 
@@ -977,10 +871,7 @@
   function renderWeather() {
     const el = document.getElementById("weather");
     if (!WX) { el.innerHTML = '<div class="wx-load">Wetter wird geladen …</div>'; return; }
-    const n = WX.now;
-    const heute = WX.days[todayISO()];
-    const naechste = WX.hours.filter(h => h.ts > Date.now() - 3600000).slice(0, 12);
-
+    const n = WX.now, heute = WX.days[todayISO()];
     el.innerHTML =
       '<div class="wx-now">' +
         '<div class="wx-ico">' + wxIcon(n.code, n.day) + "</div>" +
@@ -990,36 +881,48 @@
         "</div>" +
         '<div class="wx-side"><span>💧 ' + n.feuchte + " %</span><span>💨 " + n.wind + " km/h</span>" +
           (heute ? "<span>🌅 " + heute.unter + "</span>" : "") + "</div>" +
-      "</div>" +
-      (heute ? '<div class="wx-bar ' + heute.st.k + '"><b>' + tropfen(heute.st.n) + " " + heute.st.kurz + "</b> · " +
-               fensterText(heute.fenster) + "<br>" + heute.st.lang + "</div>" : "") +
-      (naechste.length ? '<div class="wx-hours">' + naechste.map(h => {
-          const st = stufeVon(h.mm);
-          return '<div class="wx-h ' + st.k + '"><span class="wx-hh">' + h.hh + "</span>" +
-            '<span class="wx-hi">' + wxIcon(h.code, h.day) + "</span>" +
-            '<span class="wx-ht">' + h.t + "°</span>" +
-            '<span class="wx-hp">' + (h.mm >= 0.1 ? tropfen(st.n) : "trocken") + "</span></div>";
-        }).join("") + "</div>" : "") +
-      '<div class="wx-src">Live von open-meteo · antippen zum Aktualisieren</div>';
+      "</div>";
     renderWxDays();
   }
 
-  // Alle Reisetage untereinander — vollständig, nichts abgeschnitten
+  // Alle Reisetage — antippen klappt den Stundenverlauf des Tages auf
   function renderWxDays() {
     const box = document.getElementById("wx-days");
     if (!box || !WX) return;
     const heute = todayISO();
+    const offen = [...box.querySelectorAll("details[open]")].map(x => x.dataset.d);
+
     box.innerHTML = PLAN.map(d => {
       const w = WX.days[d.date];
       const dt = d.date.split("-");
-      if (!w) return '<div class="wxd leer"><span class="wxd-d">' + d.wd + " " + dt[2] + "." + dt[1] + ".</span>" +
-        '<span class="wxd-x">Vorhersage reicht noch nicht so weit</span></div>';
-      return '<div class="wxd ' + w.st.k + (d.date === heute ? " ist-heute" : "") + '">' +
-        '<span class="wxd-d">' + d.wd + " " + dt[2] + "." + dt[1] + ".</span>" +
-        '<span class="wxd-i">' + wxIcon(w.code, 1) + "</span>" +
-        '<span class="wxd-t">' + w.min + "–" + w.max + "°</span>" +
-        '<span class="wxd-r"><b>' + tropfen(w.st.n) + " " + w.st.kurz + "</b><i>" + fensterText(w.fenster) + "</i></span>" +
-        "</div>";
+      const kopf = '<span class="wxd-d">' + d.wd + " " + dt[2] + "." + dt[1] + ".</span>";
+      if (!w) return '<div class="wxd leer">' + kopf + '<span class="wxd-x">Vorhersage reicht noch nicht so weit</span></div>';
+
+      // Stundenverlauf dieses Tages, 6 bis 23 Uhr — nachts braucht das keiner
+      const std = WX.hours.filter(h => h.tag === d.date && h.stunde >= 6 && h.stunde <= 23);
+      const balken = std.map(h => {
+        const st = stufeVon(h.mm);
+        const hoch = Math.min(100, Math.round(Math.sqrt(h.mm / 6) * 100));
+        return '<div class="wxs ' + st.k + '" title="' + h.stunde + ' Uhr">' +
+          '<i style="height:' + (h.mm > 0 ? Math.max(6, hoch) : 2) + '%"></i>' +
+          '<span>' + (h.stunde % 3 === 0 ? h.stunde : "") + "</span></div>";
+      }).join("");
+
+      return '<details class="wxd-w" data-d="' + d.date + '"' + (offen.includes(d.date) ? " open" : "") + ">" +
+        '<summary class="wxd ' + w.st.k + (d.date === heute ? " ist-heute" : "") + '">' + kopf +
+          '<span class="wxd-i">' + wxIcon(w.code, 1) + "</span>" +
+          '<span class="wxd-t">' + w.min + "–" + w.max + "°</span>" +
+          '<span class="wxd-r"><b>' + tropfen(w.st.n) + " " + w.st.kurz + "</b><i>" + fensterText(w.fenster) + "</i></span>" +
+          '<span class="wxd-chev">›</span>' +
+        "</summary>" +
+        '<div class="wxd-body">' +
+          "<p>" + w.st.lang + "</p>" +
+          '<div class="wxs-wrap">' + balken + "</div>" +
+          '<div class="wxs-legende">Stunde für Stunde von 6 bis 23 Uhr — je höher der Balken, desto stärker</div>' +
+          '<div class="wxd-fakten"><span>🌡️ ' + w.min + "–" + w.max + " °C</span><span>☀️ UV " + w.uv +
+            "</span><span>🌅 " + w.unter + "</span><span>🕒 " + w.std + " Std. mit Regen</span></div>" +
+          '<div class="wxd-plan">' + d.icon + " " + d.title + "</div>" +
+        "</div></details>";
     }).join("");
   }
 
@@ -1029,7 +932,7 @@
       try {
         const c = JSON.parse(cache);
         WX = c; renderWeather(); renderPlan();
-        if (Date.now() - c.ts < 30 * 60 * 1000) return;
+        if (Date.now() - c.ts < 10 * 60 * 1000) return;
       } catch (e) { /* kaputter Cache */ }
     }
     try {
@@ -1070,6 +973,7 @@
       });
       const hours = j.hourly.time.map((t, i) => ({
         ts: new Date(t + ":00+07:00").getTime(),
+        tag: t.slice(0, 10), stunde: +t.slice(11, 13),
         hh: t.slice(11, 13) + " Uhr",
         t: Math.round(j.hourly.temperature_2m[i]),
         mm: j.hourly.precipitation[i] || 0,
@@ -1091,6 +995,9 @@
   }
   document.getElementById("weather").addEventListener("click", () => fetchWeather(true));
   fetchWeather();
+  // Alle 10 Minuten nachladen, und immer wenn die App wieder in den Vordergrund kommt
+  setInterval(() => fetchWeather(true), 10 * 60 * 1000);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) fetchWeather(true); });
 
   // ————— Version anzeigen und Updates erkennen —————
   // Ohne das merkt man nicht, dass das Handy auf einer alten Fassung festhängt.

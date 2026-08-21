@@ -8,36 +8,6 @@
 //         "vorort" = kein Vorab-Ticket noetig, vor Ort zahlen
 const BOOKINGS = [
 
-  // ————— Das Grundgeruest —————
-  { id:"flug", grp:"Reise", status:"fix", emoji:"✈️", date:"2026-08-27", time:"22:20",
-    title:"Lufthansa LH772 → Bangkok", where:"München T2 · Direktflug 10,5 Std.",
-    price:"in der Pauschalreise enthalten",
-    info:["Landung Fr 28.08. um 13:45 Uhr Ortszeit in Suvarnabhumi (BKK)","Gepäck: 1×23 kg aufgeben + 1×8 kg Handgepäck (55×40×23) + persönlicher Gegenstand","Rückflug LH773: So 06.09. 22:55 ab BKK → Mo 07.09. 05:15 München","Online-Check-in öffnet 26.08. abends"],
-    warn:"Powerbank MUSS ins Handgepäck — im Koffer ist sie verboten.",
-    links:[{t:"✈️ LH Check-in",u:"https://www.lufthansa.com/de/de/online-check-in"}],
-    ref:"Buchungsnummer & PNR: Info → Meine Reisedaten" },
-
-  { id:"hotel", grp:"Reise", status:"fix", emoji:"🏨", date:"2026-08-28", time:"Check-in",
-    title:"Oakwood Suites Tiwanon", where:"229 Krungthep-Nonthaburi Rd, Nonthaburi 11000",
-    price:"in der Pauschalreise enthalten · Frühstück inklusive",
-    info:["One Bedroom Deluxe King, 31 m², Balkon, Waschmaschine in der Suite","Check-in Fr 28.08. · Check-out So 06.09. (9 Nächte)","Pool, Sauna, Rooftop · MRT Yaek Tiwanon (Purple Line) direkt gegenüber","Kein Aufpreis beim Check-in — das Zimmer-Upgrade wurde zurückgezogen, Hotel hat schriftlich bestätigt","Tel. +66 2 149 9450"],
-    links:[{t:"📍 In Google Maps",u:"https://www.google.com/maps/search/?api=1&query=Oakwood%20Suites%20Tiwanon%20Nonthaburi"}],
-    ref:"Bestätigungs-Nr.: Info → Meine Reisedaten" },
-
-  { id:"transfer", grp:"Reise", status:"fix", emoji:"🚐", date:"2026-08-28", time:"~15:15",
-    title:"Privater Flughafen-Transfer", where:"BKK → Hotel · und am 06.09. zurück",
-    price:"in der Pauschalreise enthalten (69 €)",
-    info:["Fahrt Flughafen → Hotel dauert rund 1 Std.","Rückfahrt am 06.09. ca. 19:00 ab Hotel — 3 Std. Puffer vor dem 22:55-Flug"],
-    warn:"Abholzeit musst du 24 Std. vor Abflug selbst in „Meine Buchung verwalten\" nachsehen — sie wird nicht automatisch geschickt.",
-    links:[{t:"🧳 Meine Buchung",u:"https://www.loveholidays.de/"}],
-    ref:"Transfer-Referenz: Info → Meine Reisedaten" },
-
-  { id:"parkplatz", grp:"Reise", status:"fix", emoji:"🅿️", date:"2026-08-27", time:"~19:00",
-    title:"Parkplatz München (Parkos)", where:"Parkprofi Parkhaus, Josef-Beil-Ring 2, 85435 Erding",
-    price:"128 € für 12 Tage (bezahlt) — spart ~230 € gegenüber Terminal",
-    info:["Überdacht · Shuttle ~10 Min zum Terminal 2","Gebucht 27.08. ~19:00 bis 07.09. ~07:00"],
-    ref:"Reservierungs-Nr.: Info → Meine Reisedaten" },
-
   { id:"tdac", tun:"ausfüllen", kurz:"TDAC-Einreisekarte", grp:"Reise", status:"offen", emoji:"🛂", date:"2026-08-25", time:"ab diesem Tag",
     title:"TDAC — Einreisekarte ausfüllen", where:"online, dauert 10 Minuten",
     price:"kostenlos",

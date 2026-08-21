@@ -52,12 +52,6 @@ header .dates { margin-left: auto; color: var(--muted); font-size: 12px; }
 .t-row:last-child { border-bottom: none; }
 .t-time { color: var(--gold); font-size: 13px; font-weight: 700; min-width: 56px; font-variant-numeric: tabular-nums; }
 .t-row p { font-size: 13.5px; flex: 1; }
-.weather {
-  display: flex; justify-content: space-between; align-items: center; gap: 10px;
-  padding: 11px 14px; margin-top: 10px; font-size: 13.5px;
-}
-.wx-main { font-weight: 700; }
-.wx-rain { color: var(--muted); font-size: 12.5px; text-align: right; }
 
 /* Kurs-Hero */
 .rate-hero {
@@ -486,7 +480,7 @@ button, input, a { -webkit-tap-highlight-color: rgba(232,176,75,.15); }
 .fc-sprich { font-size: 17px; color: var(--gold); margin-top: 14px; font-style: italic; }
 
 /* ————— Live-Wetter ————— */
-.card.weather { padding: 0; overflow: hidden; cursor: pointer; }
+.card.weather { display: block; padding: 0; overflow: hidden; cursor: pointer; margin-top: 10px; }
 .wx-load { padding: 18px 16px; color: var(--muted); font-size: 14px; text-align: center; }
 .wx-now { display: flex; align-items: center; gap: 14px; padding: 16px 16px 12px; }
 .wx-ico { font-size: 42px; line-height: 1; }
@@ -547,24 +541,46 @@ button, input, a { -webkit-tap-highlight-color: rgba(232,176,75,.15); }
 .wx-h.extrem { background: rgba(220,75,62,.20); }
 .wx-hp { font-size: 10.5px; color: var(--muted); }
 
-/* Reisetage-Liste auf der Startseite — vollständig, nichts abgeschnitten */
-.card.wx-days { padding: 4px 0; }
-.wxd { display: flex; align-items: center; gap: 9px; padding: 10px 13px; border-bottom: 1px solid var(--line); }
-.wxd:last-child { border-bottom: none; }
+/* Reisetage — antippen klappt den Stundenverlauf auf */
+.card.wx-days { padding: 0; }
+.wxd-w { border-bottom: 1px solid var(--line); }
+.wxd-w:last-child { border-bottom: none; }
+.wxd { display: flex; align-items: center; gap: 9px; padding: 11px 13px; cursor: pointer; list-style: none; }
+.wxd::-webkit-details-marker { display: none; }
 .wxd.ist-heute { background: rgba(232,176,75,.07); }
 .wxd-d { flex: 0 0 62px; font-size: 12.5px; font-weight: 700; color: var(--gold); }
 .wxd-i { flex: 0 0 auto; font-size: 19px; line-height: 1; }
-.wxd-t { flex: 0 0 60px; font-size: 12.5px; color: var(--muted); }
+.wxd-t { flex: 0 0 58px; font-size: 12.5px; color: var(--muted); }
 .wxd-r { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
 .wxd-r b { font-size: 12.5px; font-weight: 700; }
 .wxd-r i { font-size: 11.5px; color: var(--muted); font-style: normal; }
+.wxd-chev { flex: 0 0 auto; color: var(--muted); font-size: 17px; transition: transform .15s; }
+.wxd-w[open] .wxd-chev { transform: rotate(90deg); }
 .wxd.trocken .wxd-r b { color: #9BD9A5; }
 .wxd.feucht  .wxd-r b { color: #B8D4F0; }
 .wxd.leicht  .wxd-r b { color: #9CC9FF; }
 .wxd.mittel  .wxd-r b { color: #E8C88B; }
 .wxd.stark   .wxd-r b { color: #F0A57F; }
 .wxd.extrem  .wxd-r b { color: #F09090; }
+.wxd.leer, .wxd-w .wxd.leer { display: flex; }
 .wxd.leer .wxd-x { font-size: 11.5px; color: var(--muted); font-style: italic; }
+
+.wxd-body { padding: 2px 13px 14px; background: rgba(0,0,0,.15); }
+.wxd-body > p { font-size: 12.5px; line-height: 1.5; color: var(--muted); margin-bottom: 11px; }
+.wxs-wrap { display: flex; align-items: flex-end; gap: 2px; height: 66px; }
+.wxs { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+  height: 100%; gap: 3px; }
+.wxs i { display: block; width: 100%; border-radius: 3px 3px 0 0; background: #2A3446; }
+.wxs.feucht i { background: #4A6C90; }
+.wxs.leicht i { background: #57A8FF; }
+.wxs.mittel i { background: #E8B04B; }
+.wxs.stark  i { background: #E8693F; }
+.wxs.extrem i { background: #DC4B3E; }
+.wxs span { font-size: 8.5px; color: var(--muted); height: 10px; }
+.wxs-legende { font-size: 10.5px; color: var(--muted); margin-top: 6px; }
+.wxd-fakten { display: flex; flex-wrap: wrap; gap: 5px 14px; margin-top: 12px; font-size: 11.5px; color: var(--muted); }
+.wxd-plan { margin-top: 11px; padding: 8px 11px; background: var(--surface2); border-radius: 9px;
+  font-size: 12px; font-weight: 600; }
 
 /* ————— Standort-Meldungen ————— */
 .me-msg { padding: 11px 13px; border-radius: 12px; font-size: 12.5px; line-height: 1.5;
