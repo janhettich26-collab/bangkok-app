@@ -2,6 +2,8 @@
 (function () {
   "use strict";
 
+  let WX = null;   // Live-Wetter: { now:{...}, hours:[...], days:{ "2026-08-30": {...} } } — oben, weil renderPlan es liest
+
   // ————— Tabs —————
   const tabs = document.querySelectorAll(".tabbar button");
   const panels = document.querySelectorAll(".panel");
@@ -188,12 +190,19 @@
       const dt = d.date.split("-");
       const isToday = d.date === today;
       const done = d.blocks.filter((b, i) => st[d.date + "#" + i]).length;
+      const wx = WX && WX.days ? WX.days[d.date] : null;
+      const wu = wx ? regenUrteil(wx.p, wx.mm) : null;
       return '<details class="card day' + (isToday ? " today" : "") + (done === d.blocks.length ? " all-done" : "") + '"' + (isToday ? " open" : "") + ">" +
         '<summary><span class="d-date"><b>' + d.wd + "</b> " + dt[2] + "." + dt[1] + ".</span>" +
         '<span class="d-title">' + d.icon + " " + d.title + "</span>" +
+        (wx ? '<span class="d-wx ' + wu.k + '">' + wxIcon(wx.code, 1) + " " + wx.max + "°" + (wx.mm ? " " + wx.mm + "mm" : "") + "</span>" : "") +
         (done ? '<span class="d-prog">' + done + "/" + d.blocks.length + "</span>" : "") +
         (isToday ? '<span class="d-badge">Heute</span>' : "") + "</summary>" +
         '<div class="d-body">' +
+        (wx ? '<div class="d-wxbar ' + wu.k + '">' + wxIcon(wx.code, 1) + " " + wxText(wx.code) + " · " + wx.min + "–" + wx.max + " °C · " +
+              (wx.mm ? wx.mm + " mm Regen" : "kein nennenswerter Regen") + " (" + wx.p + " % Wahrscheinlichkeit) · UV " + wx.uv +
+              " · Sonnenuntergang " + wx.unter + "<br><i>" + wu.t + "</i></div>"
+            : '<div class="d-wxbar"><i>Für diesen Tag reicht die Vorhersage noch nicht — sie geht 16 Tage voraus und wächst jeden Tag mit.</i></div>') +
         d.blocks.map((b, i) => {
           const key = d.date + "#" + i;
           return '<div class="d-block' + (st[key] ? " done" : "") + '" data-pb="' + key + '" role="button" tabindex="0">' +
@@ -708,31 +717,111 @@
   }
   renderToday();
 
-  // ————— Wetter Bangkok (open-meteo, ohne Key) —————
+  // ————— Live-Wetter Bangkok (open-meteo, ohne Schlüssel, kostenlos) —————
   const WX_KEY = "bkk_wx";
-  function wxIcon(c) {
-    if (c <= 1) return "☀️"; if (c <= 3) return "⛅"; if (c <= 48) return "🌫️";
+
+  const WX_TEXT = {
+    0:"klar", 1:"überwiegend klar", 2:"teils bewölkt", 3:"bedeckt",
+    45:"Nebel", 48:"Reifnebel", 51:"Nieselregen", 53:"Nieselregen", 55:"starker Niesel",
+    61:"leichter Regen", 63:"Regen", 65:"starker Regen", 80:"Schauer", 81:"kräftige Schauer",
+    82:"heftige Schauer", 95:"Gewitter", 96:"Gewitter mit Hagel", 99:"schweres Gewitter"
+  };
+  function wxIcon(c, day) {
+    if (c <= 1) return day === 0 ? "🌙" : "☀️";
+    if (c <= 3) return "⛅"; if (c <= 48) return "🌫️";
     if (c <= 67) return "🌦️"; if (c <= 82) return "🌧️"; return "⛈️";
   }
-  function renderWeather(w) {
-    const el = document.getElementById("weather");
-    if (!w) { el.style.display = "none"; return; }
-    el.innerHTML = '<span class="wx-main">' + wxIcon(w.code) + " " + w.t + " °C in Bangkok</span>" +
-      '<span class="wx-rain">Regen heute ' + w.p0 + " % · morgen " + w.p1 + " %</span>";
+  const wxText = c => WX_TEXT[c] || "wechselhaft";
+  // In der Regenzeit steht die Regenwahrscheinlichkeit fast täglich bei 80–95 % — die allein sagt nichts.
+  // Aussagekräftig ist die Regenmenge: 1–3 mm sind ein kurzer Schauer, ab 10 mm wird der Tag wirklich nass.
+  function regenUrteil(p, mm) {
+    if (mm >= 10) return { k: "nass",   t: "Richtig nass — Indoor-Tag einplanen (Mall, Spa, Tempelhallen)" };
+    if (mm >= 3)  return { k: "mittel", t: "Schauer ziehen durch, meist nachmittags und nach 1–2 Std. vorbei — Poncho reicht" };
+    if (p >= 60)  return { k: "mittel", t: "Hohe Wahrscheinlichkeit, aber kaum Menge: höchstens ein kurzer Guss" };
+    return           { k: "trocken",t: "Trocken — raus damit" };
   }
-  async function fetchWeather() {
+
+  function renderWeather() {
+    const el = document.getElementById("weather");
+    if (!WX) { el.innerHTML = '<div class="wx-load">Wetter wird geladen …</div>'; return; }
+    const n = WX.now;
+    const heute = WX.days[todayISO()];
+    const naechste = WX.hours.filter(h => h.ts > Date.now()).slice(0, 8);
+    const u = heute ? regenUrteil(heute.p, heute.mm) : null;
+
+    el.innerHTML =
+      '<div class="wx-now">' +
+        '<div class="wx-ico">' + wxIcon(n.code, n.day) + "</div>" +
+        '<div class="wx-main">' +
+          '<div class="wx-temp">' + n.t + "<span>°C</span></div>" +
+          '<div class="wx-desc">' + wxText(n.code) + " · gefühlt " + n.gefuehlt + " °C</div>" +
+        "</div>" +
+        '<div class="wx-side">' +
+          '<span>💧 ' + n.feuchte + " %</span>" +
+          '<span>💨 ' + n.wind + " km/h</span>" +
+          (heute ? '<span>🌅 ' + heute.unter + "</span>" : "") +
+        "</div>" +
+      "</div>" +
+      (heute ? '<div class="wx-bar ' + u.k + '">Heute ' + heute.min + "–" + heute.max + " °C · " + (heute.mm ? heute.mm + " mm Regen" : "kein nennenswerter Regen") + " (" + heute.p + " % Wahrscheinlichkeit) — " + u.t + "</div>" : "") +
+      (naechste.length ? '<div class="wx-hours">' + naechste.map(h =>
+        '<div class="wx-h' + (h.p >= 60 ? " wet" : "") + '"><span class="wx-hh">' + h.hh + "</span>" +
+        '<span class="wx-hi">' + wxIcon(h.code, h.day) + "</span>" +
+        '<span class="wx-ht">' + h.t + "°</span>" +
+        '<span class="wx-hp">' + h.p + "%</span></div>").join("") + "</div>" : "") +
+      '<div class="wx-src">Live von open-meteo · Bangkok · tippen zum Aktualisieren</div>';
+  }
+
+  async function fetchWeather(force) {
+    const cache = localStorage.getItem(WX_KEY);
+    if (cache && !force) {
+      try {
+        const c = JSON.parse(cache);
+        if (Date.now() - c.ts < 30 * 60 * 1000) { WX = c; renderWeather(); renderPlan(); return; }
+        WX = c; renderWeather(); renderPlan();   // Altbestand sofort zeigen, dann aktualisieren
+      } catch (e) { /* kaputter Cache */ }
+    }
     try {
-      const r = await fetch("https://api.open-meteo.com/v1/forecast?latitude=13.84&longitude=100.52&current=temperature_2m,weather_code&daily=precipitation_probability_max&forecast_days=2&timezone=Asia%2FBangkok");
-      const j = await r.json();
-      const w = { t: Math.round(j.current.temperature_2m), code: j.current.weather_code,
-        p0: j.daily.precipitation_probability_max[0], p1: j.daily.precipitation_probability_max[1], ts: Date.now() };
-      localStorage.setItem(WX_KEY, JSON.stringify(w));
-      renderWeather(w);
+      const url = "https://api.open-meteo.com/v1/forecast?latitude=13.8621&longitude=100.5144" +
+        "&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m,is_day" +
+        "&hourly=temperature_2m,precipitation_probability,weather_code,is_day" +
+        "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,sunset,uv_index_max" +
+        "&forecast_days=16&timezone=Asia%2FBangkok";
+      const j = await (await fetch(url)).json();
+      const c = j.current;
+      const days = {};
+      j.daily.time.forEach((d, i) => {
+        days[d] = {
+          code: j.daily.weather_code[i],
+          max: Math.round(j.daily.temperature_2m_max[i]),
+          min: Math.round(j.daily.temperature_2m_min[i]),
+          p: j.daily.precipitation_probability_max[i],
+          mm: Math.round(j.daily.precipitation_sum[i]),
+          uv: Math.round(j.daily.uv_index_max[i]),
+          unter: (j.daily.sunset[i] || "").slice(11, 16)
+        };
+      });
+      const hours = j.hourly.time.map((t, i) => ({
+        ts: new Date(t + ":00+07:00").getTime(),
+        hh: t.slice(11, 13) + " Uhr",
+        t: Math.round(j.hourly.temperature_2m[i]),
+        p: j.hourly.precipitation_probability[i],
+        code: j.hourly.weather_code[i],
+        day: j.hourly.is_day[i]
+      }));
+      WX = {
+        now: { t: Math.round(c.temperature_2m), gefuehlt: Math.round(c.apparent_temperature),
+               feuchte: c.relative_humidity_2m, wind: Math.round(c.wind_speed_10m),
+               code: c.weather_code, day: c.is_day },
+        hours, days, ts: Date.now()
+      };
+      localStorage.setItem(WX_KEY, JSON.stringify(WX));
+      renderWeather(); renderPlan();
     } catch (e) {
-      const c = localStorage.getItem(WX_KEY);
-      renderWeather(c ? JSON.parse(c) : null);
+      if (!WX) document.getElementById("weather").innerHTML =
+        '<div class="wx-load">Kein Netz — Wetter kann gerade nicht geladen werden.</div>';
     }
   }
+  document.getElementById("weather").addEventListener("click", () => fetchWeather(true));
   fetchWeather();
 
   // ————— Sprache (Deutsch → Englisch, antippen = groß anzeigen) —————

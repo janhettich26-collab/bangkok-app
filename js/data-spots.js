@@ -158,7 +158,7 @@ const SPOTS = [
   { cat:"stadt", name:"Mahanakhon SkyWalk", emoji:"🏙️", lat:13.7233, lng:100.5285,
     bolt:"38 Min", fare:"250–320 ฿", mrt:"BTS Chong Nonsi, Ausgang 3 — der Turm steht direkt über der Station", hours:"SkyWalk tägl. 10–19 Uhr, letzter Einlass 18:30 (Innendeck länger)", price:"tagsüber 880–1.000 ฿ · Sonnenuntergang 1.080–1.200 ฿",
     desc:"Der höchste Aussichtspunkt der Stadt: Innendeck im 74. Stock, offenes Dach im 78. und der berühmte Glasboden auf 310 m. Deutlich mehr Erlebnis als die Sky Bar — und du zahlst dort für EIN Getränk fast so viel.",
-    tips:["Sonnenuntergangs-Slot nehmen und 45–60 Min vorher da sein: Stadt bei Tag, Sonnenuntergang und Lichtermeer in einem Besuch. Ende August geht die Sonne gegen 18:40 unter","Online vorab buchen ist günstiger als an der Kasse und die Sonnenuntergangs-Slots sind schnell weg","Kein Dresscode, Rucksack erlaubt — anders als in der Sky Bar","Gleich über der BTS-Station, überdachter Zugang"],
+    tips:["Sonnenuntergangs-Slot nehmen und 45–60 Min vorher da sein: Stadt bei Tag, Sonnenuntergang und Lichtermeer in einem Besuch. Ende August/Anfang September geht die Sonne um 18:26–18:32 unter","Online vorab buchen ist günstiger als an der Kasse und die Sonnenuntergangs-Slots sind schnell weg","Kein Dresscode, Rucksack erlaubt — anders als in der Sky Bar","Gleich über der BTS-Station, überdachter Zugang"],
     warn:"Bei Regen oder Sturm sperren sie das Außendeck und den Glasboden — Geld gibt es nicht zurück, nur eine Umbuchung. In der Regenzeit erst den Himmel anschauen, dann buchen.", book:[], gmaps:gm("King Power Mahanakhon Bangkok") },
 
   // ————— LUXUS & ABEND —————

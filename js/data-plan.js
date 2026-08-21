@@ -45,7 +45,7 @@ const PLAN = [
       { t:"13:00", txt:"ICONSIAM ist nur 750 m zu Fuß — die Riesenmall am Fluss, täglich 10–22 Uhr. Erst essen: Sook Siam im Erdgeschoss, ein nachgebauter schwimmender Markt mit Ständen aus allen 77 Provinzen." },
       { t:"14:00–16:30", txt:"Shoppen: 1. Stock ICONLUXE (die Luxusmeile am Fluss), 2. Stock der erste Apple Store Thailands, 4.–5. Stock Essen, Takashimaya für alles dazwischen. Kein Feilschen hier — das sind Festpreise, dafür Klimaanlage und Steuerrückerstattung für Touristen an der Kasse fragen." },
       { t:"16:30", txt:"Kaffee mit Aussicht: der größte Starbucks Reserve Thailands im 7. Stock, zweistöckig — oder die Tasana-Nakorn-Terrasse im 6. mit Blick den Fluss runter." },
-      { t:"17:15", txt:"Bolt zum Golden Mount (~25 Min): 340 Stufen hoch, Eintritt ~100 ฿. Um 18:00 oben stehen — Abendlicht über der Altstadt, Sonnenuntergang gegen 18:40." },
+      { t:"17:15", txt:"Bolt zum Golden Mount (~25 Min): 340 Stufen hoch, Eintritt ~100 ฿. Um 17:45 oben stehen — Abendlicht über der Altstadt, die Sonne geht um 18:31 unter." },
       { t:"19:15", txt:"Abendessen in der Altstadt: Thipsamai Pad Thai in der Mahachai Road ist 10 Min entfernt, der berühmteste Pad Thai der Stadt (80–150 ฿, im Eierteig gewickelt). Öffnungszeit vorher kurz in Maps prüfen — und die Schlange ist nach 21 Uhr am kürzesten." },
       { t:"~21:00", txt:"Bolt zurück, ~250 ฿." }
     ],
@@ -79,7 +79,7 @@ const PLAN = [
       { t:"9:30", txt:"Weiter nach Bang Krachao: Fähre 10 ฿ rüber, Fahrrad ~100 ฿ — Dschungel-Holzstege mitten in der Stadt, 2–3 Std. Runde. Vor der Mittagshitze fertig." },
       { t:"13:00", txt:"Zurück ins Hotel: duschen, Pool, kurz hinlegen. Der Nachmittagsschauer zieht meist jetzt durch." },
       { t:"16:30", txt:"BTS bis Chong Nonsi, Ausgang 3 — der Mahanakhon-Turm steht direkt über der Station. Mit Sonnenuntergangs-Ticket (1.080–1.200 ฿, vorab online buchen, die Slots sind schnell weg)." },
-      { t:"17:15–19:00", txt:"Mahanakhon SkyWalk: Innendeck im 74. Stock, offenes Dach im 78. und der Glasboden auf 310 m. Sonnenuntergang gegen 18:40 — du siehst die Stadt bei Tag, im Sonnenuntergang und im Lichtermeer, alles in einem Besuch. Der höchste Punkt der Stadt und der beste Blick, den du hier bekommst." },
+      { t:"17:15–19:00", txt:"Mahanakhon SkyWalk: Innendeck im 74. Stock, offenes Dach im 78. und der Glasboden auf 310 m. Sonnenuntergang um 18:29 — du siehst die Stadt bei Tag, im Sonnenuntergang und im Lichtermeer, alles in einem Besuch. Der höchste Punkt der Stadt und der beste Blick, den du hier bekommst." },
       { t:"20:30", txt:"Saxophone Pub am Victory Monument (25 Min): Livejazz und Blues seit den Achtzigern — Tresenplatz, Thai-Eistee, Musik. Kein Alk nötig, keiner will dir was verkaufen." }
     ],
     note:"Der Glasboden ist der Grund, warum du dir die Sky Bar am Samstag sparen kannst: dort zahlst du 700–950 ฿ für EIN Getränk, hier bekommst du für wenig mehr das ganze Erlebnis — ohne Dresscode und mit Rucksack. ACHTUNG Regenzeit: Bei Sturm sperren sie das Außendeck, Geld gibt es nicht zurück (nur Umbuchung). Also erst abends den Himmel anschauen, dann kaufen." },

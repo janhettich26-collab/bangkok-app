@@ -484,3 +484,37 @@ button, input, a { -webkit-tap-highlight-color: rgba(232,176,75,.15); }
 /* ————— Sprache: Aussprache-Hilfe ————— */
 .p-sprich { display: block; font-size: 12px; color: var(--gold); opacity: .85; margin-top: 3px; font-style: italic; }
 .fc-sprich { font-size: 17px; color: var(--gold); margin-top: 14px; font-style: italic; }
+
+/* ————— Live-Wetter ————— */
+.card.weather { padding: 0; overflow: hidden; cursor: pointer; }
+.wx-load { padding: 18px 16px; color: var(--muted); font-size: 14px; text-align: center; }
+.wx-now { display: flex; align-items: center; gap: 14px; padding: 16px 16px 12px; }
+.wx-ico { font-size: 42px; line-height: 1; }
+.wx-main { flex: 1; min-width: 0; }
+.wx-temp { font-size: 34px; font-weight: 800; line-height: 1; color: var(--text); }
+.wx-temp span { font-size: 17px; font-weight: 600; color: var(--muted); margin-left: 2px; }
+.wx-desc { font-size: 13px; color: var(--muted); margin-top: 3px; }
+.wx-side { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted); text-align: right; }
+.wx-bar { padding: 9px 16px; font-size: 12.5px; line-height: 1.4; border-top: 1px solid var(--line); }
+.wx-bar.trocken { background: rgba(107,203,119,.10); color: #9BD9A5; }
+.wx-bar.mittel  { background: rgba(232,176,75,.10);  color: #E8C88B; }
+.wx-bar.nass    { background: rgba(87,168,255,.12);  color: #9CC9FF; }
+.wx-hours { display: flex; gap: 2px; overflow-x: auto; padding: 10px 10px 12px; border-top: 1px solid var(--line); -webkit-overflow-scrolling: touch; }
+.wx-h { flex: 0 0 auto; width: 58px; display: flex; flex-direction: column; align-items: center; gap: 3px;
+  padding: 7px 2px; border-radius: 10px; }
+.wx-h.wet { background: rgba(87,168,255,.13); }
+.wx-hh { font-size: 10.5px; color: var(--muted); }
+.wx-hi { font-size: 18px; line-height: 1; }
+.wx-ht { font-size: 13.5px; font-weight: 700; }
+.wx-hp { font-size: 10.5px; color: #9CC9FF; }
+.wx-src { padding: 0 16px 11px; font-size: 10.5px; color: var(--muted); opacity: .7; }
+/* Wetter im Plan */
+.d-wx { flex: 0 0 auto; font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 99px;
+  border: 1px solid var(--line); margin-left: 6px; white-space: nowrap; }
+.d-wx.trocken { color: #9BD9A5; border-color: rgba(107,203,119,.4); }
+.d-wx.mittel  { color: #E8C88B; border-color: rgba(232,176,75,.4); }
+.d-wx.nass    { color: #9CC9FF; border-color: rgba(87,168,255,.45); }
+.d-wxbar { margin: 12px 0 4px; padding: 10px 12px; border-radius: 11px; font-size: 12.5px; line-height: 1.5;
+  background: var(--surface2); border: 1px solid var(--line); }
+.d-wxbar i { color: var(--muted); font-style: normal; }
+.d-wxbar.nass { border-color: rgba(87,168,255,.35); }
