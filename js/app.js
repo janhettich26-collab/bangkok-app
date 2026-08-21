@@ -431,6 +431,100 @@
     }));
   }
 
+  // ————— Regenradar auf der Karte (RainViewer, kostenlos, ohne Schlüssel) —————
+  // Zeigt, WO es gerade wirklich regnet — von leichtem Tröpfeln bis Wolkenbruch,
+  // dazu die letzten zwei Stunden als Animation, damit man sieht, wohin die Zelle zieht.
+  let rvFrames = [], rvIdx = 0, rvLayer = null, rvTimer = null, rvOn = false, rvHost = "", rvFade = null;
+
+  async function rvLoad() {
+    const j = await (await fetch("https://api.rainviewer.com/public/weather-maps.json")).json();
+    rvHost = j.host;
+    rvFrames = (j.radar.past || []).concat(j.radar.nowcast || []);
+    rvIdx = (j.radar.past || []).length - 1;   // Start beim aktuellsten Ist-Bild
+    return rvFrames.length > 0;
+  }
+
+  function rvShow(i) {
+    if (!mapObj || !rvFrames[i]) return;
+    const f = rvFrames[i];
+    const neu = L.tileLayer(rvHost + f.path + "/256/{z}/{x}/{y}/4/1_1.png", {
+      opacity: 0, zIndex: 400, tileSize: 256, updateWhenIdle: false
+    }).addTo(mapObj);
+    // Läuft noch eine Überblendung? Dann sofort abbrechen und die alte Ebene wegräumen,
+    // sonst stapeln sich beim schnellen Ziehen am Zeitschieber die Kachelebenen.
+    if (rvFade) { clearInterval(rvFade.timer); mapObj.removeLayer(rvFade.alt); rvFade = null; }
+    const alt = rvLayer;
+    rvLayer = neu;
+    let o = 0;
+    const timer = setInterval(() => {
+      o += 0.25;
+      neu.setOpacity(Math.min(o, 0.75));
+      if (o >= 0.75) {
+        clearInterval(timer);
+        if (alt) mapObj.removeLayer(alt);
+        rvFade = null;
+      }
+    }, 40);
+    if (alt) rvFade = { timer, alt };
+    const jetzt = Date.now() / 1000;
+    const el = document.getElementById("rv-time");
+    if (el) {
+      const d = new Date(f.time * 1000);
+      const hh = d.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit", timeZone: "Asia/Bangkok" });
+      const min = Math.round((f.time - jetzt) / 60);
+      el.textContent = hh + " Uhr Bangkok · " + (min > 1 ? "in " + min + " Min (Vorhersage)" : min > -3 ? "jetzt" : "vor " + Math.abs(min) + " Min");
+      el.className = f.time > jetzt ? "rv-time future" : "rv-time";
+    }
+    const sl = document.getElementById("rv-slider");
+    if (sl) sl.value = i;
+  }
+
+  function rvStop() {
+    if (rvTimer) { clearInterval(rvTimer); rvTimer = null; }
+    const b = document.getElementById("rv-play"); if (b) b.textContent = "▶︎ Ablauf";
+  }
+
+  function rvPlay() {
+    if (rvTimer) { rvStop(); return; }
+    document.getElementById("rv-play").textContent = "⏸ Stopp";
+    rvTimer = setInterval(() => {
+      rvIdx = (rvIdx + 1) % rvFrames.length;
+      rvShow(rvIdx);
+    }, 500);
+  }
+
+  async function rvToggle() {
+    const btn = document.getElementById("map-rain");
+    const box = document.getElementById("rv-box");
+    if (rvOn) {
+      rvOn = false; rvStop();
+      if (rvFade) { clearInterval(rvFade.timer); mapObj.removeLayer(rvFade.alt); rvFade = null; }
+      if (rvLayer) { mapObj.removeLayer(rvLayer); rvLayer = null; }
+      box.hidden = true; btn.classList.remove("on"); btn.textContent = "🌧️ Regenradar";
+      return;
+    }
+    btn.textContent = "🌧️ lädt …";
+    try {
+      if (!rvFrames.length && !(await rvLoad())) throw new Error("keine Bilder");
+    } catch (e) {
+      btn.textContent = "🌧️ kein Netz";
+      setTimeout(() => btn.textContent = "🌧️ Regenradar", 2500);
+      return;
+    }
+    rvOn = true; btn.classList.add("on"); btn.textContent = "🌧️ Radar aus";
+    box.hidden = false;
+    const sl = document.getElementById("rv-slider");
+    sl.max = rvFrames.length - 1; sl.value = rvIdx;
+    rvShow(rvIdx);
+  }
+
+  const btnRain = document.getElementById("map-rain");
+  if (btnRain) btnRain.addEventListener("click", rvToggle);
+  const rvSl = document.getElementById("rv-slider");
+  if (rvSl) rvSl.addEventListener("input", () => { rvStop(); rvIdx = +rvSl.value; rvShow(rvIdx); });
+  const rvPl = document.getElementById("rv-play");
+  if (rvPl) rvPl.addEventListener("click", rvPlay);
+
   const btnMe = document.getElementById("map-me");
   if (btnMe) btnMe.addEventListener("click", () => {
     if (!navigator.geolocation || !mapObj) return;

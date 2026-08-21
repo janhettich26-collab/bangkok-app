@@ -518,3 +518,15 @@ button, input, a { -webkit-tap-highlight-color: rgba(232,176,75,.15); }
   background: var(--surface2); border: 1px solid var(--line); }
 .d-wxbar i { color: var(--muted); font-style: normal; }
 .d-wxbar.nass { border-color: rgba(87,168,255,.35); }
+
+/* ————— Regenradar auf der Karte ————— */
+.map-tools .btn.on { background: rgba(87,168,255,.18); color: #9CC9FF; border-color: rgba(87,168,255,.5); }
+.rv-box { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 13px; margin-bottom: 10px; }
+.rv-head { display: flex; align-items: center; gap: 12px; }
+.rv-time { font-size: 13px; font-weight: 700; color: var(--text); }
+.rv-time.future { color: #9CC9FF; }
+#rv-slider { width: 100%; margin: 12px 0 4px; accent-color: #57A8FF; height: 22px; }
+.rv-legend { display: flex; align-items: center; gap: 8px; font-size: 10.5px; color: var(--muted); }
+.rv-scale { flex: 1; height: 8px; border-radius: 99px;
+  background: linear-gradient(90deg, #9CD3F0 0%, #4FA8D8 18%, #4CC46A 38%, #E4D64B 58%, #E8913F 74%, #DC4B3E 88%, #9B4BC8 100%); }
+.rv-hint { font-size: 11.5px; color: var(--muted); line-height: 1.5; margin-top: 9px; }

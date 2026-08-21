@@ -81,8 +81,22 @@
   </div>
   <div class="chips" id="map-chips"></div>
   <div class="map-tools">
+    <button class="btn ghost small" id="map-rain" type="button">🌧️ Regenradar</button>
     <button class="btn ghost small" id="map-me" type="button">📍 Wo bin ich</button>
     <button class="btn ghost small" id="map-all" type="button">🗺️ Alles zeigen</button>
+  </div>
+  <div class="rv-box" id="rv-box" hidden>
+    <div class="rv-head">
+      <button class="btn ghost small" id="rv-play" type="button">▶︎ Ablauf</button>
+      <span class="rv-time" id="rv-time">…</span>
+    </div>
+    <input type="range" id="rv-slider" min="0" max="12" value="12" step="1">
+    <div class="rv-legend">
+      <span>Tröpfeln</span>
+      <i class="rv-scale"></i>
+      <span>Wolkenbruch</span>
+    </div>
+    <p class="rv-hint">Farbe = Stärke: blassblau ist Nieseln, grün normaler Regen, gelb bis rot ein Guss, violett Gewitterzelle. Der Ablauf zeigt die letzten zwei Stunden — daran siehst du, wohin die Zelle zieht.</p>
   </div>
   <div id="map"></div>
   <div id="radar-wrap" hidden>
