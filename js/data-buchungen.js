@@ -80,7 +80,7 @@ const BOOKINGS = [
     phone:"+6626414252",
     links:[{t:"🏎️ easykart.net",u:"https://easykart.net/bangkok/"},{t:"📍 In Google Maps",u:"https://www.google.com/maps/search/?api=1&query=EasyKart%20Bangkok%20RCA%20Plaza%20Rama%209"}] },
 
-  { id:"ancientcity", klook:"https://www.klook.com/de/search/?query=Ancient%20City%20Erawan", kurz:"Ancient City", grp:"Vor Ort", status:"vorort", emoji:"🛕", date:"2026-09-05", time:"9:30–14:00",
+  { id:"ancientcity", klook:"https://www.klook.com/de/search/?query=Ancient%20City%20Erawan", kurz:"Ancient City", grp:"Vor Ort", status:"vorort", emoji:"🛕", date:"2026-09-02", time:"9:30–13:30",
     title:"Ancient City — Freilichtmuseum mit dem Fahrrad", where:"296/1 Moo 7 Sukhumvit Rd, Bang Pu Mai, Samut Prakan",
     price:"Klook-Kombiticket mit Erawan-Museum ab ~8 US$ · am Tor 700 ฿ nur Ancient City · Fahrrad ~100 ฿",
     info:["Über 100 nachgebaute Tempel, Paläste und Holzhäuser aus ganz Thailand auf 80 Hektar — und fast menschenleer","Täglich 9–19 Uhr, Kasse schließt 18 Uhr. Rechne mit 3–4 Std., mit dem Erawan-Museum nebenan 5–6","Hinfahrt morgens per Bolt (45–60 Min, 400–500 ฿), zurück entspannt per BTS ab Kheha","Fahrrad ~100 ฿ für den ganzen Tag. Die kostenlose Tram fährt 10, 13, 15 und 17 Uhr — beim Ticketkauf ausdrücklich sagen, dass du sie willst","Samstags fährt ab BTS Kheha ein kostenloser Shuttle zum Park","Kein Englisch nötig: du läufst und radelst durch einen Park, niemand redet auf dich ein","Erawan-Museum nebenan: ein 43 m hoher dreiköpfiger Elefant aus Kupfer, in den man hineinsteigen kann"],
@@ -93,7 +93,7 @@ const BOOKINGS = [
     info:["Autofreie Insel der Mon-Minderheit, 2 km lang — zu Fuß in zwei Stunden einmal herum","SONNTAG ist genau der richtige Tag: dann zieht sich der Markt über einen Kilometer die Ostseite entlang. Werktags wäre fast alles zu","Töpferdörfer mit offenen Brennöfen, Mon-Streetfood, Tempel, kein einziges Auto","Dem Bolt-Fahrer einfach „Ko Kret“ oder „Wat Sanam Nuea“ sagen — das kennt jeder. Am Tempel durchlaufen bis zum Pier, Fähre 3 ฿, eine Minute über den Fluss","Fähre fährt 5–21 Uhr im Minutentakt","Vormittags hin, bevor die Sonne knallt — und du bist lange vor dem Transfer zurück"],
     links:[{t:"📍 Fähranleger in Google Maps",u:"https://www.google.com/maps/search/?api=1&query=Wat%20Sanam%20Nuea%20Ko%20Kret%20Ferry%20Pier"}] },
 
-  { id:"watpaknam", kurz:"Wat Paknam", grp:"Vor Ort", status:"vorort", emoji:"🛕", date:"2026-09-02", time:"9:45–11:45",
+  { id:"watpaknam", kurz:"Wat Paknam", grp:"Vor Ort", status:"vorort", emoji:"🛕", date:"2026-09-05", time:"11:15–13:15",
     title:"Wat Paknam — Riesenbuddha und Glas-Stupa", where:"300 Ratchamongkhon Prasat Alley, Phasi Charoen · MRT Bang Phai, Ausgang 1",
     price:"Eintritt frei — auch der Stupa",
     info:["Der 69 m hohe goldene Buddha ist der höchste Bangkoks, 2021 fertig, komplett aus Bronze. Man sieht ihn schon von weitem über die Dächer ragen","Im 80-Meter-Stupa daneben steigst du bis zur smaragdgrünen Glas-Pagode im 5. Stock — darüber eine Decke, die wie eine Galaxie bemalt ist","Anfahrt einfach: Purple Line bis Tao Poon, dort auf die Blue Line, durchgehend bis Bang Phai. Nur ein Umstieg. Dann 10–15 Min zu Fuß oder 10 ฿ Motorradtaxi","Vormittags zwischen 9 und 11 an einem Wochentag ist am Aufzug nichts los","Täglich 8–18 Uhr, der Stupa schließt schon 17:30","Dresscode wie in jedem Tempel: Schultern und Knie bedeckt, Schuhe aus"],

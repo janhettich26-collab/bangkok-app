@@ -34,7 +34,7 @@ const PLAN = [
       { t:"18:00–21:30", txt:"Durchessen: Guay Jub Ouan Pochana (Rollnudel-Suppe 50–70 ฿), Lim Lao Ngow (Fischbällchen, Michelin Bib), der berühmte Yaowarat-Toast (25–35 ฿), T&K Seafood für Riesengarnelen (200–400 ฿), Nachtisch bei Ba Hao Tian Mi in der Soi Nana. Rechne mit 300–600 ฿ für den ganzen Abend." },
       { t:"~22:00", txt:"MRT zurück ab Wat Mangkon (fährt bis Mitternacht)." }
     ],
-    note:"Samstag ist der volle Chinatown-Abend — dafür auch der vollste: zwischen 19 und 21 Uhr stehst du an beliebten Ständen 30 Min an. Deshalb um 17:45 dort sein. NUR BARGELD, viele Stände nehmen keine Karte. Montag wäre der falsche Tag gewesen — da ruhen viele Garküchen." },
+    note:"BEI REGEN VORMITTAGS: Chatuchak besteht aus überdachten Hallen — nur die Gassen dazwischen sind offen. Geht also, du wirst nur zwischendurch nass. Wenn es wirklich schüttet: MIXT Chatuchak und JJ Mall direkt nebenan sind klimatisiert. Samstag ist der volle Chinatown-Abend — dafür auch der vollste: zwischen 19 und 21 Uhr stehst du an beliebten Ständen 30 Min an. Deshalb um 17:45 dort sein. NUR BARGELD, viele Stände nehmen keine Karte. Montag wäre der falsche Tag gewesen — da ruhen viele Garküchen." },
 
   { date:"2026-08-30", wd:"So", title:"Spa, Riesenmall & Golden Mount", icon:"🧖",
     blocks:[
@@ -50,7 +50,7 @@ const PLAN = [
       { t:"20:45", txt:"Zehn Minuten weiter der Pak Khlong Talat, Thailands größter Blumenmarkt — rund um die Uhr offen, Eintritt frei. Berge von Orchideen, Jasmin und Ringelblumen, dazwischen Frauen, die in Sekunden Girlanden für die Tempel flechten. Eine halbe Stunde reicht, und es ist der schönste Abschluss, den der Abend haben kann.", z:"blumenmarkt", r:"🚶 10 Min zu Fuß · oder MRT Sanam Chai, Ausg. 1" },
       { t:"~21:45", txt:"Bolt zurück, ~250 ฿." }
     ],
-    note:"Eine Anfahrt, vier Sachen: Spa, Mall, Tempel, Essen — alle am selben Flussufer entlang. Chinatown hast du schon gestern gehabt, deshalb heute die Altstadt." },
+    note:"BEI REGEN AB NACHMITTAG: Der Golden Mount sind 340 offene Stufen — bei Guss überspringen und stattdessen länger im ICONSIAM bleiben, dann direkt zum Abendessen in die Altstadt. Eine Anfahrt, vier Sachen: Spa, Mall, Tempel, Essen — alle am selben Flussufer entlang. Chinatown hast du schon gestern gehabt, deshalb heute die Altstadt." },
 
   { date:"2026-08-31", wd:"Mo", title:"Schießstand & Paläste", icon:"🎯",
     blocks:[
@@ -77,18 +77,17 @@ const PLAN = [
     ],
     note:"Ein Weg, drei Dinge — Elefanten, Massage und Sukhumvit-Abend ohne einen einzigen Doppelweg. Bars-Abend Nr. 2. Regel für die Ecke: Nie mitgehen, wenn dich jemand „mitnimmt“." },
 
-  { date:"2026-09-02", wd:"Mi", title:"Riesenbuddha & Glasboden", icon:"🛕",
+  { date:"2026-09-02", wd:"Mi", title:"Ancient City & Glasboden", icon:"🛕",
     blocks:[
-      { t:"9:00", txt:"Los zum Wat Paknam — die einfachste Anfahrt der ganzen Reise, nur ein Umstieg.", z:"watpaknam", r:"🚇 Yaek Tiwanon → Tao Poon → Bang Phai, Ausg. 1 · 45 Min · ein Umstieg" },
-      { t:"9:45–11:45", txt:"WAT PAKNAM: Der 69 Meter hohe goldene Buddha ist der höchste Bangkoks — 2021 fertig, komplett aus Bronze, du siehst ihn schon von weitem über die Dächer ragen. Im 80-Meter-Stupa daneben fährst du hoch bis zur smaragdgrünen Glas-Pagode im 5. Stock, darüber eine Decke, die wie eine Galaxie bemalt ist. Eintritt frei, auch der Stupa. Vormittags unter der Woche ist am Aufzug nichts los." },
-      { t:"12:00", txt:"Vom Fußgängersteg an der MRT-Station hast du den besten Blick auf den Buddha — das Foto machst du auf dem Rückweg." },
-      { t:"12:30", txt:"Mittagessen in der Gegend oder zurück ins Hotel. Der Tempel liegt in Thonburi, einem Viertel ohne Touristen — die Garküchen dort sind ehrlich und billig." },
-      { t:"14:00", txt:"Zurück ins Hotel: Pool, Sauna, Nachmittagsschauer aussitzen." },
-      { t:"17:15", txt:"Weiter zum Mahanakhon — der Turm steht direkt über dem BTS-Ausgang.", z:"mahanakhon", r:"🚇 Blue bis Si Lom → BTS Sala Daeng → Chong Nonsi · 20 Min" },
-      { t:"17:45–19:30", txt:"MAHANAKHON SKYWALK: Innendeck im 74. Stock, offenes Dach im 78. und der Glasboden auf 310 m. Sonnenuntergang um 18:29 — du siehst die Stadt bei Tag, im Sonnenuntergang und im Lichtermeer. Sonnenuntergangs-Ticket vorher online kaufen (Klook ab ~10 €)." },
+      { t:"8:00", txt:"Los zum Ancient City. Morgens ist die Strecke frei, und im Park ist es vor Mittag deutlich angenehmer.", r:"🚗 Bolt nach Samut Prakan · 45–60 Min · 400–500 ฿ · morgens frei", z:"ancientcity" },
+      { t:"9:30–13:30", txt:"ANCIENT CITY, das größte Freilichtmuseum der Welt: über 100 nachgebaute Tempel, Paläste und Holzhäuser aus ganz Thailand auf 80 Hektar — und fast menschenleer. Fahrrad für ~100 ฿ nehmen und einfach losfahren. Eintritt 700 ฿ am Tor, online über Klook oft die Hälfte. Die kostenlose Tram fährt 10, 13, 15 und 17 Uhr, das musst du beim Ticketkauf sagen." },
+      { t:"13:45", txt:"Optional 5 Min weiter: Erawan-Museum — ein 43 Meter hoher dreiköpfiger Elefant aus Kupfer, in den man hineinsteigen kann. Innen Glasfenster und Treppen wie in einer anderen Welt. Und ein Dach über dem Kopf, falls der Nachmittagsschauer kommt.", r:"🚗 5 Min vom Ancient City", z:"erawan" },
+      { t:"15:30", txt:"Zurück ins Hotel: duschen, Beine hochlegen, Schauer aussitzen." },
+      { t:"17:15", txt:"Weiter zum Mahanakhon — der Turm steht direkt über dem BTS-Ausgang.", r:"🚇 Blue bis Si Lom → BTS Sala Daeng → Chong Nonsi · 20 Min", z:"mahanakhon" },
+      { t:"17:45–19:30", txt:"MAHANAKHON SKYWALK: Innendeck im 74. Stock, offenes Dach im 78. und der Glasboden auf 310 m. Sonnenuntergang um 18:29. Sonnenuntergangs-Ticket vorher online kaufen (Klook ab ~10 €) — aber erst, wenn du am Nachmittag den Himmel gesehen hast." },
       { t:"20:00", txt:"Abendessen in Silom, oder mit der BTS 20 Min zum Saxophone Pub am Victory Monument: Livejazz seit den Achtzigern, Tresenplatz, Thai-Eistee." }
     ],
-    note:"Zwei Höhepunkte an einem Tag, beide mit der Bahn erreichbar: morgens der höchste Buddha der Stadt für null Baht, abends der höchste Aussichtspunkt mit Glasboden. Der Tempel ist weit weniger überlaufen als Grand Palace oder Wat Arun. ACHTUNG Mahanakhon: bei Sturm sperren sie das Außendeck, Geld gibt es nicht zurück — erst den Himmel anschauen, dann kaufen." },
+    note:"Der Park liegt bewusst am Vormittag: Der Regen kommt hier meist erst nach 14 Uhr, und du bist um 13:30 durch. WENN ES DOCH SCHÜTTET: Ancient City auf Samstag schieben und stattdessen heute Wat Paknam machen — der Stupa ist innen, da ist Regen egal. Beim Mahanakhon sperren sie bei Sturm das Außendeck ohne Erstattung, also erst nachmittags den Himmel anschauen und dann erst kaufen." },
 
   { date:"2026-09-03", wd:"Do", title:"Shoppen & Sunset-Cruise", icon:"🛒",
     blocks:[
@@ -111,18 +110,19 @@ const PLAN = [
       { t:"19:30", txt:"GO-KART bei EasyKart: Asiens größte Indoor-Kartbahn. Fast Kart mit 200 cm³ und 55 km/h, 1.499 ฿ für zwei Rennen à 8 Minuten. Kein Führerschein nötig, freitags bis 23 Uhr offen. Vorher kurz anrufen (+66 2 641 4252) — die Bahn wird manchmal für Gruppen reserviert.", z:"easykart", nb:1, r:"🚇 Blue Line ab Bang Sue bis Phra Ram 9 · 20 Min" },
       { t:"21:00", txt:"5 Minuten weiter der Train Night Market Ratchada: der Regenbogen-Zeltmarkt, seit März 2026 wieder offen — Vintage, Container-Bars, Livebands, bis 1 Uhr. Abendessen zwischen den Zelten.", z:"trainmarket", nb:1, r:"🚶 5 Min zu Fuß von der Kartbahn" }
     ],
-    note:"Komplett ~600 ฿ statt 30+ € Tour — und du bist an keine Gruppe gekettet. Abends dann Vollgas: Kartbahn und Nachtmarkt liegen an derselben MRT-Station, du kommst aus Ayutthaya direkt dort an." },
+    note:"BEI REGEN: Die Ruinen sind komplett im Freien und ohne Unterstand. Wenn morgens Dauerregen gemeldet ist, tausch den Tag mit dem Shopping am Donnerstag — Ayutthaya lohnt nur bei trockenem Wetter. Komplett ~600 ฿ statt 30+ € Tour — und du bist an keine Gruppe gekettet. Abends dann Vollgas: Kartbahn und Nachtmarkt liegen an derselben MRT-Station, du kommst aus Ayutthaya direkt dort an." },
 
-  { date:"2026-09-05", wd:"Sa", title:"Ancient City & Abschiedsabend", icon:"🛕",
+  { date:"2026-09-05", wd:"Sa", title:"Riesenbuddha & Abschiedsabend", icon:"🛕",
     blocks:[
-      { t:"8:00", txt:"Los zum Ancient City. Morgens ist die Strecke frei, und im Park ist es vor Mittag deutlich angenehmer.", z:"ancientcity", r:"🚗 Bolt nach Samut Prakan · 45–60 Min · 400–500 ฿ · morgens frei" },
-      { t:"9:30–14:00", txt:"Ancient City, das größte Freilichtmuseum der Welt: über 100 nachgebaute Tempel, Paläste und Holzhäuser aus ganz Thailand auf 80 Hektar — und fast menschenleer. Fahrrad für ~100 ฿ nehmen und einfach losfahren. Eintritt 700 ฿ am Tor, online über Klook oft die Hälfte. Die kostenlose Tram fährt 10, 13, 15 und 17 Uhr, das musst du beim Ticketkauf sagen." },
-      { t:"14:15", txt:"Optional 5 Min weiter: Erawan-Museum — ein 43 Meter hoher dreiköpfiger Elefant aus Kupfer, in den man hineinsteigen kann. Innen Glasfenster und Treppen wie in einer anderen Welt.", z:"erawan", r:"🚗 5 Min vom Ancient City" },
-      { t:"16:00", txt:"Zurück: BTS ab Kheha (samstags fährt ein kostenloser Shuttle vom Park zur Station) oder Bolt. Im Hotel duschen und Beine hochlegen." },
-      { t:"19:00", txt:"Letzter Abend, ganz nach Laune: Terminal 21 zum Essen, der Owl Market vor der Haustür, oder einfach Rooftop und Pool im Hotel. Morgen früh geht es nochmal raus nach Ko Kret." },
-      { t:"21:30 (optional)", txt:"Sky Bar im Lebua (10 Min Bolt), 64. Stock: der Hangover-Rooftop. Kein Eintritt, aber ein Getränk ist Pflicht — Mocktails 600–800 ฿ plus 17 %. Dresscode: Kragenhemd, lange Hose, geschlossene Schuhe, KEIN Rucksack." }
+      { t:"vorm.", txt:"Ausschlafen, Pool. Heute ist der Tag mit der höchsten Regenwahrscheinlichkeit der ganzen Reise — deshalb steht ein Programm drin, dem das nichts ausmacht." },
+      { t:"10:30", txt:"Los zum Wat Paknam — die einfachste Anfahrt der ganzen Reise, nur ein Umstieg.", r:"🚇 Yaek Tiwanon → Tao Poon → Bang Phai, Ausg. 1 · 45 Min · ein Umstieg", z:"watpaknam" },
+      { t:"11:15–13:15", txt:"WAT PAKNAM: Der 69 Meter hohe goldene Buddha ist der höchste Bangkoks — 2021 fertig, komplett aus Bronze, du siehst ihn schon von weitem über die Dächer ragen. Im 80-Meter-Stupa daneben fährst du hoch bis zur smaragdgrünen Glas-Pagode im 5. Stock, darüber eine Decke, die wie eine Galaxie bemalt ist. Eintritt frei, auch der Stupa. Und das Beste heute: der halbe Besuch ist drinnen." },
+      { t:"13:30", txt:"Mittagessen in der Gegend. Der Tempel liegt in Thonburi, einem Viertel ohne Touristen — die Garküchen dort sind ehrlich und billig." },
+      { t:"15:00", txt:"Zurück ins Hotel: Pool, Sauna, packen. Morgen früh geht es nochmal raus nach Ko Kret, abends fliegst du." },
+      { t:"19:00", txt:"Letzter Abend, ganz nach Laune: Terminal 21 zum Essen, der Owl Market vor der Haustür, oder einfach Rooftop und Pool im Hotel." },
+      { t:"21:30 (optional)", txt:"Sky Bar im Lebua (10 Min Bolt), 64. Stock — nur noch, wenn du den Hangover-Rooftop unbedingt gesehen haben willst; den besseren Blick hattest du am Mittwoch: Kein Eintritt, aber ein Getränk pro Person ist Pflicht — Mocktails 600–800 ฿ plus 10 % Service und 7 % Steuer, macht rund 700–950 ฿ für ein alkoholfreies Glas. Offen 17:00–00:30, keine Reservierung, nur Stehplätze am runden Bartresen." }
     ],
-    note:"Das Ancient City ist der fotogenste Ort im Großraum Bangkok und kaum ein Tourist kennt ihn — du brauchst dort kein Wort Englisch, du radelst einfach durch einen Park voller Tempel. Weit draußen zwar, aber morgens hin ist es entspannt. Bei Dauerregen tauschbar gegen Jim Thompson House (Seidenhaus, zentral, eine Stunde) plus Siam-Malls." },
+    note:"Heute ist der nasseste Tag der Reise — deshalb steht Wat Paknam hier statt der Freilichtpark: Der Stupa ist innen, der Weg dorthin geht fast komplett mit der Bahn. ZUR SKY BAR: Dresscode wird am Aufzug durchgesetzt — Kragenhemd oder Polo, lange Hose, geschlossene Schuhe. RUCKSÄCKE sind oben verboten und es gibt KEINE Aufbewahrung. Bei Regen macht die Plattform sofort zu, dann ist Octave in Thonglor die überdachte Alternative." },
 
   { date:"2026-09-06", wd:"So", title:"Ko Kret & Rückflug", icon:"🚲",
     blocks:[
@@ -134,7 +134,7 @@ const PLAN = [
       { t:"~19:00", txt:"Transfer zum Flughafen — die Abholzeit hast du 24 h vorher in „Meine Buchung verwalten“ nachgesehen.", z:"bkk", r:"🚐 Transfer inklusive · 3 Std. Puffer einplanen" },
       { t:"22:55", txt:"LH773 nach München." }
     ],
-    note:"Ein letzter Vormittag, der sich wie Urlaub anfühlt statt wie Warten auf den Flug — und das Beste: Ko Kret liegt 20 Minuten vom Hotel, du riskierst nichts. Kein Fast-Track nötig, abends ist der LH-Check-in flott. Restliche Baht am Flughafen ausgeben, Rücktausch lohnt kaum." },
+    note:"BEI REGEN: Auf Ko Kret gibt es kaum Unterstände und die Wege werden matschig. Alternative vor der Haustür: Central WestGate, elf Stationen ohne Umstieg, komplett überdacht — und der letzte Vormittag ist trotzdem gerettet. Ein letzter Vormittag, der sich wie Urlaub anfühlt statt wie Warten auf den Flug — und das Beste: Ko Kret liegt 20 Minuten vom Hotel, du riskierst nichts. Kein Fast-Track nötig, abends ist der LH-Check-in flott. Restliche Baht am Flughafen ausgeben, Rücktausch lohnt kaum." },
 
   { date:"2026-09-07", wd:"Mo", title:"Landung München", icon:"🏠",
     blocks:[
