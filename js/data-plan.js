@@ -51,15 +51,18 @@ const PLAN = [
     ],
     note:"Eine Anfahrt, vier Sachen: Spa, Mall, Tempel, Essen — alle am selben Flussufer entlang. Chinatown hast du schon gestern gehabt, deshalb heute die Altstadt." },
 
-  { date:"2026-08-31", wd:"Mo", title:"Paläste per Expressboot", icon:"👑",
+  { date:"2026-08-31", wd:"Mo", title:"Schießstand & Paläste", icon:"🎯",
     blocks:[
-      { t:"8:15", txt:"Bolt zum Nonthaburi Pier (10 Min) → Chao-Phraya-Expressboot flussabwärts (~1 Std.). Feste Preise je Linie: orange 18 ฿, gelb 23 ฿, rot 32 ฿ — einfach an Bord zahlen. Die schönste Anreise der Stadt." },
-      { t:"10:00", txt:"Grand Palace, 500 ฿ — das Ticket gilt 7 Tage und deckt Wat Phra Kaew (Smaragd-Buddha) und das Queen-Sirikit-Textilmuseum mit ab. WICHTIG: Kassenschluss ist 15:30, das Gelände schließt 16:30 — also vormittags hin. Dresscode ist der strengste des Landes und wird am Tor durchgesetzt: lange Hose, Hemd oder T-Shirt MIT Ärmeln, geschlossene Schuhe oder Sandalen mit Fersenriemen. Shorts, ärmellos, zerrissene Jeans, Flip-Flops = abgewiesen. Notfalls Sarong am Eingang gegen ~200 ฿ Pfand." },
-      { t:"12:30", txt:"Wat Pho, 3 Min zu Fuß: liegender Buddha, 300 ฿ (Wasserflasche ist im Ticket drin), täglich 8–18:30 Uhr — läuft also länger als der Palast. Dazu Thai-Massage in der Original-Tempelmassageschule: 30 Min ab ~340 ฿, 1 Std. ~520 ฿, extra zu zahlen." },
-      { t:"15:00", txt:"Fähre rüber zum Wat Arun (5 ฿) — Achtung, der Eintritt kostet nochmal 200 ฿, geöffnet bis 18 Uhr. Foto-Klassiker am Fluss. Danach Boot oder Bolt zurück." },
-      { t:"abends", txt:"Ruhig: Rooftop im eigenen Hotel, früh ins Bett — morgen Training." }
+      { t:"8:30", txt:"Bolt nach Ari zum Schießstand (20–25 Min, 150–200 ฿), 1019/7 Phahonyothin Rd. Öffnet um 9 Uhr, Anmeldung braucht es nicht — Pass mitnehmen." },
+      { t:"9:00–10:30", txt:"SCHIESSSTAND: In Thailand für Touristen völlig legal und ohne Lizenz. Waffe, Munition, Gehör- und Augenschutz und die Aufsicht stellt der Stand. Glock 9 mm mit 30 Schuss ~1.700 ฿, oder gleich die M16 mit Schalldämpfer, 20 Schuss für 2.500 ฿. Sprache ist kein Thema: Der Aufseher zeigt jeden Handgriff vor, du machst nach." },
+      { t:"11:00", txt:"Bolt in die Altstadt (~25 Min, 200–260 ฿) — heute andersherum als geplant: hin mit dem Auto, zurück mit dem Boot." },
+      { t:"11:30", txt:"Grand Palace, 500 ฿ — Ticket gilt 7 Tage und deckt Wat Phra Kaew und das Queen-Sirikit-Textilmuseum mit ab. Kassenschluss ist 15:30, du bist also früh genug dran. Dresscode ist der strengste des Landes: lange Hose, Oberteil MIT Ärmeln, geschlossene Schuhe. Shorts, ärmellos, zerrissene Jeans und Flip-Flops werden abgewiesen." },
+      { t:"13:30", txt:"Wat Pho, 3 Min zu Fuß: liegender Buddha, 300 ฿, Wasserflasche im Ticket, offen bis 18:30. Dazu Thai-Massage in der Original-Tempelmassageschule — 30 Min ab 340 ฿, 1 Std. ~520 ฿." },
+      { t:"15:30", txt:"Fähre rüber zum Wat Arun (5 ฿) — Achtung, Eintritt nochmal 200 ฿, offen bis 18 Uhr. Der Foto-Klassiker am Fluss." },
+      { t:"17:00", txt:"Zurück per Expressboot flussaufwärts bis Nonthaburi Pier (orange Flagge 18 ฿, ~1 Std.) — die schönste Heimfahrt der Stadt, mit der tiefstehenden Sonne über dem Wasser. Fahren nur bis 19 Uhr, also nicht trödeln." },
+      { t:"abends", txt:"Rooftop im eigenen Hotel, früh ins Bett — morgen früh geht es zu den Elefanten." }
     ],
-    note:"„Der Palast ist heute zu“-Sprüche vor dem Tor sind IMMER die Tuk-Tuk-Masche. Er ist offen, einfach durchgehen." },
+    note:"Montags ist der richtige Tag dafür: Chinatowns Garküchen und Chatuchak haben ohnehin zu. Und die „Der Palast ist heute geschlossen“-Sprüche vor dem Tor sind IMMER die Tuk-Tuk-Masche — er ist offen, einfach durchgehen." },
 
   { date:"2026-09-01", wd:"Di", title:"Elefanten, Massage & Sukhumvit", icon:"🐘",
     blocks:[

@@ -34,7 +34,7 @@ const PACK = [
       { id:"regen",   t:"Dünne Regenjacke oder Poncho", w:"Regenzeit — fast täglich ein Schauer" },
       { id:"cap",     t:"Cap/Hut + Sonnenbrille" },
       { id:"nacht",   t:"Schlafsachen" },
-      { id:"foto",    t:"1× ordentliches Hemd + lange Hose", w:"für Grand Palace, Oriental Spa und Sky Bar — überall Dresscode" }
+      { id:"foto",    t:"1× ordentliches Hemd + lange Hose", w:"für Grand Palace, Oriental Spa, Schießstand und Sky Bar" }
     ]
   },
   {

@@ -61,6 +61,14 @@ const BOOKINGS = [
     warn:"Regenzeit: Bei Sturm sperren sie Außendeck und Glasboden. Es gibt kein Geld zurück, nur eine Umbuchung — also erst am Tag selbst den Himmel anschauen, dann kaufen.",
     links:[{t:"🎟️ Offizielle Seite",u:"https://kingpowermahanakhon.co.th/experience/mahanakhon-skywalk"},{t:"📍 In Google Maps",u:"https://www.google.com/maps/search/?api=1&query=King%20Power%20Mahanakhon%20SkyWalk%20Bangkok"}] },
 
+  { id:"schiessstand", kurz:"Schießstand", grp:"Vor Ort", status:"vorort", emoji:"🎯", date:"2026-08-31", time:"9:00–10:30",
+    title:"Schießstand Bangkok — legal und ohne Lizenz", where:"1019/7 Phahonyothin Rd, Phaya Thai (Ari) · BTS Ari, 5 Min zu Fuß",
+    price:"Glock 9 mm, 30 Schuss ~1.700 ฿ (~45 €) · M16 mit Schalldämpfer, 20 Schuss 2.500 ฿",
+    info:["Für Touristen in Thailand völlig legal und ohne Lizenz — der Stand stellt Waffe, Munition, Gehör- und Augenschutz und die Aufsicht","Täglich 9–17 Uhr, Anmeldung nicht nötig. Einfach hingehen, Pass mitnehmen. Tel. +66 82 494 1179","Sprache ist kein Thema: Der Aufseher zeigt jeden Handgriff vor, du machst nach","Alternative in Lat Phrao (Ratchasawas Mongkol, Di–So 10–18): 1.990 ฿ mit Einzelcoaching und Urkunde zum Mitnehmen","Über GetYourGuide auch auf Deutsch buchbar — dort „Shooting Range Experience“","Danach mit Bolt weiter in die Altstadt zum Grand Palace, rund 25 Minuten"],
+    warn:"Nur auf lizenzierten Ständen — außerhalb ist Waffenbesitz in Thailand streng verboten. Handy und Kamera bleiben meist außerhalb der Schießbahn.",
+    phone:"+66824941179",
+    links:[{t:"📍 In Google Maps",u:"https://www.google.com/maps/search/?api=1&query=Bangkok%20Shooting%20Range%201019%2F7%20Phahonyothin%20Road%20Phaya%20Thai"}] },
+
   { id:"sharkdive", kurz:"Shark Dive", tun:"buchen (LINE/WhatsApp)", grp:"Termine", status:"offen", emoji:"🦈", date:"2026-09-03", time:"11:00",
     title:"Shark Dive — mit Haien tauchen", where:"SEA LIFE, Untergeschoss Siam Paragon, 991 Rama I Rd · BTS Siam",
     price:"6.900 ฿ (~180 €) — gleicher Preis mit und ohne Tauchschein",
