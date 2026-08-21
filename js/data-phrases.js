@@ -51,6 +51,31 @@ const PHRASES = [
     { de:"Nein danke, kein Interesse.", en:"No thank you, I'm not interested." },
     { de:"In Baht abrechnen, bitte — nicht in Euro.", en:"Charge me in baht, please — not in euro." }
   ]},
+  { cat:"Elefanten-Park — alles was du brauchst", icon:"🐘", items:[
+    { de:"Guten Morgen. Ich habe für 9 Uhr gebucht, Vormittagsprogramm.", en:"Good morning. I have a booking for nine o'clock, the morning program.", sprich:"gudd MOR-ning. ai häv ä BUK-king for nain o-KLOCK, se MOR-ning PRO-gramm" },
+    { de:"Mein Name ist Hettich. Hier ist mein Ticket.", en:"My name is Hettich. Here is my ticket.", sprich:"mai neim is Hettich. hier is mai TIK-kit" },
+    { de:"Mein Englisch ist nicht gut. Können Sie es mir bitte zeigen?", en:"My English is not good. Can you show me, please?", sprich:"mai ING-lisch is nott gudd. känn ju schoh mie, pliis" },
+    { de:"Bitte langsam sprechen.", en:"Please speak slowly.", sprich:"pliis spiik SLOH-li" },
+    { de:"Wo kann ich mich umziehen?", en:"Where can I change my clothes?", sprich:"wär känn ai tscheindsch mai klohs" },
+    { de:"Ist das sicher?", en:"Is this safe?", sprich:"is siss seif" },
+    { de:"Darf ich ihn füttern?", en:"Can I feed him?", sprich:"känn ai fiid him" },
+    { de:"Können Sie ein Foto von mir machen?", en:"Could you take a photo of me?", sprich:"kudd ju teik ä FOH-to of mie" },
+    { de:"Wann ist das Programm zu Ende?", en:"What time does the program finish?", sprich:"wott taim dass se PRO-gramm FIN-nisch" },
+    { de:"Können Sie mir ein Taxi zurück nach Bangkok rufen?", en:"Could you call me a taxi back to Bangkok?", sprich:"kudd ju kohl mie ä TÄK-si bäck tu Bangkok" },
+    { de:"Vielen Dank, das war wunderschön.", en:"Thank you very much, that was beautiful.", sprich:"sänk ju WER-ri matsch, sätt woss BJU-ti-full" }
+  ]},
+  { cat:"Wenn du nicht weiterkommst", icon:"🆘", items:[
+    { de:"Entschuldigung, sprechen Sie Deutsch?", en:"Excuse me, do you speak German?", sprich:"ex-KJUS mie, du ju spiik DSCHÖR-man" },
+    { de:"Mein Englisch ist nicht gut. Entschuldigung.", en:"My English is not good. Sorry.", sprich:"mai ING-lisch is nott gudd. SOR-ri" },
+    { de:"Können Sie das bitte aufschreiben?", en:"Could you write it down, please?", sprich:"kudd ju rait itt daun, pliis" },
+    { de:"Moment bitte, ich übersetze das kurz.", en:"One moment please, I will translate.", sprich:"wann MOH-ment pliis, ai will träns-LEIT" },
+    { de:"Bitte zeigen Sie es mir auf dem Handy.", en:"Please show me on your phone.", sprich:"pliis schoh mie onn jur fohn" },
+    { de:"Ich verstehe nicht.", en:"I don't understand.", sprich:"ai dohnt an-der-STÄND" },
+    { de:"Nochmal bitte?", en:"Again, please?", sprich:"ä-GENN, pliis" },
+    { de:"Ja, das ist gut. / Nein danke.", en:"Yes, that's good. / No, thank you.", sprich:"jess, sätts gudd / noh, sänk ju" },
+    { de:"Wie viel? Bitte auf dem Taschenrechner zeigen.", en:"How much? Please show me on the calculator.", sprich:"hau matsch? pliis schoh mie onn se KÄL-kju-lei-tor" },
+    { de:"Ich brauche Hilfe.", en:"I need help.", sprich:"ai niid hellp" }
+  ]},
   { cat:"Notfall & Gesundheit", icon:"🚨", items:[
     { de:"Hilfe!", en:"Help!" },
     { de:"Rufen Sie die Polizei!", en:"Call the police!" },

@@ -480,3 +480,7 @@ button, input, a { -webkit-tap-highlight-color: rgba(232,176,75,.15); }
 .leaflet-container { background: #10141d; }
 .leaflet-popup-content { font-size: 13px; line-height: 1.5; }
 .leaflet-popup-content b { font-size: 14px; }
+
+/* ————— Sprache: Aussprache-Hilfe ————— */
+.p-sprich { display: block; font-size: 12px; color: var(--gold); opacity: .85; margin-top: 3px; font-style: italic; }
+.fc-sprich { font-size: 17px; color: var(--gold); margin-top: 14px; font-style: italic; }

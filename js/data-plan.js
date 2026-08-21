@@ -73,14 +73,16 @@ const PLAN = [
     ],
     note:"Ein Weg, drei Dinge — Elefanten, Massage und Sukhumvit-Abend ohne einen einzigen Doppelweg. Bars-Abend Nr. 2. Regel für die Ecke: Nie mitgehen, wenn dich jemand „mitnimmt“." },
 
-  { date:"2026-09-02", wd:"Mi", title:"Kanäle & grüne Lunge", icon:"🛶",
+  { date:"2026-09-02", wd:"Mi", title:"Kanäle, grüne Lunge & Glasboden", icon:"🛶",
     blocks:[
-      { t:"7:00", txt:"Klong-Tour im Longtail durch Thonburi (Start Wat Arun/Sathorn Pier, 1–1,5 Std., solo 1.000–1.500 ฿ — Preis + Dauer VOR dem Einsteigen fix). Um diese Zeit gehört dir die Stadt allein." },
+      { t:"7:00", txt:"Klong-Tour im Longtail durch Thonburi (Start Wat Arun oder Sathorn Pier, 1–1,5 Std., solo 1.000–1.500 ฿ — Preis UND Dauer VOR dem Einsteigen fix vereinbaren). Um diese Zeit gehört dir die Stadt allein." },
       { t:"9:30", txt:"Weiter nach Bang Krachao: Fähre 10 ฿ rüber, Fahrrad ~100 ฿ — Dschungel-Holzstege mitten in der Stadt, 2–3 Std. Runde. Vor der Mittagshitze fertig." },
-      { t:"13:00", txt:"Zurück im Hotel: Pool, Sauna, Nachmittagsschauer aussitzen." },
-      { t:"20:30", txt:"Saxophone Pub am Victory Monument (28 Min): Livejazz & Blues seit den Achtzigern — Tresenplatz, Thai-Eistee, Musik. Kein Alk nötig, keiner will dir was verkaufen." }
+      { t:"13:00", txt:"Zurück ins Hotel: duschen, Pool, kurz hinlegen. Der Nachmittagsschauer zieht meist jetzt durch." },
+      { t:"16:30", txt:"BTS bis Chong Nonsi, Ausgang 3 — der Mahanakhon-Turm steht direkt über der Station. Mit Sonnenuntergangs-Ticket (1.080–1.200 ฿, vorab online buchen, die Slots sind schnell weg)." },
+      { t:"17:15–19:00", txt:"Mahanakhon SkyWalk: Innendeck im 74. Stock, offenes Dach im 78. und der Glasboden auf 310 m. Sonnenuntergang gegen 18:40 — du siehst die Stadt bei Tag, im Sonnenuntergang und im Lichtermeer, alles in einem Besuch. Der höchste Punkt der Stadt und der beste Blick, den du hier bekommst." },
+      { t:"20:30", txt:"Saxophone Pub am Victory Monument (25 Min): Livejazz und Blues seit den Achtzigern — Tresenplatz, Thai-Eistee, Musik. Kein Alk nötig, keiner will dir was verkaufen." }
     ],
-    note:"Kompletter Tag ohne lange Anfahrten — alles unter 45 Min. Bars-Abend Nr. 2,5: Musik statt Promille." },
+    note:"Der Glasboden ist der Grund, warum du dir die Sky Bar am Samstag sparen kannst: dort zahlst du 700–950 ฿ für EIN Getränk, hier bekommst du für wenig mehr das ganze Erlebnis — ohne Dresscode und mit Rucksack. ACHTUNG Regenzeit: Bei Sturm sperren sie das Außendeck, Geld gibt es nicht zurück (nur Umbuchung). Also erst abends den Himmel anschauen, dann kaufen." },
 
   { date:"2026-09-03", wd:"Do", title:"Shoppen & Sunset-Cruise", icon:"🛒",
     blocks:[
@@ -111,18 +113,21 @@ const PLAN = [
       { t:"16:45", txt:"Von dort 15 Min rüber zum Wat Arun (Bolt ~120 ฿ oder MRT + Fähre) — Treffpunkt fürs Shooting." },
       { t:"17:30", txt:"Golden-Hour-Foto-Shooting (2 Std., ~150 €, 30 Bilder, vorab über TripAdvisor/Localgrapher gebucht): Wat Arun zum Sonnenuntergang → Chinatown-Neon." },
       { t:"19:45", txt:"Direkt in Chinatown bleiben: Abschieds-Essen in der Neon-Schlucht." },
-      { t:"21:30", txt:"Sky Bar im Lebua (10 Min Bolt), 64. Stock, 247 m: der Hangover-2-Rooftop. Kein Eintritt, aber ein Getränk pro Person ist Pflicht — Mocktails 600–800 ฿ plus 10 % Service und 7 % Steuer, macht rund 700–950 ฿ für ein alkoholfreies Glas. Offen 17:00–00:30, keine Reservierung, nur Stehplätze am runden Bartresen." }
+      { t:"21:30 (optional)", txt:"Sky Bar im Lebua (10 Min Bolt), 64. Stock, 247 m — nur noch, wenn du den Hangover-Rooftop unbedingt gesehen haben willst; den besseren Blick hattest du am Mittwoch: der Hangover-2-Rooftop. Kein Eintritt, aber ein Getränk pro Person ist Pflicht — Mocktails 600–800 ฿ plus 10 % Service und 7 % Steuer, macht rund 700–950 ฿ für ein alkoholfreies Glas. Offen 17:00–00:30, keine Reservierung, nur Stehplätze am runden Bartresen." }
     ],
     note:"Chinatown an einem Stück: Laternen-Tempel bei Tag, Neon-Schlucht bei Nacht. ZUR SKY BAR: Dresscode wird am Aufzug durchgesetzt — Kragenhemd oder Polo, lange Hose, geschlossene Schuhe. T-Shirt, Shorts, ärmellos, Sandalen und Sneaker = abgewiesen. RUCKSÄCKE UND EINKAUFSTÜTEN sind oben verboten und es gibt KEINE Aufbewahrung, also vorher ins Hotel damit. Bei Regen macht die Plattform sofort zu — dann ist Octave in Thonglor die überdachte Alternative." },
 
-  { date:"2026-09-06", wd:"So", title:"Check-out & Rückflug", icon:"🛫",
+  { date:"2026-09-06", wd:"So", title:"Ko Kret & Rückflug", icon:"🚲",
     blocks:[
-      { t:"vorm.", txt:"Packen — Waschmaschine nutzen, alles sauber heim. Check-out, Gepäck an der Rezeption." },
-      { t:"nachm.", txt:"Letzte Runde: Health Land Massage (2 Std. ~650 ฿), Hähnchen-Reis, Big C für Reste-Mitbringsel." },
-      { t:"~19:00", txt:"Transfer zum Flughafen (inklusive — Abholzeit 24 h vorher in „Meine Buchung verwalten“ checken!). 3 Std. Puffer." },
+      { t:"8:00", txt:"Packen und auschecken — Waschmaschine hast du ja, alles sauber heim. Gepäck an der Rezeption lassen." },
+      { t:"9:30", txt:"Bolt nach Wat Sanam Nuea (20–25 Min, 120–150 ฿) — dem Fahrer einfach „Ko Kret“ sagen, das kennt jeder. Am Tempel durchlaufen bis zum Pier, Fähre 3 ฿, eine Minute über den Fluss." },
+      { t:"10:00–14:00", txt:"Ko Kret: autofreie Flussinsel der Mon-Minderheit, 2 km lang. SONNTAG ist der richtige Tag — dann zieht sich der Markt über einen Kilometer die Ostseite entlang. Töpferdörfer mit offenen Brennöfen, Mon-Streetfood, Tempel. Zu Fuß in zwei Stunden einmal herum oder Fahrrad für ~40 ฿." },
+      { t:"14:30", txt:"Zurück ins Hotel, duschen (Tageszimmer oder das Bad an der Rezeption erfragen)." },
+      { t:"15:30", txt:"Letzte Runde vor der Tür: Health Land Chaeng Wattana für eine Abschiedsmassage (2 Std. Thai 700 ฿) oder Hähnchen-Reis gegenüber, Big C für Mitbringsel." },
+      { t:"~19:00", txt:"Transfer zum Flughafen (inklusive — Abholzeit hast du 24 h vorher in „Meine Buchung verwalten“ nachgesehen). 3 Std. Puffer." },
       { t:"22:55", txt:"LH773 nach München." }
     ],
-    note:"Kein Fast-Track nötig — abends ist der LH-Check-in flott. Restliche Baht am Flughafen ausgeben, Rücktausch lohnt kaum." },
+    note:"Ein letzter Vormittag, der sich wie Urlaub anfühlt statt wie Warten auf den Flug — und das Beste: Ko Kret liegt 20 Minuten vom Hotel, du riskierst nichts. Kein Fast-Track nötig, abends ist der LH-Check-in flott. Restliche Baht am Flughafen ausgeben, Rücktausch lohnt kaum." },
 
   { date:"2026-09-07", wd:"Mo", title:"Landung München", icon:"🏠",
     blocks:[

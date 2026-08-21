@@ -741,15 +741,17 @@
     '</span><span class="p-count">' + g.items.length + "</span></summary>" +
     '<div class="p-items">' + g.items.map((p, pi) =>
       '<button class="phrase" data-g="' + gi + '" data-p="' + pi + '">' +
-      '<span class="p-de">' + p.de + '</span><span class="p-en">' + p.en + "</span></button>").join("") +
+      '<span class="p-de">' + p.de + '</span><span class="p-en">' + p.en + "</span>" +
+      (p.sprich ? '<span class="p-sprich">sprich: ' + p.sprich + "</span>" : "") + "</button>").join("") +
     "</div></details>").join("");
   document.querySelectorAll(".phrase").forEach(b => b.addEventListener("click", () => {
     const p = PHRASES[+b.dataset.g].items[+b.dataset.p];
     const old = document.getElementById("flashcard"); if (old) old.remove();
     const div = document.createElement("div");
     div.id = "flashcard";
-    div.innerHTML = '<div class="fc-inner"><div class="fc-de">' + p.de + '</div><div class="fc-en">' + p.en +
-      '</div><div class="fc-hint">Zum Schließen tippen</div></div>';
+    div.innerHTML = '<div class="fc-inner"><div class="fc-de">' + p.de + '</div><div class="fc-en">' + p.en + '</div>' +
+      (p.sprich ? '<div class="fc-sprich">sprich: ' + p.sprich + "</div>" : "") +
+      '<div class="fc-hint">Zum Zeigen hochhalten · zum Schließen tippen</div></div>';
     div.addEventListener("click", () => div.remove());
     document.body.appendChild(div);
   }));
