@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  const APP_VERSION = "v49";   // muss zur Version in sw.js passen
+  const APP_VERSION = "v50";   // muss zur Version in sw.js passen
 
   let WX = null;   // Live-Wetter: { now:{...}, hours:[...], days:{ "2026-08-30": {...} } } — oben, weil renderPlan es liest
 
@@ -187,19 +187,20 @@
 
   // Fahrziel: Karte öffnen, Bolt öffnen, thailändische Adresse zum Vorzeigen und Kopieren.
   // Der Klick darf den Punkt NICHT abhaken — deshalb stoppen die Knöpfe das Weiterreichen.
-  function zielLeiste(k) {
+  function zielLeiste(k, route) {
     const z = ZIELE[k];
     const maps = "https://www.google.com/maps/dir/?api=1&destination=" + z.lat + "," + z.lng;
-    // Bolt hat kein offiziell dokumentiertes Link-Format; dieses funktioniert in der Praxis.
-    // Klappt es nicht, öffnet sich Bolt ohne Ziel — dann die Adresse unten kopieren.
+    // Bolt hat kein offiziell dokumentiertes Link-Format; dieses greift in der Praxis.
     const bolt = "https://m.bolt.eu/mobile/3/?dropoff[latitude]=" + z.lat +
                  "&dropoff[longitude]=" + z.lng + "&dropoff[address]=" + encodeURIComponent(z.th);
-    return '<div class="ziel" data-z="' + k + '">' +
-      '<div class="ziel-th">' + z.th + "</div>" +
-      '<div class="ziel-btns">' +
-        '<a class="zb" href="' + maps + '" target="_blank" rel="noopener">📍 Karte</a>' +
-        '<a class="zb" href="' + bolt + '" target="_blank" rel="noopener">🚗 Bolt</a>' +
-        '<button class="zb" type="button" data-zk="' + k + '">📋 Kopieren</button>' +
+    return '<div class="fahrt">' +
+      (route ? '<div class="f-route">' + route + "</div>" : "") +
+      '<div class="f-ziel"><span class="f-pin">📍</span><span class="f-name">' + z.n + "</span></div>" +
+      '<div class="f-th">' + z.th + "</div>" +
+      '<div class="f-btns">' +
+        '<a class="fb" href="' + maps + '" target="_blank" rel="noopener">Karte</a>' +
+        '<a class="fb" href="' + bolt + '" target="_blank" rel="noopener">Bolt</a>' +
+        '<button class="fb" type="button" data-zk="' + k + '">Adresse kopieren</button>' +
       "</div></div>";
   }
 
@@ -224,10 +225,9 @@
             : '<div class="d-wxbar"><i>Für diesen Tag reicht die Vorhersage noch nicht — sie geht 16 Tage voraus und wächst jeden Tag mit.</i></div>') +
         d.blocks.map((b, i) => {
           const key = d.date + "#" + i;
-          return '<div class="d-block' + (st[key] ? " done" : "") + (b.z ? " hat-ziel" : "") + '" data-pb="' + key + '"' +
-            (b.z ? ' role="button" tabindex="0"' : "") + ">" +
+          return '<div class="d-block' + (st[key] ? " done" : "") + '" data-pb="' + key + '">' +
             (b.t ? '<span class="d-time">' + b.t + "</span>" : "") + "<p>" + b.txt + "</p>" +
-            (b.z && ZIELE[b.z] ? zielLeiste(b.z) : "") +
+            (b.z && ZIELE[b.z] ? zielLeiste(b.z, b.r) : "") +
             '<button class="d-tick" type="button" data-tick="' + key + '" aria-label="erledigt">✓</button></div>';
         }).join("") +
         (d.note ? '<div class="d-note">' + d.note + "</div>" : "") +
@@ -269,35 +269,27 @@
     }
 
     // 3) Adresse kopieren
-    const kopie = e.target.closest(".zb[data-zk]");
+    const kopie = e.target.closest(".fb[data-zk]");
     if (kopie) {
       e.preventDefault(); e.stopPropagation();
       const z = ZIELE[kopie.dataset.zk];
       navigator.clipboard.writeText(z.th).then(
         () => { kopie.textContent = "✅ kopiert"; },
         () => {
-          const el = kopie.closest(".ziel").querySelector(".ziel-th");
+          const el = kopie.closest(".fahrt").querySelector(".f-th");
           const r = document.createRange(); r.selectNodeContents(el);
           const sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
           kopie.textContent = "markiert";
         }
       );
-      setTimeout(() => kopie.textContent = "📋 Kopieren", 2500);
+      setTimeout(() => kopie.textContent = "Adresse kopieren", 2500);
       return;
     }
 
     // 4) Karte oder Bolt: einfach öffnen lassen, nichts weiter tun
-    if (e.target.closest(".ziel")) { e.stopPropagation(); return; }
+    if (e.target.closest(".fahrt")) { e.stopPropagation(); return; }
 
-    // 5) Sonst: Punkt antippen klappt das Fahrziel auf und wieder zu
-    const block = e.target.closest(".d-block.hat-ziel");
-    if (block) block.classList.toggle("offen");
-  });
-
-  document.getElementById("plan-list").addEventListener("keydown", e => {
-    if ((e.key === "Enter" || e.key === " ") && e.target.classList.contains("d-block")) {
-      e.preventDefault(); e.target.classList.toggle("offen");
-    }
+    // Sonst nichts — abgehakt wird nur über den Haken rechts.
   });
 
   renderPlan();
