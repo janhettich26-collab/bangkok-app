@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  const APP_VERSION = "v47";   // muss zur Version in sw.js passen
+  const APP_VERSION = "v48";   // muss zur Version in sw.js passen
 
   let WX = null;   // Live-Wetter: { now:{...}, hours:[...], days:{ "2026-08-30": {...} } } — oben, weil renderPlan es liest
 
@@ -185,6 +185,25 @@
   const PLAN_KEY = "bkk_plan";
   const planState = () => JSON.parse(localStorage.getItem(PLAN_KEY) || "{}");
 
+  // Fahrziel: Karte öffnen, Bolt öffnen, thailändische Adresse zum Vorzeigen und Kopieren.
+  // Der Klick darf den Punkt NICHT abhaken — deshalb stoppen die Knöpfe das Weiterreichen.
+  function zielLeiste(k) {
+    const z = ZIELE[k];
+    const maps = "https://www.google.com/maps/dir/?api=1&destination=" + z.lat + "," + z.lng;
+    // Bolt hat kein offiziell dokumentiertes Link-Format; dieses funktioniert in der Praxis.
+    // Klappt es nicht, öffnet sich Bolt ohne Ziel — dann die Adresse unten kopieren.
+    const bolt = "https://m.bolt.eu/mobile/3/?dropoff[latitude]=" + z.lat +
+                 "&dropoff[longitude]=" + z.lng + "&dropoff[address]=" + encodeURIComponent(z.th);
+    return '<div class="ziel" data-z="' + k + '">' +
+      '<div class="ziel-kopf">🚗 Fahrziel: <b>' + z.n + "</b></div>" +
+      '<div class="ziel-th">' + z.th + "</div>" +
+      '<div class="ziel-btns">' +
+        '<a class="zb maps" href="' + maps + '" target="_blank" rel="noopener">📍 Karte</a>' +
+        '<a class="zb bolt" href="' + bolt + '" target="_blank" rel="noopener">🚗 Bolt</a>' +
+        '<button class="zb kopie" type="button" data-zk="' + k + '">📋 Adresse</button>' +
+      "</div></div>";
+  }
+
   function renderPlan() {
     const today = todayISO();
     const st = planState();
@@ -208,6 +227,7 @@
           const key = d.date + "#" + i;
           return '<div class="d-block' + (st[key] ? " done" : "") + '" data-pb="' + key + '" role="button" tabindex="0">' +
             (b.t ? '<span class="d-time">' + b.t + "</span>" : "") + "<p>" + b.txt + "</p>" +
+            (b.z && ZIELE[b.z] ? zielLeiste(b.z) : "") +
             '<span class="d-tick">✓</span></div>';
         }).join("") +
         (d.note ? '<div class="d-note">' + d.note + "</div>" : "") +
@@ -242,6 +262,26 @@
       });
       return;
     }
+    // Kopier-Knopf für die thailändische Adresse
+    const kopie = e.target.closest(".zb.kopie");
+    if (kopie) {
+      e.preventDefault(); e.stopPropagation();
+      const z = ZIELE[kopie.dataset.zk];
+      navigator.clipboard.writeText(z.th).then(
+        () => { kopie.textContent = "✅ kopiert"; },
+        () => {
+          const el = kopie.closest(".ziel").querySelector(".ziel-th");
+          const r = document.createRange(); r.selectNodeContents(el);
+          const sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+          kopie.textContent = "markiert";
+        }
+      );
+      setTimeout(() => kopie.textContent = "📋 Adresse", 2500);
+      return;
+    }
+    // Karte oder Bolt antippen darf den Punkt nicht abhaken
+    if (e.target.closest(".ziel")) { e.stopPropagation(); return; }
+
     const block = e.target.closest(".d-block");
     if (block) togglePlanBlock(block.dataset.pb);
   });

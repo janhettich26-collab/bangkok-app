@@ -2,7 +2,7 @@
 // Aufruf:  node pruefen.js      (meldet jede Abweichung, Rueckgabecode 1 bei Fehlern)
 const fs = require("fs");
 global.gm = q => q;
-const quellen = ["data-spots", "data-plan", "data-buchungen", "data-info", "data-pack", "data-phrases"];
+const quellen = ["data-spots", "data-ziele", "data-plan", "data-buchungen", "data-info", "data-pack", "data-phrases"];
 eval(quellen.map(f => fs.readFileSync(__dirname + "/js/" + f + ".js", "utf8")).join("\n;\n").replace(/^const /gm, "var "));
 
 const fehler = [], hinweise = [];
@@ -73,8 +73,18 @@ if (/rainviewer/i.test(appjs) || /rvHost/.test(appjs)) {
     fehler.push("Radar-Ebene ohne maxNativeZoom: 7 — ab Zoom 8 kommen graue Kacheln 'Zoom Level Not Supported'");
 }
 
+// 6b) Jedes Fahrziel im Plan muss in data-ziele.js definiert sein
+PLAN.forEach(d => d.blocks.forEach((b, i) => {
+  if (b.z && !ZIELE[b.z]) fehler.push(`Plan ${d.date}, Block ${i}: unbekanntes Fahrziel "${b.z}"`);
+}));
+Object.entries(ZIELE).forEach(([k, z]) => {
+  if (!z.n || !z.th) fehler.push(`Ziel ${k}: Name oder thailaendische Adresse fehlt`);
+  if (!(z.lat > 5 && z.lat < 21 && z.lng > 96 && z.lng < 106)) fehler.push(`Ziel ${k}: Koordinaten ausserhalb Thailands`);
+  if (!/[\u0E00-\u0E7F]/.test(z.th)) fehler.push(`Ziel ${k}: "th" enthaelt keine thailaendische Schrift`);
+});
+
 // 7b) Repo ist oeffentlich: keine Buchungsnummern, Referenzen oder Policen im Klartext
-const OEFFENTLICH = ["js/data-spots.js","js/data-plan.js","js/data-buchungen.js","js/data-info.js","js/data-pack.js","js/data-phrases.js","index.html"];
+const OEFFENTLICH = ["js/data-spots.js","js/data-ziele.js","js/data-plan.js","js/data-buchungen.js","js/data-info.js","js/data-pack.js","js/data-phrases.js","index.html"];
 const GEHEIM = [[/LOV\d{6,}/,"Reise-Buchungsnummer"],[/ZPTAZX/,"Flug-PNR"],[/LVH\d{6,}/,"Versicherungspolice"],
   [/\b8767GB\b/,"Parkos-Reservierung"],[/321-\d{8}/,"Transfer-Referenz"],[/\b2248772\d\b/,"Hotel-Bestaetigung"],
   [/\bR3374\d\d\b/,"Spa-Bestaetigung"],[/DE\d{9}\b/,"USt-ID"]];
