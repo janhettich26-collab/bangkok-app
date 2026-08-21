@@ -76,16 +76,18 @@ const PLAN = [
     ],
     note:"Ein Weg, drei Dinge — Elefanten, Massage und Sukhumvit-Abend ohne einen einzigen Doppelweg. Bars-Abend Nr. 2. Regel für die Ecke: Nie mitgehen, wenn dich jemand „mitnimmt“." },
 
-  { date:"2026-09-02", wd:"Mi", title:"Kanäle, grüne Lunge & Glasboden", icon:"🛶",
+  { date:"2026-09-02", wd:"Mi", title:"Surfen & Glasboden", icon:"🏄",
     blocks:[
-      { t:"7:00", txt:"Klong-Tour im Longtail durch Thonburi (Start Wat Arun oder Sathorn Pier, 1–1,5 Std., solo 1.000–1.500 ฿ — Preis UND Dauer VOR dem Einsteigen fix vereinbaren). Um diese Zeit gehört dir die Stadt allein." },
-      { t:"9:30", txt:"Weiter nach Bang Krachao: Fähre 10 ฿ rüber, Fahrrad ~100 ฿ — Dschungel-Holzstege mitten in der Stadt, 2–3 Std. Runde. Vor der Mittagshitze fertig." },
-      { t:"13:00", txt:"Zurück ins Hotel: duschen, Pool, kurz hinlegen. Der Nachmittagsschauer zieht meist jetzt durch." },
-      { t:"16:30", txt:"BTS bis Chong Nonsi, Ausgang 3 — der Mahanakhon-Turm steht direkt über der Station. Mit Sonnenuntergangs-Ticket (1.080–1.200 ฿, vorab online buchen, die Slots sind schnell weg)." },
-      { t:"17:15–19:00", txt:"Mahanakhon SkyWalk: Innendeck im 74. Stock, offenes Dach im 78. und der Glasboden auf 310 m. Sonnenuntergang um 18:29 — du siehst die Stadt bei Tag, im Sonnenuntergang und im Lichtermeer, alles in einem Besuch. Der höchste Punkt der Stadt und der beste Blick, den du hier bekommst." },
-      { t:"20:30", txt:"Saxophone Pub am Victory Monument (25 Min): Livejazz und Blues seit den Achtzigern — Tresenplatz, Thai-Eistee, Musik. Kein Alk nötig, keiner will dir was verkaufen." }
+      { t:"vorm.", txt:"Ausschlafen und Pool — gestern waren Elefanten, Massage und Sukhumvit, das darf sich setzen. Wäsche in die Maschine." },
+      { t:"11:00", txt:"Los nach Sukhumvit: MRT bis Queen Sirikit (Ausgang 1, dann 15 Min zu Fuß) oder BTS Phrom Phong Ausgang 6. Mit Bolt 35–45 Min für 250–320 ฿." },
+      { t:"12:00–14:00", txt:"FLOW HOUSE, künstliche Dauerwelle im A-Square: Du fängst auf dem Bodyboard an und stehst nach der ersten Stunde meistens. 750 ฿ pro Stunde, Brett, Weste und Einweisung sind drin. VORHER ANRUFEN (+66 2 108 5210) und die Uhrzeit nennen — sonst teilst du dir die Stunde mit bis zu zehn Leuten." },
+      { t:"14:15", txt:"Duschen und umziehen ist vor Ort möglich (warme Duschen, Handtuch 50 ฿). Danach Mittagessen im EmQuartier oder Terminal 21, beides ein paar Minuten weg." },
+      { t:"16:00", txt:"Kaffee und Beine hochlegen — du hast zwei Stunden gegen eine Wasserwand gekämpft, das merkst du." },
+      { t:"17:15", txt:"BTS Phrom Phong → Siam → Silom-Linie bis Chong Nonsi (~20 Min). Der Mahanakhon-Turm steht direkt über der Station." },
+      { t:"17:45–19:30", txt:"MAHANAKHON SKYWALK: Innendeck im 74. Stock, offenes Dach im 78. und der Glasboden auf 310 m. Sonnenuntergang um 18:29 — du siehst die Stadt bei Tag, im Sonnenuntergang und im Lichtermeer. Sonnenuntergangs-Ticket vorher online kaufen (Klook ab ~10 €)." },
+      { t:"20:00", txt:"Abendessen in Silom, oder mit der BTS 20 Min zum Saxophone Pub am Victory Monument: Livejazz seit den Achtzigern, Tresenplatz, Thai-Eistee." }
     ],
-    note:"Der Glasboden ist der Grund, warum du dir die Sky Bar am Samstag sparen kannst: dort zahlst du 700–950 ฿ für EIN Getränk, hier bekommst du für wenig mehr das ganze Erlebnis — ohne Dresscode und mit Rucksack. ACHTUNG Regenzeit: Bei Sturm sperren sie das Außendeck, Geld gibt es nicht zurück (nur Umbuchung). Also erst abends den Himmel anschauen, dann kaufen." },
+    note:"Action-Tag statt Kanaltour: die Klong-Fahrt und Bang Krachao sind rausgeflogen. Falls du noch mehr willst — Wakeboard am Taco Lake in Bang Na (400 ฿ für den ganzen Tag) liegt an derselben BTS-Linie und öffnet mittwochs um 12 Uhr. ACHTUNG Mahanakhon: bei Sturm sperren sie das Außendeck, Geld gibt es nicht zurück — erst den Himmel anschauen, dann kaufen." },
 
   { date:"2026-09-03", wd:"Do", title:"Mit Haien tauchen & Sunset-Cruise", icon:"🦈",
     blocks:[
