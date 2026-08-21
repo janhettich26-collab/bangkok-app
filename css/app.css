@@ -633,6 +633,83 @@ button, input, a { -webkit-tap-highlight-color: rgba(232,176,75,.15); }
 .thai-adr { display: block; margin: 6px 0; padding: 9px 11px; background: rgba(0,0,0,.3); border-radius: 8px;
   font-size: 15px; line-height: 1.7; -webkit-user-select: text; user-select: text; }
 
+/* ————— Anfahrt: klappt auf, Beschreibung darüber bleibt stehen ————— */
+.fahrt { margin: 8px 0 0; }
+.f-auf {
+  display: inline-flex; align-items: center; gap: 5px; cursor: pointer; list-style: none;
+  font-size: 12px; font-weight: 700; color: #9CC9FF;
+  padding: 5px 11px 5px 8px; border-radius: 99px;
+  background: rgba(87,168,255,.10); border: 1px solid rgba(87,168,255,.28);
+}
+.f-auf::-webkit-details-marker { display: none; }
+.f-auf::before { content: "🚗"; font-size: 12px; }
+.f-chev { display: inline-block; transition: transform .15s; font-size: 14px; opacity: .8; }
+.fahrt[open] .f-chev { transform: rotate(90deg); }
+.f-body { margin-top: 9px; padding-left: 11px; border-left: 2px solid rgba(87,168,255,.45); }
+.f-route { font-size: 12px; line-height: 1.5; color: #9CC9FF; margin-bottom: 7px; }
+.f-ziel { display: flex; align-items: baseline; gap: 6px; }
+.f-pin { font-size: 11px; opacity: .8; }
+.f-name { font-size: 13.5px; font-weight: 700; color: var(--text); }
+.f-th { font-size: 14.5px; line-height: 1.65; margin-top: 4px; color: #C9DEF5;
+  -webkit-user-select: text; user-select: text; }
+.f-btns { display: flex; align-items: center; margin-top: 8px; flex-wrap: wrap; }
+.fb { padding: 6px 11px 6px 0; margin-right: 11px; font-size: 12.5px; font-weight: 600;
+  color: #9CC9FF; background: none; border: none; font-family: inherit;
+  text-decoration: none; border-right: 1px solid var(--line); }
+.fb:last-child { border-right: none; margin-right: 0; }
+.d-block.done .fahrt { opacity: .5; }
+
+/* ————— Standort-Meldungen ————— */
+.me-msg { padding: 11px 13px; border-radius: 12px; font-size: 12.5px; line-height: 1.5;
+  margin-bottom: 10px; background: var(--surface); border: 1px solid var(--line); color: var(--muted); }
+.me-msg.ok     { border-color: rgba(107,203,119,.4); color: #9BD9A5; background: rgba(107,203,119,.08); }
+.me-msg.fern   { border-color: rgba(87,168,255,.45); color: #9CC9FF; background: rgba(87,168,255,.09); }
+.me-msg.warn   { border-color: var(--warn-line); color: #E8C88B; background: var(--warn-bg); }
+.me-msg.fehler { border-color: rgba(220,75,62,.5); color: #F09090; background: rgba(220,75,62,.10); }
+.me-msg b { color: inherit; }
+.me-jump { display: block; margin-top: 9px; padding: 8px 12px; font-size: 12.5px; font-weight: 700;
+  background: transparent; color: #9CC9FF; border: 1px solid rgba(87,168,255,.5); border-radius: 10px; font-family: inherit; }
+
+/* ————— Checkliste: zieht die offenen Buchungen automatisch aus den Terminen ————— */
+.ck-kopf { padding: 4px 2px 12px; font-size: 13px; color: var(--muted); }
+.ck-kopf b { color: var(--gold); font-size: 17px; font-weight: 800; }
+.check.ck-termin { border-left: 2px solid var(--gold-deep); padding-left: 9px; }
+.check.ck-termin.done { border-left-color: rgba(107,203,119,.5); }
+.ck-hin { display: block; font-size: 11px; color: var(--muted); opacity: .8; margin-top: 2px; }
+.rv-erkl { margin-top: 8px; }
+.rv-erkl summary { font-size: 11.5px; color: var(--muted); cursor: pointer; list-style: none; }
+.rv-erkl summary::-webkit-details-marker { display: none; }
+.rv-erkl summary::before { content: "› "; color: var(--gold); }
+.rv-erkl[open] summary::before { content: "⌄ "; }
+.rv-erkl p { font-size: 11.5px; color: var(--muted); line-height: 1.5; margin-top: 7px; }
+.rv-box { padding: 10px 12px; }
+
+/* ————— Update-Hinweis ————— */
+.update-bar { position: sticky; top: 0; z-index: 1200; padding: 11px 14px;
+  background: var(--gold); color: #14100a; font-size: 13px; font-weight: 700; text-align: center; }
+.update-bar button { margin-left: 8px; padding: 5px 12px; font-size: 12.5px; font-weight: 800;
+  background: #14100a; color: var(--gold); border: none; border-radius: 8px; font-family: inherit; }
+.btn.klook { display: block; width: 100%; margin: 12px 0 0; text-align: center;
+  background: #FF5722; color: #fff; border: none; font-weight: 800; padding: 12px; }
+.ck-fuss { margin-top: 12px; padding: 10px 12px; background: var(--surface2); border: 1px solid var(--line);
+  border-radius: 10px; font-size: 12px; line-height: 1.5; color: var(--muted); }
+
+/* ————— Fertige Nachrichten zum Absenden ————— */
+.msg-box { margin-top: 13px; padding: 12px; background: var(--surface2); border: 1px solid var(--line); border-radius: 12px; }
+.msg-kopf { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: var(--gold); margin-bottom: 9px; }
+.msg-en { font-size: 13px; line-height: 1.55; background: rgba(0,0,0,.25); padding: 11px; border-radius: 9px; -webkit-user-select: text; user-select: text; }
+.msg-de { margin-top: 9px; }
+.msg-de summary { font-size: 11.5px; color: var(--muted); cursor: pointer; list-style: none; }
+.msg-de summary::-webkit-details-marker { display: none; }
+.msg-de summary::before { content: "› "; color: var(--gold); }
+.msg-de[open] summary::before { content: "⌄ "; }
+.msg-de p { font-size: 12.5px; line-height: 1.55; color: var(--muted); margin-top: 8px; }
+.msg-btns { display: flex; gap: 8px; margin-top: 11px; }
+.msg-btns .btn { flex: 1; text-align: center; }
+.btn.wa { background: #25D366; color: #06301a; border: none; font-weight: 800; }
+.thai-adr { display: block; margin: 6px 0; padding: 9px 11px; background: rgba(0,0,0,.3); border-radius: 8px;
+  font-size: 15px; line-height: 1.7; -webkit-user-select: text; user-select: text; }
+
 /* ————— Fahrt: Route, Ziel, Aktionen — immer sichtbar, ruhig gestaltet ————— */
 .fahrt {
   margin: 10px 0 2px; padding-left: 11px;

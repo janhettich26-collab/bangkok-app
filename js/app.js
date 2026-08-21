@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  const APP_VERSION = "v50";   // muss zur Version in sw.js passen
+  const APP_VERSION = "v51";   // muss zur Version in sw.js passen
 
   let WX = null;   // Live-Wetter: { now:{...}, hours:[...], days:{ "2026-08-30": {...} } } — oben, weil renderPlan es liest
 
@@ -193,15 +193,20 @@
     // Bolt hat kein offiziell dokumentiertes Link-Format; dieses greift in der Praxis.
     const bolt = "https://m.bolt.eu/mobile/3/?dropoff[latitude]=" + z.lat +
                  "&dropoff[longitude]=" + z.lng + "&dropoff[address]=" + encodeURIComponent(z.th);
-    return '<div class="fahrt">' +
-      (route ? '<div class="f-route">' + route + "</div>" : "") +
-      '<div class="f-ziel"><span class="f-pin">📍</span><span class="f-name">' + z.n + "</span></div>" +
-      '<div class="f-th">' + z.th + "</div>" +
-      '<div class="f-btns">' +
-        '<a class="fb" href="' + maps + '" target="_blank" rel="noopener">Karte</a>' +
-        '<a class="fb" href="' + bolt + '" target="_blank" rel="noopener">Bolt</a>' +
-        '<button class="fb" type="button" data-zk="' + k + '">Adresse kopieren</button>' +
-      "</div></div>";
+    // <details> statt eigener Klick-Logik: klappt nativ auf, kollidiert nicht mit dem Abhaken,
+    // und die Beschreibung darüber bleibt immer stehen.
+    return '<details class="fahrt" data-f="' + k + '">' +
+      '<summary class="f-auf"><span class="f-chev">›</span> Anfahrt &amp; Adresse</summary>' +
+      '<div class="f-body">' +
+        (route ? '<div class="f-route">' + route + "</div>" : "") +
+        '<div class="f-ziel"><span class="f-pin">📍</span><span class="f-name">' + z.n + "</span></div>" +
+        '<div class="f-th">' + z.th + "</div>" +
+        '<div class="f-btns">' +
+          '<a class="fb" href="' + maps + '" target="_blank" rel="noopener">Karte</a>' +
+          '<a class="fb" href="' + bolt + '" target="_blank" rel="noopener">Bolt</a>' +
+          '<button class="fb" type="button" data-zk="' + k + '">Adresse kopieren</button>' +
+        "</div>" +
+      "</div></details>";
   }
 
   function renderPlan() {
@@ -234,7 +239,7 @@
         (done ? '<button class="btn ghost small d-reset" type="button" data-preset="' + d.date + '">Tag zurücksetzen</button>' : "") +
         "</div></details>";
     }).join("");
-    const t = document.querySelector(".day.today");
+    const t = document.querySelector("#plan-list > .day.today");
     if (t) t.scrollIntoView({ block: "start" });
   }
 
@@ -242,10 +247,19 @@
     const st = planState();
     if (st[key]) delete st[key]; else st[key] = 1;
     localStorage.setItem(PLAN_KEY, JSON.stringify(st));
-    const openDates = [...document.querySelectorAll("#plan-list details[open]")].map(x => x.querySelector(".d-date").textContent);
+    merkeUndZeichne();
+  }
+
+  // Aufgeklappte Tage UND aufgeklappte Anfahrten überleben das Neuzeichnen
+  function merkeUndZeichne() {
+    const tage = [...document.querySelectorAll("#plan-list > details[open]")].map(x => x.querySelector(".d-date").textContent);
+    const fahrten = [...document.querySelectorAll("#plan-list .fahrt[open]")].map(x => x.dataset.f);
     renderPlan();
-    document.querySelectorAll("#plan-list details").forEach(x => {
-      if (openDates.includes(x.querySelector(".d-date").textContent)) x.open = true;
+    document.querySelectorAll("#plan-list > details").forEach(x => {
+      if (tage.includes(x.querySelector(".d-date").textContent)) x.open = true;
+    });
+    document.querySelectorAll("#plan-list .fahrt").forEach(x => {
+      if (fahrten.includes(x.dataset.f)) x.open = true;
     });
   }
 
@@ -260,11 +274,7 @@
       const st = planState();
       Object.keys(st).filter(k => k.startsWith(reset.dataset.preset + "#")).forEach(k => delete st[k]);
       localStorage.setItem(PLAN_KEY, JSON.stringify(st));
-      const offenDates = [...document.querySelectorAll("#plan-list details[open]")].map(x => x.querySelector(".d-date").textContent);
-      renderPlan();
-      document.querySelectorAll("#plan-list details").forEach(x => {
-        if (offenDates.includes(x.querySelector(".d-date").textContent)) x.open = true;
-      });
+      merkeUndZeichne();
       return;
     }
 
