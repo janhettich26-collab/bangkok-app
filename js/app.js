@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  const APP_VERSION = "v41";   // muss zur Version in sw.js passen
+  const APP_VERSION = "v42";   // muss zur Version in sw.js passen
 
   let WX = null;   // Live-Wetter: { now:{...}, hours:[...], days:{ "2026-08-30": {...} } } — oben, weil renderPlan es liest
 
@@ -343,7 +343,6 @@
         if (cb.checked) d[cb.dataset.bk] = 1; else delete d[cb.dataset.bk];
         localStorage.setItem(BK_KEY, JSON.stringify(d));
         renderBookings();
-        renderChecks();   // Checkliste mitziehen — beide zeigen dieselben Haken
       });
     });
     document.querySelectorAll("[data-bkf]").forEach(btn => {
@@ -659,47 +658,32 @@
     '<div class="d-block"><span class="d-time">' + u.icon + " " + u.title + "</span><p>" + u.txt + "</p></div>").join("");
 
   const CHECK_KEY = "bkk_checks";
-  // Die Checkliste pflegt sich selbst: Was im Termine-Reiter offen ist, steht automatisch hier —
-  // so kann sie nicht mehr veralten, wenn der Plan sich ändert. Die Haken sind dieselben:
-  // hier abhaken heißt dort abgehakt und umgekehrt.
+  // Hier stehen NUR die Sachen, die man daheim vorbereitet — Check-in, eSIM, Karten, Papiere.
+  // Was gebucht werden muss, steht ausschliesslich im Reiter Termine, damit es nicht doppelt ist.
   function checkPunkte() {
-    const heute = todayISO();
-    const ausTerminen = BOOKINGS.filter(b => b.status === "offen").map(b => {
-      const dt = b.date.split("-");
-      const tage = Math.round((new Date(b.date) - new Date(heute)) / 86400000);
-      return {
-        id: b.id, quelle: "termin",
-        txt: "<b>" + b.emoji + " " + (b.kurz || b.title.split(" — ")[0]) + "</b> " + (b.tun || "buchen") + " — für " + dt[2] + "." + dt[1] + "." +
-             (b.phone ? ' <a href="tel:' + b.phone + '">📞 ' + b.phone + "</a>" : "") +
-             ' <span class="ck-hin">Details im Reiter Termine</span>',
-        due: tage <= 0 ? "jetzt" : tage <= 5 ? "in " + tage + " Tagen" : dt[2] + "." + dt[1] + ".",
-        sort: b.date
-      };
-    });
-    const fest = INFO.checks.map(c => ({ id: c.id, quelle: "fest", txt: c.txt, due: c.due, sort: "z" + (c.due || "") }));
-    return ausTerminen.concat(fest);
+    return INFO.checks.map(c => ({ id: c.id, quelle: "fest", txt: c.txt, due: c.due }));
   }
 
   function renderChecks() {
     const done = JSON.parse(localStorage.getItem(CHECK_KEY) || "{}");
-    const gebucht = JSON.parse(localStorage.getItem(BK_KEY) || "{}");
     const punkte = checkPunkte();
-    const erledigt = p => p.quelle === "termin" ? !!gebucht[p.id] : !!done[p.id];
-    const offen = punkte.filter(p => !erledigt(p)).length;
+    const offen = punkte.filter(p => !done[p.id]).length;
+    const zuBuchen = BOOKINGS.filter(b => b.status === "offen").length;
 
     const kopf = '<div class="ck-kopf">' + (offen ? "<b>" + offen + "</b> von " + punkte.length + " noch offen" : "✅ alles erledigt") + "</div>";
+    const fuss = zuBuchen
+      ? '<div class="ck-fuss">Was noch gebucht werden muss (' + zuBuchen + "), steht im Reiter <b>Termine</b> — hier stehen nur die Sachen, die du daheim erledigst.</div>"
+      : "";
     document.getElementById("check-list").innerHTML = kopf + punkte.map(p =>
-      '<label class="check' + (erledigt(p) ? " done" : "") + (p.quelle === "termin" ? " ck-termin" : "") + '">' +
-      '<input type="checkbox" data-id="' + p.id + '" data-q="' + p.quelle + '"' + (erledigt(p) ? " checked" : "") + ">" +
-      "<span>" + p.txt + ' <i class="due">' + p.due + "</i></span></label>").join("");
+      '<label class="check' + (done[p.id] ? " done" : "") + '">' +
+      '<input type="checkbox" data-id="' + p.id + '"' + (done[p.id] ? " checked" : "") + ">" +
+      "<span>" + p.txt + ' <i class="due">' + p.due + "</i></span></label>").join("") + fuss;
 
     document.querySelectorAll("#check-list input").forEach(i => i.addEventListener("change", () => {
-      const key = i.dataset.q === "termin" ? BK_KEY : CHECK_KEY;
-      const d = JSON.parse(localStorage.getItem(key) || "{}");
+      const d = JSON.parse(localStorage.getItem(CHECK_KEY) || "{}");
       if (i.checked) d[i.dataset.id] = 1; else delete d[i.dataset.id];
-      localStorage.setItem(key, JSON.stringify(d));
+      localStorage.setItem(CHECK_KEY, JSON.stringify(d));
       renderChecks();
-      renderBookings();   // Termine-Reiter sofort mitziehen
     }));
   }
   renderChecks();

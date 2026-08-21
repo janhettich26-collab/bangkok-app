@@ -614,3 +614,5 @@ button, input, a { -webkit-tap-highlight-color: rgba(232,176,75,.15); }
   background: #14100a; color: var(--gold); border: none; border-radius: 8px; font-family: inherit; }
 .btn.klook { display: block; width: 100%; margin: 12px 0 0; text-align: center;
   background: #FF5722; color: #fff; border: none; font-weight: 800; padding: 12px; }
+.ck-fuss { margin-top: 12px; padding: 10px 12px; background: var(--surface2); border: 1px solid var(--line);
+  border-radius: 10px; font-size: 12px; line-height: 1.5; color: var(--muted); }
