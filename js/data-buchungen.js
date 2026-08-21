@@ -46,12 +46,6 @@ const BOOKINGS = [
     warn:"Nur online mit festem Datum und Slot buchen. Die Ticketverkäufer am Pier-Vorplatz sind teurer oder verkaufen Falsches.",
     links:[{t:"🎟️ GetYourGuide",u:"https://www.getyourguide.com/de-de/bangkok-l169/bangkok-die-neueste-luxuriose-5-sterne-kreuzfahrt-auf-dem-chao-phraya-in-bangkok-t960991/"},{t:"📍 Asiatique",u:"https://www.google.com/maps/search/?api=1&query=Asiatique%20The%20Riverfront%20Bangkok"}] },
 
-  { id:"shooting", tun:"anfragen", kurz:"Foto-Shooting", grp:"Termine", status:"offen", emoji:"📸", date:"2026-09-05", time:"17:30–19:30",
-    title:"Golden-Hour Foto-Shooting", where:"Treffpunkt Wat Arun, danach Chinatown",
-    price:"rund 150 € für 2 Std., ca. 30 bearbeitete Bilder",
-    info:["Route: Wat Arun zum Sonnenuntergang → Chinatown mit Neonlicht","Vorab über TripAdvisor oder Localgrapher buchen — Datum und Treffpunkt schriftlich festhalten","Bilder kommen binnen 14 Tagen per Online-Galerie","Davor passt: 15:00 Wat Mangkon Kamalawat (Laternen-Tempel, Eintritt frei, bis 18 Uhr)","Outfit mitdenken — das sind die Bilder, die du behältst"],
-    links:[{t:"📍 Wat Arun",u:"https://www.google.com/maps/search/?api=1&query=Wat%20Arun%20Bangkok"}] },
-
   // ————— Ohne Vorab-Buchung —————
   { id:"nachtmarkt", grp:"Vor Ort", status:"vorort", emoji:"🌃", date:"2026-08-28", time:"19:30",
     title:"Jodd Fairs Ratchada — Ankunftsabend", where:"129 Ratchadaphisek Rd, Din Daeng · MRT Thailand Cultural Centre, Ausgang 4",
@@ -66,6 +60,13 @@ const BOOKINGS = [
     info:["Der höchste Aussichtspunkt der Stadt: Innendeck 74. Stock, offenes Dach 78. Stock, Glasboden auf 310 m","Sonnenuntergangs-Slot buchen und 45–60 Min vorher da sein — dann siehst du die Stadt bei Tag, den Sonnenuntergang (um 18:29) und das Lichtermeer in einem Besuch","Online vorab buchen: günstiger als an der Kasse, und die Sonnenuntergangs-Slots sind schnell weg","Kein Dresscode, Rucksack erlaubt — anders als in der Sky Bar","Der Turm steht direkt über der BTS-Station, überdachter Zugang","SkyWalk 10–19 Uhr, letzter Einlass 18:30"],
     warn:"Regenzeit: Bei Sturm sperren sie Außendeck und Glasboden. Es gibt kein Geld zurück, nur eine Umbuchung — also erst am Tag selbst den Himmel anschauen, dann kaufen.",
     links:[{t:"🎟️ Offizielle Seite",u:"https://kingpowermahanakhon.co.th/experience/mahanakhon-skywalk"},{t:"📍 In Google Maps",u:"https://www.google.com/maps/search/?api=1&query=King%20Power%20Mahanakhon%20SkyWalk%20Bangkok"}] },
+
+  { id:"ancientcity", kurz:"Ancient City", grp:"Vor Ort", status:"vorort", emoji:"🛕", date:"2026-09-05", time:"9:30–14:00",
+    title:"Ancient City — Freilichtmuseum mit dem Fahrrad", where:"296/1 Moo 7 Sukhumvit Rd, Bang Pu Mai, Samut Prakan",
+    price:"700 ฿ am Tor · online über Klook oft ~350 ฿ · Fahrrad ~100 ฿",
+    info:["Über 100 nachgebaute Tempel, Paläste und Holzhäuser aus ganz Thailand auf 80 Hektar — und fast menschenleer","Täglich 9–19 Uhr, Kasse schließt 18 Uhr. Rechne mit 3–4 Std., mit dem Erawan-Museum nebenan 5–6","Hinfahrt morgens per Bolt (45–60 Min, 400–500 ฿), zurück entspannt per BTS ab Kheha","Fahrrad ~100 ฿ für den ganzen Tag. Die kostenlose Tram fährt 10, 13, 15 und 17 Uhr — beim Ticketkauf ausdrücklich sagen, dass du sie willst","Samstags fährt ab BTS Kheha ein kostenloser Shuttle zum Park","Kein Englisch nötig: du läufst und radelst durch einen Park, niemand redet auf dich ein","Erawan-Museum nebenan: ein 43 m hoher dreiköpfiger Elefant aus Kupfer, in den man hineinsteigen kann"],
+    warn:"Online kaufen lohnt sich wirklich — am Tor 700 ฿, über Klook oft die Hälfte.",
+    links:[{t:"🎟️ Offizielle Seite",u:"https://www.muangboranmuseum.com/en/"},{t:"📍 In Google Maps",u:"https://www.google.com/maps/search/?api=1&query=Ancient%20City%20Muang%20Boran%20Samut%20Prakan"}] },
 
   { id:"kokret", grp:"Vor Ort", status:"vorort", emoji:"🚲", date:"2026-09-06", time:"10:00–14:00",
     title:"Ko Kret — Flussinsel am Abreisetag", where:"Fähre ab Wat Sanam Nuea, Pak Kret · 20–25 Min Bolt vom Hotel",

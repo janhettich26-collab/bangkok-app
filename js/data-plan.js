@@ -106,16 +106,16 @@ const PLAN = [
     ],
     note:"Komplett ~600 ฿ statt 30+ € Tour — und du bist an keine Gruppe gekettet." },
 
-  { date:"2026-09-05", wd:"Sa", title:"Foto-Shooting & Rooftop-Finale", icon:"📸",
+  { date:"2026-09-05", wd:"Sa", title:"Ancient City & Abschiedsabend", icon:"🛕",
     blocks:[
-      { t:"vorm.", txt:"Locker: Pool, Massage oder Chatuchak (läuft samstags) für Mitbringsel." },
-      { t:"15:00", txt:"MRT nach Chinatown (Station „Wat Mangkon“, Ausgang 3): Wat Mangkon Kamalawat — der Laternen-Tempel aus dem Video. Eintritt frei, bis 18 Uhr offen, 1 Std. reicht. Lange Hose an, Schuhe aus vor den Hallen." },
-      { t:"16:45", txt:"Von dort 15 Min rüber zum Wat Arun (Bolt ~120 ฿ oder MRT + Fähre) — Treffpunkt fürs Shooting." },
-      { t:"17:30", txt:"Golden-Hour-Foto-Shooting (2 Std., ~150 €, 30 Bilder, vorab über TripAdvisor/Localgrapher gebucht): Wat Arun zum Sonnenuntergang → Chinatown-Neon." },
-      { t:"19:45", txt:"Direkt in Chinatown bleiben: Abschieds-Essen in der Neon-Schlucht." },
-      { t:"21:30 (optional)", txt:"Sky Bar im Lebua (10 Min Bolt), 64. Stock, 247 m — nur noch, wenn du den Hangover-Rooftop unbedingt gesehen haben willst; den besseren Blick hattest du am Mittwoch: der Hangover-2-Rooftop. Kein Eintritt, aber ein Getränk pro Person ist Pflicht — Mocktails 600–800 ฿ plus 10 % Service und 7 % Steuer, macht rund 700–950 ฿ für ein alkoholfreies Glas. Offen 17:00–00:30, keine Reservierung, nur Stehplätze am runden Bartresen." }
+      { t:"8:00", txt:"Bolt nach Samut Prakan zum Ancient City (45–60 Min, 400–500 ฿). Morgens ist die Strecke frei, und im Park ist es vor Mittag deutlich angenehmer." },
+      { t:"9:30–14:00", txt:"Ancient City, das größte Freilichtmuseum der Welt: über 100 nachgebaute Tempel, Paläste und Holzhäuser aus ganz Thailand auf 80 Hektar — und fast menschenleer. Fahrrad für ~100 ฿ nehmen und einfach losfahren. Eintritt 700 ฿ am Tor, online über Klook oft die Hälfte. Die kostenlose Tram fährt 10, 13, 15 und 17 Uhr, das musst du beim Ticketkauf sagen." },
+      { t:"14:15", txt:"Optional 5 Min weiter: Erawan-Museum — ein 43 Meter hoher dreiköpfiger Elefant aus Kupfer, in den man hineinsteigen kann. Innen Glasfenster und Treppen wie in einer anderen Welt." },
+      { t:"16:00", txt:"Zurück: BTS ab Kheha (samstags fährt ein kostenloser Shuttle vom Park zur Station) oder Bolt. Im Hotel duschen und Beine hochlegen." },
+      { t:"19:00", txt:"Letzter Abend, ganz nach Laune: Terminal 21 zum Essen, der Owl Market vor der Haustür, oder einfach Rooftop und Pool im Hotel. Morgen früh geht es nochmal raus nach Ko Kret." },
+      { t:"21:30 (optional)", txt:"Sky Bar im Lebua (10 Min Bolt), 64. Stock: der Hangover-Rooftop. Kein Eintritt, aber ein Getränk ist Pflicht — Mocktails 600–800 ฿ plus 17 %. Dresscode: Kragenhemd, lange Hose, geschlossene Schuhe, KEIN Rucksack." }
     ],
-    note:"Chinatown an einem Stück: Laternen-Tempel bei Tag, Neon-Schlucht bei Nacht. ZUR SKY BAR: Dresscode wird am Aufzug durchgesetzt — Kragenhemd oder Polo, lange Hose, geschlossene Schuhe. T-Shirt, Shorts, ärmellos, Sandalen und Sneaker = abgewiesen. RUCKSÄCKE UND EINKAUFSTÜTEN sind oben verboten und es gibt KEINE Aufbewahrung, also vorher ins Hotel damit. Bei Regen macht die Plattform sofort zu — dann ist Octave in Thonglor die überdachte Alternative." },
+    note:"Das Ancient City ist der fotogenste Ort im Großraum Bangkok und kaum ein Tourist kennt ihn — du brauchst dort kein Wort Englisch, du radelst einfach durch einen Park voller Tempel. Weit draußen zwar, aber morgens hin ist es entspannt. Bei Dauerregen tauschbar gegen Jim Thompson House (Seidenhaus, zentral, eine Stunde) plus Siam-Malls." },
 
   { date:"2026-09-06", wd:"So", title:"Ko Kret & Rückflug", icon:"🚲",
     blocks:[
@@ -134,5 +134,5 @@ const PLAN = [
       { t:"05:15", txt:"Landung MUC. Parkos-Shuttle zum Auto, heimfahren." },
       { t:"", txt:"⚠️ HEUTE KEINE EINSÄTZE — steht so im Plan. Schlafen." }
     ],
-    note:"Willkommen zurück. Fotos vom Shooting kommen binnen 14 Tagen per Online-Galerie." }
+    note:"Willkommen zurück. Heute keine Einsätze — schlafen." }
 ];
