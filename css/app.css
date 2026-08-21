@@ -449,7 +449,7 @@ button, input, a { -webkit-tap-highlight-color: rgba(232,176,75,.15); }
 .d-block { position: relative; cursor: pointer; padding-right: 26px; border-radius: 9px; transition: opacity .15s ease; }
 .d-block:active { background: rgba(255,255,255,.04); }
 .d-tick {
-  position: absolute; top: 50%; right: 4px; transform: translateY(-50%);
+  position: absolute; top: 11px; right: 4px; padding: 0; cursor: pointer;
   width: 19px; height: 19px; border-radius: 50%; border: 1.5px solid var(--line);
   color: transparent; font-size: 12px; line-height: 16px; text-align: center; font-weight: 800;
 }
@@ -633,17 +633,15 @@ button, input, a { -webkit-tap-highlight-color: rgba(232,176,75,.15); }
 .thai-adr { display: block; margin: 6px 0; padding: 9px 11px; background: rgba(0,0,0,.3); border-radius: 8px;
   font-size: 15px; line-height: 1.7; -webkit-user-select: text; user-select: text; }
 
-/* ————— Fahrziel im Plan: Karte, Bolt, Adresse ————— */
-.ziel { margin: 10px 0 2px; padding: 10px 11px; background: rgba(87,168,255,.08);
-  border: 1px solid rgba(87,168,255,.28); border-radius: 11px; cursor: default; }
-.ziel-kopf { font-size: 11.5px; color: #9CC9FF; margin-bottom: 6px; }
-.ziel-kopf b { color: var(--text); font-weight: 700; }
-.ziel-th { font-size: 15px; line-height: 1.6; padding: 8px 10px; background: rgba(0,0,0,.28);
-  border-radius: 8px; -webkit-user-select: text; user-select: text; }
-.ziel-btns { display: flex; gap: 6px; margin-top: 8px; }
-.zb { flex: 1; text-align: center; padding: 9px 4px; border-radius: 9px; font-size: 12.5px;
-  font-weight: 700; font-family: inherit; text-decoration: none; border: 1px solid var(--line);
-  background: var(--surface2); color: var(--text); }
-.zb.maps { border-color: rgba(107,203,119,.4); color: #9BD9A5; }
-.zb.bolt { border-color: rgba(87,168,255,.5); color: #9CC9FF; }
-.zb.kopie { border-color: var(--gold-deep); color: var(--gold); }
+/* ————— Fahrziel: erscheint erst, wenn man den Punkt antippt ————— */
+.d-block.hat-ziel { cursor: pointer; }
+.d-block.hat-ziel > p::after { content: " 🚗"; opacity: .55; font-size: 12px; }
+.ziel { display: none; margin: 9px 0 0; }
+.d-block.offen .ziel { display: block; }
+.d-block.offen { background: rgba(87,168,255,.06); border-radius: 9px; }
+.ziel-th { font-size: 14px; line-height: 1.6; padding: 8px 10px; background: rgba(0,0,0,.3);
+  border-radius: 8px; -webkit-user-select: text; user-select: text; color: #C9DEF5; }
+.ziel-btns { display: flex; gap: 5px; margin-top: 7px; }
+.zb { flex: 1; text-align: center; padding: 7px 3px; border-radius: 8px; font-size: 11.5px;
+  font-weight: 700; font-family: inherit; text-decoration: none;
+  border: 1px solid rgba(87,168,255,.35); background: rgba(87,168,255,.10); color: #9CC9FF; }

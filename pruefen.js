@@ -87,7 +87,7 @@ Object.entries(ZIELE).forEach(([k, z]) => {
 const OEFFENTLICH = ["js/data-spots.js","js/data-ziele.js","js/data-plan.js","js/data-buchungen.js","js/data-info.js","js/data-pack.js","js/data-phrases.js","index.html"];
 const GEHEIM = [[/LOV\d{6,}/,"Reise-Buchungsnummer"],[/ZPTAZX/,"Flug-PNR"],[/LVH\d{6,}/,"Versicherungspolice"],
   [/\b8767GB\b/,"Parkos-Reservierung"],[/321-\d{8}/,"Transfer-Referenz"],[/\b2248772\d\b/,"Hotel-Bestaetigung"],
-  [/\bR3374\d\d\b/,"Spa-Bestaetigung"],[/DE\d{9}\b/,"USt-ID"]];
+  [/\bR3374\d\d\b/,"Spa-Bestaetigung"],[/DE\d{9}\b/,"USt-ID"],[/GYG[A-Z0-9]{8,}/,"GetYourGuide-Buchungsnummer"]];
 OEFFENTLICH.forEach(f => {
   const txt = fs.readFileSync(__dirname + "/" + f, "utf8");
   GEHEIM.forEach(([re, was]) => { if (re.test(txt)) fehler.push(`${was} steht im Klartext in ${f} — das Repo ist oeffentlich!`); });

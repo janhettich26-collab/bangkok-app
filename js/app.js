@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  const APP_VERSION = "v48";   // muss zur Version in sw.js passen
+  const APP_VERSION = "v49";   // muss zur Version in sw.js passen
 
   let WX = null;   // Live-Wetter: { now:{...}, hours:[...], days:{ "2026-08-30": {...} } } — oben, weil renderPlan es liest
 
@@ -195,12 +195,11 @@
     const bolt = "https://m.bolt.eu/mobile/3/?dropoff[latitude]=" + z.lat +
                  "&dropoff[longitude]=" + z.lng + "&dropoff[address]=" + encodeURIComponent(z.th);
     return '<div class="ziel" data-z="' + k + '">' +
-      '<div class="ziel-kopf">🚗 Fahrziel: <b>' + z.n + "</b></div>" +
       '<div class="ziel-th">' + z.th + "</div>" +
       '<div class="ziel-btns">' +
-        '<a class="zb maps" href="' + maps + '" target="_blank" rel="noopener">📍 Karte</a>' +
-        '<a class="zb bolt" href="' + bolt + '" target="_blank" rel="noopener">🚗 Bolt</a>' +
-        '<button class="zb kopie" type="button" data-zk="' + k + '">📋 Adresse</button>' +
+        '<a class="zb" href="' + maps + '" target="_blank" rel="noopener">📍 Karte</a>' +
+        '<a class="zb" href="' + bolt + '" target="_blank" rel="noopener">🚗 Bolt</a>' +
+        '<button class="zb" type="button" data-zk="' + k + '">📋 Kopieren</button>' +
       "</div></div>";
   }
 
@@ -225,10 +224,11 @@
             : '<div class="d-wxbar"><i>Für diesen Tag reicht die Vorhersage noch nicht — sie geht 16 Tage voraus und wächst jeden Tag mit.</i></div>') +
         d.blocks.map((b, i) => {
           const key = d.date + "#" + i;
-          return '<div class="d-block' + (st[key] ? " done" : "") + '" data-pb="' + key + '" role="button" tabindex="0">' +
+          return '<div class="d-block' + (st[key] ? " done" : "") + (b.z ? " hat-ziel" : "") + '" data-pb="' + key + '"' +
+            (b.z ? ' role="button" tabindex="0"' : "") + ">" +
             (b.t ? '<span class="d-time">' + b.t + "</span>" : "") + "<p>" + b.txt + "</p>" +
             (b.z && ZIELE[b.z] ? zielLeiste(b.z) : "") +
-            '<span class="d-tick">✓</span></div>';
+            '<button class="d-tick" type="button" data-tick="' + key + '" aria-label="erledigt">✓</button></div>';
         }).join("") +
         (d.note ? '<div class="d-note">' + d.note + "</div>" : "") +
         (done ? '<button class="btn ghost small d-reset" type="button" data-preset="' + d.date + '">Tag zurücksetzen</button>' : "") +
@@ -250,20 +250,26 @@
   }
 
   document.getElementById("plan-list").addEventListener("click", e => {
+    // 1) Der Haken rechts — und NUR der — hakt den Punkt ab
+    const tick = e.target.closest(".d-tick");
+    if (tick) { e.preventDefault(); e.stopPropagation(); togglePlanBlock(tick.dataset.tick); return; }
+
+    // 2) Tag zurücksetzen
     const reset = e.target.closest(".d-reset");
     if (reset) {
       const st = planState();
       Object.keys(st).filter(k => k.startsWith(reset.dataset.preset + "#")).forEach(k => delete st[k]);
       localStorage.setItem(PLAN_KEY, JSON.stringify(st));
-      const openDates = [...document.querySelectorAll("#plan-list details[open]")].map(x => x.querySelector(".d-date").textContent);
+      const offenDates = [...document.querySelectorAll("#plan-list details[open]")].map(x => x.querySelector(".d-date").textContent);
       renderPlan();
       document.querySelectorAll("#plan-list details").forEach(x => {
-        if (openDates.includes(x.querySelector(".d-date").textContent)) x.open = true;
+        if (offenDates.includes(x.querySelector(".d-date").textContent)) x.open = true;
       });
       return;
     }
-    // Kopier-Knopf für die thailändische Adresse
-    const kopie = e.target.closest(".zb.kopie");
+
+    // 3) Adresse kopieren
+    const kopie = e.target.closest(".zb[data-zk]");
     if (kopie) {
       e.preventDefault(); e.stopPropagation();
       const z = ZIELE[kopie.dataset.zk];
@@ -276,20 +282,24 @@
           kopie.textContent = "markiert";
         }
       );
-      setTimeout(() => kopie.textContent = "📋 Adresse", 2500);
+      setTimeout(() => kopie.textContent = "📋 Kopieren", 2500);
       return;
     }
-    // Karte oder Bolt antippen darf den Punkt nicht abhaken
+
+    // 4) Karte oder Bolt: einfach öffnen lassen, nichts weiter tun
     if (e.target.closest(".ziel")) { e.stopPropagation(); return; }
 
-    const block = e.target.closest(".d-block");
-    if (block) togglePlanBlock(block.dataset.pb);
+    // 5) Sonst: Punkt antippen klappt das Fahrziel auf und wieder zu
+    const block = e.target.closest(".d-block.hat-ziel");
+    if (block) block.classList.toggle("offen");
   });
+
   document.getElementById("plan-list").addEventListener("keydown", e => {
     if ((e.key === "Enter" || e.key === " ") && e.target.classList.contains("d-block")) {
-      e.preventDefault(); togglePlanBlock(e.target.dataset.pb);
+      e.preventDefault(); e.target.classList.toggle("offen");
     }
   });
+
   renderPlan();
 
   // ————— Termine & Buchungen —————
