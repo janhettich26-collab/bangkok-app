@@ -11,15 +11,18 @@ const PLAN = [
     ],
     note:"Handgepäck: Pass, TDAC, Powerbank, Ladegerät, Wechseloutfit, Medikamente." },
 
-  { date:"2026-08-28", wd:"Fr", title:"Ankommen & runterkommen", icon:"🛬",
+  { date:"2026-08-28", wd:"Fr", title:"Ankommen & großer Nachtmarkt", icon:"🌃",
     blocks:[
       { t:"13:45", txt:"Landung Suvarnabhumi. TDAC-QR + Pass bereit, Immigration 20–40 Min, Koffer." },
-      { t:"~15:15", txt:"Transfer zum Hotel (in deiner Buchung inklusive — Abholzeit hast du 24 h vorher gecheckt). Fahrt ~1 Std." },
-      { t:"16:30", txt:"Check-in Oakwood. eSIM an, Bolt-App: Hotel als Heimatadresse. Big C nebenan: Wasser, Sonnencreme, Snacks." },
-      { t:"18:30", txt:"Hähnchen-Reis-Stand gegenüber (das Gäste-Highlight) — erstes Thai-Essen ohne Aufwand." },
-      { t:"19:30", txt:"Kleine Runde Owl Market (10 Min Bolt): Nachtmarkt-Feeling zum Warmwerden. Spätestens 22 Uhr zurück — Jetlag." }
+      { t:"~15:15", txt:"Transfer zum Hotel (in deiner Buchung inklusive — Abholzeit hast du 24 h vorher gecheckt). Freitagnachmittag ist Rushhour, rechne mit 1–1,5 Std." },
+      { t:"16:30", txt:"Check-in Oakwood. eSIM an, Bolt-App: Hotel als Heimatadresse. Duschen, umziehen, Koffer stehen lassen." },
+      { t:"17:30", txt:"Kurz Big C nebenan: Wasser, Sonnencreme, Snacks fürs Zimmer. Bargeld prüfen — der Nachtmarkt ist Bargeld/QR." },
+      { t:"18:30", txt:"Los: MRT ab Yaek Tiwanon → Tao Poon → Thailand Cultural Centre, Ausgang 4 (~45 Min, ~42 ฿). Oder Bolt in 30 Min für 200–260 ฿, wenn du platt bist." },
+      { t:"19:30", txt:"Jodd Fairs Ratchada — der beste Nachtmarkt der Stadt, rund 800 Stände, täglich offen. Abendessen quer durch die Stände für 200–400 ฿. Das Foto-Gericht: Leng Saap, der Schweine-Rückgrat-Turm ab 180 ฿." },
+      { t:"21:00", txt:"Wenn du noch kannst: 5 Min zu Fuß rüber zum Train Night Market Ratchada — Vintage-Zelte und Container-Bars, seit März 2026 wieder auf. Sonst direkt heim." },
+      { t:"~22:30", txt:"Zurück mit der MRT (fährt bis Mitternacht — danach nur noch Bolt)." }
     ],
-    note:"Heute nichts Großes planen. Wenn du um 20 Uhr tot bist: Pool/Rooftop im Hotel und schlafen — morgen zählt." },
+    note:"Der ganz große Markt mit 15.000 Ständen ist Chatuchak — der läuft aber NUR Sa + So. Freitagabend ist dort bloß Großhandel mit einem Bruchteil der Stände. Chatuchak hast du deshalb morgen früh, heute den besten Nachtmarkt. Wenn dich der Flug umhaut: Owl Market vor der Tür (10 Min) tut es auch — oder Pool und schlafen." },
 
   { date:"2026-08-29", wd:"Sa", title:"Chatuchak & Nachbarschaft", icon:"🧺",
     blocks:[
@@ -92,7 +95,7 @@ const PLAN = [
       { t:"9:05", txt:"Zug 9003 → 10:20 Ankunft Ayutthaya." },
       { t:"10:45", txt:"Roller (~250 ฿) oder Tuk-Tuk-Pauschale (4 Std. ~800–1.000 ฿, VORHER festmachen). Ruinen-Runde: Wat Mahathat (Buddha-Kopf im Baum), Wat Phra Si Sanphet, Wat Chaiwatthanaram. Sammelticket 220 ฿." },
       { t:"~16:30", txt:"Nachmittagszug zurück (Zeit morgens am Schalter checken) → ~18:00 Bang Sue." },
-      { t:"19:30", txt:"Jodd Fairs Ratchada: bester Nachtmarkt der Stadt — Abendessen zwischen 700 Ständen, bis 1 Uhr offen." }
+      { t:"19:30", txt:"Train Night Market Ratchada (Blue Line ab Bang Sue, ~20 Min): der Regenbogen-Zeltmarkt, seit März 2026 wieder offen — Vintage, Container-Bars, Livebands. Anderes Erlebnis als der Ankunftsabend, gleiche Station. Bis 1 Uhr offen." }
     ],
     note:"Komplett ~600 ฿ statt 30+ € Tour — und du bist an keine Gruppe gekettet." },
 

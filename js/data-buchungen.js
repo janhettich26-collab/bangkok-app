@@ -83,10 +83,17 @@ const BOOKINGS = [
     links:[{t:"📍 Wat Arun",u:"https://www.google.com/maps/search/?api=1&query=Wat%20Arun%20Bangkok"}] },
 
   // ————— Ohne Vorab-Buchung —————
+  { id:"nachtmarkt", grp:"Vor Ort", status:"vorort", emoji:"🌃", date:"2026-08-28", time:"19:30",
+    title:"Jodd Fairs Ratchada — Ankunftsabend", where:"129 Ratchadaphisek Rd, Din Daeng · MRT Thailand Cultural Centre, Ausgang 4",
+    price:"Eintritt frei · Abendessen 200–400 ฿",
+    info:["Täglich 17–1 Uhr offen, rund 800 Stände, Schwerpunkt Essen — läuft also auch am Ankunftstag","Anfahrt: MRT ab Yaek Tiwanon → Tao Poon → Thailand Cultural Centre, ~45 Min, ~42 ฿. Mit Bolt 30 Min, 200–260 ฿","Vor 19 Uhr da sein: freie Tische, kurze Schlange am Leng Saap (Schweine-Rückgrat-Turm, ab 180 ฿)","Gleich nebenan der Train Night Market Ratchada (Vintage, Container-Bars, seit März 2026 wieder auf) — 5 Min zu Fuß","Bargeld oder QR mitnehmen, Kartenzahlung ist die Ausnahme"],
+    warn:"Der große Markt mit 15.000 Ständen ist Chatuchak — der läuft NUR Sa + So (9–18 Uhr). Freitagabends ist dort nur Großhandel mit wenigen Ständen. Chatuchak steht deshalb am Sa 29.08. · Und: „Jodd Fairs Rama 9\" gibt es seit Januar 2025 nicht mehr, im Navi immer „Jodd Fairs Ratchada\" eingeben.",
+    links:[{t:"📍 In Google Maps",u:"https://www.google.com/maps/search/?api=1&query=Jodd%20Fairs%20Ratchada%2C%20129%20Ratchadaphisek%20Rd%2C%20Din%20Daeng%2C%20Bangkok"}] },
+
   { id:"chatuchak", grp:"Vor Ort", status:"vorort", emoji:"🧺", date:"2026-08-29", time:"9:30–13:00",
     title:"Chatuchak Weekend Market", where:"MRT Chatuchak Park · ab Yaek Tiwanon ~35 Min, ~40 ฿",
     price:"Eintritt frei",
-    info:["Läuft nur Samstag und Sonntag — 15.000 Stände","Feilschen: Startpreis minus 30–40 %","Rucksack nach vorne tragen"] },
+    info:["Der volle Markt läuft NUR Sa + So von 9 bis 18 Uhr — alle 27 Sektionen, 15.000 Stände","Freitagabend ist dort nur Großhandel (18–24 Uhr, wenige Stände) und Mi/Do nur die Pflanzen-Sektion","Feilschen: Startpreis minus 30–40 %","Rucksack nach vorne tragen"] },
 
   { id:"palast", grp:"Vor Ort", status:"vorort", emoji:"👑", date:"2026-08-31", time:"10:00",
     title:"Grand Palace + Wat Pho + Wat Arun", where:"Altstadt · Anreise per Expressboot ab Nonthaburi Pier",
