@@ -6,7 +6,7 @@ const INFO = {
     { label:"Polizei", value:"191", tel:"191" },
     { label:"Hotel Oakwood Suites Tiwanon", value:"+66 2 149 9450", tel:"+6621499450" },
     { label:"Deutsche Botschaft Bangkok", value:"+66 2 287 9000", tel:"+6622879000" },
-    { label:"Reiseversicherung Zurich (Police LVH612584639)", value:"Notrufnummer auf der Police", tel:null },
+    { label:"Reiseversicherung Zurich", value:"Policennummer + Notruf: Info → Meine Reisedaten", tel:null },
     { label:"Sperr-Notruf deutsche Karten", value:"+49 116 116", tel:"+49116116" }
   ],
   krankenhaus: { name:"Bumrungrad International Hospital", note:"Privatklinik mit Weltruf, Englisch, ~40 Min mit Bolt. Bei allem Ernsten direkt hierhin — Versicherungsbeleg aufheben.", gmaps:"https://www.google.com/maps/search/?api=1&query=Bumrungrad%20International%20Hospital%20Bangkok" },
@@ -14,29 +14,28 @@ const INFO = {
   abzocke: [
     "Am Karten-Terminal IMMER in Baht zahlen, nie in Euro — die „freundliche Frage“ kostet 3–8 % Aufschlag.",
     "Reisepass NIE als Pfand — nicht für Roller, Jetski oder Zimmer. Wer darauf besteht, hat ein Geschäftsmodell daraus gemacht.",
-    "„Der Tempel/Palast ist heute geschlossen“ (Tuk-Tuk-Fahrer davor): Lüge. Einfach durchgehen — dahinter steckt eine Provisionstour.",
-    "Flughafen: Anquatscher in der Halle verlangen das Vierfache. Offizielle Taxis stehen UNTEN (Automat + Taxameter).",
     "Nie mitgehen, wenn dich jemand irgendwohin „mitnimmt“ (Bar, Schneider, Juwelier) — es ist immer Provision, oft mit Rechnung über hunderte Euro.",
-    "Tickets & eSIM nur über offizielle Seiten — keine Telegram/eBay/Instagram-Codes.",
-    "Roller mieten: VORHER Fotos von jedem Kratzer, sonst kommt die „Schadensforderung“.",
-    "Taxi/Sammeltaxi ohne Taxameter: Preis VOR dem Einsteigen festmachen.",
-    "Edelstein-, Anzug- und „Government Shop“-Einladungen: weitergehen. Immer."
+    "Flughafen: Anquatscher in der Halle verlangen das Vierfache. Offizielle Taxis stehen UNTEN (Automat + Taxameter).",
+    "Edelstein-, Anzug- und „Government Shop“-Einladungen: weitergehen. Immer.",
+    "Preis IMMER vor dem Einsteigen oder Bestellen festmachen — bei Tuk-Tuk, Longtailboot und Ständen ohne Schild."
   ],
+
 
   unterwegs: [
-    { icon:"🚇", title:"MRT ab Hotel", txt:"Station Yaek Tiwanon direkt gegenüber (Purple Line). In die Stadt: Umstieg Tao Poon → Blue Line. Chatuchak ~35 Min, Altstadt ~50 Min, Sukhumvit 45–60 Min. Fahrten 17–44 ฿ (Preise 07/2026 gesenkt). Läuft bis ~24 Uhr — nachts NICHT." },
-    { icon:"🚗", title:"Bolt (+ Grab als Backup)", txt:"Stadtfahrten 200–350 ฿, nachts 400–600 ฿ (Zuschlag). Grab installieren: teurer, aber mehr Autos — bei Regen & Rushhour storniert Bolt gern. Rushhour 16–19 Uhr = Fahrzeit fast doppelt." },
-    { icon:"⛴️", title:"Expressboot", txt:"Ab Nonthaburi Pier für ~20 ฿ den Fluss runter in die Altstadt. Schönste Strecke der Stadt, kein Stau." },
-    { icon:"🌧️", title:"Regenzeit", txt:"Schauer meist nachmittags, nach 1 Std. durch. Poncho/Regenhülle in den Rucksack, Handy in den Zip-Beutel. Draußen-Programm → vormittags." }
+    { icon:"🚇", title:"MRT ab Hotel", txt:"Station Yaek Tiwanon direkt gegenüber (Purple Line). In die Stadt: Umstieg Tao Poon → Blue Line. Eine Fahrt kostet 17–45 ฿, mit Umstieg auf die Blue Line zusammen 50–71 ฿. Läuft bis Mitternacht — danach nur noch Bolt." },
+    { icon:"🚗", title:"Bolt & Grab", txt:"Stadtfahrten 200–350 ฿, nachts 400–600 ฿. Grab als zweite App installieren: teurer, aber mehr Autos — bei Regen und Rushhour storniert Bolt gern. Rushhour 16–19 Uhr macht jede Fahrt fast doppelt so lang." },
+    { icon:"⛴️", title:"Expressboot", txt:"Ab Nonthaburi Pier den Fluss runter in die Altstadt: orange Flagge 18 ฿, gelb 23 ฿, rot 32 ฿. Kein Stau, schönste Strecke der Stadt — fährt aber nur bis 19 Uhr." },
+    { icon:"🌧️", title:"Regenzeit", txt:"Schauer kommen meist nachmittags und sind nach ein bis zwei Stunden durch. Poncho in den Rucksack, Handy in den Zip-Beutel. Wann es an deinem Tag regnet, steht im Reiter Kurs bei den Reisetagen." }
   ],
 
+
   geld: [
-    { icon:"🏧", title:"Abheben", txt:"Jeder ATM nimmt 220 ฿ Gebühr — also wenige GROSSE Abhebungen (max. meist 20.000–30.000 ฿). Immer „ohne Umrechnung“ / „in THB“ wählen." },
-    { icon:"💳", title:"Karte", txt:"In Malls & Hotels ok, Streetfood & Märkte = Bargeld. Am Terminal in BAHT zahlen (DCC ablehnen)." },
-    { icon:"💵", title:"Einreise-Nachweis", txt:"20.000 ฿ (~550 €) Mittel pro Person können bei der Einreise verlangt werden (2026 wieder aktiver erinnert, selten geprüft). Deine ~1.000 € Bargeld decken das doppelt — einfach vorzeigbar dabei haben, kein Herkunftsnachweis nötig." },
-    { icon:"🛂", title:"Bargeld-Grenzen", txt:"Anmeldepflicht beim Zoll erst ab 10.000 € (EU-Ausreise) bzw. ~20.000 $ (Thailand-Einreise) — mit ~1.000 € brauchst du also gar nichts anmelden." },
-    { icon:"🙏", title:"Trinkgeld", txt:"Kein Muss. Restaurant: aufrunden/~10 %. Massage: 50–100 ฿ (im Oriental Spa 700–800 ฿). Bolt: nichts nötig. Garküche/Foodcourt: gar nichts." }
+    { icon:"🏧", title:"Abheben", txt:"Jeder Automat nimmt 220 ฿ Gebühr — also wenige GROSSE Abhebungen (Maximum meist 20.000–30.000 ฿). Immer „ohne Umrechnung“ bzw. „in THB“ wählen." },
+    { icon:"💳", title:"Wo Karte, wo bar", txt:"Malls, Hotels und Restaurants nehmen Karte. Streetfood, Märkte und Garküchen sind BARGELD — Chinatown und die Nachtmärkte fast ausnahmslos." },
+    { icon:"💵", title:"Einreise & Zoll", txt:"Bei der Einreise können 20.000 ฿ (~550 €) Mittel verlangt werden, wird selten geprüft — deine ~1.000 € decken das doppelt. Anmeldepflicht beim Zoll erst ab 10.000 €, du musst also nichts anmelden." },
+    { icon:"🙏", title:"Trinkgeld", txt:"Kein Muss. Restaurant aufrunden oder ~10 %. Massage 50–100 ฿, im Oriental Spa 700–800 ฿. Bolt und Garküche: gar nichts." }
   ],
+
 
   checks: [
     // — Buchen & Organisieren —
@@ -53,10 +52,9 @@ const INFO = {
 
 
   dresscode: [
-    "Tempel: Schultern + Knie bedeckt (leichte lange Hose einpacken), Schuhe aus vor Gebäuden.",
-    "Clubs (Thonglor & Co.): geschlossene Schuhe, Hemd mit Kragen = sichere Wahl. Keine Flip-Flops/Tanktops.",
-    "Clubs verlangen bei Ausländern oft den Reisepass im ORIGINAL — vordere Hosentasche.",
-    "Königsfamilie: niemals abfällig — auch nicht im Scherz. Majestätsbeleidigung ist Straftatbestand.",
-    "Cannabis-Produkte & Erkältungsmittel mit Pseudoephedrin: nicht einführen."
+    "Tempel: Schultern und Knie bedeckt, Schuhe aus vor den Hallen. Eine leichte lange Hose löst 90 % aller Probleme.",
+    "Der Grand Palace ist am strengsten und weist am Tor wirklich ab — die genauen Regeln stehen beim Termin am Mo 31.08.",
+    "Oriental Spa und Sky Bar haben eigene Kleiderordnungen — beide stehen bei den jeweiligen Terminen.",
+    "Für die ganze Reise reicht: eine lange Hose, ein Hemd oder Polo mit Ärmeln, ein Paar geschlossene Schuhe."
   ]
 };

@@ -73,6 +73,16 @@ if (/rainviewer/i.test(appjs) || /rvHost/.test(appjs)) {
     fehler.push("Radar-Ebene ohne maxNativeZoom: 7 — ab Zoom 8 kommen graue Kacheln 'Zoom Level Not Supported'");
 }
 
+// 7b) Repo ist oeffentlich: keine Buchungsnummern, Referenzen oder Policen im Klartext
+const OEFFENTLICH = ["js/data-spots.js","js/data-plan.js","js/data-buchungen.js","js/data-info.js","js/data-pack.js","js/data-phrases.js","index.html"];
+const GEHEIM = [[/LOV\d{6,}/,"Reise-Buchungsnummer"],[/ZPTAZX/,"Flug-PNR"],[/LVH\d{6,}/,"Versicherungspolice"],
+  [/\b8767GB\b/,"Parkos-Reservierung"],[/321-\d{8}/,"Transfer-Referenz"],[/\b2248772\d\b/,"Hotel-Bestaetigung"],
+  [/\bR3374\d\d\b/,"Spa-Bestaetigung"],[/DE\d{9}\b/,"USt-ID"]];
+OEFFENTLICH.forEach(f => {
+  const txt = fs.readFileSync(__dirname + "/" + f, "utf8");
+  GEHEIM.forEach(([re, was]) => { if (re.test(txt)) fehler.push(`${was} steht im Klartext in ${f} — das Repo ist oeffentlich!`); });
+});
+
 // 8) Version in sw.js und app.js muss uebereinstimmen, sonst meldet die App faelschlich ein Update
 const swv = (fs.readFileSync(__dirname + "/sw.js", "utf8").match(/bkk-(v\d+)/) || [])[1];
 const apv = (fs.readFileSync(__dirname + "/js/app.js", "utf8").match(/APP_VERSION = "(v\d+)"/) || [])[1];
