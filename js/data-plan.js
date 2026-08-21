@@ -82,16 +82,17 @@ const PLAN = [
     ],
     note:"Kompletter Tag ohne lange Anfahrten — alles unter 45 Min. Bars-Abend Nr. 2,5: Musik statt Promille." },
 
-  { date:"2026-09-03", wd:"Do", title:"Ruhetag & Sunset-Cruise", icon:"🛳️",
+  { date:"2026-09-03", wd:"Do", title:"Shoppen & Sunset-Cruise", icon:"🛒",
     blocks:[
-      { t:"vorm.", txt:"Ausschlafen, Pool, Sauna, Wäsche in die Maschine. Nach drei vollen Tagen ist ein halber Leerlauf-Tag kein Luxus, sondern Absicht." },
-      { t:"mittags", txt:"Hähnchen-Reis gegenüber oder Big C nebenan — kurze Wege, nichts planen." },
-      { t:"nachm.", txt:"Optional: Owl Market oder CampYard um die Ecke, wenn dir langweilig wird. Sonst Rooftop." },
-      { t:"17:15", txt:"Bolt nach Asiatique The Riverfront (40 Min, 260–340 ฿)." },
+      { t:"vorm.", txt:"Ausschlafen, Pool, Sauna, Wäsche in die Maschine. Nach drei vollen Tagen ist der halbe Leerlauf-Vormittag Absicht." },
+      { t:"12:15", txt:"Los in die Shopping-Meile: MRT Purple bis Tao Poon → Blue bis Si Lom → BTS Sala Daeng → 2 Stationen bis Siam (~60 Min, ~70 ฿). Mit Bolt 45–60 Min für 250–330 ฿ — bei Regen die bequemere Wahl." },
+      { t:"13:30–16:30", txt:"Siam Paragon, Siam Center, Siam Discovery und CentralWorld liegen alle nebeneinander und sind per Skywalk verbunden — du läufst trocken und klimatisiert durch. CentralWorld allein hat 600 Läden zu normalen Preisen (Zara, Uniqlo, Adidas, Muji), Siam Paragon ist die Luxusschiene. Wer feilschen will: MBK gegenüber, acht Etagen." },
+      { t:"—", txt:"Steuer zurückholen: Ab 2.000 ฿ pro Laden und Tag bekommst du 7 % VAT-Refund. Pass mitnehmen, an der Kasse das Formular verlangen, am Flughafen abstempeln lassen. Bei größeren Einkäufen lohnt das echt." },
+      { t:"16:45", txt:"Weiter zur Cruise: BTS ab Siam (Silom Line) bis Saphan Taksin, dann Shuttle-Boot ab Sathorn Pier zum Asiatique — zusammen ~40 Min und deutlich entspannter als durch den Feierabendverkehr zu fahren." },
       { t:"18:00–20:00", txt:"5-Sterne-Cruise, 18-Uhr-Slot = Sonnenuntergang UND Nachtlichter: Wat Arun, Grand Palace, ICONSIAM vom Wasser. Ohne Alk easy — Dinner-Buffet & Saft." },
       { t:"20:15", txt:"Noch eine Runde Asiatique-Nachtmarkt, dann Bolt heim." }
     ],
-    note:"Cruise vorab mit Datum buchen (Reiter Termine, 18-Uhr-Slot)." },
+    note:"Einkäufe erst am Nachmittag, damit du sie nicht den ganzen Tag schleppst — und die Malls sind bis 22 Uhr offen, du bist also nie unter Zeitdruck. Cruise vorab mit Datum buchen (Reiter Termine, 18-Uhr-Slot). Wenn dir das zu viel ist: Central WestGate liegt elf Stationen ohne Umsteigen von deinem Hotel, das geht auch an einem Regenvormittag." },
 
   { date:"2026-09-04", wd:"Fr", title:"Ayutthaya auf eigene Faust", icon:"🏛️",
     blocks:[

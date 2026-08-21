@@ -171,23 +171,69 @@
     const d = new Date();
     return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
   }
+  // Erledigte Programmpunkte: antippen streicht sie durch, gemerkt in localStorage
+  const PLAN_KEY = "bkk_plan";
+  const planState = () => JSON.parse(localStorage.getItem(PLAN_KEY) || "{}");
+
   function renderPlan() {
     const today = todayISO();
+    const st = planState();
     document.getElementById("plan-list").innerHTML = PLAN.map(d => {
       const dt = d.date.split("-");
       const isToday = d.date === today;
-      return '<details class="card day' + (isToday ? " today" : "") + '"' + (isToday ? " open" : "") + ">" +
+      const done = d.blocks.filter((b, i) => st[d.date + "#" + i]).length;
+      return '<details class="card day' + (isToday ? " today" : "") + (done === d.blocks.length ? " all-done" : "") + '"' + (isToday ? " open" : "") + ">" +
         '<summary><span class="d-date"><b>' + d.wd + "</b> " + dt[2] + "." + dt[1] + ".</span>" +
         '<span class="d-title">' + d.icon + " " + d.title + "</span>" +
+        (done ? '<span class="d-prog">' + done + "/" + d.blocks.length + "</span>" : "") +
         (isToday ? '<span class="d-badge">Heute</span>' : "") + "</summary>" +
         '<div class="d-body">' +
-        d.blocks.map(b => '<div class="d-block">' + (b.t ? '<span class="d-time">' + b.t + "</span>" : "") + "<p>" + b.txt + "</p></div>").join("") +
+        d.blocks.map((b, i) => {
+          const key = d.date + "#" + i;
+          return '<div class="d-block' + (st[key] ? " done" : "") + '" data-pb="' + key + '" role="button" tabindex="0">' +
+            (b.t ? '<span class="d-time">' + b.t + "</span>" : "") + "<p>" + b.txt + "</p>" +
+            '<span class="d-tick">✓</span></div>';
+        }).join("") +
         (d.note ? '<div class="d-note">' + d.note + "</div>" : "") +
+        (done ? '<button class="btn ghost small d-reset" type="button" data-preset="' + d.date + '">Tag zurücksetzen</button>' : "") +
         "</div></details>";
     }).join("");
     const t = document.querySelector(".day.today");
     if (t) t.scrollIntoView({ block: "start" });
   }
+
+  function togglePlanBlock(key) {
+    const st = planState();
+    if (st[key]) delete st[key]; else st[key] = 1;
+    localStorage.setItem(PLAN_KEY, JSON.stringify(st));
+    const openDates = [...document.querySelectorAll("#plan-list details[open]")].map(x => x.querySelector(".d-date").textContent);
+    renderPlan();
+    document.querySelectorAll("#plan-list details").forEach(x => {
+      if (openDates.includes(x.querySelector(".d-date").textContent)) x.open = true;
+    });
+  }
+
+  document.getElementById("plan-list").addEventListener("click", e => {
+    const reset = e.target.closest(".d-reset");
+    if (reset) {
+      const st = planState();
+      Object.keys(st).filter(k => k.startsWith(reset.dataset.preset + "#")).forEach(k => delete st[k]);
+      localStorage.setItem(PLAN_KEY, JSON.stringify(st));
+      const openDates = [...document.querySelectorAll("#plan-list details[open]")].map(x => x.querySelector(".d-date").textContent);
+      renderPlan();
+      document.querySelectorAll("#plan-list details").forEach(x => {
+        if (openDates.includes(x.querySelector(".d-date").textContent)) x.open = true;
+      });
+      return;
+    }
+    const block = e.target.closest(".d-block");
+    if (block) togglePlanBlock(block.dataset.pb);
+  });
+  document.getElementById("plan-list").addEventListener("keydown", e => {
+    if ((e.key === "Enter" || e.key === " ") && e.target.classList.contains("d-block")) {
+      e.preventDefault(); togglePlanBlock(e.target.dataset.pb);
+    }
+  });
   renderPlan();
 
   // ————— Termine & Buchungen —————
