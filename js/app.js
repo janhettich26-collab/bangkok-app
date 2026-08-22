@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  const APP_VERSION = "v62";   // muss zur Version in sw.js passen
+  const APP_VERSION = "v63";   // muss zur Version in sw.js passen
 
   let WX = null;   // Live-Wetter: { now:{...}, hours:[...], days:{ "2026-08-30": {...} } } — oben, weil renderPlan es liest
 
@@ -12,7 +12,13 @@
   let mapInited = false;
 
   let mapObj = null;
-  function showTab(id) {
+  const scrollMerker = {};
+  let aktiverTab = "heute";
+
+  function showTab(id, ausHistory) {
+    // Wo war er auf dem alten Reiter? Damit die Rueckkehr nicht oben landet.
+    scrollMerker[aktiverTab] = window.scrollY;
+    aktiverTab = id;
     panels.forEach(p => p.classList.toggle("active", p.id === "panel-" + id));
     const hervor = ["spots", "termine", "packen", "kurs", "info"].includes(id) ? "mehr" : id;
     tabs.forEach(b => b.classList.toggle("active", b.dataset.tab === hervor));
@@ -22,8 +28,16 @@
       if (!mapInited) { mapInited = true; requestAnimationFrame(() => requestAnimationFrame(initMap)); }
       else if (mapObj) { requestAnimationFrame(() => mapObj.invalidateSize()); }
     }
-    window.scrollTo(0, 0);
+    // Startseite und frisch geoeffnete Reiter oben beginnen, sonst zurueck an die alte Stelle
+    window.scrollTo(0, scrollMerker[id] || 0);
+    if (!ausHistory) {
+      try { history.pushState({ tab: id }, "", "#" + id); } catch (e) { /* egal */ }
+    }
   }
+
+  // Wischen nach rechts / Zurueck-Taste soll den vorigen Reiter zeigen, nicht die App verlassen
+  window.addEventListener("popstate", e => showTab((e.state && e.state.tab) || "heute", true));
+  try { history.replaceState({ tab: "heute" }, "", "#heute"); } catch (e) { /* egal */ }
   tabs.forEach(b => b.addEventListener("click", () => showTab(b.dataset.tab)));
 
   // Panels, die ueber "Mehr" erreicht werden — dort bleibt der Mehr-Knopf aktiv
