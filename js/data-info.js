@@ -74,7 +74,7 @@ const INFO = {
 
   checks: [
     // — Buchen & Organisieren —
-    { id:"transfer", txt:"Transfer-Abholzeit checken: <a href='https://www.loveholidays.de/' target='_blank' rel='noopener'>loveholidays → Meine Buchung</a>", due:"26.08." },
+    { id:"transfer", txt:"Transfer steht: Rückfahrt <b>So 06.09. 18:30</b> ab Rezeption. Am Sa 05.09. auf <a href='https://www.checkpickup.com' target='_blank' rel='noopener'>checkpickup.com</a> noch einmal bestätigen lassen", due:"05.09." },
     { id:"checkin", txt:"Lufthansa <a href='https://www.lufthansa.com/de/de/online-check-in' target='_blank' rel='noopener'>Online-Check-in</a> (öffnet 23 h vorher)", due:"26.08. abends" },
     { id:"spaform", txt:"Oriental Spa: Wellness-Intake-Form online ausfüllen (Link in der Bestätigungs-Mail vom 14.08.)", due:"vor Abflug" },
     { id:"spapay", txt:"Oriental Spa: Payment-Link bezahlen — kommt am 28.08. per Mail (sichert den Termin!)", due:"28.08." },

@@ -15,6 +15,20 @@ const BOOKINGS = [
     warn:"NUR über tdac.immigration.go.th. Alles andere sind Abzock-Seiten, die Geld für ein kostenloses Formular verlangen.",
     links:[{t:"🛂 TDAC ausfüllen",u:"https://tdac.immigration.go.th"}] },
 
+  { id:"transfer-hin", tun:"nichts", kurz:"Transfer Flughafen → Hotel", grp:"Reise", status:"fix", emoji:"🚐", date:"2026-08-28", time:"nach Landung 13:45",
+    title:"Privat-Transfer BKK → Hotel (inklusive)", where:"Ankunftshalle Suvarnabhumi",
+    price:"im Reisepreis enthalten",
+    info:["<b>Bestätigt</b> — privates Standard-Auto, 1 Person, Fahrt zum Oakwood Suites Tiwanon","Nach Gepäck und Zoll in die Ankunftshalle: der Fahrer steht mit einem <b>Schild mit deinem Namen</b>","Voucher auf dem Handy zeigen — damit weist du dich aus","Fahrerdaten erscheinen 30 Min vorher unter „Contact My Driver“ auf checkpickup.com","Freitagnachmittag ist Rushhour: rechne mit 1–1,5 Std. bis Nonthaburi"],
+    warn:"Wenn du den Fahrer nicht findest oder dich verspätest: SOFORT beim Anbieter anrufen, nicht selbst Taxi nehmen — sonst ist der Transfer verfallen. 24/7 erreichbar: +66 95 415 3054",
+    links:[{t:"🚐 Transfer-Status (checkpickup)",u:"https://www.checkpickup.com"},{t:"📞 Anbieter 24/7",u:"tel:+66954153054"},{t:"📞 Notfall-Zentrale 24/7",u:"tel:+34871180153"}] },
+
+  { id:"transfer-rueck", tun:"nichts", kurz:"Transfer Hotel → Flughafen", grp:"Reise", status:"fix", emoji:"🚐", date:"2026-09-06", time:"18:30",
+    title:"Privat-Transfer Hotel → BKK (inklusive)", where:"Rezeption Oakwood Suites Tiwanon",
+    price:"im Reisepreis enthalten",
+    info:["<b>Abholzeit steht fest: So 06.09. um 18:30</b> — bestätigt, privates Standard-Auto","<b>Um 18:15 mit Gepäck an der Rezeption warten</b> (der Anbieter verlangt 10–15 Min vorher). Der Fahrer kommt mit Namensschild","Fahrerdaten kannst du 30 Min vorher unter „Contact My Driver“ auf checkpickup.com nachsehen","Fahrt Nonthaburi → Suvarnabhumi: sonntagabends 75–105 Min, bei Regen mehr → Ankunft ~20:00","Check-in LH773 öffnet 19:55, Schalter schließt 21:55. Die Abholzeit ist also richtig gelegt, nicht zu früh","Die Abholzeit wird 24 Std. vorher noch einmal bestätigt — am Samstag kurz nachsehen"],
+    warn:"Wenn du dich verspätest, MUSST du den Anbieter anrufen: +66 95 415 3054 (24/7). Weitere Notfallnummern: +66 65 849 9088 · +66 65 849 9388 · +66 84 278 6296. Zentrale rund um die Uhr: +34 871 180 153",
+    links:[{t:"🚐 Transfer-Status (checkpickup)",u:"https://www.checkpickup.com"},{t:"📞 Anbieter 24/7",u:"tel:+66954153054"},{t:"📞 Notfall-Zentrale 24/7",u:"tel:+34871180153"}] },
+
   // ————— Die Termine vor Ort —————
   { id:"oriental", grp:"Termine", status:"fix", emoji:"🧖", date:"2026-08-30", time:"10:30",
     title:"Oriental Spa — Moringa Massage, 2 Std.", where:"Mandarin Oriental, Oriental Avenue (Flussseite)",
