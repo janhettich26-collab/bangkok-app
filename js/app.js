@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  const APP_VERSION = "v60";   // muss zur Version in sw.js passen
+  const APP_VERSION = "v61";   // muss zur Version in sw.js passen
 
   let WX = null;   // Live-Wetter: { now:{...}, hours:[...], days:{ "2026-08-30": {...} } } — oben, weil renderPlan es liest
 
