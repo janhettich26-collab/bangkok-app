@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  const APP_VERSION = "v61";   // muss zur Version in sw.js passen
+  const APP_VERSION = "v62";   // muss zur Version in sw.js passen
 
   let WX = null;   // Live-Wetter: { now:{...}, hours:[...], days:{ "2026-08-30": {...} } } — oben, weil renderPlan es liest
 
@@ -935,11 +935,9 @@
 
     // Kopf: welcher Tag, welches Wetter
     const n = PLAN.indexOf(day);
-    const wx = WX && WX.days ? WX.days[day.date] : null;
     el.innerHTML = '<div class="card today"><div class="today-title">' + day.icon + " " + day.title + "</div>" +
       '<p class="today-sub">Tag ' + n + " von 10 · " + day.wd + " " + t.slice(8, 10) + "." + t.slice(5, 7) + ". · in Bangkok ist es " + jetzt.uhr + " Uhr</p>" +
-      (wx ? '<div class="heute-wx ' + wx.st.k + '">' + wxIcon(wx.code, 1) + " <b>" + wx.max + " °C · " + tropfen(wx.st.n) + " " + wx.st.kurz + "</b><br>" +
-            fensterText(wx.fenster) + "</div>" : "") + "</div>";
+      "</div>";
 
     // Bloecke mit Startzeit → was laeuft gerade, was kommt als Naechstes
     const mit = day.blocks.map((b, i) => ({ b: b, i: i, m: startMin(b.t) })).filter(x => x.m !== null);
