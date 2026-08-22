@@ -16,6 +16,7 @@ const PACK = [
       { id:"pulli",    t:"Dünner Pulli/Hoodie", w:"Flieger + Malls sind eiskalt" },
       { id:"zahnb",    t:"Zahnbürste + Zahnpasta unter 100 ml" },
       { id:"schlaf",   t:"Schlafmaske, Ohrstöpsel, Kaugummi", w:"Nachtflug 22:20" },
+      { id:"kompression", t:"Kompressionsstrümpfe (Klasse 1, wadenlang)", w:"im Flieger anlassen, 10:25 Std." },
       { id:"zip100",   t:"Flüssigkeiten im 1-l-Zip-Beutel", w:"je max. 100 ml" }
     ]
   },
