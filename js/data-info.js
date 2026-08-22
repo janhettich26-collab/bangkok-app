@@ -22,7 +22,7 @@ const INFO = {
 
 
   unterwegs: [
-    { icon:"🚇", title:"MRT ab Hotel", txt:"Station Yaek Tiwanon direkt gegenüber (Purple Line). In die Stadt: Umstieg Tao Poon → Blue Line. Eine Fahrt kostet 17–45 ฿, mit Umstieg auf die Blue Line zusammen 50–71 ฿. Läuft bis Mitternacht — danach nur noch Bolt." },
+    { icon:"🚇", title:"MRT ab Hotel", txt:"Station Yaek Tiwanon direkt gegenüber (Purple Line). In die Stadt: Umstieg Tao Poon → Blue Line. Eine Fahrt kostet 17–45 ฿, mit Umstieg auf die Blue Line zusammen 50–71 ฿. WICHTIG: der <b>letzte Zug der lila Linie ab Tao Poon nach Hause fährt um 23:35</b> — nicht bis Mitternacht. Rechne von deinem Startbahnhof 25–35 Min bis Tao Poon zurück; ab 22:50 in der Stadt lieber Bolt nehmen." },
     { icon:"🚗", title:"Bolt & Grab", txt:"Stadtfahrten 200–350 ฿, nachts 400–600 ฿. Grab als zweite App installieren: teurer, aber mehr Autos — bei Regen und Rushhour storniert Bolt gern. Rushhour 16–19 Uhr macht jede Fahrt fast doppelt so lang." },
     { icon:"⛴️", title:"Expressboot", txt:"Ab Nonthaburi Pier den Fluss runter in die Altstadt: orange Flagge 18 ฿, gelb 23 ฿, rot 32 ฿. Kein Stau, schönste Strecke der Stadt — fährt aber nur bis 19 Uhr." },
     { icon:"🌧️", title:"Regenzeit", txt:"Schauer kommen meist nachmittags und sind nach ein bis zwei Stunden durch. Poncho in den Rucksack, Handy in den Zip-Beutel. Wann es an deinem Tag regnet, steht im Reiter Kurs bei den Reisetagen." }
@@ -55,7 +55,7 @@ const INFO = {
     falle: [
       { icon:"⚠️", title:"MRT und BTS sind zwei Firmen", txt:"Die MRT (Purple, Blue) und der BTS-Skytrain (Sukhumvit, Silom) haben <b>getrennte Tickets</b>. Wo du umsteigst — Si Lom↔Sala Daeng oder Sukhumvit↔Asok — musst du <b>rausgehen, neu bezahlen und wieder rein</b>. Du zahlst also zweimal. Für den BTS brauchst du ein eigenes Ticket am Automat, Apple Pay klappt dort nicht überall." },
       { icon:"🔄", title:"Tao Poon ist die Ausnahme", txt:"Der Umstieg von der Purple auf die Blue Line in Tao Poon läuft <b>innerhalb der Schranken</b> — du gehst einfach zum anderen Bahnsteig, ohne neu zu zahlen. Eine Fahrt mit Umstieg kostet 50–71 ฿ statt 17–45 ฿ auf einer Linie." },
-      { icon:"🕕", title:"Betriebszeiten", txt:"MRT etwa 6 bis 24 Uhr, BTS ab 5:15 Uhr. Nach Mitternacht fährt nichts mehr — dann nur noch Bolt. Rushhour 7–9 und 16:30–19:30 Uhr, da ist es voll." },
+      { icon:"🕕", title:"Betriebszeiten", txt:"MRT etwa 6:00–23:45, BTS ab 5:15 Uhr. <b>Dein Nachhauseweg endet früher:</b> letzter lila Zug ab Tao Poon 23:35, letzte blaue Züge dorthin ab Wat Mangkon 23:27 und ab Phra Ram 9 23:43 — die reichen für den Umstieg NICHT mehr. Faustregel: ab 22:50 in der Stadt ist Bolt die sichere Wahl. Rushhour 7–9 und 16:30–19:30 Uhr, da ist es voll." },
       { icon:"🚫", title:"In der Bahn", txt:"Essen und Trinken sind verboten, auch Wasser. Die ersten Sitze an den Türen sind für Mönche und ältere Menschen. Es ist eiskalt klimatisiert." }
     ],
     strecken: [

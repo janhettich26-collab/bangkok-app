@@ -27,7 +27,7 @@ BOOKINGS.forEach(b => {
   if (ids.has(b.id)) fehler.push(`Termin-Kennung doppelt: ${b.id}`); ids.add(b.id);
   if (!["fix","offen","vorort"].includes(b.status)) fehler.push(`Termin ${b.id}: unbekannter Status ${b.status}`);
   if (b.date < "2026-08-25" || b.date > REISE.bis) fehler.push(`Termin ${b.id} liegt ausserhalb der Reise: ${b.date}`);
-  (b.links||[]).forEach(l => { if (!/^https?:\/\//.test(l.u)) fehler.push(`Termin ${b.id}: Link ohne http(s): ${l.u}`); });
+  (b.links||[]).forEach(l => { if (!/^(https?:\/\/|tel:)/.test(l.u)) fehler.push(`Termin ${b.id}: Link weder http(s) noch tel: ${l.u}`); });
 });
 
 // 3) Jeder Termin muss am passenden Plan-Tag auftauchen
