@@ -25,18 +25,28 @@
   <span class="dates">27.08.–07.09.</span>
 </header>
 
-<!-- ฿ KURS -->
-<section class="panel active" id="panel-kurs">
+<!-- HEUTE — Startseite -->
+<section class="panel active" id="panel-heute">
   <div id="today-card"></div>
+  <div id="heute-jetzt"></div>
+  <div id="heute-rest"></div>
+  <div class="card conv-mini">
+    <div class="conv-head"><span id="rate-mini">…</span></div>
+    <div class="converter">
+      <div class="field"><input id="in-eur" inputmode="decimal" placeholder="Euro" value="10"><span class="cur">€</span></div>
+      <span class="swap">⇄</span>
+      <div class="field"><input id="in-thb" inputmode="decimal" placeholder="Baht"><span class="cur">฿</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ฿ KURS -->
+<section class="panel" id="panel-kurs">
+  <button class="btn ghost small zurueck" type="button" data-back="1">‹ Zurück</button>
   <div class="rate-hero">
     <div class="eyebrow">Live-Wechselkurs</div>
     <div id="rate-big">…</div>
     <div id="rate-sub">Kurs wird geladen …</div>
-  </div>
-  <div class="converter">
-    <div class="field"><input id="in-eur" inputmode="decimal" placeholder="Euro" value="10"><span class="cur">€</span></div>
-    <span class="swap">⇄</span>
-    <div class="field"><input id="in-thb" inputmode="decimal" placeholder="Baht"><span class="cur">฿</span></div>
   </div>
   <div class="card weather" id="weather"></div>
   <h2><span class="th">☔</span>Deine Reisetage — antippen für Details</h2>
@@ -49,6 +59,7 @@
 
 <!-- SPOTS -->
 <section class="panel" id="panel-spots">
+  <button class="btn ghost small zurueck" type="button" data-back="1">‹ Zurück</button>
   <div class="searchbar">
     <input id="spot-search" type="search" inputmode="search" placeholder="Spot suchen (Name, Ort, Stichwort) …" autocomplete="off">
     <button id="spot-search-clear" type="button" aria-label="Suche leeren" hidden>✕</button>
@@ -115,6 +126,7 @@
 
 <!-- TERMINE -->
 <section class="panel" id="panel-termine">
+  <button class="btn ghost small zurueck" type="button" data-back="1">‹ Zurück</button>
   <div class="pack-top">
     <div class="pack-head">
       <div>
@@ -133,6 +145,7 @@
 
 <!-- PACKEN -->
 <section class="panel" id="panel-packen">
+  <button class="btn ghost small zurueck" type="button" data-back="1">‹ Zurück</button>
   <div class="pack-top">
     <div class="pack-head">
       <div>
@@ -156,6 +169,7 @@
 
 <!-- INFO -->
 <section class="panel" id="panel-info">
+  <button class="btn ghost small zurueck" type="button" data-back="1">‹ Zurück</button>
   <details class="card sec" open>
     <summary><span class="sec-ico">✅</span><div class="sec-t"><b>Vorbereitung daheim</b><i>Check-in, eSIM, Karten, Papiere — Buchungen stehen im Reiter Termine</i></div><span class="chev">›</span></summary>
     <div class="sec-body" id="check-list"></div>
@@ -207,15 +221,24 @@
   </details>
 </section>
 
+<!-- MEHR -->
+<section class="panel" id="panel-mehr">
+  <h2><span class="th">≡</span>Alles Weitere</h2>
+  <div class="kacheln">
+    <button class="kachel" data-goto="spots"><span class="k-ico">🗺️</span><b>Spots</b><i>34 Orte zum Nachschlagen</i></button>
+    <button class="kachel" data-goto="termine"><span class="k-ico">🎟️</span><b>Termine &amp; Buchungen</b><i>Was steht, was noch offen ist</i></button>
+    <button class="kachel" data-goto="packen"><span class="k-ico">🧳</span><b>Packliste</b><i>Abhaken beim Packen</i></button>
+    <button class="kachel" data-goto="kurs"><span class="k-ico">฿</span><b>Kurs &amp; Preisgefühl</b><i>Spickzettel, Wetter aller Tage</i></button>
+    <button class="kachel" data-goto="info"><span class="k-ico">🛡️</span><b>Info &amp; Notfall</b><i>Nummern, Bahn, Geld, Reisedaten</i></button>
+  </div>
+</section>
+
 <nav class="tabbar">
-  <button class="active" data-tab="kurs"><span class="ico">฿</span>Kurs</button>
-  <button data-tab="spots"><span class="ico">🗺️</span>Spots</button>
+  <button class="active" data-tab="heute"><span class="ico">☀️</span>Heute</button>
   <button data-tab="plan"><span class="ico">📅</span>Plan</button>
   <button data-tab="karte"><span class="ico">📍</span>Karte</button>
-  <button data-tab="termine"><span class="ico">🎟️</span>Termine</button>
-  <button data-tab="packen"><span class="ico">🧳</span>Packen</button>
   <button data-tab="sprache"><span class="ico">💬</span>Sprache</button>
-  <button data-tab="info"><span class="ico">🛡️</span>Info</button>
+  <button data-tab="mehr"><span class="ico">≡</span>Mehr</button>
 </nav>
 
 <script src="vendor/leaflet/leaflet.js"></script>

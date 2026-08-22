@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  const APP_VERSION = "v59";   // muss zur Version in sw.js passen
+  const APP_VERSION = "v60";   // muss zur Version in sw.js passen
 
   let WX = null;   // Live-Wetter: { now:{...}, hours:[...], days:{ "2026-08-30": {...} } } — oben, weil renderPlan es liest
 
@@ -14,7 +14,8 @@
   let mapObj = null;
   function showTab(id) {
     panels.forEach(p => p.classList.toggle("active", p.id === "panel-" + id));
-    tabs.forEach(b => b.classList.toggle("active", b.dataset.tab === id));
+    const hervor = ["spots", "termine", "packen", "kurs", "info"].includes(id) ? "mehr" : id;
+    tabs.forEach(b => b.classList.toggle("active", b.dataset.tab === hervor));
     if (id === "karte") {
       // Leaflet misst die Groesse falsch, solange das Panel noch display:none war.
       // Deshalb erst nach dem Layout initialisieren und danach jedes Mal neu vermessen.
@@ -25,6 +26,13 @@
   }
   tabs.forEach(b => b.addEventListener("click", () => showTab(b.dataset.tab)));
 
+  // Panels, die ueber "Mehr" erreicht werden — dort bleibt der Mehr-Knopf aktiv
+  const UNTER = ["spots", "termine", "packen", "kurs", "info"];
+  document.querySelectorAll("[data-goto]").forEach(k =>
+    k.addEventListener("click", () => showTab(k.dataset.goto)));
+  document.querySelectorAll("[data-back]").forEach(k =>
+    k.addEventListener("click", () => showTab("mehr")));
+
   // ————— Kurs —————
   const RATE_KEY = "bkk_rate";
   let rate = null; // THB pro 1 EUR
@@ -34,6 +42,8 @@
   }
 
   function renderRate(info) {
+    const mini = document.getElementById("rate-mini");
+    if (mini) mini.textContent = info && info.rate ? "1 € = " + fmtDE(info.rate, 1) + " ฿" : "Kurs wird geladen …";
     const el = document.getElementById("rate-big");
     const sub = document.getElementById("rate-sub");
     if (!info) { el.textContent = "—"; sub.textContent = "Kein Kurs verfügbar — einmal online gehen."; return; }
@@ -261,6 +271,7 @@
     const tage = [...document.querySelectorAll("#plan-list > details[open]")].map(x => x.querySelector(".d-date").textContent);
     const fahrten = [...document.querySelectorAll("#plan-list .fahrt[open]")].map(x => x.dataset.f);
     renderPlan();
+    renderToday();
     document.querySelectorAll("#plan-list > details").forEach(x => {
       if (tage.includes(x.querySelector(".d-date").textContent)) x.open = true;
     });
@@ -268,6 +279,18 @@
       if (fahrten.includes(x.dataset.f)) x.open = true;
     });
   }
+
+  const panelHeute = document.getElementById("panel-heute");
+  if (panelHeute) panelHeute.addEventListener("click", e => {
+    const tick = e.target.closest(".j-tick");
+    if (tick) { e.preventDefault(); e.stopPropagation(); togglePlanBlock(tick.dataset.tick); renderToday(); return; }
+    const kopie = e.target.closest(".fb[data-zk]");
+    if (kopie) {
+      e.preventDefault(); e.stopPropagation();
+      const z = ZIELE[kopie.dataset.zk];
+      navigator.clipboard.writeText(z.th).then(() => { kopie.textContent = "kopiert ✓"; setTimeout(() => kopie.textContent = "Adresse kopieren", 1500); });
+    }
+  });
 
   document.getElementById("plan-list").addEventListener("click", e => {
     // 1) Der Haken rechts — und NUR der — hakt den Punkt ab
@@ -836,14 +859,49 @@
   const DIR_BKK = "https://www.google.com/maps/dir/?api=1&destination=Suvarnabhumi%20Airport&travelmode=driving";
   const FS = f => "https://www.google.com/search?q=" + f + "+Flugstatus";
 
+  // ————— Startseite „Heute" —————
+  // Beantwortet die einzige Frage, die vor Ort zaehlt: Was mache ich jetzt, und wie komme ich hin?
+  // Die Uhrzeit wird IMMER in Bangkok-Zeit gerechnet — damit die Seite auch von daheim aus stimmt.
+  function bkkJetzt() {
+    const d = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Bangkok" }));
+    return { min: d.getHours() * 60 + d.getMinutes(),
+             datum: d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"),
+             uhr: String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0") };
+  }
+
+  // "8:45" · "9:30–13:00" · "~15:15" · "7:50 oder 8:45" · "vorm." · "abends" → Startminute
+  function startMin(t) {
+    if (!t) return null;
+    const s = String(t).toLowerCase();
+    const m = s.match(/(\d{1,2})[:.](\d{2})/);
+    if (m) return (+m[1]) * 60 + (+m[2]);
+    if (s.indexOf("vorm") >= 0) return 9 * 60;
+    if (s.indexOf("tagsüber") >= 0) return 10 * 60;
+    if (s.indexOf("abend") >= 0) return 19 * 60;
+    if (s.indexOf("heim") >= 0) return 21 * 60;
+    return null;
+  }
+
+  function kurz(txt, n) {
+    const roh = String(txt).replace(/<[^>]+>/g, "");
+    return roh.length > n ? roh.slice(0, n - 1).replace(/[\s,;.]+$/, "") + "…" : roh;
+  }
+
   function timeline(rows) {
     return '<div class="t-rows">' + rows.map(r =>
       '<div class="t-row"><span class="t-time">' + r[0] + "</span><p>" + r[1] + "</p></div>").join("") + "</div>";
   }
 
+  function heuteLeeren() {
+    ["heute-jetzt", "heute-rest"].forEach(id => { const e = document.getElementById(id); if (e) e.innerHTML = ""; });
+  }
+
   function renderToday() {
     const el = document.getElementById("today-card");
+    const jetzt = bkkJetzt();
     const t = todayISO();
+    heuteLeeren();
+
     if (t === "2026-08-27") {
       el.innerHTML = '<div class="card today"><div class="today-title">🛫 Heute geht\'s los — LH772 um 22:20</div>' +
         timeline([
@@ -858,43 +916,68 @@
         '<a class="btn ghost" href="' + FS("LH772") + '" target="_blank" rel="noopener">✈️ Flugstatus</a></div></div>';
       return;
     }
-    if (t === "2026-09-06") {
-      el.innerHTML = '<div class="card today"><div class="today-title">🛫 Heute Rückflug — LH773 um 22:55</div>' +
-        timeline([
-          ["12:00", "Check-out, Gepäck an der Rezeption lagern. Tag locker gestalten."],
-          ["18:45", "Abfahrt am Hotel — Transfer ist inklusive (Abholzeit gestern bestätigt?). Plan B: Bolt ~600 ฿, 45–60 Min."],
-          ["19:55", "Am Suvarnabhumi (3 Std. vorher). Bag-Drop Lufthansa."],
-          ["~22:15", "Boarding. Restliche Baht ausgegeben?"],
-          ["22:55", "Abflug — 05:15 landest du in München. Montag keine Einsätze!"]
-        ]) +
-        '<div class="s-actions"><a class="btn" href="' + DIR_BKK + '" target="_blank" rel="noopener">🚗 Live-Route zum Flughafen</a>' +
-        '<a class="btn ghost" href="' + FS("LH773") + '" target="_blank" rel="noopener">✈️ Flugstatus</a></div></div>';
-      return;
-    }
     if (t < "2026-08-27") {
       const days = Math.round((new Date("2026-08-27T12:00:00") - new Date(t + "T12:00:00")) / 864e5);
       el.innerHTML = '<div class="card today"><div class="today-title">🛫 Noch ' + days + " Tag" + (days === 1 ? "" : "e") + " bis Bangkok</div>" +
-        '<p class="today-sub">Do 27.08., 22:20 ab München — Checkliste im Blick behalten.</p>' +
-        '<div class="s-actions"><button class="btn" id="open-checks">✅ Zur Checkliste</button></div></div>';
-      const btn = document.getElementById("open-checks");
-      if (btn) btn.addEventListener("click", () => {
-        showTab("info");
-        const sec = document.querySelector("#panel-info details");
-        if (sec) sec.open = true;
-      });
+        '<p class="today-sub">Do 27.08., 22:20 ab München · in Bangkok ist es gerade ' + jetzt.uhr + " Uhr</p>" +
+        '<div class="s-actions"><button class="btn" id="open-checks">✅ Zur Checkliste</button>' +
+        '<button class="btn ghost" id="open-plan">📅 Ganzen Plan ansehen</button></div></div>';
+      const b1 = document.getElementById("open-checks");
+      if (b1) b1.addEventListener("click", () => { showTab("info"); const sec = document.querySelector("#panel-info details"); if (sec) sec.open = true; });
+      const b2 = document.getElementById("open-plan");
+      if (b2) b2.addEventListener("click", () => showTab("plan"));
       return;
     }
+
     const day = PLAN.find(d => d.date === t);
-    if (day) {
-      const n = PLAN.indexOf(day);
-      el.innerHTML = '<div class="card today"><div class="today-title">' + day.icon + " Heute: " + day.title + "</div>" +
-        '<p class="today-sub">Tag ' + n + " deiner Reise · " + day.wd + " " + t.slice(8, 10) + "." + t.slice(5, 7) + ".</p>" +
-        '<div class="s-actions"><button class="btn" id="open-plan">📅 Tagesplan öffnen</button></div></div>';
-      const btn = document.getElementById("open-plan");
-      if (btn) btn.addEventListener("click", () => showTab("plan"));
-      return;
+    if (!day) { el.innerHTML = '<div class="card today"><div class="today-title">🏠 Wieder daheim</div>' +
+        '<p class="today-sub">Die Reise ist vorbei — der Plan bleibt zum Nachlesen im Reiter Plan.</p></div>'; return; }
+
+    // Kopf: welcher Tag, welches Wetter
+    const n = PLAN.indexOf(day);
+    const wx = WX && WX.days ? WX.days[day.date] : null;
+    el.innerHTML = '<div class="card today"><div class="today-title">' + day.icon + " " + day.title + "</div>" +
+      '<p class="today-sub">Tag ' + n + " von 10 · " + day.wd + " " + t.slice(8, 10) + "." + t.slice(5, 7) + ". · in Bangkok ist es " + jetzt.uhr + " Uhr</p>" +
+      (wx ? '<div class="heute-wx ' + wx.st.k + '">' + wxIcon(wx.code, 1) + " <b>" + wx.max + " °C · " + tropfen(wx.st.n) + " " + wx.st.kurz + "</b><br>" +
+            fensterText(wx.fenster) + "</div>" : "") + "</div>";
+
+    // Bloecke mit Startzeit → was laeuft gerade, was kommt als Naechstes
+    const mit = day.blocks.map((b, i) => ({ b: b, i: i, m: startMin(b.t) })).filter(x => x.m !== null);
+    const st = planState();
+    let aktIdx = -1;
+    mit.forEach((x, k) => { if (x.m <= jetzt.min) aktIdx = k; });
+    const naechste = aktIdx + 1 < mit.length ? mit[aktIdx + 1] : null;
+    const zeigen = aktIdx >= 0 ? mit[aktIdx] : (mit.length ? mit[0] : null);
+    const label = aktIdx < 0 ? "Gleich geht es los" : (naechste && naechste.m - jetzt.min <= 45 ? "Jetzt — gleich weiter" : "Jetzt dran");
+
+    const jetztEl = document.getElementById("heute-jetzt");
+    if (zeigen) {
+      const key = day.date + "#" + zeigen.i;
+      jetztEl.innerHTML = '<div class="card jetzt' + (st[key] ? " done" : "") + '">' +
+        '<div class="j-kopf"><span class="j-label">' + label + "</span><span class=\"j-zeit\">" + (zeigen.b.t || "") + "</span></div>" +
+        "<p class=\"j-txt\">" + zeigen.b.txt + "</p>" +
+        (zeigen.b.z && ZIELE[zeigen.b.z] ? zielLeiste(zeigen.b.z, zeigen.b.r, zeigen.b.nb) : "") +
+        '<button class="btn ghost small j-tick" type="button" data-tick="' + key + '">' + (st[key] ? "✓ erledigt" : "abhaken") + "</button>" +
+        "</div>";
     }
-    el.innerHTML = "";
+
+    // Der Rest des Tages, kompakt
+    const rest = mit.filter((x, k) => k > aktIdx);
+    const restEl = document.getElementById("heute-rest");
+    if (rest.length) {
+      restEl.innerHTML = '<div class="card rest"><div class="rest-kopf">Danach heute</div>' +
+        rest.map(x => '<div class="rest-row' + (st[day.date + "#" + x.i] ? " done" : "") + '"><span class="rest-zeit">' + (x.b.t || "") + "</span>" +
+          "<span class=\"rest-txt\">" + kurz(x.b.txt, 90) + "</span></div>").join("") +
+        '<button class="btn ghost small" id="open-plan-full">📅 Ganzen Tag im Plan öffnen</button></div>';
+    } else {
+      restEl.innerHTML = '<div class="card rest"><div class="rest-kopf">Das war der Plan für heute</div>' +
+        '<p class="rest-frei">Der Rest des Abends gehört dir. <b>Denk an die Bahn:</b> der letzte lila Zug ab Tao Poon nach Hause fährt 23:35 — ab 22:50 in der Stadt lieber ein Bolt nehmen.</p>' +
+        '<button class="btn ghost small" id="open-plan-full">📅 Morgen ansehen</button></div>';
+    }
+    const bp = document.getElementById("open-plan-full");
+    if (bp) bp.addEventListener("click", () => showTab("plan"));
+
+    if (day.note) restEl.insertAdjacentHTML("beforeend", '<div class="card hinweis"><b>Hinweis für heute</b><p>' + day.note + "</p></div>");
   }
   renderToday();
 
@@ -1001,7 +1084,7 @@
     if (cache && !force) {
       try {
         const c = JSON.parse(cache);
-        WX = c; renderWeather(); renderPlan();
+        WX = c; renderWeather(); renderPlan(); renderToday();
         if (Date.now() - c.ts < 10 * 60 * 1000) return;
       } catch (e) { /* kaputter Cache */ }
     }
@@ -1057,7 +1140,7 @@
         hours, days, ts: Date.now()
       };
       localStorage.setItem(WX_KEY, JSON.stringify(WX));
-      renderWeather(); renderPlan();
+      renderWeather(); renderPlan(); renderToday();
     } catch (e) {
       if (!WX) document.getElementById("weather").innerHTML =
         '<div class="wx-load">Kein Netz — Wetter kann gerade nicht geladen werden.</div>';
